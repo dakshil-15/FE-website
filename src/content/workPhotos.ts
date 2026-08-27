@@ -1,0 +1,13 @@
+export const workPhotos: Record<string, string> = {
+  "godrej-blue": "/images/work/cases/godrej-blue.png",
+  "fedex-csk": "/images/work/cases/fedex-csk.png",
+  "royale-touche-stay-curious": "/images/work/cases/royale-touche.png",
+  "poonawalla-fraud-awareness": "/images/work/cases/poonawalla-fraud-awareness.png",
+  "mahindra-manulife": "/images/work/cases/mahindra-manulife.png",
+  "orpat-erp": "/images/work/cases/orpat-erp.png",
+  "ajanta-ai-creatives": "/images/work/cases/ajanta-ai-creatives.png",
+  waaree: "/images/work/cases/waaree.png",
+  "vip-industries": "/images/work/vip-industries.png",
+  "akbar-travels-seo": "/images/work/akbar-travels-seo.png",
+  "poonawalla-ai-creatives": "/images/work/poonawalla-ai-creatives.png",
+};
