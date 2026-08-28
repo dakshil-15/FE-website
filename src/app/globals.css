@@ -663,6 +663,43 @@ input[type="submit"].gsap-btn-ready:not(:disabled) {
   z-index: 1;
 }
 
+/* Capabilities process — six steps (horizontal from lg) */
+.about-timeline.capabilities-timeline {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .about-timeline.capabilities-timeline {
+    grid-template-columns: 1fr;
+  }
+  .capabilities-timeline-wrap .about-timeline-line {
+    top: 1.75rem;
+    bottom: 1.75rem;
+    left: 1.75rem;
+    right: auto;
+    width: 0;
+    height: auto;
+    border-top: none;
+    border-left: 1px dashed var(--color-red);
+    transform-origin: top center;
+  }
+}
+@media (min-width: 1024px) {
+  .about-timeline.capabilities-timeline {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .capabilities-timeline-wrap .about-timeline-line {
+    top: 2.15rem;
+    bottom: auto;
+    left: 2.25rem;
+    right: 2.25rem;
+    width: auto;
+    height: 0;
+    border-left: none;
+    border-top: 1px dashed var(--color-red);
+    transform-origin: left center;
+  }
+}
+
 .work-rail {
   display: grid;
   grid-auto-flow: column;

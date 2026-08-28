@@ -7,111 +7,28 @@ import { ArrowRight, ArrowRightCircle } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CaseStudyCard from "@/components/CaseStudyCard";
-import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
-import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
-import { ImageSlot } from "@/components/media/AssetPlaceholder";
-import { platformIcons } from "@/components/toolIcons";
+import CapabilitiesGrid from "@/components/capabilities/CapabilitiesGrid";
+import CapabilitiesHexNetwork from "@/components/capabilities/CapabilitiesHexNetwork";
+import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
+import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import {
-  architectureSection,
   capabilitiesCta,
+  capabilitiesGridSection,
   capabilitiesHero,
-  capabilityPillars,
-  ecosystemColumns,
+  capabilityCards,
+  capabilityCaseStudies,
+  ecosystemPartnerLogos,
   ecosystemSection,
+  growthSystemSection,
+  growthSystemSteps,
   intelligenceSection,
   techCaseStudiesSection,
 } from "@/content/capabilities";
-import { caseStudies } from "@/content/caseStudies";
-import { dataTools, growthNodes, platformPartners } from "@/content/site";
-import type { CapabilityPillar } from "@/content/capabilities";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-function CapabilityPillarBlock({
-  pillar,
-  index,
-  onDark = false,
-}: {
-  pillar: CapabilityPillar;
-  index: number;
-  onDark?: boolean;
-}) {
-  const reverse = index % 2 === 1;
-
-  return (
-    <section
-      id={pillar.id}
-      data-animate-section
-      className={`section-shell section-pad scroll-mt-[5.5rem] ${onDark ? "bg-ink text-white" : index % 2 === 0 ? "bg-paper" : "bg-mist"}`}
-      aria-labelledby={`${pillar.id}-heading`}
-    >
-      <div
-        className={`section-inner grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 xl:gap-16 ${
-          reverse ? "lg:[&>*:first-child]:order-2" : ""
-        }`}
-      >
-        <div className="min-w-0">
-          <p
-            data-animate="fade-up"
-            className={`text-eyebrow m-0 ${onDark ? "text-eyebrow-on-dark" : ""}`}
-          >
-            {pillar.eyebrow}
-          </p>
-          <h2
-            data-animate="fade-up"
-            id={`${pillar.id}-heading`}
-            className="text-display-md mt-4 mb-0 text-balance"
-          >
-            {pillar.title}
-          </h2>
-          <p
-            data-animate="fade-up"
-            className={`text-body section-copy mt-5 mb-0 max-w-[28rem] sm:mt-6 ${
-              onDark ? "section-copy-on-dark" : "section-copy-on-light"
-            }`}
-          >
-            {pillar.body}
-          </p>
-          {pillar.serviceHref ? (
-            <div data-animate="fade-up">
-              <Link
-                href={pillar.serviceHref}
-                className={`text-cta link-cta mt-6 inline-flex sm:mt-7 ${onDark ? "text-white" : "text-ink"}`}
-              >
-                {pillar.serviceLabel ?? "Learn more"}
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-            </div>
-          ) : null}
-        </div>
-
-        <ul
-          data-animate-stagger
-          className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
-        >
-          {pillar.items.map((item) => (
-            <li
-              key={item}
-              className={`border px-4 py-4 sm:px-5 sm:py-5 ${
-                onDark ? "border-white/20 bg-white/5" : "border-line bg-white"
-              }`}
-            >
-              <p className={`text-body-sm m-0 ${onDark ? "text-white/90" : "text-ink"}`}>{item}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export default function CapabilitiesPage() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const techStudies = caseStudies.filter((study) =>
-    ["technology", "ai"].includes(study.family) ||
-    study.services.some((service) => ["technology", "ai-solutions"].includes(service)),
-  );
 
   useGSAP(
     () => {
@@ -126,13 +43,18 @@ export default function CapabilitiesPage() {
           const { reduceMotion } = context.conditions ?? {};
 
           if (reduceMotion) {
-            gsap.set("[data-animate], [data-animate-stagger] > *", {
-              clearProps: "all",
-              autoAlpha: 1,
-              opacity: 1,
-              y: 0,
-              scale: 1,
-            });
+            gsap.set(
+              "[data-animate], [data-animate-stagger] > *, [data-timeline-icon], [data-timeline-copy], [data-timeline-line]",
+              {
+                clearProps: "all",
+                autoAlpha: 1,
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
+              },
+            );
             return;
           }
 
@@ -162,6 +84,48 @@ export default function CapabilitiesPage() {
               "-=0.25",
             );
 
+          const processWrap = gsap.utils.toArray<HTMLElement>(".capabilities-timeline-wrap")[0];
+          const processTimeline = processWrap?.querySelector<HTMLElement>("[data-story-timeline]");
+          if (processWrap && processTimeline) {
+            const line = processWrap.querySelector<HTMLElement>("[data-timeline-line]");
+            const icons = processTimeline.querySelectorAll("[data-timeline-icon]");
+            const copies = processTimeline.querySelectorAll("[data-timeline-copy]");
+            const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+            if (line) {
+              gsap.set(line, isDesktop ? { scaleX: 0 } : { scaleY: 0 });
+            }
+            gsap.set(icons, { scale: 0.55, opacity: 0 });
+            gsap.set(copies, { y: 18, opacity: 0 });
+
+            const processTl = gsap.timeline({
+              scrollTrigger: {
+                trigger: processWrap,
+                start: "top 78%",
+                toggleActions: "play none none none",
+              },
+              defaults: { ease: "power3.out" },
+            });
+
+            if (line) {
+              processTl.to(line, {
+                ...(isDesktop ? { scaleX: 1 } : { scaleY: 1 }),
+                duration: 0.9,
+                ease: "power2.inOut",
+              });
+            }
+
+            icons.forEach((icon, i) => {
+              const at = line ? (i === 0 ? "-=0.35" : "-=0.45") : i === 0 ? 0 : "-=0.45";
+              processTl.to(
+                icon,
+                { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" },
+                at,
+              );
+              processTl.to(copies[i], { y: 0, opacity: 1, duration: 0.5 }, "-=0.28");
+            });
+          }
+
           gsap.utils.toArray<HTMLElement>("[data-animate-section]").forEach((section) => {
             const intro = section.querySelectorAll("[data-animate='fade-up']");
             const staggerRoots = section.querySelectorAll("[data-animate-stagger]");
@@ -176,24 +140,44 @@ export default function CapabilitiesPage() {
             const tl = gsap.timeline({
               scrollTrigger: {
                 trigger: section,
-                start: "top 82%",
+                start: "top 78%",
                 toggleActions: "play none none none",
               },
               defaults: { ease: "power3.out" },
             });
 
             if (intro.length) {
-              tl.fromTo(intro, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, stagger: 0.1 });
+              tl.fromTo(
+                intro,
+                { y: 32, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.75,
+                  stagger: 0.1,
+                  immediateRender: false,
+                  clearProps: "transform",
+                },
+              );
             }
             if (staggerItems.length) {
               tl.fromTo(
                 staggerItems,
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.65, stagger: 0.08 },
+                { y: 24, opacity: 0 },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.55,
+                  stagger: 0.06,
+                  immediateRender: false,
+                  clearProps: "transform",
+                },
                 intro.length ? "-=0.35" : 0,
               );
             }
           });
+
+          requestAnimationFrame(() => ScrollTrigger.refresh());
         },
       );
 
@@ -204,6 +188,7 @@ export default function CapabilitiesPage() {
 
   return (
     <div ref={rootRef}>
+      {/* ── Hero (paper) ──────────────────────────────── */}
       <section
         className="section-shell bg-paper pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-16"
         aria-labelledby="capabilities-hero-heading"
@@ -239,8 +224,7 @@ export default function CapabilitiesPage() {
                   data-animate="hero-copy"
                   className="text-display-xl mt-4 mb-0 text-balance"
                 >
-                  {capabilitiesHero.headlineBefore}
-                  <br />
+                  {capabilitiesHero.headlineBefore}{" "}
                   <span className="text-red">{capabilitiesHero.headlineAccent}</span>
                 </h1>
                 <p
@@ -252,12 +236,18 @@ export default function CapabilitiesPage() {
               </div>
 
               <div data-animate="hero-visual" className="relative z-[1] min-w-0 overflow-hidden">
-                <ImageSlot
-                  asset={capabilitiesHero.image}
-                  priority
-                  className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                {capabilitiesHero.visual.src ? (
+                  <ImageSlot
+                    asset={capabilitiesHero.visual}
+                    priority
+                    className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                ) : (
+                  <div className="flex aspect-[4/3] w-full items-center justify-center bg-mist sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px] lg:h-full">
+                    <CapabilitiesHexNetwork asset={capabilitiesHero.visual} />
+                  </div>
+                )}
                 <div
                   className="pointer-events-none absolute top-1/2 right-0 left-0 z-[2] hidden h-px -translate-y-1/2 bg-red lg:block"
                   aria-hidden
@@ -280,10 +270,10 @@ export default function CapabilitiesPage() {
               />
             </div>
             <Link
-              href="#architecture"
+              href="#our-capabilities"
               data-animate="hero-seam"
               className="absolute top-1/2 left-1/2 z-20 grid size-[4.5rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20"
-              aria-label="Continue to growth-system architecture"
+              aria-label="Continue to our capabilities"
             >
               <Image
                 src={capabilitiesHero.arrow}
@@ -299,103 +289,134 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
+      {/* ── Capabilities grid (mist) ──────────────────── */}
       <section
-        id="architecture"
+        id="our-capabilities"
         data-animate-section
         className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
-        aria-labelledby="architecture-heading"
+        aria-labelledby="capabilities-grid-heading"
       >
         <div className="section-inner">
           <p data-animate="fade-up" className="text-eyebrow m-0">
-            {architectureSection.eyebrow}
+            {capabilitiesGridSection.eyebrow}
           </p>
           <div className="section-intro">
-            <h2 data-animate="fade-up" id="architecture-heading" className="text-display-md m-0">
-              {architectureSection.titleBefore}{" "}
-              <span className="text-red">{architectureSection.titleAccent}</span>
+            <h2 data-animate="fade-up" id="capabilities-grid-heading" className="text-display-md m-0">
+              {capabilitiesGridSection.titleBefore}{" "}
+              <br className="hidden sm:block" />
+              {capabilitiesGridSection.titleAfter}
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-light m-0">{architectureSection.body}</p>
-              <p className="text-body-sm mt-4 mb-0 max-w-[28rem] text-muted sm:mt-5">
-                {architectureSection.networkNote}
+              <p className="text-body section-copy section-copy-on-light m-0">
+                {capabilitiesGridSection.body}
               </p>
             </div>
           </div>
 
-          <div className="section-media mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-12 xl:gap-16">
-            <ul
-              data-animate-stagger
-              className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
-            >
-              {growthNodes.map((node) => (
-                <li key={node.id} className="min-w-0">
-                  {node.relatedServiceSlug ? (
-                    <Link
-                      href={`/services/${node.relatedServiceSlug}`}
-                      className="group flex h-full flex-col border border-line bg-white p-4 transition hover:border-ink sm:p-5"
-                    >
-                      <span className="font-display text-sm font-bold tracking-[0.04em] uppercase transition group-hover:text-red">
-                        {node.label}
-                      </span>
-                      <p className="text-body-sm mt-2 mb-0 text-muted">{node.description}</p>
-                    </Link>
-                  ) : (
-                    <div className="flex h-full flex-col border border-line bg-white p-4 sm:p-5">
-                      <span className="font-display text-sm font-bold tracking-[0.04em] uppercase">{node.label}</span>
-                      <p className="text-body-sm mt-2 mb-0 text-muted">{node.description}</p>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <div data-animate="fade-up" className="grid min-w-0 place-items-center">
-              <GrowthNetworkVisual />
-            </div>
+          <div className="section-media">
+            <CapabilitiesGrid cards={capabilityCards} />
           </div>
         </div>
       </section>
 
-      {capabilityPillars.slice(0, 2).map((pillar, index) => (
-        <CapabilityPillarBlock key={pillar.id} pillar={pillar} index={index} />
-      ))}
-
+      {/* ── Growth system process (paper) ─────────────── */}
       <section
-        id="data-analytics"
+        id="growth-system"
         data-animate-section
-        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
-        aria-labelledby="data-analytics-heading"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-paper"
+        aria-labelledby="growth-system-heading"
       >
         <div className="section-inner">
           <p data-animate="fade-up" className="text-eyebrow m-0">
-            {capabilityPillars[2].eyebrow}
+            {growthSystemSection.eyebrow}
           </p>
-          <div className="section-intro">
-            <h2 data-animate="fade-up" id="data-analytics-heading" className="text-display-md m-0">
-              {capabilityPillars[2].title}
-            </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
+          <h2 data-animate="fade-up" id="growth-system-heading" className="text-display-md mt-4 mb-0">
+            {growthSystemSection.title}
+          </h2>
+
+          <div className="capabilities-timeline-wrap about-timeline-wrap section-media relative">
+            <div data-timeline-line className="about-timeline-line" aria-hidden />
+            <ol
+              data-story-timeline
+              className="about-timeline capabilities-timeline m-0 list-none p-0"
             >
-              {capabilityPillars[2].body}
-            </p>
-          </div>
-          <div data-animate="fade-up" className="section-media mt-8 border border-line sm:mt-10">
-            <AdvantageToolsGrid tools={dataTools} />
+              {growthSystemSteps.map((step) => (
+                <li key={step.id} className="about-timeline-item relative min-w-0">
+                  <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
+                    <span
+                      data-timeline-icon
+                      className="about-timeline-icon grid h-14 w-14 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper md:h-16 md:w-16"
+                    >
+                      <IconSlot asset={step.icon} size={56} />
+                    </span>
+                    <div data-timeline-copy className="min-w-0 lg:mt-6">
+                      <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">
+                        <span className="text-red">{step.number}.</span> {step.title}
+                      </h3>
+                      <p className="text-body-sm mt-2 mb-0 max-w-[20rem] text-muted lg:max-w-[16rem]">
+                        {step.body}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {capabilityPillars.slice(3, 5).map((pillar, index) => (
-        <CapabilityPillarBlock key={pillar.id} pillar={pillar} index={index + 3} />
-      ))}
+      {/* ── Intelligent solutions (mist) ────────────────── */}
+      <section
+        id="intelligence"
+        data-animate-section
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
+        aria-labelledby="intelligence-heading"
+      >
+        <div className="section-inner grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-12">
+          <div className="min-w-0">
+            <p data-animate="fade-up" className="text-eyebrow m-0">
+              {intelligenceSection.eyebrow}
+            </p>
+            <h2 data-animate="fade-up" id="intelligence-heading" className="text-display-md mt-4 mb-0">
+              {intelligenceSection.titleBefore}{" "}
+              <span className="text-red">{intelligenceSection.titleAccent}</span>
+            </h2>
+            <p
+              data-animate="fade-up"
+              className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
+            >
+              {intelligenceSection.body}
+            </p>
+            <ul
+              data-animate-stagger
+              className="mt-8 flex list-none flex-wrap gap-6 p-0 sm:mt-10 sm:gap-8"
+            >
+              {intelligenceSection.stats.map((stat) => (
+                <li key={stat.label}>
+                  <p className="text-stat m-0 text-red">{stat.value}</p>
+                  <p className="text-body-sm mt-1 mb-0 font-bold tracking-[0.06em] text-ink uppercase">
+                    {stat.label}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <CapabilityPillarBlock pillar={capabilityPillars[5]} index={5} onDark />
+          <div data-animate="fade-up" className="min-w-0">
+            <ImageSlot
+              asset={intelligenceSection.image}
+              className="aspect-[4/3] w-full lg:aspect-[5/4] lg:min-h-[400px]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </section>
 
+      {/* ── Ecosystem partners (paper) ────────────────── */}
       <section
         id="ecosystem"
         data-animate-section
-        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-paper"
         aria-labelledby="ecosystem-heading"
       >
         <div className="section-inner">
@@ -415,56 +436,45 @@ export default function CapabilitiesPage() {
             </p>
           </div>
 
-          <div data-animate="fade-up" className="section-media mt-8 flex flex-wrap gap-3 sm:mt-10">
-            {platformPartners.map((platform) => {
-              const Icon = platformIcons[platform];
-              return (
-                <span
-                  key={platform}
-                  className="inline-flex items-center gap-2 border border-line bg-white px-4 py-3 text-sm font-medium sm:px-5"
-                >
-                  {Icon ? <Icon size={15} className="text-red" aria-hidden /> : null}
-                  {platform}
-                </span>
-              );
-            })}
-          </div>
-
-          <div
+          <ul
             data-animate-stagger
-            className="section-media mt-8 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:mt-10 sm:grid-cols-3 lg:grid-cols-7"
+            className="section-media m-0 flex list-none flex-wrap items-center justify-center gap-x-6 gap-y-5 p-0 sm:gap-x-8 md:gap-x-10"
           >
-            {ecosystemColumns.map((column) => (
-              <div key={column.title} className="bg-white px-4 py-5 sm:px-5 sm:py-6">
-                <p className="m-0 text-[11px] font-bold tracking-[0.16em] text-red uppercase">{column.title}</p>
-                <ul className="mt-4 flex list-none flex-col gap-2.5 p-0">
-                  {column.items.map((item) => (
-                    <li key={item} className="text-body-sm text-[#333]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {ecosystemPartnerLogos.map((logo) => (
+              <li key={logo.name} className="flex min-w-[8rem] items-center justify-center sm:min-w-[9rem]">
+                {logo.src ? (
+                  <Image
+                    src={logo.src}
+                    alt={`${logo.name} logo`}
+                    width={logo.w ?? 140}
+                    height={logo.h ?? 48}
+                    className="h-8 w-auto max-w-[9rem] object-contain opacity-90 grayscale sm:h-9 md:h-10"
+                  />
+                ) : (
+                  <div
+                    className="flex h-14 w-full min-w-[8rem] flex-col items-center justify-center rounded border border-dashed border-line bg-mist px-3 text-center sm:h-16 sm:min-w-[9rem]"
+                    role="img"
+                    aria-label={`${logo.name} logo (placeholder)`}
+                  >
+                    <span className="text-[9px] font-bold tracking-[0.14em] text-muted uppercase">
+                      Logo
+                    </span>
+                    <span className="mt-1 text-[10px] leading-tight font-medium text-ink sm:text-[11px]">
+                      {logo.name}
+                    </span>
+                  </div>
+                )}
+              </li>
             ))}
-          </div>
-
-          <div
-            data-animate="fade-up"
-            className="mt-10 border border-line bg-ink p-6 text-white sm:mt-12 sm:p-8 lg:p-10"
-          >
-            <p className="text-eyebrow-on-dark m-0">{intelligenceSection.eyebrow}</p>
-            <h3 className="text-display-md mt-4 mb-0 max-w-2xl text-balance">{intelligenceSection.title}</h3>
-            <p className="text-body section-copy section-copy-on-dark mt-5 mb-0 max-w-2xl sm:mt-6">
-              {intelligenceSection.body}
-            </p>
-          </div>
+          </ul>
         </div>
       </section>
 
+      {/* ── Case studies (mist) ───────────────────────── */}
       <section
         id="tech-case-studies"
         data-animate-section
-        className="section-shell section-pad scroll-mt-[5.5rem] bg-paper"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
         aria-labelledby="tech-case-studies-heading"
       >
         <div className="section-inner">
@@ -480,45 +490,49 @@ export default function CapabilitiesPage() {
               <p className="text-body section-copy section-copy-on-light m-0">
                 {techCaseStudiesSection.body}
               </p>
-              <Link href="/work" className="text-cta link-cta mt-0 text-ink">
-                View all work
+              <Link href={techCaseStudiesSection.exploreHref} className="text-cta link-cta mt-0 text-ink">
+                {techCaseStudiesSection.exploreLabel}
                 <ArrowRight size={16} aria-hidden />
               </Link>
             </div>
           </div>
-          <div
-            data-animate-stagger
-            className="section-media mt-8 grid grid-cols-1 gap-6 sm:mt-10 md:grid-cols-2 xl:grid-cols-3"
-          >
-            {techStudies.map((study) => (
-              <CaseStudyCard key={study.slug} caseStudy={study} />
-            ))}
+
+          <div data-animate="fade-up" className="section-media">
+            <CapabilitiesWorkCarousel cases={capabilityCaseStudies} />
           </div>
         </div>
       </section>
 
+      {/* ── Pre-footer CTA (ink) ──────────────────────── */}
       <section
         data-animate-section
         className="section-shell section-pad bg-ink text-white"
         aria-labelledby="capabilities-cta-heading"
       >
-        <div className="section-inner grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16">
+        <div className="section-inner grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_auto] lg:items-center lg:gap-12">
           <h2
             data-animate="fade-up"
             id="capabilities-cta-heading"
-            className="text-display-md m-0 min-w-0 text-balance"
+            className="text-display-md m-0 text-balance"
           >
             {capabilitiesCta.titleBefore}{" "}
             <span className="text-eyebrow-on-dark">{capabilitiesCta.titleAccent}</span>
           </h2>
-          <div data-animate="fade-up" className="min-w-0">
-            <p className="text-body m-0 max-w-md text-muted-on-dark">{capabilitiesCta.body}</p>
+
+          <p
+            data-animate="fade-up"
+            className="text-body m-0 max-w-md text-muted-on-dark lg:max-w-none"
+          >
+            {capabilitiesCta.body}
+          </p>
+
+          <div data-animate="fade-up">
             <Link
               href={capabilitiesCta.button.href}
-              className="text-cta tap-target mt-6 inline-flex min-h-12 w-full max-w-full items-center justify-center gap-3 bg-red px-5 py-3.5 pl-6 text-white transition hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:mt-7 sm:w-auto sm:justify-start sm:gap-4 sm:py-4 sm:pl-7"
+              className="text-cta tap-target inline-flex min-h-12 w-full items-center justify-center gap-3 bg-red px-5 py-3.5 pl-6 text-white transition hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:justify-start sm:gap-4 sm:py-4 sm:pl-7"
             >
               {capabilitiesCta.button.label}
-              <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
+              <ArrowRightCircle size={28} strokeWidth={1.5} className="sm:size-8" aria-hidden />
             </Link>
           </div>
         </div>

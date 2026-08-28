@@ -4,7 +4,7 @@ import CapabilitiesPage from "@/components/capabilities/CapabilitiesPage";
 export const metadata: Metadata = {
   title: "Capabilities",
   description:
-    "Technology, AI, data, digital platforms, automation and enterprise solutions — engineered as one connected growth system at First Economy.",
+    "Engineering intelligent growth systems — technology, AI, data, platforms, automation and strategy connected as one at First Economy.",
 };
 
 export default function Page() {

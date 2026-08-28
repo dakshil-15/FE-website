@@ -12,11 +12,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/awards",
-        destination: "/about#awards",
-        permanent: true,
-      },
-      {
         source: "/clients",
         destination: "/about#trusted-by",
         permanent: true,

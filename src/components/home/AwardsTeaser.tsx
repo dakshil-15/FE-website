@@ -10,7 +10,7 @@ const awards = [
     sub: "Cannes Lions recognition · Kolkata launch",
   },
   {
-    href: "/about#awards",
+    href: "/awards",
     src: "/assets/case-2.png",
     title: "Guinness World Record",
     sub: "1,000+ influencers activated live in one hour",
@@ -37,7 +37,7 @@ export default function AwardsTeaser() {
               225+ media awards across the network — including landmark recognition for work that moved markets.
             </p>
             <Link
-              href="/about#awards"
+              href="/awards"
               className="text-cta mt-5 inline-flex items-center gap-3.5 border-b border-ink pb-[9px] transition hover:border-red hover:text-red sm:mt-6"
             >
               All recognition
