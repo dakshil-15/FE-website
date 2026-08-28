@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { industries } from "@/content/industries";
 
 type ClientEntry = { name: string; industrySlug: string; industryName: string };
@@ -53,14 +52,13 @@ export default function ClientsGrid() {
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((client) => (
-          <Link
+          <div
             key={`${client.name}-${client.industrySlug}`}
-            href={`/industries/${client.industrySlug}`}
-            className="flex items-center justify-between border border-line p-6 transition hover:border-red"
+            className="flex items-center justify-between border border-line p-6"
           >
             <span className="font-display text-xl tracking-wide">{client.name}</span>
             <span className="text-xs uppercase tracking-widest text-muted">{client.industryName}</span>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

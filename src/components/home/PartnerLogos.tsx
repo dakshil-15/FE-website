@@ -223,10 +223,11 @@ function MarqueeRow({
   );
 }
 
-export default function PartnerLogos() {
+export default function PartnerLogos({ sectionId = "partners" }: { sectionId?: string }) {
   return (
     <section
-      className="section-shell section-pad-sm bg-mist"
+      id={sectionId}
+      className="section-shell section-pad-sm scroll-mt-[5.5rem] bg-mist"
       aria-labelledby="partners-heading"
     >
       <div className="section-inner">

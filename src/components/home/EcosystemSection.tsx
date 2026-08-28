@@ -54,10 +54,10 @@ export default function EcosystemSection() {
               Data, platforms and intelligence — the operating stack our teams work in every day.
             </p>
             <Link
-              href="/our-advantage"
+              href="/capabilities#ecosystem"
               className="text-cta mt-5 inline-flex items-center gap-3.5 border-b border-ink pb-[9px] transition hover:border-red hover:text-red sm:mt-6"
             >
-              Our advantage
+              Our capabilities
               <ArrowRight size={16} aria-hidden />
             </Link>
           </div>

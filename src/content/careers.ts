@@ -5,13 +5,69 @@
 
 import type { MediaSlot } from "@/content/about";
 
+const jobIcon = (file: string, label: string): MediaSlot => ({
+  src: `/images/careers/job-detail/${file}`,
+  alt: "",
+  label,
+});
+
+/** Job detail page icons — /public/images/careers/job-detail/ */
+export const careerJobIcons = {
+  briefcase: jobIcon("briefcase.png", "Department"),
+  megaphone: jobIcon("megaphone.png", "Campaigns"),
+  analytics: jobIcon("analytics.png", "Analytics"),
+  innovation: jobIcon("innovation.png", "Innovation"),
+  leadership: jobIcon("leadership.png", "Leadership"),
+  growthImpact: jobIcon("growth-impact.png", "Growth Impact"),
+  learning: jobIcon("learning.png", "Learning"),
+  inclusion: jobIcon("inclusion.png", "Inclusion"),
+  flexibility: jobIcon("flexibility.png", "Flexibility"),
+  wellbeing: jobIcon("wellbeing.png", "Well-being"),
+} as const;
+
+export const careerDetailHeroImage = {
+  src: "/images/careers/job-detail/hero-banner.png",
+  alt: "First Economy conference room overlooking the city skyline",
+  label: "Career detail hero banner",
+} satisfies MediaSlot;
+
 export type CareerRole = {
   slug: string;
   title: string;
   location: string;
+  department: string;
   type: string;
-  experience: string;
-  href: string;
+  experience?: string;
+  /** Optional override; defaults to `/careers/[slug]` when omitted. */
+  href?: string;
+};
+
+export type CareerListItem = {
+  title: string;
+  body: string;
+  icon: MediaSlot;
+};
+
+export type CareerWorkArea = {
+  title: string;
+  body: string;
+  icon: MediaSlot;
+};
+
+export type CareerRoleDetail = {
+  slug: string;
+  eyebrow: string;
+  headlineBefore: string;
+  headlineAccent: string;
+  summary: string;
+  heroImage: MediaSlot;
+  heroBurst: string;
+  aboutRole: string;
+  responsibilities: CareerListItem[];
+  workAreas: CareerWorkArea[];
+  requirements: CareerListItem[];
+  benefits: CareerListItem[];
+  aboutUs: string;
 };
 
 export const careersHero = {
@@ -161,44 +217,282 @@ export const careersRoles: CareerRole[] = [
   {
     slug: "senior-performance-marketing-manager",
     title: "Senior Performance Marketing Manager",
-    location: "Mumbai",
+    location: "Mumbai, India",
+    department: "Marketing",
     type: "Full-time",
     experience: "5-8 Yrs",
-    href: "mailto:careers@firsteconomy.in?subject=Application%20—%20Senior%20Performance%20Marketing%20Manager",
+    href: "/careers/senior-performance-marketing-manager",
   },
   {
     slug: "creative-art-director",
     title: "Creative Art Director",
     location: "Bengaluru",
+    department: "Creative",
     type: "Full-time",
     experience: "6-10 Yrs",
-    href: "mailto:careers@firsteconomy.in?subject=Application%20—%20Creative%20Art%20Director",
+    href: "/careers/creative-art-director",
   },
   {
     slug: "video-editor",
     title: "Video Editor",
     location: "Pune",
+    department: "Creative",
     type: "Full-time",
     experience: "2-4 Yrs",
-    href: "mailto:careers@firsteconomy.in?subject=Application%20—%20Video%20Editor",
+    href: "/careers/video-editor",
   },
   {
     slug: "ai-data-analyst",
     title: "AI & Data Analyst",
     location: "Mumbai",
+    department: "Data & Technology",
     type: "Full-time",
     experience: "3-5 Yrs",
-    href: "mailto:careers@firsteconomy.in?subject=Application%20—%20AI%20%26%20Data%20Analyst",
+    href: "/careers/ai-data-analyst",
   },
   {
     slug: "seo-specialist",
     title: "SEO Specialist",
     location: "Bengaluru",
+    department: "Marketing",
     type: "Full-time",
     experience: "2-5 Yrs",
-    href: "mailto:careers@firsteconomy.in?subject=Application%20—%20SEO%20Specialist",
+    href: "/careers/seo-specialist",
   },
 ];
+
+export const careerDetailWhyJoin = [
+  {
+    title: "Growth Impact",
+    body: "Work on brands and campaigns where your decisions directly move revenue, market share and long-term growth.",
+    icon: careerJobIcons.growthImpact,
+  },
+  {
+    title: "Learning Culture",
+    body: "Stay ahead with structured learning, platform certifications and exposure to emerging tools and channels.",
+    icon: careerJobIcons.learning,
+  },
+  {
+    title: "Open & Inclusive",
+    body: "A collaborative environment where ideas are shared freely and every voice contributes to better outcomes.",
+    icon: careerJobIcons.inclusion,
+  },
+  {
+    title: "Flexibility",
+    body: "Hybrid work options and flexible schedules designed for sustainable, high-quality performance.",
+    icon: careerJobIcons.flexibility,
+  },
+  {
+    title: "Well-being",
+    body: "Health benefits, wellness initiatives and a people-first culture that supports you beyond the desk.",
+    icon: careerJobIcons.wellbeing,
+  },
+];
+
+export type CareerDetailSectionId =
+  | "overview"
+  | "responsibilities"
+  | "requirements"
+  | "benefits"
+  | "about-us";
+
+export type CareerDetailTab = {
+  id: CareerDetailSectionId;
+  label: string;
+};
+
+export const careerDetailTabs = [
+  { id: "overview", label: "Overview" },
+  { id: "responsibilities", label: "Responsibilities" },
+  { id: "requirements", label: "Requirements" },
+  { id: "benefits", label: "Benefits" },
+  { id: "about-us", label: "About Us" },
+] as const satisfies readonly CareerDetailTab[];
+
+export const careerRoleDetails: Record<string, CareerRoleDetail> = {
+  "senior-performance-marketing-manager": {
+    slug: "senior-performance-marketing-manager",
+    eyebrow: "We are hiring",
+    headlineBefore: "Senior Performance",
+    headlineAccent: "Marketing Manager",
+    summary:
+      "Drive high-impact campaigns, optimize ROI, and scale growth across channels for leading brands. Lead strategy, execution and measurement across paid media.",
+    heroImage: careerDetailHeroImage,
+    heroBurst: "/images/careers/hero/radial-burst.svg",
+    aboutRole:
+      "As Senior Performance Marketing Manager, you will own end-to-end performance strategy for key accounts — from media planning and channel mix to creative testing, attribution and growth reporting. You will partner with strategy, creative, data and client teams to engineer campaigns that deliver measurable business outcomes.",
+    responsibilities: [
+      {
+        title: "Campaign strategy & planning",
+        body: "Define channel strategy, budget allocation and testing roadmaps aligned to client growth goals and seasonal priorities.",
+        icon: careerJobIcons.megaphone,
+      },
+      {
+        title: "Paid media execution",
+        body: "Launch, optimize and scale campaigns across search, social, programmatic and emerging performance channels.",
+        icon: careerJobIcons.megaphone,
+      },
+      {
+        title: "Measurement & attribution",
+        body: "Build reporting frameworks, track KPIs and translate data into actionable insights for continuous improvement.",
+        icon: careerJobIcons.analytics,
+      },
+      {
+        title: "Creative & landing optimization",
+        body: "Partner with creative teams on ad formats, messaging tests and landing experiences that improve conversion rates.",
+        icon: careerJobIcons.innovation,
+      },
+      {
+        title: "Client partnership",
+        body: "Present performance reviews, recommend growth levers and maintain trusted relationships with client stakeholders.",
+        icon: careerJobIcons.leadership,
+      },
+      {
+        title: "Team mentorship",
+        body: "Guide junior specialists on platform best practices, QA processes and structured experimentation.",
+        icon: careerJobIcons.leadership,
+      },
+    ],
+    workAreas: [
+      {
+        title: "High-impact Campaigns",
+        body: "Plan and run multi-channel campaigns for national and global brands across categories.",
+        icon: careerJobIcons.megaphone,
+      },
+      {
+        title: "Data & Insights",
+        body: "Turn platform data, analytics and attribution models into clear growth recommendations.",
+        icon: careerJobIcons.analytics,
+      },
+      {
+        title: "Growth Innovation",
+        body: "Test new channels, bidding strategies and automation workflows to stay ahead of the curve.",
+        icon: careerJobIcons.innovation,
+      },
+      {
+        title: "Team Leadership",
+        body: "Collaborate across media, creative and technology squads to deliver integrated outcomes.",
+        icon: careerJobIcons.leadership,
+      },
+    ],
+    requirements: [
+      {
+        title: "Experience",
+        body: "5–8 years in performance marketing, paid media or growth marketing with agency or brand-side exposure.",
+        icon: careerJobIcons.briefcase,
+      },
+      {
+        title: "Platform expertise",
+        body: "Hands-on experience with Google Ads, Meta, programmatic platforms and analytics tools (GA4, GTM).",
+        icon: careerJobIcons.analytics,
+      },
+      {
+        title: "Analytical mindset",
+        body: "Strong comfort with dashboards, funnel analysis, A/B testing and ROI-focused decision making.",
+        icon: careerJobIcons.analytics,
+      },
+      {
+        title: "Communication",
+        body: "Ability to present complex performance narratives clearly to clients and internal stakeholders.",
+        icon: careerJobIcons.megaphone,
+      },
+    ],
+    benefits: [
+      {
+        title: "Competitive compensation",
+        body: "Market-aligned salary with performance-linked incentives and annual reviews.",
+        icon: careerJobIcons.growthImpact,
+      },
+      {
+        title: "Learning budget",
+        body: "Certifications, conferences and platform training to keep your skills current.",
+        icon: careerJobIcons.learning,
+      },
+      {
+        title: "Hybrid flexibility",
+        body: "Balanced in-office and remote work with core collaboration days.",
+        icon: careerJobIcons.flexibility,
+      },
+      {
+        title: "Health & wellness",
+        body: "Medical coverage and wellness programs for you and your family.",
+        icon: careerJobIcons.wellbeing,
+      },
+    ],
+    aboutUs:
+      "First Economy is a growth partner for brands that want to go beyond marketing. We bring strategy, creative, media, technology and data together as one integrated team — engineering growth systems that create real, measurable impact.",
+  },
+};
+
+function buildFallbackDetail(role: CareerRole): CareerRoleDetail {
+  const titleParts = role.title.split(" ");
+  const splitAt = Math.ceil(titleParts.length / 2);
+
+  return {
+    slug: role.slug,
+    eyebrow: "We are hiring",
+    headlineBefore: titleParts.slice(0, splitAt).join(" "),
+    headlineAccent: titleParts.slice(splitAt).join(" "),
+    summary: `Join our ${role.department} team in ${role.location} as a ${role.title}. Help us engineer growth for leading brands across channels and markets.`,
+    heroImage: careerDetailHeroImage,
+    heroBurst: "/images/careers/hero/radial-burst.svg",
+    aboutRole: `We are looking for a ${role.title} to join our ${role.department} practice in ${role.location}. This is a ${role.type.toLowerCase()} role${
+      role.experience ? ` suited for professionals with ${role.experience} of relevant experience` : ""
+    }.`,
+    responsibilities: [
+      {
+        title: "Own delivery",
+        body: "Lead day-to-day execution and quality for your area of work.",
+        icon: careerJobIcons.leadership,
+      },
+      {
+        title: "Collaborate cross-functionally",
+        body: "Partner with strategy, creative, media and data teams on integrated growth programs.",
+        icon: careerJobIcons.inclusion,
+      },
+      {
+        title: "Drive outcomes",
+        body: "Focus on measurable results and continuous improvement for clients and the business.",
+        icon: careerJobIcons.growthImpact,
+      },
+    ],
+    workAreas: [
+      {
+        title: "Client programs",
+        body: "Contribute to campaigns and growth initiatives for leading brands.",
+        icon: careerJobIcons.megaphone,
+      },
+      {
+        title: "Innovation",
+        body: "Explore new tools, formats and approaches that raise the bar for our work.",
+        icon: careerJobIcons.innovation,
+      },
+    ],
+    requirements: [
+      {
+        title: "Experience",
+        body: role.experience
+          ? `${role.experience} of relevant experience in ${role.department.toLowerCase()} or a related discipline.`
+          : `Relevant experience in ${role.department.toLowerCase()} or a related discipline.`,
+        icon: careerJobIcons.briefcase,
+      },
+      {
+        title: "Skills",
+        body: "Strong craft, communication and problem-solving skills with a growth mindset.",
+        icon: careerJobIcons.learning,
+      },
+    ],
+    benefits: careerDetailWhyJoin.slice(0, 4).map((item) => ({
+      title: item.title,
+      body: item.body,
+      icon: item.icon,
+    })),
+    aboutUs:
+      "First Economy is a growth partner for brands that want to go beyond marketing. We bring strategy, creative, media, technology and data together as one integrated team.",
+  };
+}
+
+export { buildFallbackDetail };
 
 export const careersCta = {
   titleBefore: "Let's build what's next.",

@@ -285,9 +285,9 @@ export default function ContactPage() {
       </section>
 
       <section
-        id="locations"
+        id="offices"
         data-animate-section
-        className="section-shell section-pad bg-mist"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
         aria-labelledby="contact-offices-heading"
       >
         <div className="section-inner">
@@ -321,10 +321,9 @@ export default function ContactPage() {
 
               return (
                 <li key={office.slug} className="min-w-0">
-                  <Link
-                    href={`/locations/${office.slug}`}
+                  <article
                     aria-label={`First Economy ${office.city}${"isHq" in office && office.isHq ? " headquarters" : " office"} — ${office.address}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+                    className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
                   >
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
                       <span
@@ -338,7 +337,7 @@ export default function ContactPage() {
                         alt={photoAlt}
                         fill
                         sizes="(max-width: 480px) 100vw, (max-width: 1024px) 45vw, (max-width: 1280px) 22vw, 280px"
-                        className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                        className="object-cover"
                       />
                     </div>
 
@@ -354,14 +353,8 @@ export default function ContactPage() {
                           {office.address}
                         </p>
                       </div>
-                      <span
-                        className="grid h-10 w-10 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white"
-                        aria-hidden
-                      >
-                        <ArrowRight size={14} />
-                      </span>
                     </div>
-                  </Link>
+                  </article>
                 </li>
               );
             })}

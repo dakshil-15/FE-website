@@ -80,7 +80,7 @@ export default async function CaseStudyPage({
             ))}
             {industry && (
               <Link
-                href={`/industries/${industry.slug}`}
+                href="/work#case-studies"
                 className="border border-line px-5 py-3 text-sm font-medium transition hover:border-red hover:text-red"
               >
                 {industry.name}

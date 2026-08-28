@@ -253,8 +253,6 @@ export default function GrowthNetworkVisual() {
         <g data-gs-hub>
           <circle data-gs-hub-pulse cx={CENTER} cy={CENTER} r={HUB_R} fill="#0A0A0A" />
           <text
-            x={CENTER}
-            y={CENTER - 11}
             textAnchor="middle"
             fill="#ffffff"
             style={{
@@ -264,21 +262,12 @@ export default function GrowthNetworkVisual() {
               letterSpacing: "0.08em",
             }}
           >
-            GROWTH
-          </text>
-          <text
-            x={CENTER}
-            y={CENTER + 15}
-            textAnchor="middle"
-            fill="#ffffff"
-            style={{
-              fontFamily: "var(--font-barlow), Barlow Condensed, sans-serif",
-              fontWeight: 800,
-              fontSize: 22,
-              letterSpacing: "0.08em",
-            }}
-          >
-            SYSTEM
+            <tspan x={CENTER} y={CENTER - 13} dominantBaseline="central">
+              GROWTH
+            </tspan>
+            <tspan x={CENTER} y={CENTER + 13} dominantBaseline="central">
+              SYSTEM
+            </tspan>
           </text>
         </g>
 

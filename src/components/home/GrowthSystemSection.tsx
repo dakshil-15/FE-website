@@ -31,13 +31,13 @@ const nodes = [
     label: "Data",
     description: "Audience, platform and performance data in one operating layer.",
     icon: "/assets/ic-ai-analytics.png",
-    href: "/our-advantage",
+    href: "/capabilities#data-analytics",
   },
   {
     label: "Analytics",
     description: "Live reporting and decision support built into the system.",
     icon: "/assets/ic-ai-optimization.png",
-    href: "/our-advantage",
+    href: "/capabilities#data-analytics",
   },
 ];
 

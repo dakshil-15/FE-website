@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles, Film, MessagesSquare, type LucideIcon } from "lucide-react";
 import type { InsightPost } from "@/content/insights";
+import { getInsightHref } from "@/lib/insights";
 
 const categoryIcons: Record<string, LucideIcon> = {
   "AI & Data": Sparkles,
@@ -28,7 +29,7 @@ export default function InsightsTeaser({ posts }: { posts: InsightPost[] }) {
         return (
           <li key={post.slug} className="min-w-0">
             <Link
-              href="/insights"
+              href={post.href ?? getInsightHref(post.slug)}
               className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-[border-color] duration-200 hover:border-ink focus-visible:border-ink"
               aria-label={`${post.title}. ${formatDate(post.date)}. ${post.readTime}`}
             >

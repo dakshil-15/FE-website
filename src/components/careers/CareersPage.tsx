@@ -8,20 +8,25 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
+import type { CareerRole } from "@/content/careers";
+import { getCareerRoleHref } from "@/lib/careers";
 import {
   careersBenefits,
   careersCta,
   careersCulture,
   careersHero,
   careersOpenings,
-  careersRoles,
   careersValues,
   careersWhyJoin,
 } from "@/content/careers";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function CareersPage() {
+type CareersPageProps = {
+  roles: CareerRole[];
+};
+
+export default function CareersPage({ roles }: CareersPageProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -333,10 +338,10 @@ export default function CareersPage() {
             data-animate-stagger
             className="section-media m-0 flex list-none flex-col gap-0 p-0 md:hidden"
           >
-            {careersRoles.map((role) => (
+            {roles.map((role) => (
               <li key={role.slug} className="border-b border-line">
-                <a
-                  href={role.href}
+                <Link
+                  href={role.href ?? getCareerRoleHref(role.slug)}
                   className="group flex min-h-14 items-center justify-between gap-4 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
                 >
                   <div className="min-w-0">
@@ -353,7 +358,7 @@ export default function CareersPage() {
                   >
                     <ArrowRight size={16} strokeWidth={2} />
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -400,15 +405,15 @@ export default function CareersPage() {
                 </tr>
               </thead>
               <tbody>
-                {careersRoles.map((role) => (
+                {roles.map((role) => (
                   <tr key={role.slug} className="group border-b border-line">
                     <td className="py-5 pr-4 align-middle">
-                      <a
-                        href={role.href}
+                      <Link
+                        href={role.href ?? getCareerRoleHref(role.slug)}
                         className="rounded-sm font-display text-base font-bold tracking-[0.03em] text-ink uppercase transition hover:text-red focus-visible:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red lg:text-lg"
                       >
                         {role.title}
-                      </a>
+                      </Link>
                       <p className="text-body-sm mt-1 mb-0 text-muted lg:hidden">
                         {role.type} · {role.experience}
                       </p>
@@ -421,14 +426,14 @@ export default function CareersPage() {
                       {role.experience}
                     </td>
                     <td className="py-5 align-middle">
-                      <a
-                        href={role.href}
+                      <Link
+                        href={role.href ?? getCareerRoleHref(role.slug)}
                         tabIndex={-1}
                         aria-hidden
                         className="ml-auto grid h-11 w-11 place-items-center rounded-full bg-ink text-white transition group-hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
                       >
                         <ArrowRight size={16} strokeWidth={2} aria-hidden />
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}

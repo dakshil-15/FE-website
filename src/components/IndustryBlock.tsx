@@ -10,7 +10,7 @@ export default function IndustryBlock({ industry }: { industry: Industry }) {
 
   return (
     <Link
-      href={`/industries/${industry.slug}`}
+      href="/work"
       className={`group block py-12 transition md:py-16 ${style.wrapper}`}
     >
       <div className="grid container-frame gap-6 md:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)] md:items-end md:gap-10">

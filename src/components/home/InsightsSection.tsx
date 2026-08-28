@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Bookmark } from "lucide-react";
+import { getInsightHref } from "@/lib/insights";
 
 const posts = [
   {
@@ -165,7 +166,7 @@ export default function InsightsSection() {
             {posts.map((post) => (
               <Link
                 key={post.slug}
-                href="/insights"
+                href={getInsightHref(post.slug)}
                 className="group flex h-full min-h-[340px] flex-col overflow-hidden rounded-[20px] border border-white/15 bg-white text-ink shadow-[0_14px_44px_rgba(0,0,0,0.45)] transition duration-200 hover:border-red/50 hover:shadow-[0_18px_48px_rgba(0,0,0,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[360px] sm:rounded-[22px] lg:min-h-[380px]"
                 aria-label={`${post.title}. ${post.date}. ${post.readTime}`}
               >

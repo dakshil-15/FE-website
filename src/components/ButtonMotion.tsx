@@ -5,11 +5,15 @@ import gsap from "gsap";
 
 const BTN_SELECTOR = "a.text-cta, a.gsap-btn, button:not(:disabled), input[type='submit']:not(:disabled)";
 
+function shouldSkipButton(el: HTMLElement) {
+  return el.closest(".skip-link") !== null || el.hasAttribute("data-no-btn-motion");
+}
+
 function resolveButton(target: EventTarget | null): HTMLElement | null {
   if (!(target instanceof Element)) return null;
   const el = target.closest(BTN_SELECTOR);
   if (!(el instanceof HTMLElement)) return null;
-  if (el.closest(".skip-link")) return null;
+  if (shouldSkipButton(el)) return null;
   return el;
 }
 
@@ -44,6 +48,7 @@ export default function ButtonMotion() {
       const cleanups: Array<() => void> = [];
 
       const bind = (el: HTMLElement) => {
+        if (shouldSkipButton(el)) return;
         if (el.dataset.gsapBtnBound === "1") return;
         el.dataset.gsapBtnBound = "1";
         el.classList.add("gsap-btn-ready");

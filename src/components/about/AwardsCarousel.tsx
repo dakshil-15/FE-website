@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { aboutAwards } from "@/content/about";
@@ -102,10 +101,9 @@ export default function AwardsCarousel() {
           }
         >
           {aboutAwards.map((award) => (
-            <Link
+            <article
               key={`${award.client}-${award.title}`}
-              href={award.href}
-              className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-white transition duration-200 hover:border-red/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:rounded-[22px]"
+              className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-white sm:rounded-[22px]"
               aria-label={`${award.client}: ${award.title}`}
             >
               <div className="relative aspect-[4/5] shrink-0 overflow-hidden bg-[#111]">
@@ -126,7 +124,7 @@ export default function AwardsCarousel() {
                 </p>
                 <p className="mt-2 mb-0 text-[13px] leading-snug text-muted">{award.title}</p>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
 

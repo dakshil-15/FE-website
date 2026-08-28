@@ -228,7 +228,6 @@ export const aboutAwards = [
   {
     client: "e4m",
     title: "Agency of the Year",
-    href: "/awards",
     image: {
       src: "/images/about/awards/e4m-agency-of-the-year.jpg",
       alt: "e4m Indian Digital Marketing Awards trophy for Performance Marketing Agency of the Year",
@@ -240,7 +239,6 @@ export const aboutAwards = [
   {
     client: "IPMA 2024",
     title: "Digital Agency of the Year",
-    href: "/awards",
     image: {
       src: "/images/about/awards/ipma-digital-agency.jpg",
       alt: "India Performance Marketing Awards 2024 Digital Agency of the Year trophy",
@@ -252,7 +250,6 @@ export const aboutAwards = [
   {
     client: "IPMA 2024",
     title: "Best Use of Performance Marketing",
-    href: "/awards",
     image: {
       src: "/images/about/awards/ipma-best-use.jpg",
       alt: "India Performance Marketing Awards 2024 Best Use of Performance Marketing trophy",
@@ -264,7 +261,6 @@ export const aboutAwards = [
   {
     client: "Indian Digital Awards",
     title: "Gold Winner",
-    href: "/awards",
     image: {
       src: "/images/about/awards/indian-digital-awards-gold.jpg",
       alt: "Indian Digital Awards 2024 Gold Winner trophy for Best Performance Marketing Campaign",
@@ -276,7 +272,6 @@ export const aboutAwards = [
   {
     client: "Excellence in Performance",
     title: "Award 2024",
-    href: "/awards",
     image: {
       src: "/images/about/awards/excellence-in-performance.jpg",
       alt: "Excellence in Performance Award 2024 shooting-star trophy",
@@ -288,7 +283,6 @@ export const aboutAwards = [
   {
     client: "Excellence in Performance Marketing",
     title: "2024",
-    href: "/awards",
     image: {
       src: "/images/about/awards/excellence-in-performance-marketing.jpg",
       alt: "Excellence in Performance Marketing 2024 star trophy",
@@ -300,7 +294,6 @@ export const aboutAwards = [
   {
     client: "India PR Awards",
     title: "Best PR Campaign of the Year",
-    href: "/awards",
     image: {
       src: "/images/about/awards/india-pr-awards.jpg",
       alt: "India PR Awards 2024 Best PR Campaign of the Year trophy",
@@ -312,7 +305,6 @@ export const aboutAwards = [
   {
     client: "Excellence Award",
     title: "Outstanding Performance",
-    href: "/awards",
     image: {
       src: "/images/about/awards/excellence-award.jpg",
       alt: "Excellence Award presented to First Economy for outstanding performance",

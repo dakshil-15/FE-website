@@ -10,6 +10,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import TeamCarousel from "@/components/about/TeamCarousel";
 import AwardsCarousel from "@/components/about/AwardsCarousel";
+import AwardsGalleryGrid from "@/components/awards/AwardsGalleryGrid";
+import PartnerLogos from "@/components/home/PartnerLogos";
 import {
   aboutHero,
   aboutLocations,
@@ -20,6 +22,7 @@ import {
   aboutValues,
   aboutWhatWeDo,
 } from "@/content/about";
+import { awardsGallerySection, industryRecognitions } from "@/content/awards";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -429,8 +432,9 @@ export default function AboutPage() {
       </section>
 
       <section
+        id="team"
         data-animate-section
-        className="section-shell section-pad bg-ink text-white"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-ink text-white"
         aria-labelledby="team-heading"
       >
         <div className="section-inner">
@@ -445,10 +449,6 @@ export default function AboutPage() {
               <p className="text-body section-copy section-copy-on-dark m-0">
                 The people who design the system, lead the work, and stay accountable for growth.
               </p>
-              <Link href="/leadership" className="text-cta link-cta text-white">
-                Meet the team
-                <Image src={aboutUi.arrowWhite} alt="" aria-hidden width={16} height={16} unoptimized />
-              </Link>
             </div>
           </div>
           <div className="section-media">
@@ -482,8 +482,9 @@ export default function AboutPage() {
       </section>
 
       <section
+        id="awards"
         data-animate-section
-        className="section-shell section-pad bg-paper"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-paper"
         aria-labelledby="awards-heading"
       >
         <div className="section-inner">
@@ -494,24 +495,74 @@ export default function AboutPage() {
             <h2 data-animate="fade-up" id="awards-heading" className="text-display-md m-0">
               A few of our many <span className="text-red">achievements.</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <Link href="/awards" className="text-cta link-cta mt-0 text-ink">
-                View all awards
-                <Image src={aboutUi.arrow} alt="" aria-hidden width={16} height={16} unoptimized />
-              </Link>
-            </div>
           </div>
 
           <div data-animate="fade-up" className="section-media">
             <AwardsCarousel />
           </div>
+
+          <div id="awards-gallery" className="section-media mt-12 scroll-mt-[5.5rem] sm:mt-14 lg:mt-16">
+            <p data-animate="fade-up" className="text-eyebrow m-0">
+              {awardsGallerySection.eyebrow}
+            </p>
+            <h3 data-animate="fade-up" className="text-display-md mt-4 mb-0">
+              {awardsGallerySection.title}
+            </h3>
+            <p
+              data-animate="fade-up"
+              className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
+            >
+              {awardsGallerySection.body}
+            </p>
+            <div className="mt-8 sm:mt-10">
+              <AwardsGalleryGrid headingId="awards-heading" />
+            </div>
+          </div>
+
+          <div className="section-media mt-12 sm:mt-14 lg:mt-16">
+            <p data-animate="fade-up" className="text-eyebrow m-0">
+              {industryRecognitions.eyebrow}
+            </p>
+            <h3 data-animate="fade-up" className="text-display-md mt-4 mb-0">
+              {industryRecognitions.titleBefore}{" "}
+              <span className="text-red">{industryRecognitions.titleAccent}</span>
+            </h3>
+            <p
+              data-animate="fade-up"
+              className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
+            >
+              {industryRecognitions.body}
+            </p>
+            <ul
+              data-animate-stagger
+              className="mt-8 grid list-none grid-cols-1 gap-4 p-0 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              {industryRecognitions.items.map((item) => (
+                <li
+                  key={item.organization}
+                  className="flex h-full min-w-0 flex-col rounded-2xl border border-line bg-white p-5 sm:p-6"
+                >
+                  <p className="m-0 font-display text-sm font-bold tracking-[0.04em] uppercase">
+                    {item.organization}
+                  </p>
+                  <p className="mt-2 mb-0 text-sm font-semibold text-ink">{item.title}</p>
+                  <p className="text-body-sm mt-2 mb-0 text-muted">{item.body}</p>
+                  <p className="mt-4 mb-0 text-[13px] font-semibold tracking-[0.06em] text-muted uppercase">
+                    {item.year}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
+
+      <PartnerLogos sectionId="trusted-by" />
 
       <section
         id="locations"
         data-animate-section
-        className="section-shell section-pad bg-mist"
+        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
         aria-labelledby="about-locations-heading"
       >
         <div className="section-inner">
@@ -523,7 +574,7 @@ export default function AboutPage() {
               Where we <span className="text-red">operate.</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <Link href="/contact" className="text-cta link-cta mt-0 text-ink">
+              <Link href="/contact#offices" className="text-cta link-cta mt-0 text-ink">
                 View all locations
                 <Image src={aboutUi.arrow} alt="" aria-hidden width={16} height={16} unoptimized />
               </Link>
@@ -536,7 +587,7 @@ export default function AboutPage() {
             {aboutLocations.map((office) => (
               <li key={office.slug} className="min-w-0">
                 <Link
-                  href={`/locations/${office.slug}`}
+                  href="/contact#offices"
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">

@@ -22,7 +22,7 @@ export default function LocationsSection() {
           <p className="text-body section-copy section-copy-on-light mt-4 mb-0 sm:mt-5">
             Strategic hubs. Local expertise. Global mindset.
           </p>
-          <Link href="/contact" className="text-cta link-cta text-ink">
+          <Link href="/contact#offices" className="text-cta link-cta text-ink">
             View all locations
             <ArrowRight size={16} aria-hidden />
           </Link>
@@ -35,7 +35,7 @@ export default function LocationsSection() {
           {aboutLocations.map((office) => (
             <li key={office.slug} className="min-w-0">
               <Link
-                href={`/locations/${office.slug}`}
+                href="/contact#offices"
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">

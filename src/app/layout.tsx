@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ButtonMotion from "@/components/ButtonMotion";
+import Preloader from "@/components/Preloader";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${archivo.variable} ${barlow.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col overflow-x-hidden bg-paper text-ink">
+        <Preloader />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
