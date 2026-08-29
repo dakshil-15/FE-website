@@ -110,6 +110,14 @@ export const insightsCta = {
   button: { label: "Let's talk", href: "/contact" },
 };
 
+/** Footer Insights column — each link targets a distinct destination. */
+export const footerInsightLinks = [
+  { label: "Articles", href: "/insights" },
+  { label: "Case Studies", href: "/work" },
+  { label: "News", href: "/insights?category=trends" },
+  { label: "Resources", href: "/insights?category=perspectives" },
+] as const;
+
 const listingThumb = (file: string | undefined, label: string): MediaSlot =>
   file
     ? { src: `/images/insights/${file}`, alt: label, label, grayscale: true }
@@ -211,6 +219,7 @@ export const insightPosts: InsightPost[] = [
     title: "The Future of Performance Marketing in an AI-Powered World",
     date: "2026-05-12",
     readTime: "6 min read",
+    featured: true,
     excerpt:
       "AI is reshaping how brands allocate budget, personalize experiences and measure outcomes — but only when it's built into the system, not bolted on.",
     thumbnail: listingThumb("ai-data.png", "Performance marketing in an AI-powered world thumbnail"),
@@ -223,6 +232,7 @@ export const insightPosts: InsightPost[] = [
     title: "Why Influencer Marketing Needs Real Intelligence",
     date: "2026-05-08",
     readTime: "5 min read",
+    featured: true,
     excerpt:
       "Influencer partnerships fail when they're treated as media buys. The brands that scale them treat creators as strategic growth channels.",
     thumbnail: listingThumb("media-intelligence.png", "Influencer marketing intelligence thumbnail"),
@@ -235,6 +245,7 @@ export const insightPosts: InsightPost[] = [
     title: "Why Retail Media Networks Are the Next Growth Engine",
     date: "2026-05-05",
     readTime: "7 min read",
+    featured: true,
     excerpt:
       "Retail media is no longer a side channel — it's a full-funnel growth system that connects product discovery, consideration and conversion.",
     thumbnail: listingThumb("retail-media.png", "Retail media networks thumbnail"),
@@ -247,6 +258,7 @@ export const insightPosts: InsightPost[] = [
     title: "Building Growth Systems, Not Service Silos",
     date: "2026-05-01",
     readTime: "4 min read",
+    featured: true,
     excerpt:
       "When media, creative, technology and data operate as one system, brands move faster, spend smarter and compound results over time.",
     thumbnail: listingThumb("growth-systems.png", "Building growth systems thumbnail"),
@@ -301,6 +313,23 @@ export const insightPosts: InsightPost[] = [
     thumbnail: listingThumb(undefined, "Creative that converts thumbnail"),
   },
 ];
+
+/** Home carousel order — first N slugs with `featured: true`. */
+export const homeFeaturedInsightSlugs = [
+  "future-of-performance-marketing-in-an-ai-powered-world",
+  "why-influencer-marketing-needs-real-intelligence",
+  "retail-media-networks-the-next-growth-engine",
+  "building-growth-systems-not-service-silos",
+] as const;
+
+export const homeFeaturedInsightLimit = homeFeaturedInsightSlugs.length;
+
+export function homeFeaturedInsightPosts(posts: InsightPost[] = insightPosts): InsightPost[] {
+  return homeFeaturedInsightSlugs
+    .map((slug) => posts.find((post) => post.slug === slug))
+    .filter((post): post is InsightPost => Boolean(post?.featured))
+    .slice(0, homeFeaturedInsightLimit);
+}
 
 const aiArticleHero: MediaSlot = {
   alt: "Human profile overlaid with a glowing red neural network",

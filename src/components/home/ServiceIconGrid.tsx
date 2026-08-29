@@ -13,86 +13,32 @@ import {
   SeoIcon,
   AiSolutionsIcon,
 } from "@/components/brandIcons";
+import { serviceOfferings } from "@/content/serviceOfferings";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
 
-const services: {
-  name: string;
-  description: string;
-  href: string;
-  Icon: IconComponent;
-}[] = [
-  {
-    name: "360° Media Buying",
-    description: "Integrated media strategy across search, social, programmatic and OOH.",
-    href: "/services/media-buying",
-    Icon: MediaBuyingIcon,
-  },
-  {
-    name: "Video Production",
-    description: "Brand films and social video built for how people watch today.",
-    href: "/services/video-production",
-    Icon: VideoProductionIcon,
-  },
-  {
-    name: "Branding",
-    description: "Identity systems that hold up on screen and on the storefront.",
-    href: "/services/branding",
-    Icon: BrandingIcon,
-  },
-  {
-    name: "Influencer Marketing",
-    description: "Creator networks built for scale, authenticity and amplification.",
-    href: "/services/influencer-marketing",
-    Icon: InfluencerMarketingIcon,
-  },
-  {
-    name: "Marketplace Management",
-    description: "End-to-end brand presence managed as a growth channel.",
-    href: "/services/marketplace-management",
-    Icon: MarketplaceManagementIcon,
-  },
-  {
-    name: "Tech Solutions",
-    description: "Platforms and systems built for scale, compliance and growth.",
-    href: "/services/technology",
-    Icon: TechSolutionsIcon,
-  },
-  {
-    name: "Creative Solutions",
-    description: "Campaign and performance creative across every format.",
-    href: "/services/creative",
-    Icon: CreativeSolutionsIcon,
-  },
-  {
-    name: "Social Media Management",
-    description: "Always-on social strategy, content and community that compounds.",
-    href: "/services/social-media",
-    Icon: SocialMediaIcon,
-  },
-  {
-    name: "SEO Solutions",
-    description: "Technical, local and AI-era search built to be found.",
-    href: "/services/seo",
-    Icon: SeoIcon,
-  },
-  {
-    name: "AI Solutions",
-    description: "Intelligence applied to creative, analytics and operations.",
-    href: "/services/ai-solutions",
-    Icon: AiSolutionsIcon,
-  },
-];
+const iconBySlug: Record<string, IconComponent> = {
+  "media-buying": MediaBuyingIcon,
+  "video-production": VideoProductionIcon,
+  branding: BrandingIcon,
+  "influencer-marketing": InfluencerMarketingIcon,
+  "marketplace-management": MarketplaceManagementIcon,
+  technology: TechSolutionsIcon,
+  creative: CreativeSolutionsIcon,
+  "social-media": SocialMediaIcon,
+  seo: SeoIcon,
+  "ai-solutions": AiSolutionsIcon,
+};
 
 export default function ServiceIconGrid() {
   return (
     <ul data-animate-stagger className="caps list-none p-0">
-      {services.map((service, index) => {
+      {serviceOfferings.map((service, index) => {
         const num = String(index + 1).padStart(2, "0");
-        const { Icon } = service;
+        const Icon = iconBySlug[service.slug];
 
         return (
-          <li key={service.name} className="min-w-0">
+          <li key={service.slug} className="min-w-0">
             <Link
               href={service.href}
               className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[268px] sm:rounded-[22px] sm:p-5 md:min-h-[292px] md:p-6"

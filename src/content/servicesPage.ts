@@ -27,6 +27,8 @@ export const servicesGrid = {
   body: "An integrated suite of solutions across the entire marketing and technology ecosystem — one growth system, not disconnected departments.",
 };
 
+import { serviceOfferings } from "@/content/serviceOfferings";
+
 export type ServiceLandingCard = {
   slug: string;
   title: string;
@@ -35,96 +37,66 @@ export type ServiceLandingCard = {
   icon: MediaSlot;
 };
 
-export const servicesLandingCards: ServiceLandingCard[] = [
-  {
-    slug: "strategy-consulting",
-    title: "Strategy & Consulting",
-    body: "We uncover opportunities, define winning strategies and build roadmaps that deliver measurable impact.",
-    href: "/contact",
-    icon: {
-      src: "/images/services/icons/strategy_consulting_target.svg",
-      alt: "",
-      label: "Strategy & Consulting",
-    },
+const serviceOfferingIcons: Record<string, MediaSlot> = {
+  "media-buying": {
+    src: "/images/services/icons/performance_marketing_growth_chart.svg",
+    alt: "",
+    label: "360° Media Buying",
   },
-  {
-    slug: "branding",
-    title: "Branding & Positioning",
-    body: "We build distinctive brands that connect with the right audience and create lasting impressions.",
-    href: "/services/branding",
-    icon: {
-      src: "/images/services/icons/branding_positioning_people.svg",
-      alt: "",
-      label: "Branding & Positioning",
-    },
+  "video-production": {
+    src: "/images/services/icons/content_creative_play.svg",
+    alt: "",
+    label: "Video Production",
   },
-  {
-    slug: "media-buying",
-    title: "Performance Marketing",
-    body: "Data-driven campaigns that drive growth across channels and maximize ROI at every stage of the funnel.",
-    href: "/services/media-buying",
-    icon: {
-      src: "/images/services/icons/performance_marketing_growth_chart.svg",
-      alt: "",
-      label: "Performance Marketing",
-    },
+  branding: {
+    src: "/images/services/icons/branding_positioning_people.svg",
+    alt: "",
+    label: "Project Innovation & Branding",
   },
-  {
-    slug: "creative",
-    title: "Content & Creative Production",
-    body: "Ideas that inspire. Content that engages. Creatives that drive action and build brand love.",
-    href: "/services/creative",
-    icon: {
-      src: "/images/services/icons/content_creative_play.svg",
-      alt: "",
-      label: "Content & Creative Production",
-    },
+  "influencer-marketing": {
+    src: "/images/services/icons/social_media_megaphone.svg",
+    alt: "",
+    label: "Influencer Marketing",
   },
-  {
-    slug: "technology",
-    title: "Digital Experience Design",
-    body: "We craft seamless digital experiences that are intuitive, engaging and built to convert.",
-    href: "/services/technology",
-    icon: {
-      src: "/images/services/icons/digital_experience_monitor.svg",
-      alt: "",
-      label: "Digital Experience Design",
-    },
+  "marketplace-management": {
+    src: "/images/services/icons/ecommerce_cart.svg",
+    alt: "",
+    label: "Marketplace Management",
   },
-  {
-    slug: "marketplace-management",
-    title: "E-Commerce Solutions",
-    body: "End-to-end e-commerce solutions that optimize customer journeys and accelerate sales.",
-    href: "/services/marketplace-management",
-    icon: {
-      src: "/images/services/icons/ecommerce_cart.svg",
-      alt: "",
-      label: "E-Commerce Solutions",
-    },
+  technology: {
+    src: "/images/services/icons/digital_experience_monitor.svg",
+    alt: "",
+    label: "Tech Solutions",
   },
-  {
-    slug: "social-media",
-    title: "Social Media Management",
-    body: "Strategic social presence that builds communities, engagement and brand advocacy.",
-    href: "/services/social-media",
-    icon: {
-      src: "/images/services/icons/social_media_megaphone.svg",
-      alt: "",
-      label: "Social Media Management",
-    },
+  creative: {
+    src: "/images/services/icons/content_creative_play.svg",
+    alt: "",
+    label: "Creative Solutions",
   },
-  {
-    slug: "seo",
-    title: "Data & Analytics Solutions",
-    body: "We turn data into insights that help you make smarter decisions and grow with confidence.",
-    href: "/services/seo",
-    icon: {
-      src: "/images/services/icons/data_analytics_pie.svg",
-      alt: "",
-      label: "Data & Analytics Solutions",
-    },
+  "social-media": {
+    src: "/images/services/icons/social_media_megaphone.svg",
+    alt: "",
+    label: "Social Media",
   },
-];
+  seo: {
+    src: "/images/services/icons/data_analytics_pie.svg",
+    alt: "",
+    label: "SEO Solutions",
+  },
+  "ai-solutions": {
+    src: "/images/services/icons/strategy_consulting_target.svg",
+    alt: "",
+    label: "AI Solutions",
+  },
+};
+
+export const servicesLandingCards: ServiceLandingCard[] = serviceOfferings.map((offering) => ({
+  slug: offering.slug,
+  title: offering.name,
+  body: offering.description,
+  href: offering.href,
+  icon: serviceOfferingIcons[offering.slug],
+}));
 
 export const servicesProcess = {
   eyebrow: "Our Process",

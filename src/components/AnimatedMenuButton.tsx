@@ -35,8 +35,7 @@ export default function AnimatedMenuButton({
   useEffect(() => {
     const el = localRef.current;
     if (!el) return;
-    delete el.dataset.gsapBtnBound;
-    el.classList.remove("gsap-btn-ready");
+    el.style.willChange = "";
     gsap.set(el, { clearProps: "transform" });
   }, []);
 
@@ -91,7 +90,7 @@ export default function AnimatedMenuButton({
       aria-controls={controls}
       aria-haspopup="dialog"
       onClick={onClick}
-      className="tap-target flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-red xl:hidden"
+      className="tap-target flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-red lg:hidden"
     >
       <span ref={rootRef} className="relative block h-[14px] w-[22px]" aria-hidden>
         <span

@@ -3,8 +3,12 @@
  * Files live in /public/images/about/.
  */
 
+import { networkStats } from "@/content/stats";
+
 export type MediaSlot = {
   src?: string;
+  /** Lucide icon when no `src` (e.g. service page feature icons). */
+  icon?: string;
   alt: string;
   label: string;
   fit?: "cover" | "contain";
@@ -27,36 +31,21 @@ export const aboutHero = {
   arrow: "/images/about/ui/arrow-right-circle.svg",
 };
 
-export const aboutStats = [
-  {
-    value: 250,
-    suffix: "+",
-    label: "Minds",
-    description: "Specialists across media, creative, technology and data.",
-    icon: { src: "/images/about/stats/minds.svg", alt: "", label: "Minds" } satisfies MediaSlot,
+const aboutStatIcons: Record<string, MediaSlot> = {
+  "Marketing Agencies": {
+    src: "/images/about/stats/globe.svg",
+    alt: "",
+    label: "Marketing Agencies",
   },
-  {
-    value: 4,
-    suffix: "",
-    label: "Cities",
-    description: "Mumbai, Bengaluru, Aurangabad and Pune.",
-    icon: { src: "/images/about/stats/cities.svg", alt: "", label: "Cities" } satisfies MediaSlot,
-  },
-  {
-    value: 225,
-    suffix: "+",
-    label: "Media Awards",
-    description: "Recognitions for work that moved markets.",
-    icon: { src: "/images/about/stats/awards.svg", alt: "", label: "Awards" } satisfies MediaSlot,
-  },
-  {
-    value: 1,
-    suffix: "",
-    label: "Growth System",
-    description: "One connected operating system, not isolated services.",
-    icon: { src: "/images/about/stats/growth-system.svg", alt: "", label: "Growth system" } satisfies MediaSlot,
-  },
-];
+  Markets: { src: "/images/about/stats/cities.svg", alt: "", label: "Markets" },
+  "Media Awards": { src: "/images/about/stats/awards.svg", alt: "", label: "Media Awards" },
+  Billings: { src: "/images/about/stats/growth-system.svg", alt: "", label: "Billings" },
+};
+
+export const aboutStats = networkStats.map((stat) => ({
+  ...stat,
+  icon: aboutStatIcons[stat.label],
+}));
 
 export const aboutStory = {
   eyebrow: "Our Story",
@@ -112,6 +101,10 @@ export type TeamMember = {
   image: MediaSlot;
 };
 
+/** Core leadership — aligned to creds deck (slide 3). */
+export const aboutTeamTagline = "Fueled by 250+ passionate minds";
+
+/** Slide 3 order: Jigar & Jeffrey first, then top row L→R, bottom row L→R. */
 export const aboutTeam: TeamMember[] = [
   {
     name: "Jigar Zatakia",
@@ -135,8 +128,58 @@ export const aboutTeam: TeamMember[] = [
     },
   },
   {
+    name: "Parth Gandhi",
+    title: "Head — Media Planning",
+    image: {
+      src: "/images/about/leadership/parth-gandhi.jpg",
+      alt: "Portrait of Parth Gandhi",
+      label: "Parth Gandhi",
+      grayscale: true,
+    },
+  },
+  {
+    name: "Vaibhav Jain",
+    title: "Chief Technology Officer",
+    image: {
+      src: "/images/about/leadership/vaibhav-jain.jpg",
+      alt: "Portrait of Vaibhav Jain",
+      label: "Vaibhav Jain",
+      grayscale: true,
+    },
+  },
+  {
+    name: "Jamshid Doctor",
+    title: "Head — Business Solutions",
+    image: {
+      src: "/images/about/leadership/jamshid-doctor.jpg",
+      alt: "Portrait of Jamshid Doctor",
+      label: "Jamshid Doctor",
+      grayscale: true,
+    },
+  },
+  {
+    name: "Rushabh Ashar",
+    title: "Head — Video Production",
+    image: {
+      src: "/images/about/leadership/rushabh-ashar.jpg",
+      alt: "Portrait of Rushabh Ashar",
+      label: "Rushabh Ashar",
+      grayscale: true,
+    },
+  },
+  {
+    name: "Pratik Panvalkar",
+    title: "Head — Branding & Design",
+    image: {
+      src: "/images/about/leadership/pratik-panvalkar.jpg",
+      alt: "Portrait of Pratik Panvalkar",
+      label: "Pratik Panvalkar",
+      grayscale: true,
+    },
+  },
+  {
     name: "Chirag Kaku",
-    title: "Leadership",
+    title: "Head — Strategy",
     image: {
       src: "/images/about/leadership/chirag-kaku.jpg",
       alt: "Portrait of Chirag Kaku",
@@ -145,18 +188,18 @@ export const aboutTeam: TeamMember[] = [
     },
   },
   {
-    name: "Iqbal Arab",
-    title: "Head — Creative",
+    name: "Herat Panchal",
+    title: "Chief Growth Officer",
     image: {
-      src: "/images/about/leadership/iqbal-arab.jpg",
-      alt: "Portrait of Iqbal Arab",
-      label: "Iqbal Arab",
+      src: "/images/about/leadership/herat-panchal.jpg",
+      alt: "Portrait of Herat Panchal",
+      label: "Herat Panchal",
       grayscale: true,
     },
   },
   {
     name: "Bilal Shaikh",
-    title: "Head — New Business",
+    title: "Head — New Business, Mumbai",
     image: {
       src: "/images/about/leadership/bilal-shaikh.jpg",
       alt: "Portrait of Bilal Shaikh",
@@ -165,8 +208,18 @@ export const aboutTeam: TeamMember[] = [
     },
   },
   {
+    name: "Megha Mathur",
+    title: "Head — New Business, Bengaluru",
+    image: {
+      src: "/images/about/leadership/megha-mathur.jpg",
+      alt: "Portrait of Megha Mathur",
+      label: "Megha Mathur",
+      grayscale: true,
+    },
+  },
+  {
     name: "Deep Ajmera",
-    title: "Leadership",
+    title: "Head — New Business, Pune",
     image: {
       src: "/images/about/leadership/deep-ajmera.jpg",
       alt: "Portrait of Deep Ajmera",
@@ -175,12 +228,22 @@ export const aboutTeam: TeamMember[] = [
     },
   },
   {
-    name: "Megha Mathur",
-    title: "Leadership",
+    name: "Arab Iqbal",
+    title: "Head — Creative & Branding Solution",
     image: {
-      src: "/images/about/leadership/megha-mathur.jpg",
-      alt: "Portrait of Megha Mathur",
-      label: "Megha Mathur",
+      src: "/images/about/leadership/iqbal-arab.jpg",
+      alt: "Portrait of Arab Iqbal",
+      label: "Arab Iqbal",
+      grayscale: true,
+    },
+  },
+  {
+    name: "Pramod Vishwakarma",
+    title: "Head — Social Media",
+    image: {
+      src: "/images/about/leadership/pramod-vishwakarma.jpg",
+      alt: "Portrait of Pramod Vishwakarma",
+      label: "Pramod Vishwakarma",
       grayscale: true,
     },
   },
@@ -224,133 +287,154 @@ export const aboutValues = [
   },
 ];
 
-export const aboutAwards = [
+export type CampaignAward = {
+  client: string;
+  organization: string;
+  accolade: string;
+  category: string;
+  image: MediaSlot;
+};
+
+/** Campaign awards — creds deck slides 10–11. */
+export const campaignAwards: CampaignAward[] = [
   {
-    client: "e4m",
-    title: "Agency of the Year",
+    client: "Godrej Properties",
+    organization: "Guinness World Records",
+    accolade: "One of our biggest achievements",
+    category: "1,000+ influencers went live within one hour — an official Guinness World Record.",
     image: {
-      src: "/images/about/awards/e4m-agency-of-the-year.jpg",
-      alt: "e4m Indian Digital Marketing Awards trophy for Performance Marketing Agency of the Year",
-      label: "e4m Agency of the Year",
+      src: "/images/about/awards/godrej-guinness-record.png",
+      alt: "Godrej Properties Guinness World Record campaign",
+      label: "Godrej Properties",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "IPMA 2024",
-    title: "Digital Agency of the Year",
+    client: "Piramal Pharma",
+    organization: "Afaqs",
+    accolade: "Marketers Xcellence Award",
+    category: "Best Storytelling : I-Know - Are You Trying On Your Best Days?",
     image: {
-      src: "/images/about/awards/ipma-digital-agency.jpg",
-      alt: "India Performance Marketing Awards 2024 Digital Agency of the Year trophy",
-      label: "IPMA Digital Agency of the Year",
+      src: "/images/about/awards/piramal-afaqs-trophy.png",
+      alt: "Piramal Pharma Afaqs Marketers Xcellence Award",
+      label: "Piramal Pharma",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "IPMA 2024",
-    title: "Best Use of Performance Marketing",
+    client: "Nicobar",
+    organization: "FLOXGLOVE Awards",
+    accolade: "Best Performance Marketing",
+    category: "Best Performance Marketing",
     image: {
-      src: "/images/about/awards/ipma-best-use.jpg",
-      alt: "India Performance Marketing Awards 2024 Best Use of Performance Marketing trophy",
-      label: "IPMA Best Use of Performance Marketing",
+      src: "/images/about/awards/nicobar-floxglove-trophy.png",
+      alt: "Nicobar FLOXGLOVE Awards recognition",
+      label: "Nicobar",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "Indian Digital Awards",
-    title: "Gold Winner",
+    client: "Samco Securities",
+    organization: "afaqs Startup Brands Awards",
+    accolade: "Outstanding Personal Branding",
+    category: "Outstanding personal branding by founder(s).",
     image: {
-      src: "/images/about/awards/indian-digital-awards-gold.jpg",
-      alt: "Indian Digital Awards 2024 Gold Winner trophy for Best Performance Marketing Campaign",
-      label: "Indian Digital Awards Gold",
+      src: "/images/about/awards/samco-startup-brands-trophy.png",
+      alt: "Samco Securities afaqs Startup Brands Award",
+      label: "Samco Securities",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "Excellence in Performance",
-    title: "Award 2024",
+    client: "Society Tea",
+    organization: "MOBEXX Awards",
+    accolade: "Mobile Advertising Excellence",
+    category: "Mobile Advertising Excellence in Cross-Screen campaign",
     image: {
-      src: "/images/about/awards/excellence-in-performance.jpg",
-      alt: "Excellence in Performance Award 2024 shooting-star trophy",
-      label: "Excellence in Performance",
+      src: "/images/about/awards/society-tea-mobexx-trophy.png",
+      alt: "Society Tea MOBEXX Award",
+      label: "Society Tea",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "Excellence in Performance Marketing",
-    title: "2024",
+    client: "VIP",
+    organization: "e4m Mobile Awards",
+    accolade: "Best Use of UGC",
+    category: "Best use of user-generated content.",
     image: {
-      src: "/images/about/awards/excellence-in-performance-marketing.jpg",
-      alt: "Excellence in Performance Marketing 2024 star trophy",
-      label: "Excellence in Performance Marketing",
+      src: "/images/about/awards/vip-e4m-mobile-trophy.png",
+      alt: "VIP e4m Mobile Award",
+      label: "VIP",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "India PR Awards",
-    title: "Best PR Campaign of the Year",
+    client: "House of Abhinandan Lodha",
+    organization: "DIGIXX Awards",
+    accolade: "Brand Awareness Campaign",
+    category: "Brand Awareness Campaign (Real Estate)",
     image: {
-      src: "/images/about/awards/india-pr-awards.jpg",
-      alt: "India PR Awards 2024 Best PR Campaign of the Year trophy",
-      label: "India PR Awards",
+      src: "/images/about/awards/house-of-abhinandan-digixx-trophy.png",
+      alt: "House of Abhinandan Lodha DIGIXX Award",
+      label: "House of Abhinandan Lodha",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
   {
-    client: "Excellence Award",
-    title: "Outstanding Performance",
+    client: "FedEx",
+    organization: "MOBEXX Awards",
+    accolade: "Best Integrated Multi-Channel Campaign",
+    category: "Best Integrated Multi-Channel Campaign",
     image: {
-      src: "/images/about/awards/excellence-award.jpg",
-      alt: "Excellence Award presented to First Economy for outstanding performance",
-      label: "Excellence Award",
+      src: "/images/about/awards/fedex-mobexx-trophy.png",
+      alt: "FedEx MOBEX 2021 Gold Winner — Best Integrated Multi-Channel Campaign",
+      label: "FedEx",
+      fit: "contain",
+      grayscale: false,
+    } satisfies MediaSlot,
+  },
+  {
+    client: "Glutone",
+    organization: "e4m Awards",
+    accolade: "Best Audio / Video Campaign",
+    category: "Best Audio/ Video Campaign #GlowWithGlutone",
+    image: {
+      src: "/images/about/awards/glutone-e4m-trophy.png",
+      alt: "Glutone e4m Award",
+      label: "Glutone",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
   },
 ];
 
-export const aboutLocations = [
-  {
-    slug: "mumbai",
-    city: "Mumbai",
-    isHq: true,
-    description: "The financial capital of India.",
-    image: {
-      src: "/images/about/locations/mumbai.jpg",
-      alt: "Gateway of India and the Taj Mahal Palace, Mumbai",
-    },
-  },
-  {
-    slug: "bengaluru",
-    city: "Bengaluru",
-    description: "The Silicon Valley of India.",
-    image: {
-      src: "/images/about/locations/bengaluru.jpg",
-      alt: "Bengaluru skyline above tree canopy",
-    },
-  },
-  {
-    slug: "aurangabad",
-    city: "Aurangabad",
-    description: "Heritage city. Emerging tomorrow.",
-    image: {
-      src: "/images/about/locations/aurangabad.jpg",
-      alt: "Historic monument and gardens in Aurangabad",
-    },
-  },
-  {
-    slug: "pune",
-    city: "Pune",
-    description: "A hub for innovation and education.",
-    image: {
-      src: "/images/about/locations/pune.jpg",
-      alt: "Shaniwar Wada gateway in Pune",
-    },
-  },
-];
+export const aboutFeaturedAchievement = {
+  client: "Godrej Properties",
+  eyebrow: "One of our biggest achievements",
+  title: "Guinness World Record — 1,000+ influencers live in one hour",
+  body: "1,000+ influencers went live within one hour, earning Godrej Properties an official Guinness World Record.",
+  href: "/work/godrej-blue",
+};
+
+export const aboutCta = {
+  titleBefore: "Ready to engineer",
+  titleAccent: "your growth system?",
+  body: "Partner with a team built around strategy, creative, media, technology and data — working as one growth system.",
+  button: { label: "Let's talk", href: "/contact" },
+  secondary: { label: "View awards", href: "/awards" },
+  tertiary: { label: "Our offices", href: "/contact#offices" },
+  burst: "/images/about/hero/radial-burst.svg",
+};
+
+export { officeLocations as aboutLocations } from "@/content/offices";
+export type { OfficeLocation as AboutLocation } from "@/content/offices";
+
+export const featuredCampaignAward = campaignAwards[0];

@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRight, ArrowRightCircle, Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRightCircle, Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
+import { usePageReveal } from "@/hooks/usePageReveal";
 import { aboutLocations } from "@/content/about";
 import {
   contactFormCopy,
@@ -17,8 +16,6 @@ import {
   contactOfficesCopy,
   contactTouch,
 } from "@/content/contact";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const touchIcons: Record<(typeof contactTouch.items)[number]["icon"], LucideIcon> = {
   phone: Phone,
@@ -30,209 +27,60 @@ const touchIcons: Record<(typeof contactTouch.items)[number]["icon"], LucideIcon
 export default function ContactPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add(
-        {
-          reduceMotion: "(prefers-reduced-motion: reduce)",
-          canAnimate: "(prefers-reduced-motion: no-preference)",
-        },
-        (context) => {
-          const { reduceMotion } = context.conditions ?? {};
-
-          if (reduceMotion) {
-            gsap.set("[data-animate], [data-animate-stagger] > *", {
-              clearProps: "all",
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-            });
-            return;
-          }
-
-          const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-          heroTl
-            .from("[data-animate='hero-copy']", {
-              y: 28,
-              autoAlpha: 0,
-              duration: 0.9,
-              stagger: 0.12,
-            })
-            .from(
-              "[data-animate='hero-visual']",
-              {
-                autoAlpha: 0,
-                duration: 0.45,
-              },
-              "-=0.7",
-            )
-            .fromTo(
-              "[data-animate='hero-seam']",
-              { autoAlpha: 0, scale: 0.86 },
-              {
-                autoAlpha: 1,
-                scale: 1,
-                duration: 0.55,
-                stagger: 0.08,
-                clearProps: "scale",
-              },
-              "-=0.25",
-            );
-
-          gsap.utils.toArray<HTMLElement>("[data-animate-section]").forEach((section) => {
-            const intro = section.querySelectorAll("[data-animate='fade-up']");
-            const staggerRoots = section.querySelectorAll("[data-animate-stagger]");
-            const staggerItems = staggerRoots.length
-              ? gsap.utils.toArray<Element>(
-                  Array.from(staggerRoots).flatMap((root) => Array.from(root.querySelectorAll(":scope > *"))),
-                )
-              : section.querySelectorAll("[data-animate='stagger-item']");
-
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: section,
-                start: "top 78%",
-                toggleActions: "play none none none",
-              },
-              defaults: { ease: "power3.out" },
-            });
-
-            if (intro.length) {
-              tl.from(intro, {
-                y: 32,
-                autoAlpha: 0,
-                duration: 0.75,
-                stagger: 0.1,
-                immediateRender: false,
-                clearProps: "transform",
-              });
-            }
-
-            if (staggerItems.length) {
-              tl.from(
-                staggerItems,
-                {
-                  y: 24,
-                  autoAlpha: 0,
-                  duration: 0.55,
-                  stagger: 0.06,
-                  immediateRender: false,
-                  clearProps: "transform",
-                },
-                intro.length ? "-=0.35" : 0,
-              );
-            }
-          });
-
-          requestAnimationFrame(() => ScrollTrigger.refresh());
-        },
-      );
-
-      return () => mm.revert();
-    },
-    { scope: rootRef },
-  );
+  usePageReveal({ scope: rootRef });
 
   return (
     <div ref={rootRef}>
-      <section
-        className="section-shell bg-paper pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-16"
-        aria-labelledby="contact-hero-heading"
-      >
-        <div className="section-inner">
-          <nav aria-label="Breadcrumb" data-animate="hero-copy" className="text-body-sm text-muted">
-            <ol className="m-0 flex list-none flex-wrap items-center gap-2 p-0">
-              <li>
-                <Link href="/" className="transition hover:text-red focus-visible:text-red">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden className="text-line">
-                /
-              </li>
-              <li className="text-ink" aria-current="page">
-                Contact Us
-              </li>
-            </ol>
-          </nav>
-
-          <div className="relative mt-8 lg:mt-10">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-0">
-              <div className="relative z-[1] min-w-0 lg:pr-20 xl:pr-24">
-                <h1
-                  id="contact-hero-heading"
-                  data-animate="hero-copy"
-                  className="text-display-xl mt-0 mb-0 text-balance"
-                >
-                  {contactHero.headlineBefore}
-                  <br className="hidden xs:block" />
-                  <span className="xs:hidden"> </span>
-                  <span className="text-red">{contactHero.headlineAccent}</span>
-                </h1>
-                <p
-                  data-animate="hero-copy"
-                  className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
-                >
-                  {contactHero.body}
-                </p>
-                <div data-animate="hero-copy">
-                  <Link
-                    href={contactHero.cta.href}
-                    className="text-cta tap-target mt-7 inline-flex min-h-12 w-full items-center justify-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red xs:w-auto sm:mt-8 sm:py-4 sm:pl-7"
-                  >
-                    {contactHero.cta.label}
-                    <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
-                  </Link>
-                </div>
-              </div>
-
-              <div data-animate="hero-visual" className="relative z-[1] min-w-0 overflow-hidden">
-                <ImageSlot
-                  asset={contactHero.image}
-                  priority
-                  className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[min(420px,55vh)]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div
-                  className="pointer-events-none absolute top-1/2 right-0 left-0 z-[2] hidden h-px -translate-y-1/2 bg-red lg:block"
-                  aria-hidden
-                />
-                <p
-                  className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-[11px]"
-                  aria-hidden
-                >
-                  {contactHero.verticalMark}
-                </p>
-              </div>
-            </div>
-
-            <div
-              data-animate="hero-seam"
-              className="pointer-events-none absolute top-1/2 left-1/2 z-0 hidden size-[min(68%,20rem)] -translate-x-1/2 -translate-y-1/2 lg:block"
-              aria-hidden
-            >
-              <Image
-                src={contactHero.burst}
-                alt=""
-                fill
-                sizes="320px"
-                unoptimized
-                className="object-contain opacity-45"
-              />
-            </div>
+      <PageHero
+        headingId="contact-hero-heading"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+        breadcrumbCurrentClassName="text-ink"
+        titleClassName="text-display-xl mt-0 mb-0 text-balance"
+        title={
+          <>
+            {contactHero.headlineBefore}
+            <br className="hidden xs:block" />
+            <span className="xs:hidden"> </span>
+            <span className="text-red">{contactHero.headlineAccent}</span>
+          </>
+        }
+        body={contactHero.body}
+        copyAfterBody={
+          <div data-animate="hero-copy">
             <Link
-              href="#contact-form"
-              data-animate="hero-seam"
-              className="absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden"
-              aria-label="Continue to the contact form"
+              href={contactHero.cta.href}
+              className="text-cta tap-target mt-7 inline-flex min-h-12 w-full items-center justify-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red xs:w-auto sm:mt-8 sm:py-4 sm:pl-7"
             >
-              <Image src={contactHero.arrow} alt="" aria-hidden width={56} height={56} unoptimized />
+              {contactHero.cta.label}
+              <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
             </Link>
           </div>
-        </div>
-      </section>
+        }
+        media={
+          <>
+            <ImageSlot
+              asset={contactHero.image}
+              priority
+              className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[min(420px,55vh)]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <p
+              className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-[11px]"
+              aria-hidden
+            >
+              {contactHero.verticalMark}
+            </p>
+          </>
+        }
+        burstSrc={contactHero.burst}
+        seam={{
+          href: "#contact-form",
+          ariaLabel: "Continue to the contact form",
+          arrowSrc: contactHero.arrow,
+          className:
+            "absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden",
+        }}
+      />
 
       <section
         id="contact-form"
@@ -322,7 +170,7 @@ export default function ContactPage() {
               return (
                 <li key={office.slug} className="min-w-0">
                   <article
-                    aria-label={`First Economy ${office.city}${"isHq" in office && office.isHq ? " headquarters" : " office"} — ${office.address}`}
+                    aria-label={`First Economy ${office.city}${office.isHq ? " headquarters" : " office"} — ${office.address}`}
                     className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
                   >
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
@@ -345,13 +193,36 @@ export default function ContactPage() {
                       <div className="min-w-0 text-left">
                         <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                           {office.city}
-                          {"isHq" in office && office.isHq ? (
+                          {office.isHq ? (
                             <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
                           ) : null}
                         </p>
                         <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
                           {office.address}
                         </p>
+                        {"contact" in office && office.contact ? (
+                          <div className="mt-3 space-y-1">
+                            <p className="m-0 text-xs font-semibold tracking-[0.04em] text-ink">
+                              {office.contact.name}
+                            </p>
+                            <p className="m-0">
+                              <a
+                                href={`mailto:${office.contact.email}`}
+                                className="text-body-sm break-all text-muted transition hover:text-red"
+                              >
+                                {office.contact.email}
+                              </a>
+                            </p>
+                            <p className="m-0">
+                              <a
+                                href={office.contact.phoneHref}
+                                className="text-body-sm text-muted transition hover:text-red"
+                              >
+                                {office.contact.phone}
+                              </a>
+                            </p>
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </article>

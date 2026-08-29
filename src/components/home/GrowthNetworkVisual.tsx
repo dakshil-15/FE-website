@@ -20,30 +20,35 @@ const rings = [
   { id: "r4", radius: 278, count: 78, length: 28, duration: 72, direction: -1 },
 ] as const;
 
+/** Label + hub type in SVG user units so they scale with the viewBox. */
+const LABEL_SIZE = 24;
+const HUB_SIZE = 34;
+const HUB_LINE = 18;
+
 const nodes = [
   {
     label: "MEDIA",
     angle: -90,
     textAnchor: "middle" as const,
-    labelOffset: { x: 0, y: -26 },
+    labelOffset: { x: 0, y: -34 },
   },
   {
     label: "TECHNOLOGY",
     angle: 0,
     textAnchor: "middle" as const,
-    labelOffset: { x: 44, y: 0 },
+    labelOffset: { x: 58, y: 0 },
   },
   {
     label: "AI",
     angle: 90,
     textAnchor: "middle" as const,
-    labelOffset: { x: 0, y: 30 },
+    labelOffset: { x: 0, y: 38 },
   },
   {
     label: "CREATIVE",
     angle: 180,
     textAnchor: "middle" as const,
-    labelOffset: { x: -44, y: 0 },
+    labelOffset: { x: -58, y: 0 },
   },
 ];
 
@@ -255,17 +260,17 @@ export default function GrowthNetworkVisual() {
           <text
             textAnchor="middle"
             fill="#ffffff"
+            fontSize={HUB_SIZE}
             style={{
               fontFamily: "var(--font-barlow), Barlow Condensed, sans-serif",
               fontWeight: 800,
-              fontSize: 22,
               letterSpacing: "0.08em",
             }}
           >
-            <tspan x={CENTER} y={CENTER - 13} dominantBaseline="central">
+            <tspan x={CENTER} y={CENTER - HUB_LINE} dominantBaseline="central">
               GROWTH
             </tspan>
-            <tspan x={CENTER} y={CENTER + 13} dominantBaseline="central">
+            <tspan x={CENTER} y={CENTER + HUB_LINE} dominantBaseline="central">
               SYSTEM
             </tspan>
           </text>
@@ -291,10 +296,10 @@ export default function GrowthNetworkVisual() {
                 textAnchor={node.textAnchor}
                 dominantBaseline="middle"
                 fill="#3a3a3a"
+                fontSize={LABEL_SIZE}
                 style={{
                   fontFamily: "var(--font-barlow), Barlow Condensed, sans-serif",
                   fontWeight: 700,
-                  fontSize: 14,
                   letterSpacing: "0.08em",
                 }}
                 suppressHydrationWarning

@@ -158,7 +158,7 @@ export default function MobileNavSidebar({
   if (!mounted) return null;
 
   const sidebar = (
-    <div ref={rootRef} className="xl:hidden" aria-hidden={!open}>
+    <div ref={rootRef} className="lg:hidden" aria-hidden={!open}>
       <div
         ref={backdropRef}
         className="fixed inset-0 z-[100] bg-ink/50"

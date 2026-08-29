@@ -1,142 +1,126 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { clientLogos, type PartnerLogo } from "@/content/partners";
 
 gsap.registerPlugin(useGSAP);
 
-const partners = [
-  {
-    name: "Godrej",
-    mono: "/assets/logo-godrej.png",
-    color: "/assets/logos-color/logo-godrej-color.png",
-    w: 972,
-    h: 479,
-  },
-  {
-    name: "FedEx",
-    mono: "/assets/logo-fedex.png",
-    color: "/assets/logos-color/logo-fedex-color.png",
-    w: 806,
-    h: 245,
-  },
-  {
-    name: "Mahindra",
-    mono: "/assets/logo-mahindra.png",
-    color: "/assets/logos-color/logo-mahindra-color.png",
-    w: 954,
-    h: 142,
-  },
-  {
-    name: "Adani",
-    mono: "/assets/logo-adani.png",
-    color: "/assets/logos-color/logo-adani-color.png",
-    w: 839,
-    h: 295,
-  },
-  {
-    name: "Ajanta Pharma",
-    mono: "/assets/logo-ajanta.png",
-    color: "/assets/logos-color/logo-ajanta-color.png",
-    w: 905,
-    h: 273,
-  },
-  {
-    name: "VIP",
-    mono: "/assets/logo-vip.png",
-    color: "/assets/logos-color/logo-vip-color.png",
-    w: 868,
-    h: 308,
-  },
-  {
-    name: "Waaree",
-    mono: "/assets/logo-waaree.png",
-    color: "/assets/logos-color/logo-waaree-color.png",
-    w: 952,
-    h: 287,
-  },
-  {
-    name: "Orpat",
-    mono: "/assets/logo-orpat.png",
-    color: "/assets/logos-color/logo-orpat-color.png",
-    w: 937,
-    h: 276,
-  },
-  {
-    name: "Piramal",
-    mono: "/assets/logo-piramal.png",
-    color: "/assets/logos-color/logo-piramal-color.png",
-    w: 906,
-    h: 445,
-  },
-  {
-    name: "Danone",
-    mono: "/assets/logo-danone.png",
-    color: "/assets/logos-color/logo-danone-color.png",
-    w: 886,
-    h: 249,
-  },
-  {
-    name: "Amrita",
-    mono: "/assets/logo-amrita.png",
-    color: "/assets/logos-color/logo-amrita-color.png",
-    w: 1016,
-    h: 283,
-  },
-];
+const mid = Math.ceil(clientLogos.length / 2);
+const rowLeft = clientLogos.slice(0, mid);
+const rowRight = clientLogos.slice(mid);
 
-const mid = Math.ceil(partners.length / 2);
-const rowLeft = partners.slice(0, mid);
-const rowRight = partners.slice(mid);
+type PartnerLogoFrameProps = {
+  partner: PartnerLogo;
+  alt: string;
+  sizes: string;
+  imageClassName?: string;
+};
 
-type Partner = (typeof partners)[number];
+function PartnerLogoFrame({ partner, alt, sizes, imageClassName = "" }: PartnerLogoFrameProps) {
+  const box = partner.contentBox;
 
-function LogoItem({ partner, duplicate }: { partner: Partner; duplicate?: boolean }) {
+  if (!box) {
+    return (
+      <Image
+        src={partner.src}
+        alt={alt}
+        width={partner.width}
+        height={partner.height}
+        unoptimized
+        sizes={sizes}
+        className={`max-h-full max-w-full object-contain ${imageClassName}`.trim()}
+      />
+    );
+  }
+
+  const [x0, y0, cw, ch] = box;
+  const { width: iw, height: ih, src } = partner;
+
+  // SVG viewBox crops to contentBox optically; preserveAspectRatio fills the cell without overflow.
+  // Original PNG bytes are unchanged — only display framing.
+  return (
+    <svg
+      viewBox={`${x0} ${y0} ${cw} ${ch}`}
+      className={`h-full w-full ${imageClassName}`.trim()}
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label={alt || undefined}
+      aria-hidden={alt === "" ? true : undefined}
+    >
+      {alt ? <title>{alt}</title> : null}
+      <image href={src} width={iw} height={ih} preserveAspectRatio="none" />
+    </svg>
+  );
+}
+
+function LogoItem({ partner, duplicate }: { partner: PartnerLogo; duplicate?: boolean }) {
   return (
     <li
       className="group flex h-16 shrink-0 items-center justify-center px-6 sm:h-20 sm:px-8 md:h-[5.5rem] md:px-10"
       aria-hidden={duplicate || undefined}
     >
-      <span className="relative inline-flex h-10 w-[140px] items-center justify-center sm:h-12 sm:w-[160px] md:h-14 md:w-[180px]">
-        <Image
-          src={partner.mono}
+      <span className="flex h-14 w-[168px] min-h-0 min-w-0 items-center justify-center sm:h-16 sm:w-[188px] md:h-[4.5rem] md:w-[210px]">
+        <PartnerLogoFrame
+          partner={partner}
           alt={duplicate ? "" : `${partner.name} logo`}
-          width={partner.w}
-          height={partner.h}
-          quality={100}
-          unoptimized
-          sizes="180px"
-          className="h-full w-auto max-w-full object-contain opacity-80 transition duration-300 group-hover:opacity-0"
-        />
-        <Image
-          src={partner.color}
-          alt=""
-          aria-hidden
-          width={partner.w}
-          height={partner.h}
-          quality={100}
-          unoptimized
-          sizes="180px"
-          className="pointer-events-none absolute inset-0 m-auto h-full w-auto max-w-full object-contain opacity-0 transition duration-300 group-hover:opacity-100"
+          sizes="210px"
+          imageClassName="opacity-90 transition duration-300 group-hover:opacity-100"
         />
       </span>
     </li>
   );
 }
 
+function GridLogoItem({ partner }: { partner: PartnerLogo }) {
+  return (
+    <li className="flex min-h-[7.5rem] items-center justify-center rounded-xl border border-line bg-white px-3 py-5 sm:min-h-[8rem] sm:px-4 sm:py-6">
+      <span className="flex h-16 w-full min-h-0 min-w-0 max-w-[200px] items-center justify-center sm:h-[4.5rem] sm:max-w-[220px]">
+        <PartnerLogoFrame
+          partner={partner}
+          alt={`${partner.name} logo`}
+          sizes="(max-width: 640px) 40vw, 220px"
+        />
+      </span>
+    </li>
+  );
+}
+
+/** About-style logo grid — reusable for client logos, platform partners, etc. */
+export function LogoMarkGrid({
+  logos,
+  className = "m-0 grid list-none grid-cols-2 gap-2.5 p-0 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6",
+}: {
+  logos: PartnerLogo[];
+  className?: string;
+}) {
+  return (
+    <ul className={className}>
+      {logos.map((partner) => (
+        <GridLogoItem key={partner.slug} partner={partner} />
+      ))}
+    </ul>
+  );
+}
+
+function PartnerLogoGrid() {
+  return <LogoMarkGrid logos={clientLogos} />;
+}
+
 function MarqueeRow({
   items,
   direction,
 }: {
-  items: Partner[];
+  items: PartnerLogo[];
   direction: "left" | "right";
 }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
 
-  // Triple the set so short rows still cover wide viewports
   const copies = 3;
 
   useGSAP(
@@ -157,7 +141,6 @@ function MarqueeRow({
         const start = () => {
           tween?.kill();
 
-          // Animate by one logo set (track holds `copies` identical sets)
           const setWidth = track.scrollWidth / copies;
           const viewportWidth = viewport.clientWidth;
           if (setWidth < 40 || viewportWidth < 40) return;
@@ -205,14 +188,11 @@ function MarqueeRow({
 
   return (
     <div ref={viewportRef} className="w-full overflow-hidden">
-      <ul
-        ref={trackRef}
-        className="flex w-max list-none items-center p-0 will-change-transform"
-      >
+      <ul ref={trackRef} className="flex w-max list-none items-center p-0 will-change-transform">
         {Array.from({ length: copies }, (_, setIndex) =>
           items.map((partner) => (
             <LogoItem
-              key={`${setIndex}-${partner.name}`}
+              key={`${setIndex}-${partner.slug}`}
               partner={partner}
               duplicate={setIndex > 0}
             />
@@ -223,7 +203,14 @@ function MarqueeRow({
   );
 }
 
-export default function PartnerLogos({ sectionId = "partners" }: { sectionId?: string }) {
+type PartnerLogosProps = {
+  sectionId?: string;
+  layout?: "marquee" | "grid";
+};
+
+export default function PartnerLogos({ sectionId = "partners", layout = "marquee" }: PartnerLogosProps) {
+  const isAboutGrid = layout === "grid";
+
   return (
     <section
       id={sectionId}
@@ -231,25 +218,35 @@ export default function PartnerLogos({ sectionId = "partners" }: { sectionId?: s
       aria-labelledby="partners-heading"
     >
       <div className="section-inner">
-        <h2 id="partners-heading" className="text-eyebrow m-0">
-          Trusted by visionaries
-        </h2>
-
-        <div className="section-media flex flex-col gap-2 sm:gap-3" aria-label="Partner logos">
-          <ul className="sr-only">
-            {partners.map((partner) => (
-              <li key={partner.name}>{partner.name}</li>
-            ))}
-            <li>And more</li>
-          </ul>
-          <div aria-hidden="true">
-            <MarqueeRow items={rowLeft} direction="left" />
-            <MarqueeRow items={rowRight} direction="right" />
-          </div>
-          <div className="flex justify-end pt-1 sm:pt-2" aria-hidden="true">
-            <p className="m-0 text-sm font-medium text-muted sm:text-base md:text-lg">&amp; More</p>
-          </div>
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-6">
+          <h2 id="partners-heading" className="text-eyebrow m-0">
+            Trusted by visionaries
+          </h2>
+          {!isAboutGrid ? (
+            <Link href="/about#trusted-by" className="text-cta link-cta text-ink">
+              View all partners
+              <ArrowRight size={16} aria-hidden />
+            </Link>
+          ) : null}
         </div>
+
+        {isAboutGrid ? (
+          <div className="section-media" aria-label="Partner logos">
+            <PartnerLogoGrid />
+          </div>
+        ) : (
+          <div className="section-media flex flex-col gap-2 sm:gap-3" aria-label="Partner logos">
+            <ul className="sr-only">
+              {clientLogos.map((partner) => (
+                <li key={partner.slug}>{partner.name}</li>
+              ))}
+            </ul>
+            <div aria-hidden="true">
+              <MarqueeRow items={rowLeft} direction="left" />
+              <MarqueeRow items={rowRight} direction="right" />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

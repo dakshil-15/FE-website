@@ -1,22 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type FormEvent,
-  type KeyboardEvent,
-} from "react";
+import { useRef, type CSSProperties } from "react";
 import { ArrowRight, ArrowRightCircle, Calendar, Clock, User } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PageHero from "@/components/PageHero";
+import NewsletterSubscribe from "@/components/forms/NewsletterSubscribe";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
-import InsightShareArticle from "@/components/insights/InsightShareArticle";
+import StickySectionNav from "@/components/StickySectionNav";
+import { useStickySectionNav } from "@/hooks/useStickySectionNav";
+import { usePageReveal } from "@/hooks/usePageReveal";
+import ShareBar from "@/components/ShareBar";
 import {
   insightsCta,
   insightsFeaturedCard,
@@ -26,8 +19,6 @@ import {
 } from "@/content/insights";
 import type { InsightDetailSectionId, InsightDetailTab } from "@/lib/insights";
 import { getFeaturedInsightCardHref, getInsightHref } from "@/lib/insights";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type InsightDetailPageProps = {
   article: InsightArticle;
@@ -90,36 +81,6 @@ function SectionLabel({
   );
 }
 
-function InsightNewsletterForm() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="mt-4 flex gap-0 border border-line bg-white" noValidate>
-      <label htmlFor="insight-newsletter-email" className="sr-only">
-        Email address for newsletter
-      </label>
-      <input
-        id="insight-newsletter-email"
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        autoComplete="email"
-        required
-        className="field-control min-h-12 min-w-0 flex-1 border-0 bg-transparent px-4 py-3"
-      />
-      <button
-        type="submit"
-        aria-label="Subscribe to newsletter"
-        className="tap-target grid w-12 flex-none place-items-center bg-ink text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-      >
-        <ArrowRight size={18} aria-hidden />
-      </button>
-    </form>
-  );
-}
-
 export default function InsightDetailPage({
   article,
   sectionTabs,
@@ -128,234 +89,19 @@ export default function InsightDetailPage({
   shareUrl,
 }: InsightDetailPageProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const tabBarRef = useRef<HTMLDivElement>(null);
-  const tabNavRef = useRef<HTMLDivElement>(null);
-  const scrollLockRef = useRef<InsightDetailSectionId | null>(null);
-  const [activeTab, setActiveTab] = useState<InsightDetailSectionId | null>(sectionTabs[0]?.id ?? null);
-  const [stickyOffsets, setStickyOffsets] = useState({ header: 72, tabBar: 56, total: 136 });
+  const {
+    activeTab,
+    stickyOffsets,
+    tabBarRef,
+    tabNavRef,
+    scrollToElement,
+    handleTabKeyDown,
+  } = useStickySectionNav({ tabs: sectionTabs });
 
   const showFeaturedCard = article.slug !== insightsFeaturedCard.slug;
   const featuredHref = getFeaturedInsightCardHref();
 
-  useEffect(() => {
-    setActiveTab(sectionTabs[0]?.id ?? null);
-  }, [sectionTabs]);
-
-  useEffect(() => {
-    const header = document.querySelector("header");
-
-    function updateOffsets() {
-      const headerHeight = header?.getBoundingClientRect().height ?? 72;
-      const tabBarHeight =
-        sectionTabs.length > 0 ? tabBarRef.current?.getBoundingClientRect().height ?? 0 : 0;
-      setStickyOffsets({
-        header: headerHeight,
-        tabBar: tabBarHeight,
-        total: headerHeight + tabBarHeight + 12,
-      });
-    }
-
-    updateOffsets();
-    window.addEventListener("resize", updateOffsets);
-    return () => window.removeEventListener("resize", updateOffsets);
-  }, [sectionTabs.length]);
-
-  useEffect(() => {
-    if (sectionTabs.length === 0) return;
-
-    let ticking = false;
-
-    function resolveActiveTab() {
-      ticking = false;
-
-      if (scrollLockRef.current) {
-        setActiveTab(scrollLockRef.current);
-        return;
-      }
-
-      const offset = stickyOffsets.total + 8;
-      let nextActive = sectionTabs[0]?.id ?? null;
-
-      for (const tab of sectionTabs) {
-        const section = document.getElementById(tab.id);
-        if (!section) continue;
-        if (section.getBoundingClientRect().top - offset <= 0) {
-          nextActive = tab.id;
-        }
-      }
-
-      setActiveTab((current) => (current === nextActive ? current : nextActive));
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(resolveActiveTab);
-      }
-    }
-
-    resolveActiveTab();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [sectionTabs, stickyOffsets.total]);
-
-  useEffect(() => {
-    if (!activeTab) return;
-
-    const nav = tabNavRef.current;
-    if (!nav) return;
-
-    const activeButton = nav.querySelector<HTMLElement>(`[data-tab-id="${activeTab}"]`);
-    if (!activeButton) return;
-
-    const navRect = nav.getBoundingClientRect();
-    const buttonRect = activeButton.getBoundingClientRect();
-
-    if (buttonRect.left < navRect.left + 8 || buttonRect.right > navRect.right - 8) {
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      activeButton.scrollIntoView({
-        inline: "center",
-        block: "nearest",
-        behavior: reducedMotion ? "auto" : "smooth",
-      });
-    }
-  }, [activeTab]);
-
-  const scrollToElement = useCallback(
-    (elementId: string) => {
-      const target = document.getElementById(elementId);
-      if (!target) return;
-
-      const tab = sectionTabs.find((item) => item.id === elementId);
-      if (tab) {
-        scrollLockRef.current = tab.id;
-        setActiveTab(tab.id);
-      }
-
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const top = target.getBoundingClientRect().top + window.scrollY - stickyOffsets.total;
-      window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
-
-      if (tab) {
-        window.setTimeout(() => {
-          scrollLockRef.current = null;
-        }, 700);
-      }
-    },
-    [sectionTabs, stickyOffsets.total],
-  );
-
-  const handleTabKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLAnchorElement>, index: number) => {
-      if (sectionTabs.length === 0) return;
-
-      let nextIndex: number | null = null;
-
-      if (event.key === "ArrowRight") {
-        nextIndex = (index + 1) % sectionTabs.length;
-      } else if (event.key === "ArrowLeft") {
-        nextIndex = (index - 1 + sectionTabs.length) % sectionTabs.length;
-      } else if (event.key === "Home") {
-        nextIndex = 0;
-      } else if (event.key === "End") {
-        nextIndex = sectionTabs.length - 1;
-      }
-
-      if (nextIndex === null) return;
-
-      event.preventDefault();
-      const nextTab = sectionTabs[nextIndex];
-      scrollToElement(nextTab.id);
-      tabNavRef.current?.querySelector<HTMLElement>(`[data-tab-id="${nextTab.id}"]`)?.focus();
-    },
-    [scrollToElement, sectionTabs],
-  );
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add({ reduceMotion: "(prefers-reduced-motion: reduce)" }, (context) => {
-        const { reduceMotion } = context.conditions ?? {};
-
-        if (reduceMotion) {
-          gsap.set("[data-animate], [data-animate-stagger] > *", {
-            clearProps: "all",
-            autoAlpha: 1,
-            y: 0,
-          });
-          return;
-        }
-
-        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl
-          .fromTo(
-            "[data-animate='hero-copy']",
-            { y: 28, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.12, clearProps: "transform" },
-          )
-          .fromTo(
-            "[data-animate='hero-visual']",
-            { autoAlpha: 0 },
-            { autoAlpha: 1, duration: 0.45 },
-            "-=0.7",
-          )
-          .fromTo(
-            "[data-animate='hero-seam']",
-            { autoAlpha: 0, scale: 0.86 },
-            { autoAlpha: 1, scale: 1, duration: 0.55, clearProps: "scale" },
-            "-=0.25",
-          );
-
-        gsap.utils.toArray<HTMLElement>("[data-animate-section]").forEach((section) => {
-          const intro = section.querySelectorAll("[data-animate='fade-up']");
-          const staggerRoots = section.querySelectorAll("[data-animate-stagger]");
-          const staggerItems = staggerRoots.length
-            ? gsap.utils.toArray<Element>(
-                Array.from(staggerRoots).flatMap((root) =>
-                  Array.from(root.querySelectorAll(":scope > *")),
-                ),
-              )
-            : section.querySelectorAll("[data-animate='stagger-item']");
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: "top 78%",
-              toggleActions: "play none none none",
-            },
-            defaults: { ease: "power3.out" },
-          });
-
-          if (intro.length) {
-            tl.fromTo(
-              intro,
-              { y: 32, autoAlpha: 0 },
-              { y: 0, autoAlpha: 1, duration: 0.75, stagger: 0.1, clearProps: "transform" },
-            );
-          }
-
-          if (staggerItems.length) {
-            tl.fromTo(
-              staggerItems,
-              { y: 24, autoAlpha: 0 },
-              { y: 0, autoAlpha: 1, duration: 0.55, stagger: 0.06, clearProps: "transform" },
-            );
-          }
-        });
-
-        requestAnimationFrame(() => ScrollTrigger.refresh());
-      });
-
-      return () => mm.revert();
-    },
-    { scope: rootRef },
-  );
+  usePageReveal({ scope: rootRef });
 
   const eyebrow =
     article.categoryParent && article.categoryParent !== article.category
@@ -367,188 +113,100 @@ export default function InsightDetailPage({
       ref={rootRef}
       style={{ "--insight-sticky-offset": `${stickyOffsets.total}px` } as CSSProperties}
     >
-      {/* Hero */}
-      <section
-        className="section-shell bg-paper pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-16"
-        aria-labelledby="insight-hero-heading"
-      >
-        <div className="section-inner">
-          <nav aria-label="Breadcrumb" data-animate="hero-copy" className="text-body-sm">
-            <ol className="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-muted">
-              <li>
-                <Link
-                  href="/"
-                  className="text-red transition hover:text-ink focus-visible:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-                >
-                  Home
-                </Link>
+      <PageHero
+        headingId="insight-hero-heading"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Insights", href: "/insights" },
+          { label: article.title, title: article.title, clamp: true },
+        ]}
+        breadcrumbTone="accent"
+        breadcrumbCurrentClassName="text-ink"
+        eyebrow={eyebrow}
+        title={
+          <>
+            {article.headlineBefore}{" "}
+            <span className="text-red">{article.headlineAccent}</span>
+          </>
+        }
+        body={article.excerpt}
+        bodyClassName="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[32rem] sm:mt-6"
+        copyAfterBody={
+          <div
+            data-animate="hero-copy"
+            className="mt-6 flex flex-col gap-4 border-t border-line pt-5 sm:mt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6"
+          >
+            <ul
+              className="m-0 flex list-none flex-wrap items-center gap-x-5 gap-y-2 p-0 sm:gap-x-6"
+              aria-label="Article details"
+            >
+              <li className="flex items-center gap-2 text-body-sm text-muted">
+                <Calendar size={15} className="flex-none text-red" aria-hidden />
+                <time dateTime={article.date}>{formatDate(article.date)}</time>
               </li>
-              <li aria-hidden className="text-line">
-                /
-              </li>
-              <li>
-                <Link
-                  href="/insights"
-                  className="text-red transition hover:text-ink focus-visible:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-                >
-                  Insights
-                </Link>
-              </li>
-              <li aria-hidden className="text-line">
-                /
-              </li>
-              <li aria-current="page" className="max-w-full min-w-0 text-ink">
-                <span className="line-clamp-2 sm:line-clamp-none" title={article.title}>
-                  {article.title}
+              <li className="flex items-center gap-2 text-body-sm text-muted">
+                <Clock size={15} className="flex-none text-red" aria-hidden />
+                <span>
+                  <span className="sr-only">Estimated reading time: </span>
+                  {article.readTime}
                 </span>
               </li>
-            </ol>
-          </nav>
-
-          <div className="relative mt-8 lg:mt-10">
-            <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-0">
-              <div className="relative z-[1] flex min-w-0 flex-col justify-center lg:pr-16 xl:pr-20">
-                <p data-animate="hero-copy" className="text-eyebrow m-0">
-                  {eyebrow}
-                </p>
-                <h1
-                  id="insight-hero-heading"
-                  data-animate="hero-copy"
-                  className="text-display-xl mt-4 mb-0 text-balance"
-                >
-                  {article.headlineBefore}{" "}
-                  <span className="text-red">{article.headlineAccent}</span>
-                </h1>
-                <p
-                  data-animate="hero-copy"
-                  className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[32rem] sm:mt-6"
-                >
-                  {article.excerpt}
-                </p>
-
-                <div
-                  data-animate="hero-copy"
-                  className="mt-6 flex flex-col gap-4 border-t border-line pt-5 sm:mt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6"
-                >
-                  <ul
-                    className="m-0 flex list-none flex-wrap items-center gap-x-5 gap-y-2 p-0 sm:gap-x-6"
-                    aria-label="Article details"
-                  >
-                    <li className="flex items-center gap-2 text-body-sm text-muted">
-                      <Calendar size={15} className="flex-none text-red" aria-hidden />
-                      <time dateTime={article.date}>{formatDate(article.date)}</time>
-                    </li>
-                    <li className="flex items-center gap-2 text-body-sm text-muted">
-                      <Clock size={15} className="flex-none text-red" aria-hidden />
-                      <span>
-                        <span className="sr-only">Estimated reading time: </span>
-                        {article.readTime}
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-2 text-body-sm text-muted">
-                      <User size={15} className="flex-none text-red" aria-hidden />
-                      <span>
-                        <span className="sr-only">Author: </span>
-                        {article.author}
-                      </span>
-                    </li>
-                  </ul>
-                  <InsightShareArticle title={article.title} shareUrl={shareUrl} />
-                </div>
-              </div>
-
-              <div data-animate="hero-visual" className="relative z-[1] min-w-0 overflow-hidden">
-                <ImageSlot
-                  asset={article.heroImage}
-                  priority
-                  className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px] lg:h-full"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div
-                  className="pointer-events-none absolute top-1/2 right-0 left-0 z-[2] hidden h-px -translate-y-1/2 bg-red lg:block"
-                  aria-hidden
-                />
-                <p
-                  className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-xs"
-                  aria-hidden
-                >
-                  {insightsHero.verticalMark}
-                </p>
-              </div>
-            </div>
-
-            <div
-              data-animate="hero-seam"
-              className="pointer-events-none absolute top-1/2 left-1/2 z-0 hidden size-[min(68%,20rem)] -translate-x-1/2 -translate-y-1/2 lg:block"
+              <li className="flex items-center gap-2 text-body-sm text-muted">
+                <User size={15} className="flex-none text-red" aria-hidden />
+                <span>
+                  <span className="sr-only">Author: </span>
+                  {article.author}
+                </span>
+              </li>
+            </ul>
+            <ShareBar
+              title={article.title}
+              shareUrl={shareUrl}
+              variant="compact"
+              ariaLabel="Share this article"
+              copySuccessMessage="Article link copied to clipboard."
+              copyErrorMessage="Could not copy the article link."
+            />
+          </div>
+        }
+        gridClassName="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-0"
+        copyColumnClassName="relative z-[1] flex min-w-0 flex-col justify-center lg:pr-16 xl:pr-20"
+        media={
+          <>
+            <ImageSlot
+              asset={article.heroImage}
+              priority
+              className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px] lg:h-full"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <p
+              className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-xs"
               aria-hidden
             >
-              <Image
-                src={insightsHero.burst}
-                alt=""
-                fill
-                sizes="320px"
-                unoptimized
-                className="object-contain opacity-45"
-              />
-            </div>
-            <button
-              type="button"
-              onClick={() => scrollToElement("overview")}
-              data-animate="hero-seam"
-              className="absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden"
-              aria-label="Continue to article overview"
-            >
-              <Image src={insightsHero.arrow} alt="" aria-hidden width={56} height={56} unoptimized />
-            </button>
-          </div>
-        </div>
-      </section>
+              {insightsHero.verticalMark}
+            </p>
+          </>
+        }
+        burstSrc={insightsHero.burst}
+        seam={{
+          onClick: () => scrollToElement("overview"),
+          ariaLabel: "Continue to article overview",
+          arrowSrc: insightsHero.arrow,
+        }}
+      />
 
-      {/* Tab bar */}
-      {sectionTabs.length > 0 ? (
-        <div
-          ref={tabBarRef}
-          className="sticky z-40 border-b border-line bg-white/95 shadow-sm backdrop-blur-sm supports-[backdrop-filter]:bg-white/90"
-          style={{ top: stickyOffsets.header }}
-        >
-          <div className="section-shell">
-            <div
-              ref={tabNavRef}
-              className="section-inner overflow-x-auto overscroll-x-contain scroll-px-4 [-webkit-overflow-scrolling:touch] insight-detail-tab-nav"
-            >
-              <nav aria-label="Article sections" className="flex min-w-max gap-0">
-                {sectionTabs.map((tab, index) => {
-                  const isActive = activeTab === tab.id;
-                  return (
-                    <a
-                      key={tab.id}
-                      href={`#${tab.id}`}
-                      data-tab-id={tab.id}
-                      aria-current={isActive ? "location" : undefined}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        scrollToElement(tab.id);
-                      }}
-                      onKeyDown={(event) => handleTabKeyDown(event, index)}
-                      className={`text-cta tap-target-sm relative inline-flex min-h-11 items-center px-4 py-3 whitespace-nowrap transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-12 sm:px-5 sm:py-4 ${
-                        isActive ? "text-red" : "text-muted hover:text-ink"
-                      }`}
-                    >
-                      {tab.label}
-                      {isActive ? (
-                        <span
-                          className="absolute right-4 bottom-0 left-4 h-0.5 bg-red sm:right-5 sm:left-5"
-                          aria-hidden
-                        />
-                      ) : null}
-                    </a>
-                  );
-                })}
-              </nav>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      <StickySectionNav
+        tabs={sectionTabs}
+        activeTab={activeTab}
+        headerOffset={stickyOffsets.header}
+        tabBarRef={tabBarRef}
+        tabNavRef={tabNavRef}
+        ariaLabel="Article sections"
+        ariaCurrentValue="location"
+        scrollRegion={false}
+        onSelect={scrollToElement}
+        onTabKeyDown={handleTabKeyDown}
+      />
 
       {/* Main content + sidebar */}
       <section className="section-shell section-pad bg-white" aria-label="Article content">
@@ -886,7 +544,7 @@ export default function InsightDetailPage({
                 <p className="text-body-sm mt-3 mb-0 text-muted">
                   Get perspectives on growth, media and technology delivered to your inbox.
                 </p>
-                <InsightNewsletterForm />
+                <NewsletterSubscribe inputId="insight-newsletter-email" source="insight-detail" />
               </div>
             </aside>
           </div>

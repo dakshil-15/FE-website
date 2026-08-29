@@ -1,6 +1,7 @@
 /**
  * Capabilities landing page content.
- * Image/icon slots are placeholders until final assets are provided.
+ * Assets live in /public/images/capabilities/.
+ * Icons/process SVGs from first_economy_capabilities_ALL_individual_assets.
  */
 
 import type { MediaSlot } from "@/content/about";
@@ -11,9 +12,10 @@ export const capabilitiesHero = {
   headlineAccent: "Growth Systems",
   body: "Technology, AI, data, platforms and automation — engineered as one connected growth system, not isolated tools or vendor stacks.",
   visual: {
-    src: "",
+    src: "/images/capabilities/hero/visual-red-network.png",
     alt: "Hexagonal capability network with First Economy at the centre",
     label: "Capabilities hero network visual",
+    fit: "contain",
   } satisfies MediaSlot,
   burst: "/images/services/hero/radial-burst.svg",
   arrow: "/images/services/hero/arrow-circle.svg",
@@ -40,56 +42,88 @@ export const capabilityCards: CapabilityCard[] = [
     title: "Technology",
     body: "Platforms, ERPs and systems built for scale, compliance and long-term growth.",
     href: "/services/technology",
-    icon: { src: "", alt: "", label: "Technology icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-technology.svg",
+      alt: "",
+      label: "Technology icon",
+    },
   },
   {
     id: "ai-innovation",
     title: "AI & Innovation",
     body: "Intelligence applied to creative, analytics, search and operations — built into the workflow.",
     href: "/services/ai-solutions",
-    icon: { src: "", alt: "", label: "AI & Innovation icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-ai-innovation.svg",
+      alt: "",
+      label: "AI & Innovation icon",
+    },
   },
   {
     id: "data-analytics",
     title: "Data & Analytics",
     body: "Audience, platform and performance data unified in one operating layer.",
-    href: "#intelligence",
-    icon: { src: "", alt: "", label: "Data & Analytics icon" },
+    href: "#advantage",
+    icon: {
+      src: "/images/capabilities/icons/capability-data-analytics.svg",
+      alt: "",
+      label: "Data & Analytics icon",
+    },
   },
   {
     id: "digital-platforms",
     title: "Digital Platforms",
     body: "Websites, apps, marketplaces and owned channels engineered across every touchpoint.",
     href: "/services/marketplace-management",
-    icon: { src: "", alt: "", label: "Digital Platforms icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-digital-platforms.svg",
+      alt: "",
+      label: "Digital Platforms icon",
+    },
   },
   {
     id: "automation",
     title: "Automation",
     body: "Workflow automation and connected systems that remove friction and accelerate velocity.",
     href: "#growth-system",
-    icon: { src: "", alt: "", label: "Automation icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-automation.svg",
+      alt: "",
+      label: "Automation icon",
+    },
   },
   {
     id: "enterprise",
     title: "Enterprise Solutions",
     body: "Enterprise-grade systems for complex, multi-market and multi-brand organisations.",
     href: "/services/technology",
-    icon: { src: "", alt: "", label: "Enterprise Solutions icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-enterprise-solutions.png",
+      alt: "",
+      label: "Enterprise Solutions icon",
+    },
   },
   {
     id: "ecosystem",
     title: "Ecosystem & Partners",
     body: "A connected stack of platforms, data infrastructure and partner networks.",
     href: "#ecosystem",
-    icon: { src: "", alt: "", label: "Ecosystem & Partners icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-ecosystem-partners.svg",
+      alt: "",
+      label: "Ecosystem & Partners icon",
+    },
   },
   {
     id: "strategy",
     title: "Strategy & Consulting",
     body: "The thinking that connects every capability into one measurable growth plan.",
     href: "/contact",
-    icon: { src: "", alt: "", label: "Strategy & Consulting icon" },
+    icon: {
+      src: "/images/capabilities/icons/capability-strategy-consulting.png",
+      alt: "",
+      label: "Strategy & Consulting icon",
+    },
   },
 ];
 
@@ -104,42 +138,66 @@ export const growthSystemSteps = [
     id: "discover",
     title: "Discover",
     body: "Uncover growth constraints, audience truths and market opportunities.",
-    icon: { src: "/images/services/process/discover_magnifier.svg", alt: "", label: "Discover" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-discover.svg",
+      alt: "",
+      label: "Discover",
+    } satisfies MediaSlot,
   },
   {
     number: "02",
     id: "strategize",
     title: "Strategize",
     body: "Define the system — channels, creative, technology and data as one plan.",
-    icon: { src: "/images/services/process/strategize_nodes.svg", alt: "", label: "Strategize" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-strategize.svg",
+      alt: "",
+      label: "Strategize",
+    } satisfies MediaSlot,
   },
   {
     number: "03",
     id: "design",
     title: "Design",
     body: "Craft experiences, platforms and campaigns built for conversion and scale.",
-    icon: { src: "/images/services/process/build_gear.svg", alt: "", label: "Design" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-design.svg",
+      alt: "",
+      label: "Design",
+    } satisfies MediaSlot,
   },
   {
     number: "04",
     id: "activate",
     title: "Activate",
     body: "Launch with precision — media, creative and tech coordinated for impact.",
-    icon: { src: "/images/services/process/launch_rocket.svg", alt: "", label: "Activate" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-activate.svg",
+      alt: "",
+      label: "Activate",
+    } satisfies MediaSlot,
   },
   {
     number: "05",
     id: "optimize",
     title: "Optimize",
     body: "Measure, learn and refine so performance compounds instead of resetting.",
-    icon: { src: "/images/services/process/optimize_chart.svg", alt: "", label: "Optimize" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-optimize.svg",
+      alt: "",
+      label: "Optimize",
+    } satisfies MediaSlot,
   },
   {
     number: "06",
     id: "scale",
     title: "Scale",
     body: "Expand what works — new markets, channels and capabilities without losing coherence.",
-    icon: { src: "", alt: "", label: "Scale icon" } satisfies MediaSlot,
+    icon: {
+      src: "/images/capabilities/process/process-scale.svg",
+      alt: "",
+      label: "Scale icon",
+    } satisfies MediaSlot,
   },
 ];
 
@@ -154,34 +212,178 @@ export const intelligenceSection = {
     { value: "Real Time", label: "Insights" },
   ],
   image: {
-    src: "",
+    src: "/images/capabilities/intelligence/visual-ai-cube.png",
     alt: "Glowing AI cube with digital circuitry",
     label: "AI technology visual",
+    fit: "contain",
   } satisfies MediaSlot,
 };
 
+/** Deck slide 97 — The Infrastructure of Advantage */
+export const advantageToolsSection = {
+  eyebrow: "The Infrastructure of Advantage",
+  titleBefore: "Data Tools.",
+  titleAccent: "Built-in Edge.",
+  body: "Best-in-class analytics and intelligence platforms — plus in-house proprietary tools — powering sharper decisions and continuous optimisation.",
+};
+
 export const ecosystemSection = {
-  eyebrow: "Powered by a Strong Ecosystem",
-  titleBefore: "Built Together.",
-  titleAccent: "Built for Growth.",
-  body: "Certified partnerships and platform expertise across the marketing and technology stack.",
+  eyebrow: "Partners Who Help Us Deliver That Advantage",
+  titleBefore: "Platform Partners.",
+  titleAccent: "Built for Reach.",
+  body: "Media and platform partnerships across search, social, OTT, commerce and publishing — the channels our growth systems run on.",
 };
 
-export type PartnerLogo = {
-  name: string;
-  src?: string;
-  w?: number;
-  h?: number;
-};
+import type { PartnerLogo } from "@/content/partners";
 
-export const ecosystemPartnerLogos: PartnerLogo[] = [
-  { name: "Google Marketing Platform" },
-  { name: "Meta Business Partner" },
-  { name: "Amazon Ads" },
-  { name: "Microsoft Advertising" },
-  { name: "Salesforce" },
-  { name: "Adobe" },
-  { name: "Nielsen" },
+export type { PartnerLogo };
+
+/** Deck slide 98 — platform partners (full original PNGs via object-contain). */
+export const platformPartnerLogos: PartnerLogo[] = [
+  {
+    slug: "google",
+    name: "Google",
+    src: "/images/capabilities/platforms/google.png",
+    width: 360,
+    height: 262,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "meta",
+    name: "Meta",
+    src: "/images/capabilities/platforms/meta.png",
+    width: 360,
+    height: 240,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "linkedin",
+    name: "LinkedIn",
+    src: "/images/capabilities/platforms/linkedin.png",
+    width: 336,
+    height: 126,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "reddit",
+    name: "Reddit",
+    src: "/images/capabilities/platforms/reddit.png",
+    width: 900,
+    height: 600,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "jiohotstar",
+    name: "JioHotstar",
+    src: "/images/capabilities/platforms/jiohotstar.png",
+    width: 909,
+    height: 240,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "spotify",
+    name: "Spotify",
+    src: "/images/capabilities/platforms/spotify.png",
+    width: 480,
+    height: 320,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "pinterest",
+    name: "Pinterest",
+    src: "/images/capabilities/platforms/pinterest.png",
+    width: 410,
+    height: 100,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "prime-video",
+    name: "Prime Video",
+    src: "/images/capabilities/platforms/prime-video.png",
+    width: 384,
+    height: 119,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "quora",
+    name: "Quora",
+    src: "/images/capabilities/platforms/quora.png",
+    width: 384,
+    height: 108,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "inshorts",
+    name: "Inshorts",
+    src: "/images/capabilities/platforms/inshorts.png",
+    width: 331,
+    height: 140,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "zepto",
+    name: "Zepto",
+    src: "/images/capabilities/platforms/zepto.png",
+    width: 384,
+    height: 129,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "paytm",
+    name: "Paytm",
+    src: "/images/capabilities/platforms/paytm.png",
+    width: 365,
+    height: 120,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "snapchat",
+    name: "Snapchat",
+    src: "/images/capabilities/platforms/snapchat.png",
+    width: 600,
+    height: 164,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "moneycontrol",
+    name: "Moneycontrol",
+    src: "/images/capabilities/platforms/moneycontrol.png",
+    width: 434,
+    height: 95,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "x-ads",
+    name: "X Ads",
+    src: "/images/capabilities/platforms/x-ads.png",
+    width: 366,
+    height: 113,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
+  {
+    slug: "indigo",
+    name: "IndiGo",
+    src: "/images/capabilities/platforms/indigo.png",
+    width: 521,
+    height: 163,
+    sourceMedia: "deck-slide-98",
+    sourceSlide: 98,
+  },
 ];
 
 export const techCaseStudiesSection = {
@@ -199,6 +401,7 @@ export type CapabilityCaseStudy = {
   title: string;
   body: string;
   image: MediaSlot;
+  href?: string;
 };
 
 export const capabilityCaseStudies: CapabilityCaseStudy[] = [
@@ -207,21 +410,38 @@ export const capabilityCaseStudies: CapabilityCaseStudy[] = [
     client: "Godrej Properties",
     title: "Citywide launch at scale",
     body: "1,000+ influencers live in one hour — a launch engineered for maximum recall.",
-    image: { src: "", alt: "Godrej Properties case study", label: "Godrej Properties" },
+    image: {
+      src: "/images/capabilities/case-studies/client-godrej-properties.png",
+      alt: "Godrej Properties case study",
+      label: "Godrej Properties",
+      fit: "contain",
+    },
   },
   {
-    slug: "orpat-erp",
-    client: "Orpat",
-    title: "ERP built for growth",
-    body: "Custom enterprise systems that connected operations, sales and marketing.",
-    image: { src: "", alt: "Orpat case study", label: "Orpat" },
+    slug: "zydus",
+    client: "Zydus",
+    title: "Pharma growth engineered",
+    body: "Integrated media, creative and data systems built for regulated-category scale.",
+    href: "/work",
+    image: {
+      src: "/images/capabilities/case-studies/client-zydus.png",
+      alt: "Zydus case study",
+      label: "Zydus",
+      fit: "contain",
+    },
   },
   {
-    slug: "poonawalla-ai-creatives",
-    client: "Poonawalla Fincorp",
-    title: "AI-crafted festive reels",
-    body: "30-second story reels produced with AI — faster, smarter creative at scale.",
-    image: { src: "", alt: "Poonawalla Fincorp case study", label: "Poonawalla Fincorp" },
+    slug: "dabur",
+    client: "Dabur",
+    title: "FMCG performance at scale",
+    body: "Cross-channel growth systems connecting brand, commerce and measurable outcomes.",
+    href: "/work",
+    image: {
+      src: "/images/capabilities/case-studies/client-dabur.png",
+      alt: "Dabur case study",
+      label: "Dabur",
+      fit: "contain",
+    },
   },
 ];
 

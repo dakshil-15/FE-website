@@ -3,317 +3,167 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRight, MapPin } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, ArrowRightCircle, MapPin } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import CTASection from "@/components/CTASection";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import TeamCarousel from "@/components/about/TeamCarousel";
-import AwardsCarousel from "@/components/about/AwardsCarousel";
+import FeaturedAwardHighlight from "@/components/about/FeaturedAwardHighlight";
 import PartnerLogos from "@/components/home/PartnerLogos";
+import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   aboutHero,
   aboutLocations,
   aboutStats,
   aboutStory,
   aboutTimeline,
-  aboutUi,
   aboutValues,
   aboutWhatWeDo,
+  aboutTeamTagline,
+  aboutFeaturedAchievement,
+  aboutCta,
 } from "@/content/about";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function AboutPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
+  usePageReveal({
+    scope: rootRef,
+    onReveal: ({ gsap, ScrollTrigger }) => {
+      const statsSection = gsap.utils.toArray<HTMLElement>("[data-stats-section]")[0];
+      const counters = gsap.utils.toArray<HTMLElement>("[data-counter]");
 
-      mm.add(
-        {
-          reduceMotion: "(prefers-reduced-motion: reduce)",
-          canAnimate: "(prefers-reduced-motion: no-preference)",
-        },
-        (context) => {
-          const { reduceMotion } = context.conditions ?? {};
+      const formatCounter = (el: HTMLElement, val: number) => {
+        const decimals = Number(el.dataset.decimals ?? 0);
+        const prefix = el.dataset.prefix ?? "";
+        const suffix = el.dataset.suffix ?? "";
+        const display = decimals > 0 ? val.toFixed(decimals) : String(Math.round(val));
+        el.textContent = `${prefix}${display}${suffix}`;
+      };
 
-          if (reduceMotion) {
-            gsap.set(
-              "[data-animate], [data-animate-stagger] > *, [data-timeline-icon], [data-timeline-copy], [data-timeline-line]",
-              {
-                clearProps: "all",
-                autoAlpha: 1,
-                y: 0,
-                scale: 1,
-                scaleX: 1,
-                scaleY: 1,
-              },
-            );
-            return;
-          }
-
-          const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-          heroTl
-            .from("[data-animate='hero-copy']", {
-              y: 28,
-              autoAlpha: 0,
-              duration: 0.9,
-              stagger: 0.12,
-            })
-            .from(
-              "[data-animate='hero-visual']",
-              {
-                autoAlpha: 0,
-                duration: 0.4,
-              },
-              "-=0.7",
-            )
-            .fromTo(
-              "[data-animate='hero-seam']",
-              { autoAlpha: 0, scale: 0.86 },
-              {
-                autoAlpha: 1,
-                scale: 1,
-                duration: 0.55,
-                stagger: 0.08,
-                clearProps: "scale",
-              },
-              "-=0.25",
-            );
-
-          const statsSection = gsap.utils.toArray<HTMLElement>("[data-stats-section]")[0];
-          const counters = gsap.utils.toArray<HTMLElement>("[data-counter]");
-
-          const formatCounter = (el: HTMLElement, val: number) => {
-            const suffix = el.dataset.suffix ?? "";
-            el.textContent = `${Math.round(val)}${suffix}`;
-          };
-
-          const runCounters = () => {
-            counters.forEach((el, index) => {
-              const target = Number(el.dataset.target ?? 0);
-              const state = ((el as HTMLElement & { __count?: { val: number } }).__count ??= {
-                val: 0,
-              });
-              gsap.killTweensOf(state);
-              state.val = 0;
-              formatCounter(el, 0);
-              gsap.to(state, {
-                val: target,
-                duration: 1.8,
-                delay: index * 0.08,
-                ease: "power2.out",
-                onUpdate: () => formatCounter(el, state.val),
-              });
-            });
-          };
-
-          if (statsSection && counters.length) {
-            ScrollTrigger.create({
-              trigger: statsSection,
-              start: "top 78%",
-              onEnter: runCounters,
-              onEnterBack: runCounters,
-            });
-          }
-
-          /* Our Story — draw connector, then reveal milestones in order */
-          const storyWrap = gsap.utils.toArray<HTMLElement>(".about-timeline-wrap")[0];
-          const storyTimeline = storyWrap?.querySelector<HTMLElement>("[data-story-timeline]");
-          if (storyWrap && storyTimeline) {
-            const line = storyWrap.querySelector<HTMLElement>("[data-timeline-line]");
-            const icons = storyTimeline.querySelectorAll("[data-timeline-icon]");
-            const copies = storyTimeline.querySelectorAll("[data-timeline-copy]");
-            const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-
-            if (line) {
-              gsap.set(line, isDesktop ? { scaleX: 0 } : { scaleY: 0 });
-            }
-            gsap.set(icons, { scale: 0.55, autoAlpha: 0 });
-            gsap.set(copies, { y: 18, autoAlpha: 0 });
-
-            const storyTl = gsap.timeline({
-              scrollTrigger: {
-                trigger: storyWrap,
-                start: "top 78%",
-                toggleActions: "play none none none",
-              },
-              defaults: { ease: "power3.out" },
-            });
-
-            if (line) {
-              storyTl.to(line, {
-                ...(isDesktop ? { scaleX: 1 } : { scaleY: 1 }),
-                duration: 0.9,
-                ease: "power2.inOut",
-              });
-            }
-
-            icons.forEach((icon, i) => {
-              const at = line ? (i === 0 ? "-=0.35" : "-=0.45") : i === 0 ? 0 : "-=0.45";
-              storyTl.to(
-                icon,
-                {
-                  scale: 1,
-                  autoAlpha: 1,
-                  duration: 0.45,
-                  ease: "back.out(1.6)",
-                },
-                at,
-              );
-              storyTl.to(
-                copies[i],
-                {
-                  y: 0,
-                  autoAlpha: 1,
-                  duration: 0.5,
-                },
-                "-=0.28",
-              );
-            });
-          }
-
-          gsap.utils.toArray<HTMLElement>("[data-animate-section]").forEach((section) => {
-            const intro = section.querySelectorAll("[data-animate='fade-up']");
-            const staggerRoots = section.querySelectorAll("[data-animate-stagger]");
-            const staggerItems = staggerRoots.length
-              ? gsap.utils.toArray<Element>(
-                  Array.from(staggerRoots).flatMap((root) => Array.from(root.querySelectorAll(":scope > *"))),
-                )
-              : section.querySelectorAll("[data-animate='stagger-item']");
-
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: section,
-                start: "top 78%",
-                toggleActions: "play none none none",
-              },
-              defaults: { ease: "power3.out" },
-            });
-
-            if (intro.length) {
-              tl.from(intro, {
-                y: 32,
-                autoAlpha: 0,
-                duration: 0.75,
-                stagger: 0.1,
-              });
-            }
-
-            if (staggerItems.length) {
-              tl.from(
-                staggerItems,
-                {
-                  y: 24,
-                  autoAlpha: 0,
-                  duration: 0.55,
-                  stagger: 0.06,
-                },
-                intro.length ? "-=0.35" : 0,
-              );
-            }
+      const runCounters = () => {
+        counters.forEach((el, index) => {
+          const target = Number(el.dataset.target ?? 0);
+          const state = ((el as HTMLElement & { __count?: { val: number } }).__count ??= {
+            val: 0,
           });
+          gsap.killTweensOf(state);
+          state.val = 0;
+          formatCounter(el, 0);
+          gsap.to(state, {
+            val: target,
+            duration: 1.8,
+            delay: index * 0.08,
+            ease: "power2.out",
+            onUpdate: () => formatCounter(el, state.val),
+          });
+        });
+      };
 
-          requestAnimationFrame(() => ScrollTrigger.refresh());
-        },
-      );
+      if (statsSection && counters.length) {
+        ScrollTrigger.create({
+          trigger: statsSection,
+          start: "top 78%",
+          onEnter: runCounters,
+          onEnterBack: runCounters,
+        });
+      }
 
-      return () => mm.revert();
+      const storyWrap = gsap.utils.toArray<HTMLElement>(".about-timeline-wrap")[0];
+      const storyTimeline = storyWrap?.querySelector<HTMLElement>("[data-story-timeline]");
+      if (storyWrap && storyTimeline) {
+        const line = storyWrap.querySelector<HTMLElement>("[data-timeline-line]");
+        const icons = storyTimeline.querySelectorAll("[data-timeline-icon]");
+        const copies = storyTimeline.querySelectorAll("[data-timeline-copy]");
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+        if (line) {
+          gsap.set(line, isDesktop ? { scaleX: 0 } : { scaleY: 0 });
+        }
+        gsap.set(icons, { scale: 0.55, autoAlpha: 0 });
+        gsap.set(copies, { y: 18, autoAlpha: 0 });
+
+        const storyTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: storyWrap,
+            start: "top 78%",
+            toggleActions: "play none none none",
+          },
+          defaults: { ease: "power3.out" },
+        });
+
+        if (line) {
+          storyTl.to(line, {
+            ...(isDesktop ? { scaleX: 1 } : { scaleY: 1 }),
+            duration: 0.9,
+            ease: "power2.inOut",
+          });
+        }
+
+        icons.forEach((icon, i) => {
+          const at = line ? (i === 0 ? "-=0.35" : "-=0.45") : i === 0 ? 0 : "-=0.45";
+          storyTl.to(
+            icon,
+            {
+              scale: 1,
+              autoAlpha: 1,
+              duration: 0.45,
+              ease: "back.out(1.6)",
+            },
+            at,
+          );
+          storyTl.to(
+            copies[i],
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.5,
+            },
+            "-=0.28",
+          );
+        });
+      }
     },
-    { scope: rootRef },
-  );
+  });
 
   return (
     <div ref={rootRef}>
-      <section
-        className="section-shell bg-paper pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-16"
-        aria-labelledby="about-hero-heading"
-      >
-        <div className="section-inner">
-          <nav aria-label="Breadcrumb" data-animate="hero-copy" className="text-body-sm text-muted">
-            <ol className="m-0 flex list-none items-center gap-2 p-0">
-              <li>
-                <Link href="/" className="transition hover:text-red focus-visible:text-red">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden className="text-line">
-                &gt;
-              </li>
-              <li className="text-ink" aria-current="page">
-                About Us
-              </li>
-            </ol>
-          </nav>
-
-          <div className="relative mt-8 lg:mt-10">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-0 lg:items-stretch">
-              {/* Copy stays in the left half; padding keeps type clear of the seam watermark */}
-              <div className="relative z-[1] min-w-0 lg:pr-20 xl:pr-24">
-                <p data-animate="hero-copy" className="text-eyebrow m-0">
-                  {aboutHero.eyebrow}
-                </p>
-                <h1
-                  id="about-hero-heading"
-                  data-animate="hero-copy"
-                  className="text-display-xl mt-4 mb-0 text-balance"
-                >
-                  {aboutHero.headlineBefore}{" "}
-                  <span className="text-red">{aboutHero.headlineAccent}</span>{" "}
-                  {aboutHero.headlineAfter}
-                  <span className="ml-[0.12em] inline-block h-[0.22em] w-[0.22em] translate-y-[-0.08em] bg-red align-middle" aria-hidden />
-                </h1>
-                <p
-                  data-animate="hero-copy"
-                  className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
-                >
-                  {aboutHero.body}
-                </p>
-              </div>
-
-              <div data-animate="hero-visual" className="relative z-[1] min-w-0 overflow-hidden">
-                <ImageSlot
-                  asset={aboutHero.image}
-                  priority
-                  className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[420px]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                {/* Red accent line across the photo, from the seam arrow */}
-                <div
-                  className="pointer-events-none absolute top-1/2 right-0 left-0 z-[2] hidden h-px -translate-y-1/2 bg-red lg:block"
-                  aria-hidden
-                />
-              </div>
-            </div>
-
-            {/* Soft radial watermark behind copy/image; only the arrow sits on the divide */}
-            <div
-              data-animate="hero-seam"
-              className="pointer-events-none absolute top-1/2 left-1/2 z-0 hidden size-[min(68%,20rem)] -translate-x-1/2 -translate-y-1/2 lg:block"
+      <PageHero
+        headingId="about-hero-heading"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+        breadcrumbSeparator=">"
+        breadcrumbCurrentClassName="text-ink"
+        eyebrow={aboutHero.eyebrow}
+        title={
+          <>
+            {aboutHero.headlineBefore}{" "}
+            <span className="text-red">{aboutHero.headlineAccent}</span>{" "}
+            {aboutHero.headlineAfter}
+            <span
+              className="ml-[0.12em] inline-block h-[0.22em] w-[0.22em] translate-y-[-0.08em] bg-red align-middle"
               aria-hidden
-            >
-              <Image
-                src={aboutHero.burst}
-                alt=""
-                fill
-                sizes="320px"
-                unoptimized
-                className="object-contain opacity-45"
-              />
-            </div>
-            <Link
-              href="#our-story"
-              data-animate="hero-seam"
-              className="absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 max-lg:hidden"
-              aria-label="Continue to our story"
-            >
-              <Image src={aboutHero.arrow} alt="" aria-hidden width={56} height={56} unoptimized />
-            </Link>
-          </div>
-        </div>
-      </section>
+            />
+          </>
+        }
+        body={aboutHero.body}
+        gridClassName="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-0 lg:items-stretch"
+        media={
+          <ImageSlot
+            asset={aboutHero.image}
+            priority
+            className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[420px]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        }
+        burstSrc={aboutHero.burst}
+        seam={{
+          href: "#our-story",
+          ariaLabel: "Continue to our story",
+          arrowSrc: aboutHero.arrow,
+          className:
+            "absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 max-lg:hidden",
+        }}
+      />
 
       <section
         data-animate-section
@@ -329,13 +179,26 @@ export default function AboutPage() {
             <div key={stat.label} className="stat-item">
               <IconSlot asset={stat.icon} tone="dark" size={44} className="mb-4 sm:mb-5" />
               <p className="text-stat m-0 text-red">
-                <span data-counter data-target={stat.value} data-suffix={stat.suffix}>
-                  {stat.value}
+                <span
+                  data-counter
+                  data-target={stat.value}
+                  data-prefix={stat.prefix ?? ""}
+                  data-suffix={stat.suffix}
+                  data-decimals={stat.decimals ?? 0}
+                >
+                  {stat.prefix ?? ""}
+                  {stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}
                   {stat.suffix}
                 </span>
+                {stat.showPlus && (
+                  <span className="text-red" aria-hidden>
+                    +
+                  </span>
+                )}
               </p>
               <p className="mt-2 text-xs font-bold tracking-[0.14em] text-white uppercase sm:mt-2.5 sm:text-sm">
                 {stat.label}
+                {stat.footnoteMarker ? "*" : ""}
               </p>
               <p className="text-body-sm mt-2.5 mb-0 max-w-[220px] text-muted-on-dark sm:mt-3">{stat.description}</p>
             </div>
@@ -411,10 +274,10 @@ export default function AboutPage() {
             <div data-animate="fade-up">
               <Link
                 href={aboutWhatWeDo.cta.href}
-                className="text-cta mt-7 inline-flex min-h-12 items-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:py-4 sm:pl-7"
+                className="text-cta tap-target mt-7 inline-flex min-h-12 items-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:gap-4 sm:py-4 sm:pl-7"
               >
                 {aboutWhatWeDo.cta.label}
-                <Image src={aboutUi.arrowCircle} alt="" aria-hidden width={32} height={32} unoptimized />
+                <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
               </Link>
             </div>
           </div>
@@ -445,7 +308,7 @@ export default function AboutPage() {
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
               <p className="text-body section-copy section-copy-on-dark m-0">
-                The people who design the system, lead the work, and stay accountable for growth.
+                {aboutTeamTagline}. The people who design the system, lead the work, and stay accountable for growth.
               </p>
             </div>
           </div>
@@ -494,20 +357,19 @@ export default function AboutPage() {
               A few of our many <span className="text-red">achievements.</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <Link href="/awards" className="text-cta link-cta mt-0 text-ink">
-                View all awards
-                <Image src={aboutUi.arrow} alt="" aria-hidden width={16} height={16} unoptimized />
-              </Link>
+              <p className="text-body section-copy section-copy-on-light m-0">
+                {aboutFeaturedAchievement.body}
+              </p>
             </div>
           </div>
 
           <div data-animate="fade-up" className="section-media">
-            <AwardsCarousel />
+            <FeaturedAwardHighlight />
           </div>
         </div>
       </section>
 
-      <PartnerLogos sectionId="trusted-by" />
+      <PartnerLogos sectionId="trusted-by" layout="grid" />
 
       <section
         id="locations"
@@ -523,12 +385,6 @@ export default function AboutPage() {
             <h2 data-animate="fade-up" id="about-locations-heading" className="text-display-md m-0">
               Where we <span className="text-red">operate.</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <Link href="/contact#offices" className="text-cta link-cta mt-0 text-ink">
-                View all locations
-                <Image src={aboutUi.arrow} alt="" aria-hidden width={16} height={16} unoptimized />
-              </Link>
-            </div>
           </div>
           <ul
             data-animate-stagger
@@ -564,7 +420,9 @@ export default function AboutPage() {
                           <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
                         ) : null}
                       </p>
-                      <p className="text-body-sm mt-1.5 mb-0 text-muted">{office.description}</p>
+                      <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
+                        {office.address}
+                      </p>
                     </div>
                     <span
                       className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
@@ -579,6 +437,21 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
+
+      <CTASection
+        animate
+        headingId="about-cta-heading"
+        titleBefore={aboutCta.titleBefore}
+        titleAccent={aboutCta.titleAccent}
+        body={aboutCta.body}
+        primaryLabel={aboutCta.button.label}
+        primaryHref={aboutCta.button.href}
+        secondaryLabel={aboutCta.secondary.label}
+        secondaryHref={aboutCta.secondary.href}
+        tertiaryLabel={aboutCta.tertiary.label}
+        tertiaryHref={aboutCta.tertiary.href}
+        burstSrc={aboutCta.burst}
+      />
     </div>
   );
 }

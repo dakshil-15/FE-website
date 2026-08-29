@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { MediaSlot } from "@/content/about";
+import { mediaLucideIcons, type MediaLucideName } from "@/lib/mediaIcons";
 
 type Tone = "light" | "dark" | "accent";
 
@@ -14,6 +15,14 @@ function initialsFrom(label: string) {
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? "")
     .join("");
+}
+
+function resolveLucide(name: string | undefined) {
+  if (!name) return null;
+  if (name in mediaLucideIcons) {
+    return mediaLucideIcons[name as MediaLucideName];
+  }
+  return null;
 }
 
 export function ImageSlot({
@@ -72,13 +81,19 @@ export function PortraitSlot({
   const grayscale = asset.grayscale ?? true;
 
   if (asset.src) {
+    const isLeadershipPhoto = asset.src.startsWith("/images/about/leadership/");
+    const src = isLeadershipPhoto
+      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=3`
+      : asset.src;
+
     return (
       <div className={`relative overflow-hidden bg-[#161616] ${className}`}>
         <Image
-          src={asset.src}
+          src={src}
           alt={asset.alt ?? name}
           fill
           sizes={sizes}
+          unoptimized={isLeadershipPhoto}
           className={`object-cover object-top ${grayscale ? "grayscale" : ""}`}
         />
       </div>
@@ -110,15 +125,35 @@ export function IconSlot({
 }) {
   if (asset.src) {
     return (
-      <Image
-        src={asset.src}
-        alt={asset.alt}
-        aria-hidden={!asset.alt}
-        width={size}
-        height={size}
-        unoptimized
-        className={`object-contain ${className}`}
-      />
+      <span
+        className={`inline-flex shrink-0 items-center justify-center ${className}`}
+        style={{ width: size, height: size }}
+      >
+        <Image
+          src={asset.src}
+          alt={asset.alt}
+          aria-hidden={!asset.alt}
+          width={size}
+          height={size}
+          unoptimized
+          className="h-auto w-auto max-h-full max-w-full object-contain"
+        />
+      </span>
+    );
+  }
+
+  const Lucide = resolveLucide(asset.icon);
+  if (Lucide) {
+    const toneClass =
+      tone === "dark" || tone === "accent" ? "text-red" : "text-ink";
+    return (
+      <span
+        className={`inline-flex shrink-0 items-center justify-center ${toneClass} ${className}`}
+        style={{ width: size, height: size }}
+        aria-hidden
+      >
+        <Lucide size={Math.round(size * 0.72)} strokeWidth={1.5} />
+      </span>
     );
   }
 

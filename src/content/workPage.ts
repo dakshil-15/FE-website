@@ -4,7 +4,9 @@
  */
 
 import type { MediaSlot } from "@/content/about";
-import type { CaseStudy, CaseStudyFamily } from "@/content/types";
+import { industries } from "@/content/industries";
+import type { CaseStudy, CaseStudyFamily, Metric } from "@/content/types";
+import { workPhotos } from "@/content/workPhotos";
 
 export const workHero = {
   headlineBefore: "Case studies.",
@@ -73,10 +75,27 @@ const familyTags: Record<CaseStudyFamily, string> = {
 const titleOverrides: Record<string, string> = {
   "godrej-blue": "Godrej Blue",
   "godrej-greenfront": "Godrej Greenfront",
+  "fedex-csk": "FedEx × CSK",
   "ajanta-ai-creatives": "Ajanta Jewellery",
   waaree: "Waaree Energies",
   "poonawalla-ai-creatives": "Poonawalla AI",
+  "royale-touche-stay-curious": "Royale Touché",
 };
+
+/** Home carousel — curated headline metrics (deck highlights not always first in `results`). */
+const homeFeaturedSpotlight: Partial<Record<string, Metric>> = {
+  "godrej-blue": { value: "1,000+", label: "Influencers live in one hour" },
+  "royale-touche-stay-curious": { value: "120K+", label: "Reddit impressions" },
+};
+
+const homeFeaturedEyebrowOverrides: Partial<Record<string, string>> = {
+  "fedex-csk": "Brand Recall",
+  "royale-touche-stay-curious": "Integrated Campaign",
+  "poonawalla-fraud-awareness": "Fraud Awareness",
+  "poonawalla-ai-creatives": "AI Creative",
+};
+
+export const homeFeaturedWorkLimit = 4;
 
 export function workCardTitle(caseStudy: CaseStudy) {
   return titleOverrides[caseStudy.slug] ?? caseStudy.client;
@@ -86,21 +105,36 @@ export function workCardTag(caseStudy: CaseStudy) {
   return familyTags[caseStudy.family];
 }
 
-/** Case thumbnails under /public/images/work/cases/ */
-const caseImages: Record<string, string> = {
-  "godrej-blue": "/images/work/cases/godrej-blue.png",
-  "fedex-csk": "/images/work/cases/fedex-csk.png",
-  "royale-touche-stay-curious": "/images/work/cases/royale-touche.png",
-  "poonawalla-fraud-awareness": "/images/work/cases/poonawalla-fraud-awareness.png",
-  "mahindra-manulife": "/images/work/cases/mahindra-manulife.png",
-  "orpat-erp": "/images/work/cases/orpat-erp.png",
-  "ajanta-ai-creatives": "/images/work/cases/ajanta-ai-creatives.png",
-  waaree: "/images/work/cases/waaree.png",
-};
+export function caseStudyIndustryName(caseStudy: CaseStudy) {
+  return industries.find((industry) => industry.slug === caseStudy.industry)?.name ?? caseStudy.industry;
+}
 
+export function homeFeaturedWorkStudies(studies: CaseStudy[]) {
+  return workShowcaseOrder
+    .map((slug) => studies.find((study) => study.slug === slug))
+    .filter((study): study is CaseStudy => Boolean(study?.featured))
+    .slice(0, homeFeaturedWorkLimit);
+}
+
+export function homeFeaturedEyebrow(caseStudy: CaseStudy) {
+  return (
+    homeFeaturedEyebrowOverrides[caseStudy.slug] ??
+    caseStudy.tags?.[0] ??
+    workCardTag(caseStudy)
+  );
+}
+
+export function homeFeaturedSpotlightMetric(caseStudy: CaseStudy): Metric {
+  return (
+    homeFeaturedSpotlight[caseStudy.slug] ??
+    caseStudy.results[0] ?? { value: "—", label: "Impact" }
+  );
+}
+
+/** Case thumbnails — shared with home / detail story covers via workPhotos. */
 export function workCardImage(caseStudy: CaseStudy): MediaSlot {
   return {
-    src: caseImages[caseStudy.slug],
+    src: workPhotos[caseStudy.slug],
     alt: `${caseStudy.client} — ${caseStudy.campaign}`,
     label: workCardTitle(caseStudy),
     grayscale: false,

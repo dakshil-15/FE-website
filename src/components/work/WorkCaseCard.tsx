@@ -1,24 +1,73 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import type { MouseEvent } from "react";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import { workCardImage, workCardTag, workCardTitle } from "@/content/workPage";
 import type { CaseStudy } from "@/content/types";
+import {
+  beginWorkCaseTransition,
+  prefersWorkTransitionReducedMotion,
+} from "@/lib/workCaseTransition";
 
 export default function WorkCaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
+  const router = useRouter();
   const title = workCardTitle(caseStudy);
   const tag = workCardTag(caseStudy);
   const titleId = `work-card-${caseStudy.slug}`;
+  const href = `/work/${caseStudy.slug}`;
+  const image = workCardImage(caseStudy);
+
+  function handleClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    if (prefersWorkTransitionReducedMotion() || !image.src) {
+      return;
+    }
+
+    const sourceEl = event.currentTarget.querySelector<HTMLElement>("[data-work-flip-source]");
+    const started = beginWorkCaseTransition({
+      slug: caseStudy.slug,
+      href,
+      imageSrc: image.src,
+      imageAlt: image.alt || title,
+      sourceEl,
+    });
+
+    if (!started) return;
+
+    event.preventDefault();
+    // Hide the source media so only the floating clone is visible.
+    if (sourceEl) sourceEl.style.opacity = "0";
+    router.prefetch(href);
+  }
 
   return (
     <Link
-      href={`/work/${caseStudy.slug}`}
+      href={href}
       data-work-card
+      data-work-slug={caseStudy.slug}
       aria-labelledby={titleId}
+      onClick={handleClick}
       className="work-card group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-[0_10px_36px_rgba(0,0,0,0.08)] transition duration-200 hover:border-red/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
     >
-      <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-[#111]">
+      <div
+        data-work-flip-source
+        className="relative aspect-[16/10] shrink-0 overflow-hidden bg-[#111]"
+      >
         <ImageSlot
-          asset={workCardImage(caseStudy)}
+          asset={image}
           className="absolute inset-0 size-full border-0 bg-transparent"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 25vw, 320px"
         />

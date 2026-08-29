@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Archivo, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ButtonMotion from "@/components/ButtonMotion";
-import Preloader from "@/components/Preloader";
+
+/**
+ * Minimal root layout. The public site's chrome (Preloader, Header, Footer)
+ * lives in `(site)/layout.tsx` so the admin panel at `/admin` can render its
+ * own shell without inheriting it.
+ */
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -27,21 +29,14 @@ export const metadata: Metadata = {
     "First Economy is an integrated growth partner combining media, creative, technology, SEO, social, influencer marketing and AI into one growth system.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${barlow.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col overflow-x-hidden bg-paper text-ink">
-        <Preloader />
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content" className="flex-1" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <ButtonMotion />
-      </body>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${archivo.variable} ${barlow.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-paper text-ink">{children}</body>
     </html>
   );
 }

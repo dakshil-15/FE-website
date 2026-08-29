@@ -92,6 +92,18 @@ export default function Header() {
     buttonRef.current?.focus();
   }, [open, scrollLocked]);
 
+  useEffect(() => {
+    const desktopNav = window.matchMedia("(min-width: 1024px)");
+
+    function handleDesktopNav(event: MediaQueryListEvent | MediaQueryList) {
+      if (event.matches && open) closeMenu();
+    }
+
+    handleDesktopNav(desktopNav);
+    desktopNav.addEventListener("change", handleDesktopNav);
+    return () => desktopNav.removeEventListener("change", handleDesktopNav);
+  }, [open, closeMenu]);
+
   return (
     <>
       <header
@@ -113,7 +125,7 @@ export default function Header() {
           </Link>
 
           <nav
-            className="text-nav hidden min-w-0 flex-1 items-center justify-center gap-[clamp(12px,1.9vw,32px)] overflow-x-auto whitespace-nowrap xl:flex"
+            className="text-nav hidden min-w-0 flex-1 items-center justify-center gap-3 overflow-x-auto whitespace-nowrap lg:flex lg:gap-4 xl:gap-[clamp(12px,1.9vw,32px)]"
             aria-label="Primary"
           >
             {primaryNav.map((item) => {

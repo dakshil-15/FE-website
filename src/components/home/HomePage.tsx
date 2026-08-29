@@ -14,53 +14,29 @@ import InsightsSection from "@/components/home/InsightsSection";
 import LocationsSection from "@/components/home/LocationsSection";
 import CareersTeaser from "@/components/home/CareersTeaser";
 import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
+import CTASection from "@/components/CTASection";
 import {
   AiAnalyticsIcon,
   AwardsIcon,
   CitiesIcon,
   GlobeIcon,
 } from "@/components/brandIcons";
+import { networkStats } from "@/content/stats";
+import { homeCta } from "@/content/home";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const heroStats = [
-  {
-    value: 62,
-    prefix: "",
-    suffix: "",
-    decimals: 0,
-    label: "Agencies",
-    description: "Backed by one of the world's largest independent networks.",
-    Icon: GlobeIcon,
-  },
-  {
-    value: 85,
-    prefix: "",
-    suffix: "",
-    decimals: 0,
-    label: "Markets",
-    description: "A presence that helps brands grow across the globe.",
-    Icon: CitiesIcon,
-  },
-  {
-    value: 225,
-    prefix: "",
-    suffix: "",
-    decimals: 0,
-    label: "Media Awards",
-    description: "Recognitions that celebrate our work and impact.",
-    Icon: AwardsIcon,
-  },
-  {
-    value: 17.2,
-    prefix: "$",
-    suffix: "B",
-    decimals: 1,
-    label: "Billings",
-    description: "Scale that drives better outcomes for our partners.",
-    Icon: AiAnalyticsIcon,
-  },
-];
+const heroStatIcons = {
+  "Marketing Agencies": GlobeIcon,
+  Markets: CitiesIcon,
+  "Media Awards": AwardsIcon,
+  Billings: AiAnalyticsIcon,
+} as const;
+
+const heroStats = networkStats.map((stat) => ({
+  ...stat,
+  Icon: heroStatIcons[stat.label as keyof typeof heroStatIcons],
+}));
 
 export default function HomePage() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -298,20 +274,25 @@ export default function HomePage() {
                 <span
                   data-counter
                   data-target={stat.value}
-                  data-prefix={stat.prefix}
+                  data-prefix={stat.prefix ?? ""}
                   data-suffix={stat.suffix}
-                  data-decimals={stat.decimals}
-                  aria-label={`${stat.prefix}${stat.decimals > 0 ? stat.value.toFixed(stat.decimals) : stat.value}${stat.suffix}+ ${stat.label}`}
+                  data-decimals={stat.decimals ?? 0}
+                  aria-label={`${stat.prefix ?? ""}${stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}${stat.suffix}${stat.showPlus ? "+" : ""} ${stat.label}`}
                 >
-                  {stat.prefix}
-                  {stat.decimals > 0 ? stat.value.toFixed(stat.decimals) : stat.value}
+                  {stat.prefix ?? ""}
+                  {stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}
                   {stat.suffix}
                 </span>
-                <span className="text-red" aria-hidden>
-                  +
-                </span>
+                {stat.showPlus && (
+                  <span className="text-red" aria-hidden>
+                    +
+                  </span>
+                )}
               </p>
-              <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase sm:mt-2.5 sm:text-sm">{stat.label}</p>
+              <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase sm:mt-2.5 sm:text-sm">
+                {stat.label}
+                {stat.footnoteMarker ? "*" : ""}
+              </p>
               <p className="text-body-sm mt-2.5 mb-0 max-w-[220px] text-muted-on-dark sm:mt-3">{stat.description}</p>
             </div>
           ))}
@@ -389,6 +370,18 @@ export default function HomePage() {
       <InsightsSection />
       <LocationsSection />
       <CareersTeaser />
+
+      <CTASection
+        animate
+        headingId="home-cta-heading"
+        titleBreak
+        titleBefore={homeCta.titleBefore}
+        titleAccent={homeCta.titleAccent}
+        body={homeCta.body}
+        primaryLabel={homeCta.button.label}
+        primaryHref={homeCta.button.href}
+        burstSrc={homeCta.burst}
+      />
     </div>
   );
 }

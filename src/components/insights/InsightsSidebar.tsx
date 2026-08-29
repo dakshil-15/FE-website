@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, type FormEvent } from "react";
+import { useMemo } from "react";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import NewsletterSubscribe from "@/components/forms/NewsletterSubscribe";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import {
   insightsFeaturedCard,
@@ -15,36 +16,6 @@ type InsightsSidebarProps = {
   activeFilter: InsightFilterKey;
   onFilterChange: (filter: InsightFilterKey) => void;
 };
-
-function NewsletterForm() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="mt-4 flex gap-0 border border-line bg-white">
-      <label htmlFor="insights-newsletter-email" className="sr-only">
-        Email address for newsletter
-      </label>
-      <input
-        id="insights-newsletter-email"
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        autoComplete="email"
-        required
-        className="text-body min-h-12 min-w-0 flex-1 border-0 bg-transparent px-4 py-3 text-ink outline-none placeholder:text-muted focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-inset"
-      />
-      <button
-        type="submit"
-        aria-label="Subscribe to newsletter"
-        className="tap-target grid w-12 flex-none place-items-center bg-ink text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-      >
-        <ArrowRight size={18} aria-hidden />
-      </button>
-    </form>
-  );
-}
 
 export default function InsightsSidebar({ activeFilter, onFilterChange }: InsightsSidebarProps) {
   const categoryCounts = useMemo(() => getInsightCategoryCounts(), []);
@@ -120,7 +91,11 @@ export default function InsightsSidebar({ activeFilter, onFilterChange }: Insigh
         <p className="text-body-sm mt-3 mb-0 text-muted">
           Get perspectives on growth, media and technology delivered to your inbox.
         </p>
-        <NewsletterForm />
+        <NewsletterSubscribe
+          inputId="insights-newsletter-email"
+          source="insights-sidebar"
+          inputClassName="text-body min-h-12 min-w-0 flex-1 border-0 bg-transparent px-4 py-3 text-ink outline-none placeholder:text-muted focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-inset"
+        />
       </section>
     </aside>
   );

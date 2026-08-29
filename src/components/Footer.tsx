@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ArrowUp, Mail, MapPin, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
+import CTASection from "@/components/CTASection";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -9,6 +11,9 @@ import {
   XIcon,
   YouTubeIcon,
 } from "@/components/SocialIcons";
+import { footerCta, socialLinks } from "@/content/site";
+import { footerInsightLinks } from "@/content/insights";
+import { pageHasEndCta } from "@/lib/pageCta";
 
 const columns = [
   {
@@ -32,41 +37,40 @@ const columns = [
   },
   {
     title: "Insights",
-    links: [
-      { label: "Articles", href: "/insights" },
-      { label: "Case Studies", href: "/work" },
-      { label: "News", href: "/insights" },
-      { label: "Resources", href: "/insights" },
-    ],
+    links: [...footerInsightLinks],
   },
 ];
 
-const socials = [
-  { label: "LinkedIn", href: "https://www.linkedin.com", Icon: LinkedInIcon },
-  { label: "Instagram", href: "https://www.instagram.com", Icon: InstagramIcon },
-  { label: "YouTube", href: "https://www.youtube.com", Icon: YouTubeIcon },
-  { label: "Facebook", href: "https://www.facebook.com", Icon: FacebookIcon },
-  { label: "X", href: "https://www.x.com", Icon: XIcon },
-];
+const socialIcons = {
+  LinkedIn: LinkedInIcon,
+  Instagram: InstagramIcon,
+  YouTube: YouTubeIcon,
+  Facebook: FacebookIcon,
+  X: XIcon,
+} as const;
+
+const socials = socialLinks.map((link) => ({
+  ...link,
+  Icon: socialIcons[link.label],
+}));
 
 export default function Footer() {
+  const pathname = usePathname();
+  const showFooterCta = !pageHasEndCta(pathname);
+
   return (
     <footer id="contact" className="section-shell section-pad-sm bg-ink text-white !pb-0">
-      <div className="foot-top">
-        <div className="max-w-none sm:max-w-[320px]">
-          <h2 className="m-0 font-display text-[clamp(1.625rem,5vw,2rem)] leading-[1.05] tracking-[0.01em] uppercase">
-            Ready to engineer your growth system?
-          </h2>
-          <Link
-            href="/contact"
-            className="text-cta mt-6 inline-flex min-h-12 items-center gap-3.5 bg-red px-5 py-3.5 pl-6 text-white transition hover:bg-white hover:text-ink sm:mt-8"
-          >
-            Let&rsquo;s talk
-            <span className="grid h-7 w-7 place-items-center rounded-full border border-current" aria-hidden>
-              <ArrowRight size={14} strokeWidth={2.25} />
-            </span>
-          </Link>
-        </div>
+      <div className={`foot-top${showFooterCta ? "" : " foot-top--links-only"}`}>
+        {showFooterCta ? (
+          <CTASection
+            layout="embedded"
+            headingId="footer-cta-heading"
+            headline={footerCta.headline}
+            headlineClassName="m-0 font-display text-[clamp(1.625rem,5vw,2rem)] leading-[1.05] tracking-[0.01em] uppercase"
+            primaryLabel={footerCta.primaryLabel}
+            primaryHref={footerCta.primaryHref}
+          />
+        ) : null}
 
         <div className="foot-cols">
           {columns.map((col) => (
@@ -106,7 +110,7 @@ export default function Footer() {
                 <span>
                   Mumbai, Bengaluru,
                   <br />
-                  Aurangabad, Pune.
+                  Chattrapati Sambhaji Nagar, Pune.
                 </span>
               </span>
             </address>

@@ -1,0 +1,962 @@
+[
+  {
+    "index": 1,
+    "slug": "godrej-properties",
+    "name": "Godrej Properties",
+    "src": "/images/partners/clients/godrej-properties.png",
+    "sourceMedia": "image56.png",
+    "sourceSlide": 7,
+    "width": 510,
+    "height": 105,
+    "contentBox": [
+      0,
+      0,
+      510,
+      105
+    ]
+  },
+  {
+    "index": 2,
+    "slug": "jockey",
+    "name": "Jockey",
+    "src": "/images/partners/clients/jockey.png",
+    "sourceMedia": "image50.png",
+    "sourceSlide": 7,
+    "width": 295,
+    "height": 150,
+    "contentBox": [
+      3,
+      24,
+      289,
+      126
+    ]
+  },
+  {
+    "index": 3,
+    "slug": "naturals",
+    "name": "Naturals",
+    "src": "/images/partners/clients/naturals.png",
+    "sourceMedia": "image41.png",
+    "sourceSlide": 7,
+    "width": 424,
+    "height": 400,
+    "contentBox": [
+      40,
+      176,
+      341,
+      110
+    ]
+  },
+  {
+    "index": 4,
+    "slug": "skybags",
+    "name": "Skybags",
+    "src": "/images/partners/clients/skybags.png",
+    "sourceMedia": "image46.png",
+    "sourceSlide": 7,
+    "width": 254,
+    "height": 198,
+    "contentBox": [
+      76,
+      75,
+      102,
+      51
+    ]
+  },
+  {
+    "index": 5,
+    "slug": "royale-touche",
+    "name": "Royale Touche",
+    "src": "/images/partners/clients/royale-touche.png",
+    "sourceMedia": "image57.png",
+    "sourceSlide": 7,
+    "width": 203,
+    "height": 203,
+    "contentBox": [
+      39,
+      32,
+      127,
+      142
+    ]
+  },
+  {
+    "index": 6,
+    "slug": "waaree",
+    "name": "Waaree",
+    "src": "/images/partners/clients/waaree.png",
+    "sourceMedia": "image28.png",
+    "sourceSlide": 7,
+    "width": 368,
+    "height": 368,
+    "contentBox": [
+      12,
+      134,
+      321,
+      100
+    ]
+  },
+  {
+    "index": 7,
+    "slug": "gera",
+    "name": "Gera",
+    "src": "/images/partners/clients/gera.png",
+    "sourceMedia": "image36.png",
+    "sourceSlide": 7,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      20,
+      83,
+      185,
+      60
+    ]
+  },
+  {
+    "index": 8,
+    "slug": "society-tea",
+    "name": "Society Tea",
+    "src": "/images/partners/clients/society-tea.png",
+    "sourceMedia": "image51.png",
+    "sourceSlide": 7,
+    "width": 196,
+    "height": 148,
+    "contentBox": [
+      52,
+      41,
+      110,
+      50
+    ]
+  },
+  {
+    "index": 9,
+    "slug": "chandak",
+    "name": "Chandak",
+    "src": "/images/partners/clients/chandak.png",
+    "sourceMedia": "image40.png",
+    "sourceSlide": 7,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      42,
+      90,
+      146,
+      50
+    ]
+  },
+  {
+    "index": 10,
+    "slug": "poonawalla-fincorp",
+    "name": "Poonawalla Fincorp",
+    "src": "/images/partners/clients/poonawalla-fincorp.png",
+    "sourceMedia": "image42.png",
+    "sourceSlide": 7,
+    "width": 301,
+    "height": 167,
+    "contentBox": [
+      33,
+      53,
+      238,
+      61
+    ]
+  },
+  {
+    "index": 11,
+    "slug": "natures-basket",
+    "name": "Nature's Basket",
+    "src": "/images/partners/clients/natures-basket.png",
+    "sourceMedia": "image44.png",
+    "sourceSlide": 7,
+    "width": 270,
+    "height": 270,
+    "contentBox": [
+      41,
+      77,
+      185,
+      115
+    ]
+  },
+  {
+    "index": 12,
+    "slug": "caprese",
+    "name": "Caprese",
+    "src": "/images/partners/clients/caprese.png",
+    "sourceMedia": "image47.png",
+    "sourceSlide": 7,
+    "width": 160,
+    "height": 160,
+    "contentBox": [
+      12,
+      50,
+      137,
+      61
+    ]
+  },
+  {
+    "index": 13,
+    "slug": "orpat",
+    "name": "Orpat",
+    "src": "/images/partners/clients/orpat.png",
+    "sourceMedia": "image43.png",
+    "sourceSlide": 7,
+    "width": 200,
+    "height": 200,
+    "contentBox": [
+      10,
+      79,
+      180,
+      44
+    ]
+  },
+  {
+    "index": 14,
+    "slug": "fedex",
+    "name": "FedEx",
+    "src": "/images/partners/clients/fedex.png",
+    "sourceMedia": "image32.png",
+    "sourceSlide": 7,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      53,
+      89,
+      121,
+      40
+    ]
+  },
+  {
+    "index": 15,
+    "slug": "mahindra-manulife",
+    "name": "Mahindra Manulife",
+    "src": "/images/partners/clients/mahindra-manulife.png",
+    "sourceMedia": "image48.png",
+    "sourceSlide": 7,
+    "width": 318,
+    "height": 159,
+    "contentBox": [
+      33,
+      49,
+      259,
+      61
+    ]
+  },
+  {
+    "index": 16,
+    "slug": "cello",
+    "name": "Cello",
+    "src": "/images/partners/clients/cello.png",
+    "sourceMedia": "image33.png",
+    "sourceSlide": 7,
+    "width": 202,
+    "height": 203,
+    "contentBox": [
+      0,
+      0,
+      201,
+      203
+    ]
+  },
+  {
+    "index": 17,
+    "slug": "samco",
+    "name": "Samco",
+    "src": "/images/partners/clients/samco.png",
+    "sourceMedia": "image45.png",
+    "sourceSlide": 7,
+    "width": 352,
+    "height": 143,
+    "contentBox": [
+      43,
+      50,
+      265,
+      45
+    ]
+  },
+  {
+    "index": 18,
+    "slug": "tribeca",
+    "name": "Tribeca",
+    "src": "/images/partners/clients/tribeca.png",
+    "sourceMedia": "image55.png",
+    "sourceSlide": 7,
+    "width": 431,
+    "height": 431,
+    "contentBox": [
+      21,
+      191,
+      382,
+      62
+    ]
+  },
+  {
+    "index": 19,
+    "slug": "amazon",
+    "name": "Amazon",
+    "src": "/images/partners/clients/amazon.png",
+    "sourceMedia": "image38.png",
+    "sourceSlide": 7,
+    "width": 275,
+    "height": 183,
+    "contentBox": [
+      29,
+      57,
+      217,
+      69
+    ]
+  },
+  {
+    "index": 20,
+    "slug": "piramal-pharma",
+    "name": "Piramal Pharma",
+    "src": "/images/partners/clients/piramal-pharma.png",
+    "sourceMedia": "image37.png",
+    "sourceSlide": 7,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      38,
+      98,
+      142,
+      41
+    ]
+  },
+  {
+    "index": 21,
+    "slug": "infosys",
+    "name": "Infosys",
+    "src": "/images/partners/clients/infosys.png",
+    "sourceMedia": "image54.png",
+    "sourceSlide": 7,
+    "width": 416,
+    "height": 224,
+    "contentBox": [
+      0,
+      46,
+      361,
+      176
+    ]
+  },
+  {
+    "index": 22,
+    "slug": "adani-realty",
+    "name": "Adani Realty",
+    "src": "/images/partners/clients/adani-realty.png",
+    "sourceMedia": "image52.png",
+    "sourceSlide": 7,
+    "width": 203,
+    "height": 203,
+    "contentBox": [
+      15,
+      64,
+      168,
+      94
+    ]
+  },
+  {
+    "index": 23,
+    "slug": "glenmark",
+    "name": "Glenmark",
+    "src": "/images/partners/clients/glenmark.png",
+    "sourceMedia": "image30.png",
+    "sourceSlide": 7,
+    "width": 347,
+    "height": 260,
+    "contentBox": [
+      50,
+      73,
+      243,
+      108
+    ]
+  },
+  {
+    "index": 24,
+    "slug": "glutone",
+    "name": "Glutone",
+    "src": "/images/partners/clients/glutone.png",
+    "sourceMedia": "image53.png",
+    "sourceSlide": 7,
+    "width": 275,
+    "height": 183,
+    "contentBox": [
+      41,
+      78,
+      189,
+      34
+    ]
+  },
+  {
+    "index": 25,
+    "slug": "friday-filmworks",
+    "name": "Friday Filmworks",
+    "src": "/images/partners/clients/friday-filmworks.png",
+    "sourceMedia": "image39.png",
+    "sourceSlide": 7,
+    "width": 204,
+    "height": 204,
+    "contentBox": [
+      2,
+      64,
+      201,
+      76
+    ]
+  },
+  {
+    "index": 26,
+    "slug": "times-group",
+    "name": "The Times Group",
+    "src": "/images/partners/clients/times-group.png",
+    "sourceMedia": "image35.png",
+    "sourceSlide": 7,
+    "width": 192,
+    "height": 129,
+    "contentBox": [
+      3,
+      5,
+      188,
+      124
+    ]
+  },
+  {
+    "index": 27,
+    "slug": "radiant-world",
+    "name": "Radiant World",
+    "src": "/images/partners/clients/radiant-world.png",
+    "sourceMedia": "image31.png",
+    "sourceSlide": 7,
+    "width": 200,
+    "height": 200,
+    "contentBox": [
+      0,
+      75,
+      200,
+      49
+    ]
+  },
+  {
+    "index": 28,
+    "slug": "akbar-travels",
+    "name": "Akbar Travels",
+    "src": "/images/partners/clients/akbar-travels.png",
+    "sourceMedia": "image34.png",
+    "sourceSlide": 7,
+    "width": 192,
+    "height": 192,
+    "contentBox": [
+      23,
+      45,
+      113,
+      111
+    ]
+  },
+  {
+    "index": 29,
+    "slug": "submarine",
+    "name": "Submarine",
+    "src": "/images/partners/clients/submarine.png",
+    "sourceMedia": "image49.png",
+    "sourceSlide": 7,
+    "width": 186,
+    "height": 148,
+    "contentBox": [
+      14,
+      57,
+      152,
+      41
+    ]
+  },
+  {
+    "index": 30,
+    "slug": "mayo-clinic",
+    "name": "Mayo Clinic",
+    "src": "/images/partners/clients/mayo-clinic.png",
+    "sourceMedia": "image29.png",
+    "sourceSlide": 7,
+    "width": 768,
+    "height": 432,
+    "contentBox": [
+      196,
+      8,
+      348,
+      348
+    ]
+  },
+  {
+    "index": 31,
+    "slug": "kanakia",
+    "name": "Kanakia",
+    "src": "/images/partners/clients/kanakia.png",
+    "sourceMedia": "image58.png",
+    "sourceSlide": 8,
+    "width": 368,
+    "height": 230,
+    "contentBox": [
+      53,
+      35,
+      261,
+      160
+    ]
+  },
+  {
+    "index": 32,
+    "slug": "goqii",
+    "name": "GOQii",
+    "src": "/images/partners/clients/goqii.png",
+    "sourceMedia": "image59.png",
+    "sourceSlide": 8,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      9,
+      85,
+      207,
+      57
+    ]
+  },
+  {
+    "index": 33,
+    "slug": "zeel",
+    "name": "Zeel",
+    "src": "/images/partners/clients/zeel.png",
+    "sourceMedia": "image60.png",
+    "sourceSlide": 8,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      6,
+      88,
+      213,
+      49
+    ]
+  },
+  {
+    "index": 34,
+    "slug": "ambassador-hotel",
+    "name": "The Ambassador Hotel",
+    "src": "/images/partners/clients/ambassador-hotel.png",
+    "sourceMedia": "image75.png",
+    "sourceSlide": 8,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      15,
+      55,
+      195,
+      116
+    ]
+  },
+  {
+    "index": 35,
+    "slug": "loccitane",
+    "name": "L'Occitane",
+    "src": "/images/partners/clients/loccitane.png",
+    "sourceMedia": "image61.png",
+    "sourceSlide": 8,
+    "width": 377,
+    "height": 86,
+    "contentBox": [
+      1,
+      1,
+      376,
+      84
+    ]
+  },
+  {
+    "index": 36,
+    "slug": "kanwal",
+    "name": "Kanwal",
+    "src": "/images/partners/clients/kanwal.png",
+    "sourceMedia": "image62.png",
+    "sourceSlide": 8,
+    "width": 120,
+    "height": 177,
+    "contentBox": [
+      6,
+      10,
+      109,
+      163
+    ]
+  },
+  {
+    "index": 37,
+    "slug": "pre-seed",
+    "name": "Pre-Seed",
+    "src": "/images/partners/clients/pre-seed.png",
+    "sourceMedia": "image73.png",
+    "sourceSlide": 8,
+    "width": 450,
+    "height": 150,
+    "contentBox": [
+      28,
+      35,
+      404,
+      104
+    ]
+  },
+  {
+    "index": 38,
+    "slug": "bath-and-care",
+    "name": "The Bath and Care",
+    "src": "/images/partners/clients/bath-and-care.png",
+    "sourceMedia": "image64.png",
+    "sourceSlide": 8,
+    "width": 250,
+    "height": 159,
+    "contentBox": [
+      55,
+      0,
+      137,
+      159
+    ]
+  },
+  {
+    "index": 39,
+    "slug": "aristocrat",
+    "name": "Aristocrat",
+    "src": "/images/partners/clients/aristocrat.png",
+    "sourceMedia": "image65.png",
+    "sourceSlide": 8,
+    "width": 336,
+    "height": 150,
+    "contentBox": [
+      80,
+      31,
+      177,
+      72
+    ]
+  },
+  {
+    "index": 40,
+    "slug": "avene",
+    "name": "Av\u00e8ne",
+    "src": "/images/partners/clients/avene.png",
+    "sourceMedia": "image66.png",
+    "sourceSlide": 8,
+    "width": 225,
+    "height": 225,
+    "contentBox": [
+      9,
+      73,
+      207,
+      79
+    ]
+  },
+  {
+    "index": 41,
+    "slug": "runwal",
+    "name": "Runwal",
+    "src": "/images/partners/clients/runwal.png",
+    "sourceMedia": "image67.png",
+    "sourceSlide": 8,
+    "width": 292,
+    "height": 173,
+    "contentBox": [
+      79,
+      14,
+      131,
+      145
+    ]
+  },
+  {
+    "index": 42,
+    "slug": "suraksha-realty",
+    "name": "Suraksha Realty",
+    "src": "/images/partners/clients/suraksha-realty.png",
+    "sourceMedia": "image69.png",
+    "sourceSlide": 8,
+    "width": 251,
+    "height": 201,
+    "contentBox": [
+      28,
+      74,
+      192,
+      68
+    ]
+  },
+  {
+    "index": 43,
+    "slug": "beerbiceps",
+    "name": "BeerBiceps",
+    "src": "/images/partners/clients/beerbiceps.png",
+    "sourceMedia": "image72.png",
+    "sourceSlide": 8,
+    "width": 168,
+    "height": 299,
+    "contentBox": [
+      0,
+      102,
+      162,
+      108
+    ]
+  },
+  {
+    "index": 44,
+    "slug": "neelkanth-realty",
+    "name": "Neelkanth Realty",
+    "src": "/images/partners/clients/neelkanth-realty.png",
+    "sourceMedia": "image70.png",
+    "sourceSlide": 8,
+    "width": 384,
+    "height": 140,
+    "contentBox": [
+      18,
+      44,
+      366,
+      71
+    ]
+  },
+  {
+    "index": 45,
+    "slug": "hiranandani",
+    "name": "Hiranandani",
+    "src": "/images/partners/clients/hiranandani.png",
+    "sourceMedia": "image68.png",
+    "sourceSlide": 8,
+    "width": 180,
+    "height": 151,
+    "contentBox": [
+      23,
+      0,
+      147,
+      151
+    ]
+  },
+  {
+    "index": 46,
+    "slug": "shriram-properties",
+    "name": "Shriram Properties",
+    "src": "/images/partners/clients/shriram-properties.png",
+    "sourceMedia": "image71.png",
+    "sourceSlide": 8,
+    "width": 262,
+    "height": 141,
+    "contentBox": [
+      26,
+      6,
+      210,
+      125
+    ]
+  },
+  {
+    "index": 47,
+    "slug": "jodi",
+    "name": "Jodi",
+    "src": "/images/partners/clients/jodi.png",
+    "sourceMedia": "image78.png",
+    "sourceSlide": 8,
+    "width": 200,
+    "height": 200,
+    "contentBox": [
+      0,
+      65,
+      200,
+      71
+    ]
+  },
+  {
+    "index": 48,
+    "slug": "tea-culture",
+    "name": "Tea Culture of the World",
+    "src": "/images/partners/clients/tea-culture.png",
+    "sourceMedia": "image74.png",
+    "sourceSlide": 8,
+    "width": 219,
+    "height": 148,
+    "contentBox": [
+      38,
+      9,
+      154,
+      115
+    ]
+  },
+  {
+    "index": 49,
+    "slug": "house-of-things",
+    "name": "The House of Things",
+    "src": "/images/partners/clients/house-of-things.png",
+    "sourceMedia": "image77.png",
+    "sourceSlide": 8,
+    "width": 279,
+    "height": 181,
+    "contentBox": [
+      69,
+      53,
+      141,
+      75
+    ]
+  },
+  {
+    "index": 50,
+    "slug": "burnt-soul",
+    "name": "Burnt Soul",
+    "src": "/images/partners/clients/burnt-soul.png",
+    "sourceMedia": "image76.png",
+    "sourceSlide": 8,
+    "width": 200,
+    "height": 200,
+    "contentBox": [
+      11,
+      59,
+      182,
+      59
+    ]
+  },
+  {
+    "index": 51,
+    "slug": "sumadhura",
+    "name": "Sumadhura",
+    "src": "/images/partners/clients/sumadhura.png",
+    "sourceMedia": "image81.png",
+    "sourceSlide": 8,
+    "width": 1374,
+    "height": 471,
+    "contentBox": [
+      218,
+      130,
+      949,
+      224
+    ]
+  },
+  {
+    "index": 52,
+    "slug": "moyo",
+    "name": "Moyo",
+    "src": "/images/partners/clients/moyo.png",
+    "sourceMedia": "image63.png",
+    "sourceSlide": 8,
+    "width": 203,
+    "height": 203,
+    "contentBox": [
+      20,
+      54,
+      163,
+      100
+    ]
+  },
+  {
+    "index": 53,
+    "slug": "flamingo",
+    "name": "Flamingo",
+    "src": "/images/partners/clients/flamingo.png",
+    "sourceMedia": "image79.png",
+    "sourceSlide": 8,
+    "width": 203,
+    "height": 203,
+    "contentBox": [
+      0,
+      0,
+      203,
+      172
+    ]
+  },
+  {
+    "index": 54,
+    "slug": "mana",
+    "name": "Mana",
+    "src": "/images/partners/clients/mana.png",
+    "sourceMedia": "image80.png",
+    "sourceSlide": 8,
+    "width": 200,
+    "height": 200,
+    "contentBox": [
+      30,
+      78,
+      140,
+      44
+    ]
+  },
+  {
+    "index": 55,
+    "slug": "kumar-corp",
+    "name": "Kumar Corp",
+    "src": "/images/partners/clients/kumar-corp.png",
+    "sourceMedia": "image82.png",
+    "sourceSlide": 8,
+    "width": 808,
+    "height": 208,
+    "contentBox": [
+      0,
+      0,
+      808,
+      207
+    ]
+  },
+  {
+    "index": 56,
+    "slug": "hines",
+    "name": "Hines",
+    "src": "/images/partners/clients/hines.png",
+    "sourceMedia": "image83.png",
+    "sourceSlide": 8,
+    "width": 132,
+    "height": 39,
+    "contentBox": [
+      4,
+      0,
+      128,
+      39
+    ]
+  },
+  {
+    "index": 57,
+    "slug": "ramky",
+    "name": "Ramky",
+    "src": "/images/partners/clients/ramky.png",
+    "sourceMedia": "image84.png",
+    "sourceSlide": 8,
+    "width": 480,
+    "height": 270,
+    "contentBox": [
+      112,
+      20,
+      255,
+      230
+    ]
+  },
+  {
+    "index": 58,
+    "slug": "lotus-developers",
+    "name": "Lotus Developers",
+    "src": "/images/partners/clients/lotus-developers.png",
+    "sourceMedia": "image85.png",
+    "sourceSlide": 8,
+    "width": 356,
+    "height": 203,
+    "contentBox": [
+      74,
+      0,
+      207,
+      156
+    ]
+  },
+  {
+    "index": 59,
+    "slug": "shree-naman-group",
+    "name": "Shree Naman Group",
+    "src": "/images/partners/clients/shree-naman-group.png",
+    "sourceMedia": "image86.png",
+    "sourceSlide": 8,
+    "width": 400,
+    "height": 111,
+    "contentBox": [
+      0,
+      0,
+      400,
+      111
+    ]
+  },
+  {
+    "index": 60,
+    "slug": "jp-infra",
+    "name": "JP Infra",
+    "src": "/images/partners/clients/jp-infra.png",
+    "sourceMedia": "image87.png",
+    "sourceSlide": 8,
+    "width": 447,
+    "height": 447,
+    "contentBox": [
+      40,
+      177,
+      368,
+      93
+    ]
+  }
+]

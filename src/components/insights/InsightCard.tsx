@@ -3,15 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Bookmark } from "lucide-react";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import type { InsightPost } from "@/content/insights";
-import { getInsightDisplayCategories, getInsightHref } from "@/lib/insights";
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+import { getInsightDisplayCategories, getInsightHref, formatInsightDate } from "@/lib/insights";
 
 export default function InsightCard({ post }: { post: InsightPost }) {
   const href = post.href ?? getInsightHref(post.slug);
@@ -69,7 +61,7 @@ export default function InsightCard({ post }: { post: InsightPost }) {
           </h3>
           <div className="mt-auto flex items-center justify-between gap-3 pt-6">
             <p className="m-0 text-[13px] leading-snug text-muted">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <time dateTime={post.date}>{formatInsightDate(post.date)}</time>
               <span className="mx-1.5 text-muted" aria-hidden>
                 •
               </span>

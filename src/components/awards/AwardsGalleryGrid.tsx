@@ -43,11 +43,6 @@ function AwardCard({ award }: { award: AwardGalleryItem }) {
         </h3>
         <p className="mt-2 mb-0 text-[13px] leading-snug font-semibold text-ink">{award.tier}</p>
         <p className="mt-1 mb-0 text-[13px] leading-snug text-muted">{award.category}</p>
-        <span className="mt-3 block h-0.5 w-8 bg-red" aria-hidden />
-        <p className="mt-3 mb-0 text-[13px] font-semibold tracking-[0.06em] text-muted uppercase">
-          <span className="sr-only">Year: </span>
-          {award.year}
-        </p>
       </div>
     </article>
   );
@@ -65,7 +60,7 @@ export default function AwardsGalleryGrid({ headingId }: AwardsGalleryGridProps)
       aria-labelledby={headingId}
     >
       {awardsGallery.map((award) => (
-        <li key={`${award.organization}-${award.year}-${award.tier}`} className="min-w-0">
+        <li key={award.organization} className="min-w-0">
           <AwardCard award={award} />
         </li>
       ))}

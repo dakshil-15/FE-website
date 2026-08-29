@@ -4,6 +4,7 @@
  */
 
 import type { MediaSlot } from "@/content/about";
+import { officeLocations } from "@/content/offices";
 import { contactInfo } from "@/content/site";
 
 export const contactHero = {
@@ -43,7 +44,7 @@ export const contactInterests = [
   "Social Media",
   "Influencer Marketing",
   "Video Production",
-  "Branding",
+  "Project Innovation & Branding",
   "Marketplace Management",
   "Careers",
   "Partnership",
@@ -84,28 +85,10 @@ export const contactOfficesCopy = {
   body: "Four cities. One mission. Building growth systems that drive real impact.",
 };
 
-export const contactOffices = [
-  {
-    slug: "mumbai",
-    city: "Mumbai",
-    isHq: true,
-    address:
-      "Plot No. 240, 240/1 to 8, 2nd Floor, Office No. 205, Neelkanth Corporate IT Park, Vidya Vihar Station Road West, Mumbai 400086",
-  },
-  {
-    slug: "bengaluru",
-    city: "Bengaluru",
-    address: "Bengaluru, Karnataka",
-  },
-  {
-    slug: "aurangabad",
-    city: "Aurangabad",
-    address:
-      "Office 101, First Floor, Vastu Elite Square, Beed Bypass, Chhatrapati Sambhajinagar (Aurangabad) 431001",
-  },
-  {
-    slug: "pune",
-    city: "Pune",
-    address: "WeWork, Kalyani Nagar, Pune",
-  },
-] as const;
+export const contactOffices = officeLocations.map(({ slug, city, isHq, address, contact }) => ({
+  slug,
+  city,
+  ...(isHq ? { isHq: true as const } : {}),
+  address,
+  ...(contact ? { contact } : {}),
+}));

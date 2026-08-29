@@ -82,8 +82,18 @@ export function getFeaturedInsight(currentSlug: string): InsightPost | null {
 }
 
 export function getFeaturedListingInsight(): InsightPost {
+  const fromCard = insightPosts.find((post) => post.slug === insightsFeaturedCard.slug);
+  if (fromCard) return normalizeInsightPost(fromCard);
   const featured = insightPosts.find((post) => post.featured);
-  return normalizeInsightPost(featured ?? insightPosts[0]);
+  return normalizeInsightPost(featured ?? insightPosts[0]!);
+}
+
+export function formatInsightDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export function getInsightFilterKey(post: InsightPost): InsightFilterKey {
@@ -172,4 +182,24 @@ export function getInsightFilterLabel(filter: InsightFilterKey): string {
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
+}
+
+const insightCategoryParamKeys = new Set<InsightFilterKey>([
+  "trends",
+  "perspectives",
+  "case-studies",
+  "technology",
+  "media",
+  "creative",
+]);
+
+export function parseInsightCategoryParam(value: string | null | undefined): InsightFilterKey {
+  if (value && insightCategoryParamKeys.has(value as InsightFilterKey)) {
+    return value as InsightFilterKey;
+  }
+  return "all";
+}
+
+export function getInsightCategoryHref(filter: Exclude<InsightFilterKey, "all">): string {
+  return `/insights?category=${filter}`;
 }

@@ -10,4 +10,12 @@ export const workPhotos: Record<string, string> = {
   "vip-industries": "/images/work/vip-industries.png",
   "akbar-travels-seo": "/images/work/akbar-travels-seo.png",
   "poonawalla-ai-creatives": "/images/work/poonawalla-ai-creatives.png",
+  "shoppers-stop-local-seo": "/images/work/cases/shoppers-stop-local-seo.png",
+  "cello-kidzbee": "/images/work/cases/cello-kidzbee.png",
+  "young-bags": "/images/work/cases/young-bags.png",
+  "ambassador-hotel": "/images/work/cases/ambassador-hotel.png",
+  "godrej-greenfront": "/images/work/cases/godrej-greenfront.png",
+  "amazon-samsung-great-indian-festival":
+    "/images/work/cases/amazon-samsung-great-indian-festival.png",
+  "adani-airports-safar-ke-humsafar": "/images/work/cases/adani-airports-safar-ke-humsafar.png",
 };

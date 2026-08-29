@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048" fill="none"><path d="M1024 140L1650 500V1240L1024 1600L398 1240V500L1024 140Z" stroke="#111111" stroke-width="42"/>
+<circle cx="1024" cy="650" r="105" stroke="#ffffff" stroke-width="34"/>
+<circle cx="690" cy="1030" r="105" stroke="#ffffff" stroke-width="34"/>
+<circle cx="1358" cy="1030" r="105" stroke="#ffffff" stroke-width="34"/>
+<path d="M940 720L790 940M1108 720L1258 940M795 1030H1253" stroke="#ffffff" stroke-width="34"/>
+<path d="M570 1390C600 1200 820 1160 940 1320M1108 1320C1228 1160 1448 1200 1478 1390" stroke="#ffffff" stroke-width="34"/>
+</svg>

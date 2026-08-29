@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle, Loader2 } from "lucide-react";
 import { contactFormCopy, contactInterests } from "@/content/contact";
+import { postJson } from "@/lib/forms/client";
+import { isValidEmail } from "@/lib/forms/validation";
 
 const fieldClass =
   "field-control min-h-12 bg-white px-4 py-3.5 transition-[border-color] duration-200";
@@ -12,11 +14,14 @@ type FieldName = "name" | "email" | "phone" | "company" | "interest" | "requirem
 
 export default function ContactForm() {
   const formId = useId();
-  const [status, setStatus] = useState<"idle" | "submitted">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "submitted" | "error">("idle");
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitError(null);
+
     const form = event.currentTarget;
     const data = new FormData(form);
 
@@ -30,7 +35,7 @@ export default function ContactForm() {
 
     if (!name) nextErrors.name = "Enter your full name.";
     if (!email) nextErrors.email = "Enter your email address.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Enter a valid email address.";
+    else if (!isValidEmail(email)) nextErrors.email = "Enter a valid email address.";
     if (!phone) nextErrors.phone = "Enter your phone number.";
     if (!company) nextErrors.company = "Enter your company name.";
     if (!requirement) nextErrors.requirement = "Tell us about your requirement.";
@@ -44,6 +49,25 @@ export default function ContactForm() {
         ? form.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)
         : null;
       target?.focus();
+      return;
+    }
+
+    setStatus("submitting");
+
+    const result = await postJson("/api/contact", {
+      name,
+      email,
+      phone,
+      company,
+      interest: String(data.get("interest") ?? "").trim(),
+      requirement,
+      consent: true,
+      _gotcha: String(data.get("_gotcha") ?? "").trim(),
+    });
+
+    if (!result.ok) {
+      setSubmitError(result.error);
+      setStatus("error");
       return;
     }
 
@@ -70,13 +94,17 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       noValidate
       className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
-      aria-describedby={Object.keys(errors).length ? `${formId}-error-summary` : undefined}
+      aria-describedby={
+        Object.keys(errors).length || submitError ? `${formId}-error-summary` : undefined
+      }
     >
-      {Object.keys(errors).length > 0 ? (
+      {Object.keys(errors).length > 0 || submitError ? (
         <p id={`${formId}-error-summary`} className="sr-only" role="alert">
-          Please fix the highlighted fields and try again.
+          {submitError ?? "Please fix the highlighted fields and try again."}
         </p>
       ) : null}
+
+      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="sr-only" aria-hidden />
 
       <Field
         id={`${formId}-name`}
@@ -85,6 +113,7 @@ export default function ContactForm() {
         required
         autoComplete="name"
         error={errors.name}
+        disabled={status === "submitting"}
       />
       <Field
         id={`${formId}-email`}
@@ -94,6 +123,7 @@ export default function ContactForm() {
         required
         autoComplete="email"
         error={errors.email}
+        disabled={status === "submitting"}
       />
       <Field
         id={`${formId}-phone`}
@@ -103,6 +133,7 @@ export default function ContactForm() {
         required
         autoComplete="tel"
         error={errors.phone}
+        disabled={status === "submitting"}
       />
       <Field
         id={`${formId}-company`}
@@ -111,6 +142,7 @@ export default function ContactForm() {
         required
         autoComplete="organization"
         error={errors.company}
+        disabled={status === "submitting"}
       />
 
       <div className="relative min-w-0">
@@ -121,6 +153,7 @@ export default function ContactForm() {
           id={`${formId}-interest`}
           name="interest"
           defaultValue=""
+          disabled={status === "submitting"}
           className={`${fieldClass} appearance-auto pr-10`}
         >
           <option value="" disabled>
@@ -143,6 +176,7 @@ export default function ContactForm() {
           name="requirement"
           required
           rows={5}
+          disabled={status === "submitting"}
           placeholder="Tell us about your requirement"
           aria-invalid={errors.requirement ? true : undefined}
           aria-describedby={errors.requirement ? `${formId}-requirement-error` : undefined}
@@ -162,6 +196,7 @@ export default function ContactForm() {
             type="checkbox"
             name="consent"
             required
+            disabled={status === "submitting"}
             aria-invalid={errors.consent ? true : undefined}
             aria-describedby={errors.consent ? `${formId}-consent-error` : undefined}
             className="contact-check mt-[0.15em]"
@@ -190,13 +225,29 @@ export default function ContactForm() {
         ) : null}
       </div>
 
+      {submitError ? (
+        <p className="text-body-sm m-0 text-red sm:col-span-2" role="alert">
+          {submitError}
+        </p>
+      ) : null}
+
       <div className="sm:col-span-2">
         <button
           type="submit"
-          className="text-cta inline-flex min-h-12 items-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:py-4 sm:pl-7"
+          disabled={status === "submitting"}
+          className="text-cta inline-flex min-h-12 items-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:cursor-not-allowed disabled:opacity-70 sm:py-4 sm:pl-7"
         >
-          {contactFormCopy.submit}
-          <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
+          {status === "submitting" ? (
+            <>
+              Sending…
+              <Loader2 size={28} strokeWidth={1.5} className="shrink-0 animate-spin sm:size-8" aria-hidden />
+            </>
+          ) : (
+            <>
+              {contactFormCopy.submit}
+              <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
+            </>
+          )}
         </button>
       </div>
     </form>
@@ -211,6 +262,7 @@ function Field({
   type = "text",
   autoComplete,
   error,
+  disabled,
 }: {
   id: string;
   name: FieldName;
@@ -219,6 +271,7 @@ function Field({
   type?: string;
   autoComplete?: string;
   error?: string;
+  disabled?: boolean;
 }) {
   return (
     <div className="relative min-w-0">
@@ -232,6 +285,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
+        disabled={disabled}
         placeholder={label}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : undefined}

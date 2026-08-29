@@ -58,8 +58,13 @@ export default function LocationsSection() {
                   <div className="min-w-0 text-left">
                     <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                       {office.city}
+                      {office.isHq ? (
+                        <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                      ) : null}
                     </p>
-                    <p className="text-body-sm mt-1.5 mb-0 text-muted">{office.description}</p>
+                    <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
+                      {office.description}
+                    </p>
                   </div>
                   <span
                     className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
