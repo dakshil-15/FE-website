@@ -1,6 +1,6 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { RefObject } from "react";
 import {
@@ -12,7 +12,7 @@ import {
   runSectionReveals,
 } from "@/lib/gsap/pageReveal";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 export type PageRevealContext = {
   gsap: typeof gsap;
@@ -40,8 +40,14 @@ export function usePageReveal({
   reducedMotionSelectors = [],
   onReveal,
 }: UsePageRevealOptions) {
-  useGSAP(
-    () => {
+  const onRevealRef = useRef(onReveal);
+  onRevealRef.current = onReveal;
+
+  useEffect(() => {
+    const root = scope.current;
+    if (!root) return;
+
+    const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
       mm.add(
@@ -65,7 +71,7 @@ export function usePageReveal({
             runSectionReveals({ start: sectionStart });
           }
 
-          onReveal?.({
+          onRevealRef.current?.({
             gsap,
             ScrollTrigger,
             reduceMotion: false,
@@ -77,7 +83,9 @@ export function usePageReveal({
       );
 
       return () => mm.revert();
-    },
-    { scope, dependencies },
-  );
+    }, root);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- scope ref is stable; caller controls reruns via dependencies
+  }, [scope, hero, sections, sectionStart, reducedMotionSelectors, ...dependencies]);
 }

@@ -422,6 +422,7 @@ export const aboutFeaturedAchievement = {
   title: "Guinness World Record — 1,000+ influencers live in one hour",
   body: "1,000+ influencers went live within one hour, earning Godrej Properties an official Guinness World Record.",
   href: "/work/godrej-blue",
+  sectionCta: { label: "View all awards", href: "/awards" },
 };
 
 export const aboutCta = {

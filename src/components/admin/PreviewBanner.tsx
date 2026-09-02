@@ -1,6 +1,6 @@
 import { draftMode } from "next/headers";
 
-import { exitPreviewAction } from "@/lib/admin/actions/system";
+import { exitPreviewAction } from "@/lib/admin/actions/preview";
 
 /**
  * Feature 8 — shown on the public site while an editor is previewing a draft,

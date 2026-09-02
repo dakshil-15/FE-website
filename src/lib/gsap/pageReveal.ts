@@ -28,12 +28,19 @@ export function runHeroTimeline() {
     .fromTo(
       "[data-animate='hero-copy']",
       { y: 28, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.12, clearProps: "transform" },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.9,
+        stagger: 0.12,
+        clearProps: "transform",
+        immediateRender: false,
+      },
     )
     .fromTo(
       "[data-animate='hero-visual']",
       { autoAlpha: 0 },
-      { autoAlpha: 1, duration: 0.45 },
+      { autoAlpha: 1, duration: 0.45, immediateRender: false },
       "-=0.7",
     )
     .fromTo(
@@ -45,6 +52,7 @@ export function runHeroTimeline() {
         duration: 0.55,
         stagger: 0.08,
         clearProps: "scale",
+        immediateRender: false,
       },
       "-=0.25",
     );
@@ -80,7 +88,14 @@ export function runSectionReveals({ start = "top 78%" }: SectionRevealOptions = 
       tl.fromTo(
         intro,
         { y: 32, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.75, stagger: 0.1, clearProps: "transform" },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.75,
+          stagger: 0.1,
+          clearProps: "transform",
+          immediateRender: false,
+        },
       );
     }
 
@@ -94,6 +109,7 @@ export function runSectionReveals({ start = "top 78%" }: SectionRevealOptions = 
           duration: 0.55,
           stagger: 0.06,
           clearProps: "transform",
+          immediateRender: false,
         },
         intro.length ? "-=0.35" : 0,
       );

@@ -23,6 +23,7 @@ import {
   aboutFeaturedAchievement,
   aboutCta,
 } from "@/content/about";
+import { formatNetworkStatValue } from "@/content/stats";
 
 export default function AboutPage() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -171,10 +172,7 @@ export default function AboutPage() {
         className="section-shell section-pad-sm bg-ink text-white"
         aria-label="Company scale"
       >
-        <div
-          data-animate-stagger
-          className="section-inner grid grid-cols-1 gap-y-8 xs:grid-cols-2 xs:gap-y-10 lg:grid-cols-4 lg:gap-y-0"
-        >
+        <div className="section-inner grid grid-cols-1 gap-y-8 xs:grid-cols-2 xs:gap-y-10 lg:grid-cols-4 lg:gap-y-0">
           {aboutStats.map((stat) => (
             <div key={stat.label} className="stat-item">
               <IconSlot asset={stat.icon} tone="dark" size={44} className="mb-4 sm:mb-5" />
@@ -185,10 +183,9 @@ export default function AboutPage() {
                   data-prefix={stat.prefix ?? ""}
                   data-suffix={stat.suffix}
                   data-decimals={stat.decimals ?? 0}
+                  suppressHydrationWarning
                 >
-                  {stat.prefix ?? ""}
-                  {stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}
-                  {stat.suffix}
+                  {formatNetworkStatValue({ ...stat, showPlus: false })}
                 </span>
                 {stat.showPlus && (
                   <span className="text-red" aria-hidden>
@@ -360,6 +357,10 @@ export default function AboutPage() {
               <p className="text-body section-copy section-copy-on-light m-0">
                 {aboutFeaturedAchievement.body}
               </p>
+              <Link href={aboutFeaturedAchievement.sectionCta.href} className="text-cta link-cta text-ink">
+                {aboutFeaturedAchievement.sectionCta.label}
+                <ArrowRight size={16} aria-hidden />
+              </Link>
             </div>
           </div>
 

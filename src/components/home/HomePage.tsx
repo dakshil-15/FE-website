@@ -70,12 +70,14 @@ export default function HomePage() {
               autoAlpha: 0,
               duration: 0.9,
               stagger: 0.12,
+              immediateRender: false,
             })
             .from(
               "[data-animate='hero-visual']",
               {
                 autoAlpha: 0,
                 duration: 0.4,
+                immediateRender: false,
               },
               "-=0.7",
             )
@@ -85,6 +87,7 @@ export default function HomePage() {
                 y: -8,
                 autoAlpha: 0,
                 duration: 0.5,
+                immediateRender: false,
               },
               "-=0.35",
             );

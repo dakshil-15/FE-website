@@ -162,17 +162,6 @@ export async function startPreviewAction(formData: FormData): Promise<void> {
   redirect(target);
 }
 
-export async function exitPreviewAction(): Promise<void> {
-  const draft = await draftMode();
-  draft.disable();
-
-  const store = await cookies();
-  const returnTo = store.get("fe_admin_preview_return")?.value;
-  store.delete("fe_admin_preview_return");
-
-  redirect(returnTo?.startsWith("/admin") ? returnTo : "/admin");
-}
-
 function errorState(error: unknown): ActionState {
   if (error instanceof AdminAuthError) return { ok: false, message: error.message };
   console.error("[admin] system action failed", error);
