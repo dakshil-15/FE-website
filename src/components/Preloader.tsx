@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-const SESSION_KEY = "fe-preloader-done";
 const RING_R = 148;
 const PROGRESS_R = 132;
 const CIRCUMFERENCE = 2 * Math.PI * PROGRESS_R;
@@ -17,23 +17,49 @@ function polarDeg(cx: number, cy: number, r: number, angleDeg: number) {
   return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
+function isHomePath(pathname: string | null) {
+  return pathname === "/";
+}
+
 export default function Preloader() {
+  const pathname = usePathname();
   const rootRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<SVGCircleElement>(null);
   const dotGroupRef = useRef<SVGGElement>(null);
   const percentRef = useRef<HTMLParagraphElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [active, setActive] = useState(false);
+  const prevPathRef = useRef<string | null>(null);
+  const onHome = isHomePath(pathname);
+  const [visible, setVisible] = useState(onHome);
+  const [active, setActive] = useState(onHome);
+  /** Bumps when returning to home so the GSAP timeline restarts. */
+  const [runId, setRunId] = useState(0);
 
   useEffect(() => {
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    if (!isHomePath(pathname)) {
+      setVisible(false);
+      setActive(false);
+      prevPathRef.current = pathname;
+      document.body.style.overflow = "";
+      return;
+    }
+
+    const returningToHome =
+      prevPathRef.current !== null && prevPathRef.current !== "/";
+
     setVisible(true);
     setActive(true);
     document.body.style.overflow = "hidden";
+
+    if (returningToHome) {
+      setRunId((id) => id + 1);
+    }
+
+    prevPathRef.current = pathname;
+
     return () => {
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [pathname]);
 
   useGSAP(
     () => {
@@ -42,8 +68,10 @@ export default function Preloader() {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const progress = { value: 0 };
 
+      if (percentRef.current) percentRef.current.textContent = "0%";
+      gsap.set(rootRef.current, { autoAlpha: 1 });
+
       const finish = () => {
-        sessionStorage.setItem(SESSION_KEY, "1");
         gsap.to(rootRef.current, {
           autoAlpha: 0,
           duration: 0.55,
@@ -127,7 +155,7 @@ export default function Preloader() {
         });
       });
     },
-    { scope: rootRef, dependencies: [active] },
+    { scope: rootRef, dependencies: [active, runId] },
   );
 
   if (!visible) return null;

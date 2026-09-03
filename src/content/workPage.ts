@@ -13,7 +13,7 @@ export const workHero = {
   headlineAccent: "Real impact.",
   body: "Explore how we engineer growth systems that solve real business challenges and deliver measurable results.",
   image: {
-    src: "/images/work/hero/work-banner.png",
+    src: "/images/work/hero/work-banner.jpg",
     alt: "First Economy team in a strategy meeting reviewing growth analytics on a boardroom display",
     label: "Work hero banner",
     grayscale: false,
@@ -151,7 +151,7 @@ export function orderedWorkStudies(studies: CaseStudy[]) {
 
 export const workStats = {
   icon: {
-    src: "/images/work/stats/results-target.png",
+    src: "/images/work/stats/results-target.svg",
     alt: "",
     label: "Results",
   } satisfies MediaSlot,

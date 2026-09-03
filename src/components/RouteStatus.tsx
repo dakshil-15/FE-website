@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowRightCircle } from "lucide-react";
+import GrowthCta from "@/components/GrowthCta";
 
 type RouteStatusProps = {
   eyebrow: string;
@@ -24,9 +23,6 @@ export default function RouteStatus({
   onPrimaryClick,
   headingId = "route-status-heading",
 }: RouteStatusProps) {
-  const primaryClassName =
-    "text-cta tap-target inline-flex min-h-12 w-full max-w-full items-center justify-center gap-3 bg-red px-5 py-3.5 pl-6 text-white transition hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-auto sm:justify-start";
-
   return (
     <section
       className="section-shell section-pad bg-paper"
@@ -40,23 +36,24 @@ export default function RouteStatus({
         <p className="text-body mt-5 m-0 max-w-lg text-muted">{body}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           {onPrimaryClick ? (
-            <button type="button" onClick={onPrimaryClick} className={primaryClassName}>
+            <GrowthCta
+              type="button"
+              variant="accent"
+              block
+              className="sm:w-auto"
+              onClick={onPrimaryClick}
+            >
               {primaryLabel}
-              <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
-            </button>
+            </GrowthCta>
           ) : (
-            <Link href={primaryHref} className={primaryClassName}>
+            <GrowthCta href={primaryHref} variant="accent" block className="sm:w-auto">
               {primaryLabel}
-              <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
-            </Link>
+            </GrowthCta>
           )}
           {secondaryLabel && secondaryHref ? (
-            <Link
-              href={secondaryHref}
-              className="text-cta tap-target inline-flex min-h-12 w-full items-center justify-center border border-ink/25 px-5 py-3.5 text-ink transition hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-auto"
-            >
+            <GrowthCta href={secondaryHref} variant="secondary" block className="sm:w-auto">
               {secondaryLabel}
-            </Link>
+            </GrowthCta>
           ) : null}
         </div>
       </div>

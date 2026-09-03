@@ -25,7 +25,7 @@ export const aboutHero = {
     src: "/images/about/hero/meeting-room.jpg",
     alt: "First Economy team in a glass meeting room",
     label: "Hero meeting photo",
-    grayscale: true,
+    grayscale: false,
   } satisfies MediaSlot,
   burst: "/images/about/hero/radial-burst.svg",
   arrow: "/images/about/ui/arrow-right-circle.svg",
@@ -129,7 +129,7 @@ export const aboutTeam: TeamMember[] = [
   },
   {
     name: "Parth Gandhi",
-    title: "Head — Media Planning",
+    title: "Chief Technology Officer",
     image: {
       src: "/images/about/leadership/parth-gandhi.jpg",
       alt: "Portrait of Parth Gandhi",
@@ -139,7 +139,7 @@ export const aboutTeam: TeamMember[] = [
   },
   {
     name: "Vaibhav Jain",
-    title: "Chief Technology Officer",
+    title: "Head — Media Planning",
     image: {
       src: "/images/about/leadership/vaibhav-jain.jpg",
       alt: "Portrait of Vaibhav Jain",

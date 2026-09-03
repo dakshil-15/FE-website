@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRight, ArrowRightCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import GrowthCta from "@/components/GrowthCta";
 import PageHero from "@/components/PageHero";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
@@ -46,13 +47,9 @@ export default function CareersPage({ roles }: CareersPageProps) {
         body={careersHero.body}
         copyAfterBody={
           <div data-animate="hero-copy">
-            <Link
-              href={careersHero.cta.href}
-              className="text-cta tap-target mt-7 inline-flex min-h-12 items-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:gap-4 sm:py-4 sm:pl-7"
-            >
+            <GrowthCta href={careersHero.cta.href} variant="primary" className="mt-7 sm:mt-8">
               {careersHero.cta.label}
-              <ArrowRightCircle size={28} strokeWidth={1.5} className="sm:size-8" aria-hidden />
-            </Link>
+            </GrowthCta>
           </div>
         }
         media={
@@ -109,7 +106,11 @@ export default function CareersPage({ roles }: CareersPageProps) {
           >
             {careersValues.map((value) => (
               <li key={value.title} className="min-w-0">
-                <IconSlot asset={value.icon} size={56} className="text-ink" />
+                <IconSlot
+                  asset={value.icon}
+                  size={56}
+                  className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
+                />
                 <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
                   {value.title}
                 </h3>
@@ -143,7 +144,11 @@ export default function CareersPage({ roles }: CareersPageProps) {
           >
             {careersBenefits.map((benefit) => (
               <li key={benefit.title} className="min-w-0">
-                <IconSlot asset={benefit.icon} size={56} className="text-ink" />
+                <IconSlot
+                  asset={benefit.icon}
+                  size={56}
+                  className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
+                />
                 <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
                   {benefit.title}
                 </h3>
@@ -314,7 +319,12 @@ export default function CareersPage({ roles }: CareersPageProps) {
         aside={
           <ul data-animate-stagger className="m-0 flex list-none flex-col gap-6 p-0 sm:gap-7">
             <li className="flex items-start gap-4">
-              <IconSlot asset={careersCta.email.icon} tone="dark" size={48} className="flex-none" />
+              <IconSlot
+                asset={careersCta.email.icon}
+                tone="dark"
+                size={64}
+                className="h-12 w-12 flex-none sm:h-14 sm:w-14 md:h-16 md:w-16"
+              />
               <div className="min-w-0 pt-1">
                 <p className="text-body-sm m-0 text-muted-on-dark">{careersCta.email.label}</p>
                 <a
@@ -326,7 +336,12 @@ export default function CareersPage({ roles }: CareersPageProps) {
               </div>
             </li>
             <li className="flex items-start gap-4">
-              <IconSlot asset={careersCta.culture.icon} tone="dark" size={48} className="flex-none" />
+              <IconSlot
+                asset={careersCta.culture.icon}
+                tone="dark"
+                size={64}
+                className="h-12 w-12 flex-none sm:h-14 sm:w-14 md:h-16 md:w-16"
+              />
               <div className="min-w-0 pt-1">
                 <p className="text-body-sm m-0 text-muted-on-dark">{careersCta.culture.label}</p>
                 <Link

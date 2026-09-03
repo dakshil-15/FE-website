@@ -4,6 +4,7 @@
 @import "../styles/typography-a11y.css";
 @import "../styles/layout.css";
 @import "../styles/components-shared.css";
+@import "../styles/growth-system.css"; /* hero growth system + CTAs */
 @import "../styles/process-timelines.css";
 @import "../styles/work-insights.css";
 @import "../styles/footer-misc.css";

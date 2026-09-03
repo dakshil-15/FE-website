@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
-import { ArrowRightCircle, Loader2 } from "lucide-react";
+import GrowthCta from "@/components/GrowthCta";
 import { contactFormCopy, contactInterests } from "@/content/contact";
 import { postJson } from "@/lib/forms/client";
 import { isValidEmail } from "@/lib/forms/validation";
@@ -232,23 +232,13 @@ export default function ContactForm() {
       ) : null}
 
       <div className="sm:col-span-2">
-        <button
+        <GrowthCta
           type="submit"
-          disabled={status === "submitting"}
-          className="text-cta inline-flex min-h-12 items-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:cursor-not-allowed disabled:opacity-70 sm:py-4 sm:pl-7"
+          variant="primary"
+          loading={status === "submitting"}
         >
-          {status === "submitting" ? (
-            <>
-              Sending…
-              <Loader2 size={28} strokeWidth={1.5} className="shrink-0 animate-spin sm:size-8" aria-hidden />
-            </>
-          ) : (
-            <>
-              {contactFormCopy.submit}
-              <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
-            </>
-          )}
-        </button>
+          {status === "submitting" ? "Sending…" : contactFormCopy.submit}
+        </GrowthCta>
       </div>
     </form>
   );

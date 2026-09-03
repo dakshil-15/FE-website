@@ -83,7 +83,7 @@ export function PortraitSlot({
   if (asset.src) {
     const isLeadershipPhoto = asset.src.startsWith("/images/about/leadership/");
     const src = isLeadershipPhoto
-      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=3`
+      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=9`
       : asset.src;
 
     return (
@@ -121,13 +121,17 @@ export function IconSlot({
   asset: MediaSlot;
   className?: string;
   tone?: Tone;
+  /** Intrinsic / fallback pixel size. Prefer Tailwind size classes in `className` for responsive layout. */
   size?: number;
 }) {
+  const sizedByClass = Boolean(className && /\b(h-|w-|size-)/.test(className));
+  const boxStyle = sizedByClass ? undefined : { width: size, height: size };
+
   if (asset.src) {
     return (
       <span
         className={`inline-flex shrink-0 items-center justify-center ${className}`}
-        style={{ width: size, height: size }}
+        style={boxStyle}
       >
         <Image
           src={asset.src}
@@ -136,7 +140,7 @@ export function IconSlot({
           width={size}
           height={size}
           unoptimized
-          className="h-auto w-auto max-h-full max-w-full object-contain"
+          className="h-full w-full max-h-full max-w-full object-contain"
         />
       </span>
     );
@@ -146,13 +150,18 @@ export function IconSlot({
   if (Lucide) {
     const toneClass =
       tone === "dark" || tone === "accent" ? "text-red" : "text-ink";
+    const lucideSize = sizedByClass ? undefined : Math.round(size * 0.72);
     return (
       <span
         className={`inline-flex shrink-0 items-center justify-center ${toneClass} ${className}`}
-        style={{ width: size, height: size }}
+        style={boxStyle}
         aria-hidden
       >
-        <Lucide size={Math.round(size * 0.72)} strokeWidth={1.5} />
+        <Lucide
+          size={lucideSize ?? Math.round(size * 0.72)}
+          strokeWidth={2}
+          className={sizedByClass ? "h-[72%] w-[72%]" : undefined}
+        />
       </span>
     );
   }
@@ -167,7 +176,7 @@ export function IconSlot({
   return (
     <span
       className={`inline-grid place-items-center border border-dashed ${frame} ${className}`}
-      style={{ width: size, height: size }}
+      style={boxStyle}
       title={`${asset.label} icon`}
       aria-hidden
     >

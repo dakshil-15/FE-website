@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRightCircle } from "lucide-react";
 import type { CSSProperties } from "react";
+import GrowthCta from "@/components/GrowthCta";
 import WorkCaseCard from "@/components/work/WorkCaseCard";
 import { SECTION_META } from "@/components/work/WorkDetailShared";
 import type { WorkDetailModel, WorkDetailSectionId } from "@/content/workDetail";
@@ -40,13 +39,9 @@ export default function WorkDetailRelated({
             {workDetailHeadlines.related}
           </h2>
           <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
-            <Link
-              href="/work"
-              className="text-cta gsap-btn tap-target inline-flex min-h-12 items-center gap-3 border border-ink px-5 py-3.5 pl-6 text-ink transition hover:border-red hover:bg-red hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:gap-4 sm:py-4 sm:pl-7"
-            >
+            <GrowthCta href="/work" variant="secondary">
               View all work
-              <ArrowRightCircle size={24} strokeWidth={1.5} aria-hidden />
-            </Link>
+            </GrowthCta>
           </div>
         </div>
 

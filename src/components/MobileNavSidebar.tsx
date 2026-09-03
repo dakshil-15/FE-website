@@ -1,12 +1,13 @@
 "use client";
 
 import gsap from "gsap";
-import { ArrowRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import GrowthCta from "@/components/GrowthCta";
 import { contactInfo } from "@/content/site";
 
 type NavItem = { label: string; href: string };
@@ -248,18 +249,17 @@ export default function MobileNavSidebar({
           ref={footerRef}
           className="mt-auto border-t border-black/6 px-[var(--gutter)] py-6"
         >
-          <Link
+          <GrowthCta
             href="/contact"
+            variant="primary"
+            block
             data-sidebar-footer
             onClick={handleClose}
             tabIndex={open ? 0 : -1}
-            className="text-cta mb-5 inline-flex min-h-12 w-full items-center justify-between gap-3 bg-ink px-5 py-3.5 text-white transition hover:bg-red focus-visible:outline-offset-2"
+            className="mb-5"
           >
             Let&rsquo;s talk
-            <span className="grid h-7 w-7 place-items-center rounded-full border border-white/80" aria-hidden>
-              <ArrowRight size={14} />
-            </span>
-          </Link>
+          </GrowthCta>
           <div className="flex flex-col gap-2 text-sm" data-sidebar-footer>
             <a
               href={contactInfo.phoneHref}

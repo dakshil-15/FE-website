@@ -15,6 +15,7 @@ import LocationsSection from "@/components/home/LocationsSection";
 import CareersTeaser from "@/components/home/CareersTeaser";
 import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
 import CTASection from "@/components/CTASection";
+import GrowthCta from "@/components/GrowthCta";
 import {
   AiAnalyticsIcon,
   AwardsIcon,
@@ -54,43 +55,110 @@ export default function HomePage() {
           const { reduceMotion } = context.conditions ?? {};
 
           if (reduceMotion) {
-            gsap.set("[data-animate], [data-animate-stagger] > *", {
+            gsap.set("[data-animate], [data-animate-stagger] > *, [data-animate='hero-line']", {
               clearProps: "all",
               autoAlpha: 1,
               y: 0,
               scale: 1,
             });
+            gsap.set(".growth-hero__line-inner", { y: 0 });
             return;
           }
 
-          const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+          gsap.set(".growth-hero__line-inner", { y: "110%" });
+          gsap.set(
+            "[data-animate='hero-eyebrow'], [data-animate='hero-support'], [data-animate='hero-ctas'], [data-animate='hero-status'], [data-animate='hero-visual'], [data-animate='scroll-hint']",
+            { autoAlpha: 0, y: 0 },
+          );
+          gsap.set("[data-animate='hero-support']", { y: 16 });
+
+          const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
           heroTl
-            .from("[data-animate='hero-copy']", {
-              y: 28,
-              autoAlpha: 0,
-              duration: 0.9,
-              stagger: 0.12,
-              immediateRender: false,
+            .to("[data-animate='hero-eyebrow']", {
+              autoAlpha: 1,
+              duration: 0.55,
             })
-            .from(
-              "[data-animate='hero-visual']",
+            .to(
+              ".growth-hero__line-inner",
               {
-                autoAlpha: 0,
-                duration: 0.4,
-                immediateRender: false,
+                y: "0%",
+                duration: 0.85,
+                stagger: 0.08,
               },
-              "-=0.7",
+              "-=0.25",
             )
-            .from(
-              "[data-animate='scroll-hint']",
+            .to(
+              "[data-animate='hero-support']",
               {
-                y: -8,
-                autoAlpha: 0,
-                duration: 0.5,
-                immediateRender: false,
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.65,
               },
               "-=0.35",
+            )
+            .to(
+              "[data-animate='hero-ctas']",
+              {
+                autoAlpha: 1,
+                duration: 0.55,
+              },
+              "-=0.35",
+            )
+            .to(
+              "[data-animate='hero-status']",
+              {
+                autoAlpha: 1,
+                duration: 0.5,
+              },
+              "-=0.3",
+            )
+            .to(
+              "[data-animate='hero-visual']",
+              {
+                autoAlpha: 1,
+                duration: 0.5,
+              },
+              0.25,
+            )
+            .to(
+              "[data-animate='scroll-hint']",
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.5,
+              },
+              "-=0.2",
             );
+
+          gsap.fromTo(
+            ".growth-hero__visual",
+            { y: 15 },
+            {
+              y: -15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".growth-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            },
+          );
+
+          gsap.fromTo(
+            ".growth-hero__copy",
+            { y: 5 },
+            {
+              y: -5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".growth-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            },
+          );
 
           const statsSection = gsap.utils.toArray<HTMLElement>("[data-stats-section]")[0];
           const counters = gsap.utils.toArray<HTMLElement>("[data-counter]");
@@ -181,79 +249,100 @@ export default function HomePage() {
   return (
     <div ref={rootRef}>
       <section
-        className="relative section-shell bg-paper pt-10 pb-5 sm:pt-14 sm:pb-7 lg:pt-16 lg:pb-10"
+        className="growth-hero section-shell pt-3 pb-3 sm:pt-4 sm:pb-4 lg:pt-4 lg:pb-5"
         aria-labelledby="hero-heading"
       >
-        <div className="hero-grid">
-          <div className="min-w-0 w-full max-w-[640px]">
-            <h1
-              id="hero-heading"
-              data-animate="hero-copy"
-              className="text-display-xl m-0 text-balance"
-            >
-              We don&rsquo;t offer{" "}
-              <span className="sm:inline">services in silos.</span>
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>
-              We{" "}
-              <span className="text-red">
-                engineer
-                <br className="hidden xs:block" />
-                <span className="xs:hidden"> </span>
-                growth systems.
+        <div className="growth-hero__bg" aria-hidden="true">
+          <span className="growth-hero__bg-grid" />
+          <span className="growth-hero__bg-dots growth-hero__bg-dots--a" />
+          <span className="growth-hero__bg-dots growth-hero__bg-dots--b" />
+          <span className="growth-hero__bg-guide growth-hero__bg-guide--1" />
+          <span className="growth-hero__bg-guide growth-hero__bg-guide--2" />
+          <span className="growth-hero__bg-glow growth-hero__bg-glow--engine" />
+          <span className="growth-hero__bg-glow growth-hero__bg-glow--floor" />
+          <span className="growth-hero__bg-grain" />
+        </div>
+        <div className="growth-hero__grid">
+          <div className="growth-hero__copy">
+            <p data-animate="hero-eyebrow" className="growth-hero__eyebrow" aria-hidden="true">
+              <span>Strategy</span>
+              <span className="growth-hero__eyebrow-mark" />
+              <span>Media</span>
+              <span className="growth-hero__eyebrow-mark" />
+              <span>Creative</span>
+              <span className="growth-hero__eyebrow-mark" />
+              <span>Technology</span>
+            </p>
+
+            <h1 id="hero-heading" className="growth-hero__title">
+              <span className="growth-hero__line">
+                <span data-animate="hero-line" className="growth-hero__line-inner">
+                  We don&rsquo;t offer
+                </span>
+              </span>
+              <span className="growth-hero__line">
+                <span data-animate="hero-line" className="growth-hero__line-inner">
+                  services in silos.
+                </span>
+              </span>
+              <span className="growth-hero__line growth-hero__line--accent">
+                <span data-animate="hero-line" className="growth-hero__line-inner">
+                  We engineer
+                </span>
+              </span>
+              <span className="growth-hero__line growth-hero__line--accent">
+                <span data-animate="hero-line" className="growth-hero__line-inner">
+                  growth systems.
+                </span>
               </span>
             </h1>
-            <p
-              data-animate="hero-copy"
-              className="text-body section-copy section-copy-on-light mt-5 mb-0 sm:mt-6"
-            >
+
+            <p data-animate="hero-support" className="growth-hero__support">
               Strategy. Media. Creative. Technology.
-              <br className="hidden xs:block" />
-              <span className="xs:hidden"> </span>
+              <br />
               Built around one growth objective.
             </p>
-            <div
-              data-animate="hero-copy"
-              className="mt-7 flex flex-col items-stretch gap-3 xs:mt-8 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:gap-5"
-            >
-              <Link
-                href="/work"
-                className="text-cta inline-flex min-h-12 items-center justify-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red sm:justify-start sm:py-4 sm:pl-7"
-              >
+
+            <div data-animate="hero-ctas" className="growth-hero__ctas">
+              <GrowthCta href="/work" variant="primary">
                 Explore our work
-                <span className="grid h-8 w-8 place-items-center rounded-full border border-white/70" aria-hidden>
-                  <ArrowRight size={14} />
-                </span>
-              </Link>
-              <Link
-                href="/services"
-                className="text-cta inline-flex min-h-12 items-center justify-center gap-3.5 border border-ink px-5 py-3.5 transition hover:border-red hover:text-red sm:justify-start sm:py-4"
-              >
+              </GrowthCta>
+              <GrowthCta href="/services" variant="secondary">
                 Explore our services
-                <ArrowRight size={16} aria-hidden />
-              </Link>
+              </GrowthCta>
+            </div>
+
+            <div data-animate="hero-status" className="growth-hero__status" aria-hidden="true">
+              <span className="growth-hero__status-dots">
+                <span className="growth-hero__status-dot is-active" />
+                <span className="growth-hero__status-dot" />
+                <span className="growth-hero__status-dot" />
+                <span className="growth-hero__status-dot" />
+              </span>
+              <span className="growth-hero__status-rule" />
+              <span>Built to scale. Designed to compound.</span>
             </div>
           </div>
 
-          <div data-animate="hero-visual" className="grid min-w-0 w-full place-items-center overflow-visible lg:place-items-stretch">
+          <div data-animate="hero-visual" className="growth-hero__visual">
             <GrowthNetworkVisual />
           </div>
         </div>
-      </section>
 
-      <div
-        data-animate="scroll-hint"
-        className="flex justify-center bg-paper pb-5 sm:pb-7 lg:pb-8"
-        aria-hidden="true"
-      >
-        <Image
-          src="/assets/ui-scroll.png"
-          alt=""
-          width={40}
-          height={52}
-          className="animate-scroll-hint block h-8 w-auto sm:h-10 lg:h-11"
-        />
-      </div>
+        <div
+          data-animate="scroll-hint"
+          className="growth-hero__scroll"
+          aria-hidden="true"
+        >
+          <Image
+            src="/assets/ui-scroll.png"
+            alt=""
+            width={40}
+            height={52}
+            className="animate-scroll-hint block h-8 w-auto sm:h-10 lg:h-11"
+          />
+        </div>
+      </section>
 
       <section
         data-animate-section
@@ -383,7 +472,6 @@ export default function HomePage() {
         body={homeCta.body}
         primaryLabel={homeCta.button.label}
         primaryHref={homeCta.button.href}
-        burstSrc={homeCta.burst}
       />
     </div>
   );

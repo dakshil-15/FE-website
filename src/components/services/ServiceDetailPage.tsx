@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRight, ArrowRightCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import GrowthCta from "@/components/GrowthCta";
 import PageHero from "@/components/PageHero";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import ServiceValueGrid from "@/components/services/ServiceValueGrid";
@@ -93,7 +94,12 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
             >
               {hero.highlights.map((item) => (
                 <li key={item.id} className="flex min-w-[8.5rem] items-center gap-2.5">
-                  <IconSlot asset={item.icon} size={28} tone="accent" />
+                  <IconSlot
+                    asset={item.icon}
+                    size={32}
+                    tone="accent"
+                    className="h-7 w-7 sm:h-8 sm:w-8"
+                  />
                   <span className="text-body-sm font-semibold tracking-[0.04em] text-ink uppercase">
                     {item.label}
                   </span>
@@ -117,9 +123,6 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
                 href: processAnchor,
                 ariaLabel: `Continue to ${content.name} capabilities`,
                 arrowSrc: hero.arrow,
-                arrowSize: 80,
-                className:
-                  "absolute top-1/2 left-1/2 z-20 grid size-[4.5rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20",
               }
             : undefined
         }
@@ -157,10 +160,10 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
                     <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
                       <span
                         data-timeline-icon
-                        className="about-timeline-icon grid h-14 w-14 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper md:h-16 md:w-16"
-                      >
-                        <IconSlot asset={step.icon} size={56} />
-                      </span>
+                        className="about-timeline-icon grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper sm:h-14 sm:w-14 md:h-16 md:w-16"
+                    >
+                        <IconSlot asset={step.icon} size={64} className="h-full w-full" />
+                    </span>
                       <div data-timeline-copy className="min-w-0 lg:mt-6">
                         <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">
                           <span className="text-red">{step.number}.</span> {step.title}
@@ -204,13 +207,9 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
                 {why.body}
               </p>
               <div data-animate="fade-up">
-                <Link
-                  href={why.button.href}
-                  className="text-cta tap-target mt-7 inline-flex min-h-12 items-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:gap-4 sm:py-4 sm:pl-7"
-                >
+                <GrowthCta href={why.button.href} variant="primary" className="mt-7 sm:mt-8">
                   {why.button.label}
-                  <ArrowRightCircle size={28} strokeWidth={1.5} className="sm:size-8" aria-hidden />
-                </Link>
+                </GrowthCta>
               </div>
             </div>
 
@@ -265,9 +264,14 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
                       <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
                         <span
                           data-funnel-icon
-                          className="about-timeline-icon grid h-14 w-14 flex-none place-items-center overflow-hidden rounded-full border border-red bg-white md:h-16 md:w-16"
+                          className="about-timeline-icon grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full border border-red bg-white sm:h-14 sm:w-14 md:h-16 md:w-16"
                         >
-                          <IconSlot asset={stage.icon} size={56} tone="accent" />
+                          <IconSlot
+                            asset={stage.icon}
+                            size={64}
+                            tone="accent"
+                            className="h-[70%] w-[70%] sm:h-[72%] sm:w-[72%]"
+                          />
                         </span>
                         <div data-funnel-copy className="min-w-0 lg:mt-5">
                           <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">

@@ -12,10 +12,11 @@ export const capabilitiesHero = {
   headlineAccent: "Growth Systems",
   body: "Technology, AI, data, platforms and automation — engineered as one connected growth system, not isolated tools or vendor stacks.",
   visual: {
-    src: "/images/capabilities/hero/visual-red-network.png",
-    alt: "Hexagonal capability network with First Economy at the centre",
-    label: "Capabilities hero network visual",
-    fit: "contain",
+    src: "/images/capabilities/hero/team-collaboration.jpg",
+    alt: "First Economy team collaborating in a modern office with data dashboards on screen",
+    label: "Capabilities hero team photo",
+    fit: "cover",
+    grayscale: false,
   } satisfies MediaSlot,
   burst: "/images/services/hero/radial-burst.svg",
   arrow: "/images/services/hero/arrow-circle.svg",
@@ -98,7 +99,7 @@ export const capabilityCards: CapabilityCard[] = [
     body: "Enterprise-grade systems for complex, multi-market and multi-brand organisations.",
     href: "/services/technology",
     icon: {
-      src: "/images/capabilities/icons/capability-enterprise-solutions.png",
+      src: "/images/capabilities/icons/capability-enterprise-solutions.svg",
       alt: "",
       label: "Enterprise Solutions icon",
     },
@@ -120,7 +121,7 @@ export const capabilityCards: CapabilityCard[] = [
     body: "The thinking that connects every capability into one measurable growth plan.",
     href: "/contact",
     icon: {
-      src: "/images/capabilities/icons/capability-strategy-consulting.png",
+      src: "/images/capabilities/icons/capability-strategy-consulting.svg",
       alt: "",
       label: "Strategy & Consulting icon",
     },
@@ -212,11 +213,11 @@ export const intelligenceSection = {
     { value: "Real Time", label: "Insights" },
   ],
   image: {
-    src: "/images/capabilities/intelligence/visual-ai-cube.png",
+    src: "/images/capabilities/intelligence/visual-ai-cube.jpg",
     alt: "Glowing AI cube with digital circuitry",
     label: "AI technology visual",
     fit: "contain",
-  } satisfies MediaSlot,
+  } satisfies MediaSlot
 };
 
 /** Deck slide 97 — The Infrastructure of Advantage */

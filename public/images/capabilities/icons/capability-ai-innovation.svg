@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048" fill="none"><path d="M1024 140L1650 500V1240L1024 1600L398 1240V500L1024 140Z" stroke="#111111" stroke-width="42"/>
-<ellipse cx="1024" cy="920" rx="190" ry="530" transform="rotate(60 1024 920)" stroke="#ffffff" stroke-width="34"/>
-<ellipse cx="1024" cy="920" rx="190" ry="530" transform="rotate(-60 1024 920)" stroke="#ffffff" stroke-width="34"/>
-<ellipse cx="1024" cy="920" rx="190" ry="530" stroke="#ffffff" stroke-width="34"/>
-<circle cx="1024" cy="920" r="52" fill="#ff1b1b"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <circle cx="50" cy="50" r="37" fill="#F4F4F2"/>
+  <ellipse cx="50" cy="50" rx="12" ry="28" stroke="#D22525" stroke-width="2.1"/>
+  <ellipse cx="50" cy="50" rx="12" ry="28" transform="rotate(60 50 50)" stroke="#D22525" stroke-width="2.1"/>
+  <ellipse cx="50" cy="50" rx="12" ry="28" transform="rotate(-60 50 50)" stroke="#D22525" stroke-width="2.1"/>
+  <circle cx="50" cy="50" r="4.5" fill="#D22525"/>
 </svg>

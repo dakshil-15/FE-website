@@ -13,16 +13,16 @@ const jobIcon = (file: string, label: string): MediaSlot => ({
 
 /** Job detail page icons — /public/images/careers/job-detail/ */
 export const careerJobIcons = {
-  briefcase: jobIcon("briefcase.png", "Department"),
-  megaphone: jobIcon("megaphone.png", "Campaigns"),
-  analytics: jobIcon("analytics.png", "Analytics"),
-  innovation: jobIcon("innovation.png", "Innovation"),
-  leadership: jobIcon("leadership.png", "Leadership"),
-  growthImpact: jobIcon("growth-impact.png", "Growth Impact"),
-  learning: jobIcon("learning.png", "Learning"),
-  inclusion: jobIcon("inclusion.png", "Inclusion"),
-  flexibility: jobIcon("flexibility.png", "Flexibility"),
-  wellbeing: jobIcon("wellbeing.png", "Well-being"),
+  briefcase: jobIcon("briefcase.svg", "Department"),
+  megaphone: jobIcon("megaphone.svg", "Campaigns"),
+  analytics: jobIcon("analytics.svg", "Analytics"),
+  innovation: jobIcon("innovation.svg", "Innovation"),
+  leadership: jobIcon("leadership.svg", "Leadership"),
+  growthImpact: jobIcon("growth-impact.svg", "Growth Impact"),
+  learning: jobIcon("learning.svg", "Learning"),
+  inclusion: jobIcon("inclusion.svg", "Inclusion"),
+  flexibility: jobIcon("flexibility.svg", "Flexibility"),
+  wellbeing: jobIcon("wellbeing.svg", "Well-being"),
 } as const;
 
 export const careerDetailHeroImage = {
@@ -80,7 +80,7 @@ export const careersHero = {
     src: "/images/careers/team.png",
     alt: "First Economy teammates collaborating around a long office table",
     label: "Careers hero team photo",
-    grayscale: true,
+    grayscale: false,
   } satisfies MediaSlot,
   verticalMark: "STRATEGY  CREATIVE  MEDIA  TECHNOLOGY  DATA  =  GROWTH",
   burst: "/images/careers/hero/radial-burst.svg",

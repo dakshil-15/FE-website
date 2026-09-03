@@ -21,7 +21,11 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
               className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[248px] sm:rounded-[22px] sm:p-5 md:min-h-[268px] md:p-6"
             >
               <div className="relative flex items-start justify-between gap-3">
-                <IconSlot asset={card.icon} size={72} />
+                <IconSlot
+                  asset={card.icon}
+                  size={80}
+                  className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20"
+                />
                 <span
                   className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
                   aria-hidden

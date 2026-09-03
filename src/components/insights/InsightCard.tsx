@@ -28,14 +28,14 @@ export default function InsightCard({ post }: { post: InsightPost }) {
               src={thumbnail.src}
               alt=""
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 42vw, 33vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className={`object-cover object-center ${thumbnail.grayscale ? "grayscale" : ""}`}
             />
           ) : (
             <ImageSlot
               asset={thumbnail}
               className="aspect-[16/10] w-full"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 42vw, 33vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           )}
           <span

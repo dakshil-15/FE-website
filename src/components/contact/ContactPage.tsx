@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRightCircle, Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
+import GrowthCta from "@/components/GrowthCta";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import { aboutLocations } from "@/content/about";
@@ -47,13 +47,14 @@ export default function ContactPage() {
         body={contactHero.body}
         copyAfterBody={
           <div data-animate="hero-copy">
-            <Link
+            <GrowthCta
               href={contactHero.cta.href}
-              className="text-cta tap-target mt-7 inline-flex min-h-12 w-full items-center justify-center gap-4 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red xs:w-auto sm:mt-8 sm:py-4 sm:pl-7"
+              variant="primary"
+              block
+              className="mt-7 xs:w-auto sm:mt-8"
             >
               {contactHero.cta.label}
-              <ArrowRightCircle size={32} strokeWidth={1.5} aria-hidden />
-            </Link>
+            </GrowthCta>
           </div>
         }
         media={
@@ -77,8 +78,6 @@ export default function ContactPage() {
           href: "#contact-form",
           ariaLabel: "Continue to the contact form",
           arrowSrc: contactHero.arrow,
-          className:
-            "absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden",
         }}
       />
 

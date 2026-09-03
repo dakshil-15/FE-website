@@ -1,41 +1,14 @@
 import Link from "next/link";
-import type { ComponentType, SVGProps } from "react";
 import { ArrowRight } from "lucide-react";
-import {
-  MediaBuyingIcon,
-  VideoProductionIcon,
-  BrandingIcon,
-  InfluencerMarketingIcon,
-  MarketplaceManagementIcon,
-  TechSolutionsIcon,
-  CreativeSolutionsIcon,
-  SocialMediaIcon,
-  SeoIcon,
-  AiSolutionsIcon,
-} from "@/components/brandIcons";
+import { serviceOfferingIconBySlug } from "@/components/serviceOfferingIcons";
 import { serviceOfferings } from "@/content/serviceOfferings";
-
-type IconComponent = ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
-
-const iconBySlug: Record<string, IconComponent> = {
-  "media-buying": MediaBuyingIcon,
-  "video-production": VideoProductionIcon,
-  branding: BrandingIcon,
-  "influencer-marketing": InfluencerMarketingIcon,
-  "marketplace-management": MarketplaceManagementIcon,
-  technology: TechSolutionsIcon,
-  creative: CreativeSolutionsIcon,
-  "social-media": SocialMediaIcon,
-  seo: SeoIcon,
-  "ai-solutions": AiSolutionsIcon,
-};
 
 export default function ServiceIconGrid() {
   return (
     <ul data-animate-stagger className="caps list-none p-0">
       {serviceOfferings.map((service, index) => {
         const num = String(index + 1).padStart(2, "0");
-        const Icon = iconBySlug[service.slug];
+        const Icon = serviceOfferingIconBySlug[service.slug];
 
         return (
           <li key={service.slug} className="min-w-0">
@@ -57,8 +30,14 @@ export default function ServiceIconGrid() {
               </svg>
 
               <div className="relative flex items-start justify-between gap-3">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem]">
-                  <Icon size={34} aria-hidden className="h-7 w-7 text-white sm:h-8 sm:w-8 md:h-9 md:w-9" />
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-[4.75rem] lg:w-[4.75rem]">
+                  {Icon ? (
+                    <Icon
+                      size={36}
+                      aria-hidden
+                      className="h-7 w-7 text-white sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
+                    />
+                  ) : null}
                 </span>
                 <span
                   className="font-display text-[2.75rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[3rem]"

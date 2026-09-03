@@ -144,7 +144,11 @@ export default function AwardsPage() {
                   aria-label={`${stat.prefix ?? ""}${stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}${stat.suffix}${stat.showPlus ? "+" : ""} ${stat.label}. ${stat.description}`}
                 >
                   <span aria-hidden>
-                    <IconSlot asset={stat.icon} size={40} className="text-red" />
+                    <IconSlot
+                      asset={stat.icon}
+                      size={40}
+                      className="h-9 w-9 text-red sm:h-10 sm:w-10"
+                    />
                   </span>
                   <p className="text-stat mt-4 mb-0 text-ink sm:mt-5">
                     <span

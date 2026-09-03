@@ -54,9 +54,6 @@ export default function ServicesPage() {
           href: "#our-services",
           ariaLabel: "Continue to our services",
           arrowSrc: servicesHero.arrow,
-          arrowSize: 80,
-          className:
-            "absolute top-1/2 left-1/2 z-20 grid size-[4.5rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20",
         }}
       />
 
@@ -117,9 +114,9 @@ export default function ServicesPage() {
                   <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
                     <span
                       data-timeline-icon
-                      className="about-timeline-icon grid h-14 w-14 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper md:h-16 md:w-16"
+                      className="about-timeline-icon grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper sm:h-14 sm:w-14 md:h-16 md:w-16"
                     >
-                      <IconSlot asset={step.icon} size={56} />
+                      <IconSlot asset={step.icon} size={64} className="h-full w-full" />
                     </span>
                     <div data-timeline-copy className="min-w-0 lg:mt-6">
                       <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">

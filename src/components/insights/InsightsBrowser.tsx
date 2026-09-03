@@ -139,7 +139,7 @@ export default function InsightsBrowser({ posts, activeFilter, onFilterChange }:
         {items.length > 0 ? (
           <ul
             data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 sm:gap-[18px] xl:grid-cols-2"
+            className="section-media m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 sm:gap-[18px] lg:grid-cols-3"
           >
             {items.map((post) => (
               <li key={post.slug} className="min-w-0">

@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowRight, ArrowRightCircle, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
+import GrowthCta from "@/components/GrowthCta";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import TeamCarousel from "@/components/about/TeamCarousel";
 import FeaturedAwardHighlight from "@/components/about/FeaturedAwardHighlight";
@@ -161,8 +162,6 @@ export default function AboutPage() {
           href: "#our-story",
           ariaLabel: "Continue to our story",
           arrowSrc: aboutHero.arrow,
-          className:
-            "absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center transition hover:opacity-80 max-lg:hidden",
         }}
       />
 
@@ -175,7 +174,12 @@ export default function AboutPage() {
         <div className="section-inner grid grid-cols-1 gap-y-8 xs:grid-cols-2 xs:gap-y-10 lg:grid-cols-4 lg:gap-y-0">
           {aboutStats.map((stat) => (
             <div key={stat.label} className="stat-item">
-              <IconSlot asset={stat.icon} tone="dark" size={44} className="mb-4 sm:mb-5" />
+              <IconSlot
+                asset={stat.icon}
+                tone="dark"
+                size={48}
+                className="mb-4 h-9 w-9 sm:mb-5 sm:h-11 sm:w-11"
+              />
               <p className="text-stat m-0 text-red">
                 <span
                   data-counter
@@ -230,9 +234,13 @@ export default function AboutPage() {
                   <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-0">
                     <span
                       data-timeline-icon
-                      className="about-timeline-icon grid h-14 w-14 flex-none place-items-center rounded-full border border-red bg-paper text-red md:h-16 md:w-16"
+                      className="about-timeline-icon grid h-12 w-12 flex-none place-items-center rounded-full border border-red bg-paper text-red sm:h-14 sm:w-14 md:h-16 md:w-16"
                     >
-                      <IconSlot asset={item.icon} size={28} className="text-red" />
+                      <IconSlot
+                        asset={item.icon}
+                        size={48}
+                        className="h-[70%] w-[70%] sm:h-[72%] sm:w-[72%]"
+                      />
                     </span>
                     <div data-timeline-copy className="min-w-0 md:mt-6">
                       <p className="m-0 font-display text-xl tracking-[0.04em] text-red uppercase">{item.year}</p>
@@ -269,13 +277,9 @@ export default function AboutPage() {
               {aboutWhatWeDo.body}
             </p>
             <div data-animate="fade-up">
-              <Link
-                href={aboutWhatWeDo.cta.href}
-                className="text-cta tap-target mt-7 inline-flex min-h-12 items-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:gap-4 sm:py-4 sm:pl-7"
-              >
+              <GrowthCta href={aboutWhatWeDo.cta.href} variant="primary" className="mt-7 sm:mt-8">
                 {aboutWhatWeDo.cta.label}
-                <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
-              </Link>
+              </GrowthCta>
             </div>
           </div>
 
@@ -330,8 +334,14 @@ export default function AboutPage() {
           >
             {aboutValues.map((value) => (
               <li key={value.title} className="min-w-0">
-                <IconSlot asset={value.icon} size={64} className="text-ink" />
-                <h3 className="mt-5 mb-0 font-display text-lg tracking-[0.06em] uppercase">{value.title}</h3>
+                <IconSlot
+                  asset={value.icon}
+                  size={64}
+                  className="h-12 w-12 text-ink sm:h-14 sm:w-14 md:h-16 md:w-16"
+                />
+                <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
+                  {value.title}
+                </h3>
                 <p className="text-body-sm mt-2.5 mb-0 max-w-[16rem] text-muted">{value.body}</p>
               </li>
             ))}
@@ -413,24 +423,24 @@ export default function AboutPage() {
                     />
                   </div>
 
-                  <div className="flex items-end justify-between gap-3 border-t border-line px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
-                    <div className="min-w-0 text-left">
-                      <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                  <div className="flex flex-1 flex-col border-t border-line px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                         {office.city}
                         {office.isHq ? (
                           <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
                         ) : null}
                       </p>
-                      <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
-                        {office.address}
-                      </p>
+                      <span
+                        className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
+                        aria-hidden
+                      >
+                        <ArrowRight size={14} />
+                      </span>
                     </div>
-                    <span
-                      className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
-                      aria-hidden
-                    >
-                      <ArrowRight size={14} />
-                    </span>
+                    <p className="text-body-sm mt-1.5 mb-0 leading-snug text-muted">
+                      {office.address}
+                    </p>
                   </div>
                 </Link>
               </li>

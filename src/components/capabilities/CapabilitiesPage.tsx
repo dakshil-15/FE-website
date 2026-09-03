@@ -7,7 +7,6 @@ import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 import CapabilitiesGrid from "@/components/capabilities/CapabilitiesGrid";
-import CapabilitiesHexNetwork from "@/components/capabilities/CapabilitiesHexNetwork";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
@@ -54,27 +53,18 @@ export default function CapabilitiesPage() {
         }
         body={capabilitiesHero.body}
         media={
-          capabilitiesHero.visual.src ? (
-            <ImageSlot
-              asset={capabilitiesHero.visual}
-              priority
-              className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          ) : (
-            <div className="flex aspect-[4/3] w-full items-center justify-center bg-mist sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px] lg:h-full">
-              <CapabilitiesHexNetwork asset={capabilitiesHero.visual} />
-            </div>
-          )
+          <ImageSlot
+            asset={capabilitiesHero.visual}
+            priority
+            className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         }
         burstSrc={capabilitiesHero.burst}
         seam={{
           href: "#our-capabilities",
           ariaLabel: "Continue to our capabilities",
           arrowSrc: capabilitiesHero.arrow,
-          arrowSize: 80,
-          className:
-            "absolute top-1/2 left-1/2 z-20 grid size-[4.5rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20",
         }}
       />
 
@@ -134,9 +124,9 @@ export default function CapabilitiesPage() {
                   <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
                     <span
                       data-timeline-icon
-                      className="about-timeline-icon grid h-14 w-14 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper md:h-16 md:w-16"
+                      className="about-timeline-icon grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper sm:h-14 sm:w-14 md:h-16 md:w-16"
                     >
-                      <IconSlot asset={step.icon} size={56} />
+                      <IconSlot asset={step.icon} size={64} className="h-full w-full" />
                     </span>
                     <div data-timeline-copy className="min-w-0 lg:mt-6">
                       <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">

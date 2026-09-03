@@ -116,8 +116,11 @@ const DEFAULT_MEDIA_CLASS = "relative z-[1] min-w-0 overflow-hidden";
 const DEFAULT_BURST_CLASS =
   "pointer-events-none absolute top-1/2 left-1/2 z-0 hidden size-[min(68%,20rem)] -translate-x-1/2 -translate-y-1/2 lg:block";
 
-const DEFAULT_SEAM_CLASS =
+/** lg: 3.5rem (56px) → xl: 5rem (80px); image fills the hit target via size-full */
+export const PAGE_HERO_SEAM_CLASS =
   "absolute top-1/2 left-1/2 z-20 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20";
+
+const SEAM_ARROW_INTRINSIC = 80;
 
 export default function PageHero({
   headingId,
@@ -140,8 +143,6 @@ export default function PageHero({
   bodyClassName = "text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6",
   titleClassName = "text-display-xl mt-4 mb-0 text-balance",
 }: PageHeroProps) {
-  const seamArrowSize = seam?.arrowSize ?? 56;
-
   return (
     <section className={PAGE_HERO_SECTION_CLASS} aria-labelledby={headingId}>
       <div className="section-inner">
@@ -192,15 +193,16 @@ export default function PageHero({
                 href={seam.href}
                 data-animate="hero-seam"
                 aria-label={seam.ariaLabel}
-                className={seam.className ?? DEFAULT_SEAM_CLASS}
+                className={seam.className ?? PAGE_HERO_SEAM_CLASS}
               >
                 <Image
                   src={seam.arrowSrc}
                   alt=""
                   aria-hidden
-                  width={seamArrowSize}
-                  height={seamArrowSize}
+                  width={seam.arrowSize ?? SEAM_ARROW_INTRINSIC}
+                  height={seam.arrowSize ?? SEAM_ARROW_INTRINSIC}
                   unoptimized
+                  className="size-full max-h-full max-w-full object-contain"
                 />
               </Link>
             ) : (
@@ -209,15 +211,16 @@ export default function PageHero({
                 onClick={seam.onClick}
                 data-animate="hero-seam"
                 aria-label={seam.ariaLabel}
-                className={seam.className ?? DEFAULT_SEAM_CLASS}
+                className={seam.className ?? PAGE_HERO_SEAM_CLASS}
               >
                 <Image
                   src={seam.arrowSrc}
                   alt=""
                   aria-hidden
-                  width={seamArrowSize}
-                  height={seamArrowSize}
+                  width={seam.arrowSize ?? SEAM_ARROW_INTRINSIC}
+                  height={seam.arrowSize ?? SEAM_ARROW_INTRINSIC}
                   unoptimized
+                  className="size-full max-h-full max-w-full object-contain"
                 />
               </button>
             )

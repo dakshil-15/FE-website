@@ -17,7 +17,7 @@ export const contactHero = {
     src: "/images/contact/hero/team-meeting.jpg",
     alt: "First Economy team in a glass meeting room",
     label: "Contact hero meeting photo",
-    grayscale: true,
+    grayscale: false,
   } satisfies MediaSlot,
   verticalMark: "CALL  ·  EMAIL  ·  VISIT  ·  PARTNER",
   burst: "/images/about/hero/radial-burst.svg",

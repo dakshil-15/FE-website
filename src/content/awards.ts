@@ -14,6 +14,7 @@ export const awardsHero = {
   headlineAccent: "Driven by purpose.",
   body: "From a Guinness World Record with Godrej Properties to honours from Afaqs, MOBEXX, e4m and DIGIXX — our work is recognized when strategy, media, creative, technology and data work as one.",
   image: {
+    src: "/images/awards/hero/trophy-collection.jpg",
     alt: "Collection of trophies and awards on display",
     label: "Awards hero — trophy collection photo",
     fit: "cover",

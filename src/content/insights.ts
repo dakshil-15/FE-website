@@ -18,13 +18,13 @@ const detailImage = (file: string, label: string): MediaSlot => ({
 });
 
 export const insightDetailIcons = {
-  dataExplosion: detailIcon("data-explosion.png", "Data Explosion"),
-  changingExpectations: detailIcon("changing-expectations.png", "Changing Expectations"),
-  growthPressure: detailIcon("growth-pressure.png", "Growth Pressure"),
-  humanAi: detailIcon("human-ai.png", "Human + AI Collaboration"),
-  dataDecisions: detailIcon("data-decisions.png", "Data to Decisions"),
-  automation: detailIcon("automation.png", "Automation at Scale"),
-  continuousLearning: detailIcon("continuous-learning.png", "Continuous Learning"),
+  dataExplosion: detailIcon("data-explosion.svg", "Data Explosion"),
+  changingExpectations: detailIcon("changing-expectations.svg", "Changing Expectations"),
+  growthPressure: detailIcon("growth-pressure.svg", "Growth Pressure"),
+  humanAi: detailIcon("human-ai.svg", "Human + AI Collaboration"),
+  dataDecisions: detailIcon("data-decisions.svg", "Data to Decisions"),
+  automation: detailIcon("automation.svg", "Automation at Scale"),
+  continuousLearning: detailIcon("continuous-learning.svg", "Continuous Learning"),
 } as const;
 
 export type InsightFilterKey =
@@ -59,15 +59,11 @@ export const insightsHero = {
   headlineAccent: "growth.",
   body: "Perspectives, trends and strategies from the intersection of media, technology, creativity and data.",
   verticalMark: "ENGINEER GROWTH SYSTEMS.",
-  imagePrimary: {
-    alt: "Architectural detail with a red accent stripe",
-    label: "Insights hero photo — architectural detail",
-    grayscale: true,
-  } satisfies MediaSlot,
-  imageSecondary: {
-    alt: "Team meeting in a glass conference room",
-    label: "Insights hero photo — team meeting",
-    grayscale: true,
+  image: {
+    src: "/images/insights/hero/insights-banner.jpg",
+    alt: "First Economy team collaborating over insights, reports and strategy materials",
+    label: "Insights hero banner",
+    grayscale: false,
   } satisfies MediaSlot,
   burst: "/images/about/hero/radial-burst.svg",
   arrow: "/images/about/ui/arrow-right-circle.svg",

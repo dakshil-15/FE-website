@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useRef, type CSSProperties } from "react";
-import { ArrowRight, ArrowRightCircle, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import NewsletterSubscribe from "@/components/forms/NewsletterSubscribe";
+import GrowthCta from "@/components/GrowthCta";
 import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
 import StickySectionNav from "@/components/StickySectionNav";
 import { useStickySectionNav } from "@/hooks/useStickySectionNav";
@@ -258,7 +259,12 @@ export default function InsightDetailPage({
                         className="cap-card flex min-h-[200px] flex-col border border-line bg-mist p-5 text-center transition-[border-color] duration-200 hover:border-ink sm:p-6"
                       >
                         <div className="flex justify-center">
-                          <IconSlot asset={item.icon} tone="accent" size={44} />
+                          <IconSlot
+                            asset={item.icon}
+                            tone="accent"
+                            size={44}
+                            className="h-9 w-9 sm:h-11 sm:w-11"
+                          />
                         </div>
                         <h3 className="mt-5 mb-0 font-display text-sm font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                           {item.title}
@@ -292,7 +298,12 @@ export default function InsightDetailPage({
                         key={`${item.title}-${index}`}
                         className="cap-card flex min-h-[200px] flex-col border border-line bg-mist p-5 transition-[border-color] duration-200 hover:border-ink sm:p-6"
                       >
-                        <IconSlot asset={item.icon} tone="accent" size={40} />
+                        <IconSlot
+                          asset={item.icon}
+                          tone="accent"
+                          size={40}
+                          className="h-9 w-9 sm:h-10 sm:w-10"
+                        />
                         <h3 className="mt-5 mb-0 font-display text-sm font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                           {item.title}
                         </h3>
@@ -375,13 +386,14 @@ export default function InsightDetailPage({
                     ))}
                   </ul>
                   <div className="mt-8 sm:mt-10">
-                    <Link
+                    <GrowthCta
                       href={article.examples.cta.href}
-                      className="text-cta gsap-btn inline-flex min-h-12 w-full items-center justify-center gap-3 border border-red px-6 py-3 text-red transition hover:bg-red hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:w-auto"
+                      variant="secondary"
+                      block
+                      className="sm:w-auto"
                     >
                       {article.examples.cta.label}
-                      <ArrowRightCircle size={24} strokeWidth={1.5} aria-hidden />
-                    </Link>
+                    </GrowthCta>
                   </div>
                 </section>
               ) : null}
@@ -432,13 +444,14 @@ export default function InsightDetailPage({
                         <span className="text-red">{insightsCta.titleAccent}</span>
                       </p>
                       <p className="text-body-sm mt-3 mb-0 text-muted">{insightsCta.body}</p>
-                      <Link
+                      <GrowthCta
                         href={insightsCta.button.href}
-                        className="text-cta gsap-btn tap-target mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-red px-6 py-3 text-white transition hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:w-auto"
+                        variant="accent"
+                        block
+                        className="mt-5 sm:w-auto"
                       >
                         {insightsCta.button.label}
-                        <ArrowRightCircle size={22} strokeWidth={1.5} aria-hidden />
-                      </Link>
+                      </GrowthCta>
                     </aside>
                   </div>
                 </section>

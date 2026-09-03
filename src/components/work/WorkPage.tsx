@@ -81,9 +81,6 @@ export default function WorkPage() {
           href: "#case-studies",
           ariaLabel: "Continue to case studies",
           arrowSrc: workHero.arrow,
-          arrowSize: 80,
-          className:
-            "absolute top-1/2 left-1/2 z-20 grid size-[4.5rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red max-lg:hidden xl:size-20",
         }}
       />
 
@@ -115,7 +112,12 @@ export default function WorkPage() {
           </h2>
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
             <span data-animate="fade-up" className="flex-none self-start lg:self-center">
-              <IconSlot asset={workStats.icon} tone="dark" size={88} />
+              <IconSlot
+                asset={workStats.icon}
+                tone="dark"
+                size={88}
+                className="h-16 w-16 sm:h-20 sm:w-20 md:h-[5.5rem] md:w-[5.5rem]"
+              />
             </span>
             <ul
               data-animate-stagger
@@ -150,10 +152,9 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* ── Pre-footer CTA (mist) ─────────────────────── */}
+      {/* ── Pre-footer CTA ────────────────────────────── */}
       <CTASection
         animate
-        tone="mist"
         titleBreak
         headingId="work-cta-heading"
         titleBefore={workCta.titleBefore}
@@ -161,7 +162,6 @@ export default function WorkPage() {
         body={workCta.body}
         primaryLabel={workCta.button.label}
         primaryHref={workCta.button.href}
-        burstSrc={workCta.burst}
       />
     </div>
   );

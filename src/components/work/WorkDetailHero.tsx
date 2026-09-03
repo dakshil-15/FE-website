@@ -154,9 +154,6 @@ export default function WorkDetailHero({
         onClick: () => scrollToElement(firstSectionId),
         ariaLabel: "Continue to case study",
         arrowSrc: workHero.arrow,
-        arrowSize: 72,
-        className:
-          "absolute top-1/2 left-1/2 z-20 hidden size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red lg:grid xl:size-[4.5rem]",
       }}
     />
   );

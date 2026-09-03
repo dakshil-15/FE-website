@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import AnimatedMenuButton from "@/components/AnimatedMenuButton";
+import GrowthCta from "@/components/GrowthCta";
 import MobileNavSidebar from "@/components/MobileNavSidebar";
 
 const primaryNav = [
@@ -146,15 +146,9 @@ export default function Header() {
           </nav>
 
           <div className="relative z-[121] flex flex-none items-center gap-2 sm:gap-3">
-            <Link
-              href="/contact"
-              className="text-cta hidden min-h-11 items-center gap-3.5 bg-ink px-4 py-3 pl-5 text-white transition hover:bg-red focus-visible:outline-offset-2 md:inline-flex lg:px-5 lg:py-3.5 lg:pl-6"
-            >
+            <GrowthCta href="/contact" variant="primary" compact className="hidden md:inline-flex">
               Let&rsquo;s talk
-              <span className="grid h-7 w-7 place-items-center rounded-full border border-white/80" aria-hidden>
-                <ArrowRight size={14} />
-              </span>
-            </Link>
+            </GrowthCta>
 
             <AnimatedMenuButton
               open={open}

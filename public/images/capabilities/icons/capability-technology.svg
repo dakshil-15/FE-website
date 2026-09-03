@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048" fill="none"><path d="M1024 140L1650 500V1240L1024 1600L398 1240V500L1024 140Z" stroke="#111111" stroke-width="42"/>
-<rect x="830" y="720" width="388" height="388" rx="54" stroke="#ffffff" stroke-width="42"/>
-<rect x="925" y="815" width="198" height="198" rx="26" stroke="#ffffff" stroke-width="34"/>
-<path d="M790 780H680M790 920H680M790 1060H680M1258 780H1368M1258 920H1368M1258 1060H1368M870 680V570M1010 680V570M1150 680V570M870 1148V1258M1010 1148V1258M1150 1148V1258" stroke="#ffffff" stroke-width="34" stroke-linecap="round"/>
-<path d="M900 850L1100 1050M1100 850L900 1050" stroke="#ff1b1b" stroke-width="34"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <circle cx="50" cy="50" r="37" fill="#F4F4F2"/>
+  <rect x="34" y="34" width="32" height="32" rx="5" stroke="#D22525" stroke-width="2.2"/>
+  <rect x="42" y="42" width="16" height="16" rx="2.5" stroke="#D22525" stroke-width="2"/>
+  <path d="M42 28v6M50 28v6M58 28v6M42 66v6M50 66v6M58 66v6M28 42h6M28 50h6M28 58h6M66 42h6M66 50h6M66 58h6" stroke="#D22525" stroke-width="2.2" stroke-linecap="round"/>
 </svg>

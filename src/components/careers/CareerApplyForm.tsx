@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
-import { ArrowRightCircle, Loader2, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
+import GrowthCta from "@/components/GrowthCta";
 import { postFormData } from "@/lib/forms/client";
 import { isValidEmail, validateResume } from "@/lib/forms/validation";
 
@@ -217,23 +218,14 @@ export default function CareerApplyForm({
         </p>
       ) : null}
 
-      <button
+      <GrowthCta
         type="submit"
-        disabled={status === "submitting"}
-        className="text-cta tap-target inline-flex min-h-12 w-full items-center justify-center gap-3 bg-red px-5 py-3.5 text-white transition hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:cursor-not-allowed disabled:opacity-70 sm:gap-4"
+        variant="accent"
+        block
+        loading={status === "submitting"}
       >
-        {status === "submitting" ? (
-          <>
-            Submitting…
-            <Loader2 size={28} strokeWidth={1.5} className="animate-spin" aria-hidden />
-          </>
-        ) : (
-          <>
-            Submit application
-            <ArrowRightCircle size={28} strokeWidth={1.5} aria-hidden />
-          </>
-        )}
-      </button>
+        {status === "submitting" ? "Submitting…" : "Submit application"}
+      </GrowthCta>
 
       <p className="text-body-sm m-0 text-muted">
         Your information is secure and will only be used to process your application in line with our{" "}

@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useMemo, useRef, type CSSProperties } from "react";
 import {
   ArrowRight,
-  ArrowRightCircle,
   Briefcase,
   Clock,
   MapPin,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import CareerApplyForm from "@/components/careers/CareerApplyForm";
+import GrowthCta from "@/components/GrowthCta";
 import StickySectionNav from "@/components/StickySectionNav";
 import { useStickySectionNav } from "@/hooks/useStickySectionNav";
 import { usePageReveal } from "@/hooks/usePageReveal";
@@ -126,14 +126,14 @@ export default function CareerDetailPage({
               </p>
             ) : null}
             <div data-animate="hero-copy">
-              <button
+              <GrowthCta
                 type="button"
+                variant="primary"
+                className="mt-7 sm:mt-8"
                 onClick={() => scrollToElement("apply")}
-                className="text-cta tap-target mt-7 inline-flex min-h-12 items-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:mt-8 sm:gap-4 sm:py-4 sm:pl-7"
               >
                 Apply now
-                <ArrowRightCircle size={28} strokeWidth={1.5} className="sm:size-8" aria-hidden />
-              </button>
+              </GrowthCta>
             </div>
           </>
         }
@@ -208,7 +208,12 @@ export default function CareerDetailPage({
                 <ul className="m-0 mt-6 grid list-none gap-6 p-0 sm:mt-8 sm:gap-7">
                   {detail.responsibilities.map((item, index) => (
                     <li key={`${item.title}-${index}`} className="flex gap-4">
-                      <IconSlot asset={item.icon} tone="accent" size={40} className="mt-0.5 flex-none" />
+                      <IconSlot
+                        asset={item.icon}
+                        tone="accent"
+                        size={40}
+                        className="mt-0.5 h-9 w-9 flex-none sm:h-10 sm:w-10"
+                      />
                       <div className="min-w-0">
                         <h3 className="m-0 font-display text-base tracking-[0.04em] uppercase sm:text-lg">
                           {item.title}
@@ -236,7 +241,12 @@ export default function CareerDetailPage({
                       key={`${area.title}-${index}`}
                       className="cap-card flex min-h-[158px] min-w-0 flex-col justify-between border border-line bg-mist p-4 transition-[border-color] duration-200 hover:border-ink sm:p-5"
                     >
-                      <IconSlot asset={area.icon} tone="accent" size={44} />
+                      <IconSlot
+                        asset={area.icon}
+                        tone="accent"
+                        size={44}
+                        className="h-9 w-9 sm:h-11 sm:w-11"
+                      />
                       <div className="mt-5 min-w-0 sm:mt-6">
                         <h3 className="m-0 font-display text-sm font-bold leading-[1.12] tracking-[0.01em] uppercase sm:text-[15px]">
                           {area.title}
@@ -259,7 +269,12 @@ export default function CareerDetailPage({
                 <ul className="m-0 mt-6 grid list-none gap-6 p-0 sm:mt-8 sm:gap-7">
                   {detail.requirements.map((item, index) => (
                     <li key={`${item.title}-${index}`} className="flex gap-4">
-                      <IconSlot asset={item.icon} tone="accent" size={40} className="mt-0.5 flex-none" />
+                      <IconSlot
+                        asset={item.icon}
+                        tone="accent"
+                        size={40}
+                        className="mt-0.5 h-9 w-9 flex-none sm:h-10 sm:w-10"
+                      />
                       <div className="min-w-0">
                         <h3 className="m-0 font-display text-base tracking-[0.04em] uppercase sm:text-lg">
                           {item.title}
@@ -289,7 +304,12 @@ export default function CareerDetailPage({
                       key={`${item.title}-${index}`}
                       className="cap-card flex min-h-[158px] gap-4 border border-line bg-white p-4 transition-[border-color] duration-200 hover:border-ink sm:p-5"
                     >
-                      <IconSlot asset={item.icon} tone="accent" size={44} className="mt-0.5 flex-none" />
+                      <IconSlot
+                        asset={item.icon}
+                        tone="accent"
+                        size={44}
+                        className="mt-0.5 h-9 w-9 flex-none sm:h-11 sm:w-11"
+                      />
                       <div className="min-w-0">
                         <h3 className="m-0 font-display text-sm font-bold leading-[1.12] tracking-[0.01em] uppercase sm:text-[15px]">
                           {item.title}
@@ -379,7 +399,11 @@ export default function CareerDetailPage({
           >
             {careersBenefits.map((benefit) => (
               <li key={benefit.title} className="min-w-0">
-                <IconSlot asset={benefit.icon} size={56} className="text-ink" />
+                <IconSlot
+                  asset={benefit.icon}
+                  size={56}
+                  className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
+                />
                 <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
                   {benefit.title}
                 </h3>

@@ -1,7 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRightCircle } from "lucide-react";
+import GrowthCta from "@/components/GrowthCta";
 import type { ReactNode } from "react";
+
+const CTA_WAVE_SRC = "/images/cta/wave.webp";
 
 export type CTASectionProps = {
   /** Full headline when titleBefore/titleAccent aren't used */
@@ -22,6 +23,8 @@ export type CTASectionProps = {
   tone?: "ink" | "mist";
   /** Decorative burst watermark (desktop) */
   burstSrc?: string;
+  /** Full-bleed wave behind ink bands. Default on ink sections; pass null to disable. */
+  backgroundSrc?: string | null;
   /** Custom middle column (e.g. careers contact details) */
   aside?: ReactNode;
   /** Adds data-animate-section + fade-up hooks for page reveal */
@@ -47,6 +50,7 @@ export default function CTASection({
   headingId = "page-cta-heading",
   tone = "ink",
   burstSrc,
+  backgroundSrc,
   aside,
   animate = false,
   layout = "section",
@@ -58,19 +62,17 @@ export default function CTASection({
   const hasTertiary = Boolean(tertiaryLabel && tertiaryHref);
   const isMist = tone === "mist";
   const hasAside = Boolean(aside);
+  const waveSrc =
+    backgroundSrc === null
+      ? undefined
+      : backgroundSrc ?? (!isMist && layout === "section" ? CTA_WAVE_SRC : undefined);
 
-  const sectionTone = isMist
-    ? "bg-mist text-ink"
-    : "bg-ink text-white";
+  const sectionTone = isMist ? "bg-mist text-ink" : "bg-ink text-white";
 
   const accentClass = isMist ? "text-red" : "text-eyebrow-on-dark";
   const bodyClass = isMist ? "text-muted" : "text-muted-on-dark";
-  const primaryClass = isMist
-    ? "text-cta tap-target inline-flex min-h-12 w-full max-w-full items-center justify-center gap-3 bg-ink px-5 py-3.5 pl-6 text-white transition hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:w-auto sm:justify-start sm:gap-4 sm:py-4 sm:pl-7"
-    : "text-cta tap-target inline-flex min-h-12 w-full max-w-full items-center justify-center gap-3 bg-red px-5 py-3.5 pl-6 text-white transition hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:justify-start sm:gap-4 sm:py-4 sm:pl-7";
-  const secondaryClass = isMist
-    ? "text-cta tap-target inline-flex min-h-12 w-full items-center justify-center border border-ink/30 px-5 py-3.5 text-ink transition hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-auto"
-    : "text-cta tap-target inline-flex min-h-12 w-full items-center justify-center border border-white/40 px-5 py-3.5 text-white transition hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto";
+  const ctaTone = isMist ? "light" : "dark";
+  const primaryVariant = isMist ? "primary" : "accent";
 
   const gridClass = hasAside
     ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_auto] xl:gap-12"
@@ -97,19 +99,18 @@ export default function CTASection({
         body && !hasAside && layout === "section" ? " mt-6 sm:mt-7" : ""
       }${layout === "embedded" ? " mt-6 sm:mt-8" : ""}`}
     >
-      <Link href={primaryHref} className={primaryClass}>
+      <GrowthCta href={primaryHref} variant={primaryVariant} tone={ctaTone} block>
         {primaryLabel}
-        <ArrowRightCircle size={28} strokeWidth={1.5} className="shrink-0 sm:size-8" aria-hidden />
-      </Link>
+      </GrowthCta>
       {hasSecondary ? (
-        <Link href={secondaryHref!} className={secondaryClass}>
+        <GrowthCta href={secondaryHref!} variant="secondary" tone={ctaTone} block>
           {secondaryLabel}
-        </Link>
+        </GrowthCta>
       ) : null}
       {hasTertiary ? (
-        <Link href={tertiaryHref!} className={secondaryClass}>
+        <GrowthCta href={tertiaryHref!} variant="secondary" tone={ctaTone} block>
           {tertiaryLabel}
-        </Link>
+        </GrowthCta>
       ) : null}
     </div>
   );
@@ -122,10 +123,7 @@ export default function CTASection({
       >
         <h2
           id={headingId}
-          className={
-            headlineClassName ??
-            "text-display-md m-0 min-w-0 text-balance"
-          }
+          className={headlineClassName ?? "text-display-md m-0 min-w-0 text-balance"}
         >
           {headingContent}
         </h2>
@@ -140,7 +138,23 @@ export default function CTASection({
       className={`section-shell section-pad relative overflow-hidden ${sectionTone}${className ? ` ${className}` : ""}`}
       aria-labelledby={headingId}
     >
-      {burstSrc ? (
+      {waveSrc ? (
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${waveSrc})` }}
+          aria-hidden
+        >
+          <div
+            className={
+              isMist
+                ? "absolute inset-0 bg-gradient-to-r from-mist/90 via-mist/55 to-mist/20"
+                : "absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-ink/10"
+            }
+          />
+        </div>
+      ) : null}
+
+      {burstSrc && !waveSrc ? (
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
           <div
             className={`absolute top-1/2 right-0 hidden size-[min(38vw,20rem)] translate-x-[18%] -translate-y-1/2 lg:block xl:size-[22rem] ${
@@ -158,10 +172,7 @@ export default function CTASection({
         <h2
           {...fadeUp}
           id={headingId}
-          className={
-            headlineClassName ??
-            "text-display-md m-0 min-w-0 text-balance"
-          }
+          className={headlineClassName ?? "text-display-md m-0 min-w-0 text-balance"}
         >
           {headingContent}
         </h2>

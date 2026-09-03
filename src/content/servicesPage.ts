@@ -11,7 +11,7 @@ export const servicesHero = {
   headlineAfter: "Impact that lasts.",
   body: "From strategy to execution, we engineer growth systems that help brands scale, perform and lead with purpose.",
   image: {
-    src: "/images/services/hero/meeting.png",
+    src: "/images/services/hero/meeting.jpg",
     alt: "First Economy team in a glass meeting room with wall graphic Strategy Creative Media Technology Data equals Growth",
     label: "Services hero photo",
     grayscale: false,
@@ -69,12 +69,12 @@ const serviceOfferingIcons: Record<string, MediaSlot> = {
     label: "Tech Solutions",
   },
   creative: {
-    src: "/images/services/icons/content_creative_play.svg",
+    src: "/images/services/icons/creative_lightbulb.svg",
     alt: "",
     label: "Creative Solutions",
   },
   "social-media": {
-    src: "/images/services/icons/social_media_megaphone.svg",
+    src: "/images/services/icons/social_chat.svg",
     alt: "",
     label: "Social Media",
   },
