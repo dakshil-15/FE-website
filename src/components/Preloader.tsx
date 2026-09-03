@@ -12,9 +12,17 @@ const RING_R = 148;
 const PROGRESS_R = 132;
 const CIRCUMFERENCE = 2 * Math.PI * PROGRESS_R;
 
+/** Keep SSR/client SVG attrs identical (avoids float hydration mismatches). */
+function roundCoord(n: number) {
+  return Math.round(n * 1000) / 1000;
+}
+
 function polarDeg(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  return {
+    x: roundCoord(cx + r * Math.cos(rad)),
+    y: roundCoord(cy + r * Math.sin(rad)),
+  };
 }
 
 function isHomePath(pathname: string | null) {
