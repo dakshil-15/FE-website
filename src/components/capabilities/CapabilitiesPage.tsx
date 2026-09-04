@@ -10,7 +10,7 @@ import CapabilitiesGrid from "@/components/capabilities/CapabilitiesGrid";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
-import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
+import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   advantageToolsSection,
@@ -20,8 +20,6 @@ import {
   capabilityCards,
   capabilityCaseStudies,
   ecosystemSection,
-  growthSystemSection,
-  growthSystemSteps,
   intelligenceSection,
   platformPartnerLogos,
   techCaseStudiesSection,
@@ -31,12 +29,7 @@ import { dataTools } from "@/content/site";
 export default function CapabilitiesPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  usePageReveal({
-    scope: rootRef,
-    onReveal: ({ animateStoryTimeline }) => {
-      animateStoryTimeline(".capabilities-timeline-wrap");
-    },
-  });
+  usePageReveal({ scope: rootRef });
 
   return (
     <div ref={rootRef}>
@@ -94,52 +87,6 @@ export default function CapabilitiesPage() {
 
           <div className="section-media">
             <CapabilitiesGrid cards={capabilityCards} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Growth system process (paper) ─────────────── */}
-      <section
-        id="growth-system"
-        data-animate-section
-        className="section-shell section-pad scroll-mt-[5.5rem] bg-paper"
-        aria-labelledby="growth-system-heading"
-      >
-        <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow m-0">
-            {growthSystemSection.eyebrow}
-          </p>
-          <h2 data-animate="fade-up" id="growth-system-heading" className="text-display-md mt-4 mb-0">
-            {growthSystemSection.title}
-          </h2>
-
-          <div className="capabilities-timeline-wrap about-timeline-wrap section-media relative">
-            <div data-timeline-line className="about-timeline-line" aria-hidden />
-            <ol
-              data-story-timeline
-              className="about-timeline capabilities-timeline m-0 list-none p-0"
-            >
-              {growthSystemSteps.map((step) => (
-                <li key={step.id} className="about-timeline-item relative min-w-0">
-                  <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
-                    <span
-                      data-timeline-icon
-                      className="about-timeline-icon grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full border border-red bg-paper sm:h-14 sm:w-14 md:h-16 md:w-16"
-                    >
-                      <IconSlot asset={step.icon} size={64} className="h-full w-full" />
-                    </span>
-                    <div data-timeline-copy className="min-w-0 lg:mt-6">
-                      <h3 className="m-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">
-                        <span className="text-red">{step.number}.</span> {step.title}
-                      </h3>
-                      <p className="text-body-sm mt-2 mb-0 max-w-[20rem] text-muted lg:max-w-[16rem]">
-                        {step.body}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </section>

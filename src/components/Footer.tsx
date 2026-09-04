@@ -8,11 +8,9 @@ import {
   FacebookIcon,
   InstagramIcon,
   LinkedInIcon,
-  XIcon,
   YouTubeIcon,
 } from "@/components/SocialIcons";
-import { footerCta, socialLinks } from "@/content/site";
-import { footerInsightLinks } from "@/content/insights";
+import { contactInfo, footerCta, socialLinks } from "@/content/site";
 import { pageHasEndCta } from "@/lib/pageCta";
 
 const columns = [
@@ -35,10 +33,6 @@ const columns = [
       { label: "Digital", href: "/services" },
     ],
   },
-  {
-    title: "Insights",
-    links: [...footerInsightLinks],
-  },
 ];
 
 const socialIcons = {
@@ -46,7 +40,6 @@ const socialIcons = {
   Instagram: InstagramIcon,
   YouTube: YouTubeIcon,
   Facebook: FacebookIcon,
-  X: XIcon,
 } as const;
 
 const socials = socialLinks.map((link) => ({
@@ -92,18 +85,18 @@ export default function Footer() {
             <p className="text-eyebrow m-0 !tracking-[0.17em] !text-white">Contact</p>
             <address className="text-body-sm mt-4 flex flex-col gap-3 text-muted-on-dark not-italic">
               <a
-                href="tel:+912249772200"
+                href={contactInfo.phoneHref}
                 className="flex min-h-11 items-center gap-2.5 transition hover:text-white focus-visible:text-white"
               >
                 <Phone size={14} strokeWidth={2} className="flex-none" aria-hidden />
-                <span>+91 22 4977 2200</span>
+                <span>{contactInfo.phone}</span>
               </a>
               <a
-                href="mailto:hello@firsteconomy.in"
+                href={contactInfo.emailHref}
                 className="flex min-h-11 items-center gap-2.5 break-all transition hover:text-white focus-visible:text-white"
               >
                 <Mail size={14} strokeWidth={2} className="flex-none" aria-hidden />
-                <span>hello@firsteconomy.in</span>
+                <span>{contactInfo.email}</span>
               </a>
               <span className="flex items-start gap-2.5">
                 <MapPin size={14} strokeWidth={2} className="mt-[3px] flex-none" aria-hidden />

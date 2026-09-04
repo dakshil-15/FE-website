@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -8,7 +7,6 @@ import ContactForm from "@/components/contact/ContactForm";
 import GrowthCta from "@/components/GrowthCta";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
-import { aboutLocations } from "@/content/about";
 import {
   contactFormCopy,
   contactHero,
@@ -161,73 +159,57 @@ export default function ContactPage() {
             data-animate-stagger
             className="mt-8 grid list-none grid-cols-1 gap-3 p-0 xs:grid-cols-2 lg:mt-10 lg:grid-cols-4"
           >
-            {contactOffices.map((office) => {
-              const location = aboutLocations.find((item) => item.slug === office.slug);
-              const photo = location?.image.src ?? `/images/about/locations/${office.slug}.jpg`;
-              const photoAlt = location?.image.alt ?? `${office.city} office`;
-
-              return (
-                <li key={office.slug} className="min-w-0">
-                  <article
-                    aria-label={`First Economy ${office.city}${office.isHq ? " headquarters" : " office"} — ${office.address}`}
-                    className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
-                  >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
-                      <span
-                        className="absolute top-3 left-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-red bg-white text-red sm:top-3.5 sm:left-3.5 sm:h-9 sm:w-9"
-                        aria-hidden
-                      >
-                        <MapPin size={15} fill="currentColor" strokeWidth={0} />
-                      </span>
-                      <Image
-                        src={photo}
-                        alt={photoAlt}
-                        fill
-                        sizes="(max-width: 480px) 100vw, (max-width: 1024px) 45vw, (max-width: 1280px) 22vw, 280px"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="flex flex-1 items-start justify-between gap-3 border-t border-line px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
-                      <div className="min-w-0 text-left">
-                        <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
-                          {office.city}
-                          {office.isHq ? (
-                            <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
-                          ) : null}
-                        </p>
-                        <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
-                          {office.address}
-                        </p>
-                        {"contact" in office && office.contact ? (
-                          <div className="mt-3 space-y-1">
-                            <p className="m-0 text-xs font-semibold tracking-[0.04em] text-ink">
-                              {office.contact.name}
-                            </p>
-                            <p className="m-0">
-                              <a
-                                href={`mailto:${office.contact.email}`}
-                                className="text-body-sm break-all text-muted transition hover:text-red"
-                              >
-                                {office.contact.email}
-                              </a>
-                            </p>
-                            <p className="m-0">
-                              <a
-                                href={office.contact.phoneHref}
-                                className="text-body-sm text-muted transition hover:text-red"
-                              >
-                                {office.contact.phone}
-                              </a>
-                            </p>
-                          </div>
+            {contactOffices.map((office) => (
+              <li key={office.slug} className="min-w-0">
+                <article
+                  aria-label={`First Economy ${office.city}${office.isHq ? " headquarters" : " office"} — ${office.address}`}
+                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
+                >
+                  <div className="flex flex-1 items-start gap-3 px-3.5 py-3.5 sm:gap-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
+                    <span
+                      className="grid h-9 w-9 flex-none place-items-center rounded-full border border-red bg-white text-red sm:h-10 sm:w-10"
+                      aria-hidden
+                    >
+                      <MapPin size={16} fill="currentColor" strokeWidth={0} />
+                    </span>
+                    <div className="min-w-0 text-left">
+                      <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                        {office.city}
+                        {office.isHq ? (
+                          <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
                         ) : null}
-                      </div>
+                      </p>
+                      <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">
+                        {office.address}
+                      </p>
+                      {"contact" in office && office.contact ? (
+                        <div className="mt-3 space-y-1">
+                          <p className="m-0 text-xs font-semibold tracking-[0.04em] text-ink">
+                            {office.contact.name}
+                          </p>
+                          <p className="m-0">
+                            <a
+                              href={`mailto:${office.contact.email}`}
+                              className="text-body-sm break-all text-muted transition hover:text-red"
+                            >
+                              {office.contact.email}
+                            </a>
+                          </p>
+                          <p className="m-0">
+                            <a
+                              href={office.contact.phoneHref}
+                              className="text-body-sm text-muted transition hover:text-red"
+                            >
+                              {office.contact.phone}
+                            </a>
+                          </p>
+                        </div>
+                      ) : null}
                     </div>
-                  </article>
-                </li>
-              );
-            })}
+                  </div>
+                </article>
+              </li>
+            ))}
           </ul>
         </div>
       </section>

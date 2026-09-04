@@ -5,6 +5,9 @@
  */
 
 import type { MediaSlot } from "@/content/about";
+import { caseStudies } from "@/content/caseStudies";
+import { workShowcaseOrder } from "@/content/workPage";
+import { workPhotos } from "@/content/workPhotos";
 
 export const capabilitiesHero = {
   eyebrow: "Capabilities",
@@ -405,46 +408,22 @@ export type CapabilityCaseStudy = {
   href?: string;
 };
 
-export const capabilityCaseStudies: CapabilityCaseStudy[] = [
-  {
-    slug: "godrej-blue",
-    client: "Godrej Properties",
-    title: "Citywide launch at scale",
-    body: "1,000+ influencers live in one hour — a launch engineered for maximum recall.",
+/** Latest showcase case studies — same order as Work / home featured. */
+export const capabilityCaseStudies: CapabilityCaseStudy[] = workShowcaseOrder
+  .map((slug) => caseStudies.find((study) => study.slug === slug))
+  .filter((study): study is (typeof caseStudies)[number] => Boolean(study))
+  .map((study) => ({
+    slug: study.slug,
+    client: study.client,
+    title: study.campaign,
+    body: study.hero,
     image: {
-      src: "/images/capabilities/case-studies/client-godrej-properties.png",
-      alt: "Godrej Properties case study",
-      label: "Godrej Properties",
-      fit: "contain",
+      src: workPhotos[study.slug] ?? `/images/work/cases/${study.slug}.png`,
+      alt: `${study.client} — ${study.campaign}`,
+      label: study.client,
+      fit: "cover" as const,
     },
-  },
-  {
-    slug: "zydus",
-    client: "Zydus",
-    title: "Pharma growth engineered",
-    body: "Integrated media, creative and data systems built for regulated-category scale.",
-    href: "/work",
-    image: {
-      src: "/images/capabilities/case-studies/client-zydus.png",
-      alt: "Zydus case study",
-      label: "Zydus",
-      fit: "contain",
-    },
-  },
-  {
-    slug: "dabur",
-    client: "Dabur",
-    title: "FMCG performance at scale",
-    body: "Cross-channel growth systems connecting brand, commerce and measurable outcomes.",
-    href: "/work",
-    image: {
-      src: "/images/capabilities/case-studies/client-dabur.png",
-      alt: "Dabur case study",
-      label: "Dabur",
-      fit: "contain",
-    },
-  },
-];
+  }));
 
 export const capabilitiesCta = {
   titleBefore: "Let's build intelligent",

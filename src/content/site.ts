@@ -8,10 +8,10 @@ export const offices: Office[] = [
 ];
 
 export const contactInfo = {
-  phone: "+91 22 4977 2200",
-  phoneHref: "tel:+912249772200",
-  email: "hello@firsteconomy.in",
-  emailHref: "mailto:hello@firsteconomy.in",
+  phone: "+91 9664859850",
+  phoneHref: "tel:+919664859850",
+  email: "bilal@firsteconomy.com",
+  emailHref: "mailto:bilal@firsteconomy.com",
 };
 
 export const footerCta = {
@@ -26,7 +26,6 @@ export const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/first_economy/" },
   { label: "YouTube", href: "https://www.youtube.com/@FirstEconomy" },
   { label: "Facebook", href: "https://www.facebook.com/FirstEconomy/" },
-  { label: "X", href: "https://x.com/FirstEconomy" },
 ] as const;
 
 export const dataTools = [

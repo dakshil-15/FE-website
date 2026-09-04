@@ -102,7 +102,7 @@ export type TeamMember = {
 };
 
 /** Core leadership — aligned to creds deck (slide 3). */
-export const aboutTeamTagline = "Fueled by 250+ passionate minds";
+export const aboutTeamTagline = "Fueled by 300 passionate minds";
 
 /** Slide 3 order: Jigar & Jeffrey first, then top row L→R, bottom row L→R. */
 export const aboutTeam: TeamMember[] = [

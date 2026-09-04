@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { aboutLocations } from "@/content/about";
@@ -38,40 +37,32 @@ export default function LocationsSection() {
                 href="/contact#offices"
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
+                <div className="flex flex-1 items-start gap-3 px-3.5 py-3.5 sm:gap-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
                   <span
-                    className="absolute top-3 left-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-red bg-white text-red sm:top-3.5 sm:left-3.5 sm:h-9 sm:w-9"
+                    className="grid h-9 w-9 flex-none place-items-center rounded-full border border-red bg-white text-red sm:h-10 sm:w-10"
                     aria-hidden
                   >
-                    <MapPin size={15} fill="currentColor" strokeWidth={0} />
+                    <MapPin size={16} fill="currentColor" strokeWidth={0} />
                   </span>
-                  <Image
-                    src={office.image.src}
-                    alt={office.image.alt}
-                    fill
-                    sizes="(max-width: 480px) 100vw, (max-width: 1024px) 45vw, (max-width: 1280px) 22vw, 280px"
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="flex flex-1 flex-col border-t border-line px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
-                      {office.city}
-                      {office.isHq ? (
-                        <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
-                      ) : null}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                        {office.city}
+                        {office.isHq ? (
+                          <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                        ) : null}
+                      </p>
+                      <span
+                        className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
+                        aria-hidden
+                      >
+                        <ArrowRight size={14} />
+                      </span>
+                    </div>
+                    <p className="text-body-sm mt-1.5 mb-0 min-h-[2.6em] leading-snug text-muted">
+                      {office.description}
                     </p>
-                    <span
-                      className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
-                      aria-hidden
-                    >
-                      <ArrowRight size={14} />
-                    </span>
                   </div>
-                  <p className="text-body-sm mt-1.5 mb-0 min-h-[2.6em] leading-snug text-muted">
-                    {office.description}
-                  </p>
                 </div>
               </Link>
             </li>

@@ -10,31 +10,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServiceIconGrid from "@/components/home/ServiceIconGrid";
 import FeaturedWorkCarousel from "@/components/home/FeaturedWorkCarousel";
 import PartnerLogos from "@/components/home/PartnerLogos";
-import InsightsSection from "@/components/home/InsightsSection";
 import LocationsSection from "@/components/home/LocationsSection";
 import CareersTeaser from "@/components/home/CareersTeaser";
 import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
 import CTASection from "@/components/CTASection";
 import GrowthCta from "@/components/GrowthCta";
 import {
-  AiAnalyticsIcon,
-  AwardsIcon,
   CitiesIcon,
-  GlobeIcon,
+  MindsIcon,
 } from "@/components/brandIcons";
-import { networkStats } from "@/content/stats";
+import { homeOfficeStats } from "@/content/stats";
 import { homeCta } from "@/content/home";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const heroStatIcons = {
-  "Marketing Agencies": GlobeIcon,
-  Markets: CitiesIcon,
-  "Media Awards": AwardsIcon,
-  Billings: AiAnalyticsIcon,
+  Cities: CitiesIcon,
+  Employees: MindsIcon,
 } as const;
 
-const heroStats = networkStats.map((stat) => ({
+const heroStats = homeOfficeStats.map((stat) => ({
   ...stat,
   Icon: heroStatIcons[stat.label as keyof typeof heroStatIcons],
 }));
@@ -348,46 +343,53 @@ export default function HomePage() {
         data-animate-section
         data-stats-section
         className="section-shell section-pad-sm bg-ink text-white"
-        aria-label="Network scale"
+        aria-label="Company scale"
       >
-        <div
-          data-animate-stagger
-          className="section-inner grid grid-cols-1 gap-y-7 xs:grid-cols-2 xs:gap-y-8 lg:grid-cols-4 lg:gap-y-0"
-        >
-          {heroStats.map((stat) => (
-            <div key={stat.label} className="stat-item">
+        <div className="section-inner">
+          <div
+            data-animate-stagger
+            className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-5 xs:max-w-3xl xs:grid-cols-2 xs:gap-6 lg:max-w-4xl lg:gap-8"
+          >
+            {heroStats.map((stat) => (
               <div
-                className="mb-3.5 flex h-10 w-10 items-center justify-center border border-white/30 text-white sm:mb-4 sm:h-12 sm:w-12 md:h-14 md:w-14"
-                aria-hidden
+                key={stat.label}
+                className="stat-item rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-6 sm:px-6 sm:py-7"
               >
-                <stat.Icon className="h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8" />
-              </div>
-              <p className="text-stat m-0">
-                <span
-                  data-counter
-                  data-target={stat.value}
-                  data-prefix={stat.prefix ?? ""}
-                  data-suffix={stat.suffix}
-                  data-decimals={stat.decimals ?? 0}
-                  aria-label={`${stat.prefix ?? ""}${stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}${stat.suffix}${stat.showPlus ? "+" : ""} ${stat.label}`}
+                <div
+                  className="mb-3.5 flex h-10 w-10 items-center justify-center border border-white/30 text-white sm:mb-4 sm:h-12 sm:w-12 md:h-14 md:w-14"
+                  aria-hidden
                 >
-                  {stat.prefix ?? ""}
-                  {stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}
-                  {stat.suffix}
-                </span>
-                {stat.showPlus && (
-                  <span className="text-red" aria-hidden>
-                    +
+                  <stat.Icon className="h-5 w-5 sm:h-7 sm:w-7 md:h-8 md:w-8" />
+                </div>
+                <p className="text-stat m-0">
+                  <span
+                    data-counter
+                    data-target={stat.value}
+                    data-prefix={stat.prefix ?? ""}
+                    data-suffix={stat.suffix}
+                    data-decimals={stat.decimals ?? 0}
+                    aria-label={`${stat.prefix ?? ""}${stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}${stat.suffix}${stat.showPlus ? "+" : ""} ${stat.label}`}
+                  >
+                    {stat.prefix ?? ""}
+                    {stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}
+                    {stat.suffix}
                   </span>
-                )}
-              </p>
-              <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase sm:mt-2.5 sm:text-sm">
-                {stat.label}
-                {stat.footnoteMarker ? "*" : ""}
-              </p>
-              <p className="text-body-sm mt-2.5 mb-0 max-w-[220px] text-muted-on-dark sm:mt-3">{stat.description}</p>
-            </div>
-          ))}
+                  {stat.showPlus && (
+                    <span className="text-red" aria-hidden>
+                      +
+                    </span>
+                  )}
+                </p>
+                <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase sm:mt-2.5 sm:text-sm">
+                  {stat.label}
+                  {stat.footnoteMarker ? "*" : ""}
+                </p>
+                <p className="text-body-sm mt-2.5 mb-0 max-w-[22rem] text-muted-on-dark sm:mt-3">
+                  {stat.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -459,7 +461,6 @@ export default function HomePage() {
       </section>
 
       <PartnerLogos />
-      <InsightsSection />
       <LocationsSection />
       <CareersTeaser />
 

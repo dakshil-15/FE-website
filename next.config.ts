@@ -19,6 +19,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/insights",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/insights/:path*",
+        destination: "/",
+        permanent: false,
+      },
+      {
         source: "/our-advantage",
         destination: "/capabilities",
         permanent: true,

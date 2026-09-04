@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { Mail } from "lucide-react";
-import { FacebookIcon, LinkedInIcon, XIcon } from "@/components/SocialIcons";
+import { FacebookIcon, LinkedInIcon } from "@/components/SocialIcons";
 
 export type CopyStatus = "idle" | "copied" | "error";
 
@@ -53,12 +53,6 @@ export function buildShareLinks({
       label: "Share on LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       Icon: LinkedInIcon,
-      external: true,
-    },
-    {
-      label: "Share on X",
-      href: `https://twitter.com/intent/tweet?text=${encodedMessage}&url=${encodedUrl}`,
-      Icon: XIcon,
       external: true,
     },
     {

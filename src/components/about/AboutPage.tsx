@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
@@ -15,7 +14,6 @@ import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   aboutHero,
   aboutLocations,
-  aboutStats,
   aboutStory,
   aboutTimeline,
   aboutValues,
@@ -24,107 +22,67 @@ import {
   aboutFeaturedAchievement,
   aboutCta,
 } from "@/content/about";
-import { formatNetworkStatValue } from "@/content/stats";
 
 export default function AboutPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   usePageReveal({
     scope: rootRef,
-    onReveal: ({ gsap, ScrollTrigger }) => {
-      const statsSection = gsap.utils.toArray<HTMLElement>("[data-stats-section]")[0];
-      const counters = gsap.utils.toArray<HTMLElement>("[data-counter]");
-
-      const formatCounter = (el: HTMLElement, val: number) => {
-        const decimals = Number(el.dataset.decimals ?? 0);
-        const prefix = el.dataset.prefix ?? "";
-        const suffix = el.dataset.suffix ?? "";
-        const display = decimals > 0 ? val.toFixed(decimals) : String(Math.round(val));
-        el.textContent = `${prefix}${display}${suffix}`;
-      };
-
-      const runCounters = () => {
-        counters.forEach((el, index) => {
-          const target = Number(el.dataset.target ?? 0);
-          const state = ((el as HTMLElement & { __count?: { val: number } }).__count ??= {
-            val: 0,
-          });
-          gsap.killTweensOf(state);
-          state.val = 0;
-          formatCounter(el, 0);
-          gsap.to(state, {
-            val: target,
-            duration: 1.8,
-            delay: index * 0.08,
-            ease: "power2.out",
-            onUpdate: () => formatCounter(el, state.val),
-          });
-        });
-      };
-
-      if (statsSection && counters.length) {
-        ScrollTrigger.create({
-          trigger: statsSection,
-          start: "top 78%",
-          onEnter: runCounters,
-          onEnterBack: runCounters,
-        });
-      }
-
+    onReveal: ({ gsap }) => {
       const storyWrap = gsap.utils.toArray<HTMLElement>(".about-timeline-wrap")[0];
       const storyTimeline = storyWrap?.querySelector<HTMLElement>("[data-story-timeline]");
-      if (storyWrap && storyTimeline) {
-        const line = storyWrap.querySelector<HTMLElement>("[data-timeline-line]");
-        const icons = storyTimeline.querySelectorAll("[data-timeline-icon]");
-        const copies = storyTimeline.querySelectorAll("[data-timeline-copy]");
-        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+      if (!storyWrap || !storyTimeline) return;
 
-        if (line) {
-          gsap.set(line, isDesktop ? { scaleX: 0 } : { scaleY: 0 });
-        }
-        gsap.set(icons, { scale: 0.55, autoAlpha: 0 });
-        gsap.set(copies, { y: 18, autoAlpha: 0 });
+      const line = storyWrap.querySelector<HTMLElement>("[data-timeline-line]");
+      const icons = storyTimeline.querySelectorAll("[data-timeline-icon]");
+      const copies = storyTimeline.querySelectorAll("[data-timeline-copy]");
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-        const storyTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: storyWrap,
-            start: "top 78%",
-            toggleActions: "play none none none",
-          },
-          defaults: { ease: "power3.out" },
-        });
+      if (line) {
+        gsap.set(line, isDesktop ? { scaleX: 0 } : { scaleY: 0 });
+      }
+      gsap.set(icons, { scale: 0.55, autoAlpha: 0 });
+      gsap.set(copies, { y: 18, autoAlpha: 0 });
 
-        if (line) {
-          storyTl.to(line, {
-            ...(isDesktop ? { scaleX: 1 } : { scaleY: 1 }),
-            duration: 0.9,
-            ease: "power2.inOut",
-          });
-        }
+      const storyTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: storyWrap,
+          start: "top 78%",
+          toggleActions: "play none none none",
+        },
+        defaults: { ease: "power3.out" },
+      });
 
-        icons.forEach((icon, i) => {
-          const at = line ? (i === 0 ? "-=0.35" : "-=0.45") : i === 0 ? 0 : "-=0.45";
-          storyTl.to(
-            icon,
-            {
-              scale: 1,
-              autoAlpha: 1,
-              duration: 0.45,
-              ease: "back.out(1.6)",
-            },
-            at,
-          );
-          storyTl.to(
-            copies[i],
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.5,
-            },
-            "-=0.28",
-          );
+      if (line) {
+        storyTl.to(line, {
+          ...(isDesktop ? { scaleX: 1 } : { scaleY: 1 }),
+          duration: 0.9,
+          ease: "power2.inOut",
         });
       }
+
+      icons.forEach((icon, i) => {
+        const at = line ? (i === 0 ? "-=0.35" : "-=0.45") : i === 0 ? 0 : "-=0.45";
+        storyTl.to(
+          icon,
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.45,
+            ease: "back.out(1.6)",
+          },
+          at,
+        );
+        storyTl.to(
+          copies[i],
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.5,
+          },
+          "-=0.28",
+        );
+      });
     },
   });
 
@@ -164,48 +122,6 @@ export default function AboutPage() {
           arrowSrc: aboutHero.arrow,
         }}
       />
-
-      <section
-        data-animate-section
-        data-stats-section
-        className="section-shell section-pad-sm bg-ink text-white"
-        aria-label="Company scale"
-      >
-        <div className="section-inner grid grid-cols-1 gap-y-8 xs:grid-cols-2 xs:gap-y-10 lg:grid-cols-4 lg:gap-y-0">
-          {aboutStats.map((stat) => (
-            <div key={stat.label} className="stat-item">
-              <IconSlot
-                asset={stat.icon}
-                tone="dark"
-                size={48}
-                className="mb-4 h-9 w-9 sm:mb-5 sm:h-11 sm:w-11"
-              />
-              <p className="text-stat m-0 text-red">
-                <span
-                  data-counter
-                  data-target={stat.value}
-                  data-prefix={stat.prefix ?? ""}
-                  data-suffix={stat.suffix}
-                  data-decimals={stat.decimals ?? 0}
-                  suppressHydrationWarning
-                >
-                  {formatNetworkStatValue({ ...stat, showPlus: false })}
-                </span>
-                {stat.showPlus && (
-                  <span className="text-red" aria-hidden>
-                    +
-                  </span>
-                )}
-              </p>
-              <p className="mt-2 text-xs font-bold tracking-[0.14em] text-white uppercase sm:mt-2.5 sm:text-sm">
-                {stat.label}
-                {stat.footnoteMarker ? "*" : ""}
-              </p>
-              <p className="text-body-sm mt-2.5 mb-0 max-w-[220px] text-muted-on-dark sm:mt-3">{stat.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section
         id="our-story"
@@ -407,40 +323,32 @@ export default function AboutPage() {
                   href="/contact#offices"
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
+                  <div className="flex flex-1 items-start gap-3 px-3.5 py-3.5 sm:gap-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
                     <span
-                      className="absolute top-3 left-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-red bg-white text-red sm:top-3.5 sm:left-3.5 sm:h-9 sm:w-9"
+                      className="grid h-9 w-9 flex-none place-items-center rounded-full border border-red bg-white text-red sm:h-10 sm:w-10"
                       aria-hidden
                     >
-                      <MapPin size={15} fill="currentColor" strokeWidth={0} />
+                      <MapPin size={16} fill="currentColor" strokeWidth={0} />
                     </span>
-                    <Image
-                      src={office.image.src}
-                      alt=""
-                      fill
-                      sizes="(max-width: 480px) 100vw, (max-width: 1024px) 45vw, (max-width: 1280px) 22vw, 280px"
-                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-
-                  <div className="flex flex-1 flex-col border-t border-line px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
-                        {office.city}
-                        {office.isHq ? (
-                          <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
-                        ) : null}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                          {office.city}
+                          {office.isHq ? (
+                            <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                          ) : null}
+                        </p>
+                        <span
+                          className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
+                          aria-hidden
+                        >
+                          <ArrowRight size={14} />
+                        </span>
+                      </div>
+                      <p className="text-body-sm mt-1.5 mb-0 leading-snug text-muted">
+                        {office.address}
                       </p>
-                      <span
-                        className="grid h-9 w-9 flex-none place-items-center rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
-                        aria-hidden
-                      >
-                        <ArrowRight size={14} />
-                      </span>
                     </div>
-                    <p className="text-body-sm mt-1.5 mb-0 leading-snug text-muted">
-                      {office.address}
-                    </p>
                   </div>
                 </Link>
               </li>

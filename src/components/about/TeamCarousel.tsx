@@ -12,7 +12,7 @@ export default function TeamCarousel() {
       {aboutTeam.map((member) => {
         const body = (
           <>
-            <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden bg-[#161616]">
+            <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-[#161616]">
               <PortraitSlot
                 asset={{ ...member.image, alt: "" }}
                 name={member.name}

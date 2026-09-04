@@ -68,7 +68,7 @@ export const contactTouch = {
     },
     {
       label: "Business hours",
-      value: "Mon - Sat: 10:00 AM – 7:00 PM",
+      value: "Mon - Fri: 10:30 AM – 7:30 PM",
       icon: "hours" as const,
     },
     {
