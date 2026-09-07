@@ -81,7 +81,7 @@ export default function Footer() {
             </nav>
           ))}
 
-          <div>
+          <div className="border-t border-white/15 pt-6 md:border-t-0 md:pt-0">
             <p className="text-eyebrow m-0 !tracking-[0.17em] !text-white">Contact</p>
             <address className="text-body-sm mt-4 flex flex-col gap-3 text-muted-on-dark not-italic">
               <a
@@ -109,7 +109,7 @@ export default function Footer() {
             </address>
           </div>
 
-          <div className="border-t border-white/15 pt-6 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 lg:pl-7">
+          <div className="border-t border-white/15 pt-6 xl:border-t-0 xl:border-l xl:pt-0 xl:pl-7">
             <p className="text-eyebrow m-0 !tracking-[0.17em] !text-white">Follow us</p>
             <ul className="mt-4 flex list-none flex-wrap gap-2.5 p-0">
               {socials.map(({ label, href, Icon }) => (

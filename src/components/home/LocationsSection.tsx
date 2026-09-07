@@ -29,12 +29,13 @@ export default function LocationsSection() {
 
         <ul
           data-animate-stagger
-          className="m-0 grid list-none grid-cols-1 gap-3 p-0 xs:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4"
+          className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:gap-4"
         >
           {aboutLocations.map((office) => (
             <li key={office.slug} className="min-w-0">
               <Link
                 href="/contact#offices"
+                aria-label={`${office.city}${office.isHq ? " headquarters" : ""} — ${office.description}`}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
               >
                 <div className="flex flex-1 items-start gap-3 px-3.5 py-3.5 sm:gap-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
@@ -46,7 +47,7 @@ export default function LocationsSection() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                      <p className="m-0 min-w-0 text-balance font-display text-sm leading-[1.15] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                         {office.city}
                         {office.isHq ? (
                           <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
@@ -59,7 +60,7 @@ export default function LocationsSection() {
                         <ArrowRight size={14} />
                       </span>
                     </div>
-                    <p className="text-body-sm mt-1.5 mb-0 min-h-[2.6em] leading-snug text-muted">
+                    <p className="text-body-sm mt-1.5 mb-0 leading-snug text-muted">
                       {office.description}
                     </p>
                   </div>
