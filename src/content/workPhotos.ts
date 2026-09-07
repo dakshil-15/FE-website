@@ -1,7 +1,8 @@
 export const workPhotos: Record<string, string> = {
-  "godrej-blue": "/images/work/cases/godrej-blue.png",
+  "godrej-blue": "/images/work/cases/godrej-blue-v2.png",
   "fedex-csk": "/images/work/cases/fedex-csk.png",
-  "royale-touche-stay-curious": "/images/work/cases/royale-touche.png",
+  "royale-touche-stay-curious":
+    "/images/work/gallery/royale-touche-stay-curious/03.jpg",
   "poonawalla-fraud-awareness": "/images/work/cases/poonawalla-fraud-awareness.png",
   "mahindra-manulife": "/images/work/cases/mahindra-manulife.png",
   "orpat-erp": "/images/work/cases/orpat-erp.png",

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Building2, Calendar, Layers, Network, type LucideIcon } from "lucide-react";
-import type { RefObject } from "react";
+import { useRef, useState, type RefObject } from "react";
+import { Play } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import type { WorkDetailModel } from "@/content/workDetail";
@@ -12,10 +12,7 @@ type WorkDetailHeroProps = {
   caseStudy: WorkDetailModel["caseStudy"];
   title: WorkDetailModel["title"];
   familyLabel: WorkDetailModel["familyLabel"];
-  familyOverviewLabel: WorkDetailModel["familyOverviewLabel"];
   tags: WorkDetailModel["tags"];
-  industryName: WorkDetailModel["industryName"];
-  servicesUsed: WorkDetailModel["servicesUsed"];
   heroImage: WorkDetailModel["heroImage"];
   displayTitle: string;
   flipTargetRef: RefObject<HTMLDivElement | null>;
@@ -28,10 +25,7 @@ export default function WorkDetailHero({
   caseStudy,
   title,
   familyLabel,
-  familyOverviewLabel,
   tags,
-  industryName,
-  servicesUsed,
   heroImage,
   displayTitle,
   flipTargetRef,
@@ -39,18 +33,26 @@ export default function WorkDetailHero({
   firstSectionId,
   scrollToElement,
 }: WorkDetailHeroProps) {
-  const overviewItems = [
-    caseStudy.year
-      ? { label: "Year", value: String(caseStudy.year), Icon: Calendar }
-      : null,
-    { label: "Industry", value: industryName, Icon: Building2 },
-    {
-      label: "Services",
-      value: servicesUsed.length ? servicesUsed.join(" · ") : tags.slice(0, 3).join(" · "),
-      Icon: Layers,
-    },
-    { label: "Family", value: familyOverviewLabel, Icon: Network },
-  ].filter(Boolean) as { label: string; value: string; Icon: LucideIcon }[];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const heroClip =
+    caseStudy.heroVideo
+      ? caseStudy.videos?.[0] ?? caseStudy.video
+      : undefined;
+
+  const frameClassName =
+    heroImage.fit === "contain"
+      ? caseStudy.slug === "royale-touche-stay-curious"
+        ? "aspect-video w-full bg-[#1a1410]"
+        : "aspect-[1024/724] w-full bg-[#0a3d5c]"
+      : "aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]";
+
+  const playHeroVideo = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    void el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  };
 
   return (
     <PageHero
@@ -64,7 +66,8 @@ export default function WorkDetailHero({
       breadcrumbCurrentClassName="text-ink"
       eyebrow={familyLabel}
       title={
-        caseStudy.hashtag ? (
+        caseStudy.hashtag &&
+        caseStudy.hashtag.toLowerCase() !== caseStudy.campaign.toLowerCase() ? (
           <>
             {caseStudy.campaign}{" "}
             <span className="text-red">{caseStudy.hashtag}</span>
@@ -89,30 +92,18 @@ export default function WorkDetailHero({
             ))}
           </ul>
 
-          <ul
-            data-animate="hero-copy"
-            className="m-0 mt-6 flex list-none flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5 p-0 sm:mt-8 sm:gap-x-6"
-            aria-label="Campaign overview"
-          >
-            {overviewItems.map(({ label, value, Icon }) => (
-              <li key={label} className="flex items-center gap-2 text-body-sm text-muted">
-                <Icon size={15} className="flex-none text-red" aria-hidden />
-                <span>
-                  <span className="sr-only">{label}: </span>
-                  {value}
-                </span>
-              </li>
-            ))}
-          </ul>
-
           {caseStudy.clientLogo ? (
             <div data-animate="hero-copy" className="mt-6 sm:mt-7">
               <Image
                 src={caseStudy.clientLogo}
                 alt={caseStudy.client}
-                width={140}
-                height={48}
-                className="h-9 w-auto object-contain sm:h-10"
+                width={200}
+                height={200}
+                className={
+                  caseStudy.slug === "royale-touche-stay-curious"
+                    ? "h-16 w-auto object-contain sm:h-20"
+                    : "h-9 w-auto object-contain sm:h-10"
+                }
               />
             </div>
           ) : (
@@ -125,31 +116,72 @@ export default function WorkDetailHero({
           )}
         </>
       }
-      gridClassName="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-0"
+      gridClassName={
+        heroImage.fit === "contain" || heroClip
+          ? "grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-0"
+          : "grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-0"
+      }
       copyColumnClassName="relative z-[1] flex min-w-0 flex-col justify-center lg:pr-20 xl:pr-24"
-      mediaColumnClassName="relative z-[1] min-w-0"
+      mediaColumnClassName="relative z-[1] min-w-0 overflow-hidden"
       media={
-        <div aria-busy={flipEntrance || undefined}>
+        <div aria-busy={flipEntrance || undefined} className="h-full">
           <div
             ref={flipTargetRef}
             data-work-flip-target={caseStudy.slug}
             className="relative h-full min-h-0 overflow-hidden"
           >
-            <ImageSlot
-              asset={heroImage}
-              priority
-              className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div
-              className="pointer-events-none absolute top-1/2 right-0 left-0 z-[2] hidden h-px -translate-y-1/2 bg-red lg:block"
-              aria-hidden
-            />
+            {heroClip?.src ? (
+              <div className={`relative overflow-hidden ${frameClassName}`}>
+                <video
+                  ref={videoRef}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  playsInline
+                  preload="metadata"
+                  poster={heroClip.poster ?? heroImage.src}
+                  controls={playing}
+                  onPlay={() => setPlaying(true)}
+                  onPause={() => setPlaying(false)}
+                  onEnded={() => setPlaying(false)}
+                  aria-label={heroClip.title}
+                >
+                  <source src={heroClip.src} type="video/mp4" />
+                </video>
+
+                {!playing ? (
+                  <button
+                    type="button"
+                    onClick={playHeroVideo}
+                    className="absolute inset-0 flex items-center justify-center bg-ink/25 transition hover:bg-ink/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-red"
+                    aria-label={`Play ${heroClip.title}`}
+                  >
+                    <span className="grid size-14 place-items-center rounded-full bg-red text-white shadow-[0_10px_28px_rgba(210,37,37,0.4)] sm:size-16 lg:size-[4.5rem]">
+                      <Play
+                        size={28}
+                        fill="currentColor"
+                        className="translate-x-0.5 sm:size-8"
+                        aria-hidden
+                      />
+                    </span>
+                  </button>
+                ) : null}
+              </div>
+            ) : (
+              <ImageSlot
+                asset={{
+                  ...heroImage,
+                  // Match frame to the banner so cover fills without cropping type/logos.
+                  fit: heroImage.fit === "contain" ? "cover" : heroImage.fit,
+                }}
+                priority
+                className={frameClassName}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            )}
           </div>
         </div>
       }
       burstSrc={workHero.burst}
-      burstClassName="pointer-events-none absolute top-1/2 left-1/2 z-0 hidden size-[min(58%,17rem)] -translate-x-1/2 -translate-y-1/2 lg:block xl:size-[min(68%,20rem)]"
+      showMediaRule={false}
       seam={{
         onClick: () => scrollToElement(firstSectionId),
         ariaLabel: "Continue to case study",

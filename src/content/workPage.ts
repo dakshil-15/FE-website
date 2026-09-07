@@ -138,6 +138,12 @@ export function workCardImage(caseStudy: CaseStudy): MediaSlot {
     alt: `${caseStudy.client} — ${caseStudy.campaign}`,
     label: workCardTitle(caseStudy),
     grayscale: false,
+    // Designed campaign covers (type + logos) must not be cropped in the hero frame.
+    fit:
+      caseStudy.slug === "godrej-blue" ||
+      caseStudy.slug === "royale-touche-stay-curious"
+        ? "contain"
+        : undefined,
   };
 }
 

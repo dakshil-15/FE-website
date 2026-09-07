@@ -9,6 +9,7 @@ import { services } from "@/content/services";
 import type {
   CaseStudy,
   CaseStudyFamily,
+  CaseStudyGalleryImage,
   CaseStudyLink,
   CaseStudyLinkGroup,
   CaseStudyPillar,
@@ -29,12 +30,7 @@ export const workDetailCta = {
 
 /** Section display headlines — mirror Insights detail (label + display title + body). */
 export const workDetailHeadlines = {
-  objective: "The problem and the business goal",
-  mandate: "What success looks like",
-  execution: "How the campaign came to life",
   activations: "Live proof from the campaign",
-  gallery: "Creative across every touchpoint",
-  video: "The film behind the launch",
   result: "Outcomes that moved the needle",
   built: "Capabilities behind the work",
   related: "More work worth exploring",
@@ -178,11 +174,20 @@ function defaultPillars(execution: string[]): CaseStudyPillar[] {
   }));
 }
 
+function galleryImageSrc(image: CaseStudyGalleryImage): string {
+  return typeof image === "string" ? image : image.src;
+}
+
+function galleryImageHref(image: CaseStudyGalleryImage): string | undefined {
+  return typeof image === "string" ? undefined : image.href;
+}
+
 function gallerySlots(caseStudy: CaseStudy): MediaSlot[] {
   const fromGroups =
     caseStudy.galleryGroups?.flatMap((group) =>
-      group.images.map((src, i) => ({
-        src,
+      group.images.map((image, i) => ({
+        src: galleryImageSrc(image),
+        href: galleryImageHref(image),
         alt: `${caseStudy.client} — ${group.title} ${i + 1}`,
         label: group.title,
         grayscale: false,
@@ -223,6 +228,10 @@ function gallerySlots(caseStudy: CaseStudy): MediaSlot[] {
 
 export type WorkGalleryGroup = {
   title: string;
+  description?: string;
+  density?: "default" | "compact" | "solo";
+  pairRow?: string;
+  pairRowHeading?: string;
   items: MediaSlot[];
 };
 
@@ -232,8 +241,13 @@ function galleryGroups(caseStudy: CaseStudy): WorkGalleryGroup[] {
       .filter((g) => g.images.length > 0)
       .map((group) => ({
         title: group.title,
-        items: group.images.map((src, i) => ({
-          src,
+        description: group.description,
+        density: group.density,
+        pairRow: group.pairRow,
+        pairRowHeading: group.pairRowHeading,
+        items: group.images.map((image, i) => ({
+          src: galleryImageSrc(image),
+          href: galleryImageHref(image),
           alt: `${caseStudy.client} — ${group.title} ${i + 1}`,
           label: group.title,
           grayscale: false,
@@ -278,6 +292,8 @@ export type WorkDetailModel = {
 export function buildWorkDetailModel(caseStudy: CaseStudy): WorkDetailModel {
   const industry = industries.find((i) => i.slug === caseStudy.industry);
   const relatedServices = services.filter((s) => caseStudy.services.includes(s.slug));
+  const builtWithSlugs = caseStudy.builtWithServices ?? caseStudy.services;
+  const builtWithServices = services.filter((s) => builtWithSlugs.includes(s.slug));
   const gallery = gallerySlots(caseStudy);
   const groups = galleryGroups(caseStudy);
 
@@ -294,7 +310,7 @@ export function buildWorkDetailModel(caseStudy: CaseStudy): WorkDetailModel {
       ? caseStudy.mandate
       : caseStudy.execution.slice(0, 4),
     executionSummary: caseStudy.executionSummary ?? caseStudy.hero,
-    pillars: caseStudy.executionPillars?.length
+    pillars: caseStudy.executionPillars
       ? caseStudy.executionPillars
       : caseStudy.execution.length
         ? defaultPillars(caseStudy.execution)
@@ -304,9 +320,9 @@ export function buildWorkDetailModel(caseStudy: CaseStudy): WorkDetailModel {
     galleryGroups: groups,
     videos: caseStudyVideos(caseStudy),
     linkGroups: caseStudy.linkGroups?.filter((g) => g.links.length > 0) ?? [],
-    results: caseStudy.results,
+    results: caseStudy.results ?? [],
     resultHighlights: caseStudy.resultHighlights ?? [],
-    builtWith: relatedServices.map((s) => ({
+    builtWith: builtWithServices.map((s) => ({
       slug: s.slug,
       name: s.name,
       shortName: s.shortName,
@@ -337,6 +353,7 @@ export async function enrichLinkGroupThumbnails(
 export type WorkDetailSectionId =
   | "objective"
   | "mandate"
+  | "platforms"
   | "execution"
   | "activations"
   | "gallery"
@@ -350,6 +367,7 @@ export type WorkDetailTab = {
   label: string;
 };
 
+/** Visible case-study tabs — each section appears only when its data is present. */
 const TAB_DEFINITIONS: {
   id: WorkDetailSectionId;
   label: string;
@@ -357,18 +375,30 @@ const TAB_DEFINITIONS: {
 }[] = [
   { id: "objective", label: "Objective", hasContent: (m) => Boolean(m.objective) },
   { id: "mandate", label: "Mandate", hasContent: (m) => m.mandate.length > 0 },
-  { id: "execution", label: "Execution", hasContent: (m) => m.pillars.length > 0 },
+  {
+    id: "platforms",
+    label: "Platforms",
+    hasContent: (m) => m.galleryGroups.some((g) => g.density === "compact"),
+  },
+  {
+    id: "execution",
+    label: "Execution",
+    hasContent: (m) => {
+      const executionGroups = m.galleryGroups.filter((g) => g.density !== "compact");
+      return (
+        m.pillars.length > 0 ||
+        executionGroups.length > 0 ||
+        (m.galleryGroups.length === 0 && m.gallery.length > 0) ||
+        m.videos.length > 0 ||
+        Boolean(m.executionSummary)
+      );
+    },
+  },
   {
     id: "activations",
     label: "Activations",
     hasContent: (m) => m.linkGroups.length > 0,
   },
-  {
-    id: "gallery",
-    label: "Gallery",
-    hasContent: (m) => m.galleryGroups.length > 0 || m.gallery.length > 0,
-  },
-  { id: "video", label: "Video", hasContent: (m) => m.videos.length > 0 },
   {
     id: "result",
     label: "Results",

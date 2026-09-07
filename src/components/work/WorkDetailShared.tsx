@@ -40,6 +40,7 @@ export const SERVICE_ICONS: Record<string, ServiceIcon> = {
 export const SECTION_META: Record<WorkDetailSectionId, { label: string }> = {
   objective: { label: "The Objective" },
   mandate: { label: "The Mandate" },
+  platforms: { label: "Digital Platforms Used" },
   execution: { label: "The Execution" },
   activations: { label: "Live Activations" },
   gallery: { label: "Creative Gallery" },
@@ -55,15 +56,26 @@ export function SectionLabel({
   headingId,
   onDark = false,
   labelOverride,
+  asHeading = false,
 }: {
   id: WorkDetailSectionId;
   number: string;
   headingId?: string;
   onDark?: boolean;
   labelOverride?: string;
+  /** Promote the label to the section display heading (replaces a separate h2). */
+  asHeading?: boolean;
 }) {
   const meta = SECTION_META[id];
   const label = labelOverride ?? meta.label;
+
+  if (asHeading) {
+    return (
+      <h2 id={headingId} className="text-display-md m-0 text-balance">
+        <span className="text-red">{number}</span> {label}
+      </h2>
+    );
+  }
 
   if (onDark) {
     return (

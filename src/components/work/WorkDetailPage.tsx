@@ -35,10 +35,7 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
     caseStudy,
     title,
     familyLabel,
-    familyOverviewLabel,
     tags,
-    industryName,
-    servicesUsed,
     objective,
     mandate,
     executionSummary,
@@ -81,9 +78,11 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
     focusHeading: true,
   });
 
-  const displayTitle = caseStudy.hashtag
-    ? `${caseStudy.campaign} – ${caseStudy.hashtag}`
-    : caseStudy.campaign;
+  const displayTitle =
+    caseStudy.hashtag &&
+    caseStudy.hashtag.toLowerCase() !== caseStudy.campaign.toLowerCase()
+      ? `${caseStudy.campaign} – ${caseStudy.hashtag}`
+      : caseStudy.campaign;
 
   // Shared-element Flip: register hero media as the landing target
   useLayoutEffect(() => {
@@ -250,10 +249,7 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
         caseStudy={caseStudy}
         title={title}
         familyLabel={familyLabel}
-        familyOverviewLabel={familyOverviewLabel}
         tags={tags}
-        industryName={industryName}
-        servicesUsed={servicesUsed}
         heroImage={heroImage}
         displayTitle={displayTitle}
         flipTargetRef={flipTargetRef}

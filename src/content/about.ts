@@ -13,6 +13,8 @@ export type MediaSlot = {
   label: string;
   fit?: "cover" | "contain";
   grayscale?: boolean;
+  /** Optional live proof URL — gallery tiles open this when set. */
+  href?: string;
 };
 
 export const aboutHero = {
@@ -120,6 +122,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Jeffrey Crasto",
     title: "Partner & Joint CEO",
+    linkedin: "https://www.linkedin.com/in/jeffrey-crasto-229565130/",
     image: {
       src: "/images/about/leadership/jeffrey-crasto.jpg",
       alt: "Portrait of Jeffrey Crasto",
@@ -130,6 +133,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Parth Gandhi",
     title: "Chief Technology Officer",
+    linkedin: "https://www.linkedin.com/in/parth-gandhi-08a84b376/",
     image: {
       src: "/images/about/leadership/parth-gandhi.jpg",
       alt: "Portrait of Parth Gandhi",
@@ -140,6 +144,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Vaibhav Jain",
     title: "Head — Media Planning",
+    linkedin: "https://www.linkedin.com/in/vaibhav-jain1989/",
     image: {
       src: "/images/about/leadership/vaibhav-jain.jpg",
       alt: "Portrait of Vaibhav Jain",
@@ -150,6 +155,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Jamshid Doctor",
     title: "Head — Business Solutions",
+    linkedin: "https://www.linkedin.com/in/jamshid-doctor/",
     image: {
       src: "/images/about/leadership/jamshid-doctor.jpg",
       alt: "Portrait of Jamshid Doctor",
@@ -160,6 +166,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Rushabh Ashar",
     title: "Head — Video Production",
+    linkedin: "https://www.linkedin.com/in/rushabhashar1/",
     image: {
       src: "/images/about/leadership/rushabh-ashar.jpg",
       alt: "Portrait of Rushabh Ashar",
@@ -170,6 +177,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Pratik Panvalkar",
     title: "Head — Branding & Design",
+    linkedin: "https://www.linkedin.com/in/pratik-panvalkar-a880227a/",
     image: {
       src: "/images/about/leadership/pratik-panvalkar.jpg",
       alt: "Portrait of Pratik Panvalkar",
@@ -180,6 +188,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Chirag Kaku",
     title: "Head — Strategy",
+    linkedin: "https://www.linkedin.com/in/chirag-kaku/",
     image: {
       src: "/images/about/leadership/chirag-kaku.jpg",
       alt: "Portrait of Chirag Kaku",
@@ -190,6 +199,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Herat Panchal",
     title: "Chief Growth Officer",
+    linkedin: "https://www.linkedin.com/in/herat-panchal-1895321b/",
     image: {
       src: "/images/about/leadership/herat-panchal.jpg",
       alt: "Portrait of Herat Panchal",
@@ -200,6 +210,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Bilal Shaikh",
     title: "Head — New Business, Mumbai",
+    linkedin: "https://www.linkedin.com/in/bilal-shaikh-100b89125/",
     image: {
       src: "/images/about/leadership/bilal-shaikh.jpg",
       alt: "Portrait of Bilal Shaikh",
@@ -210,6 +221,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Megha Mathur",
     title: "Head — New Business, Bengaluru",
+    linkedin: "https://www.linkedin.com/in/megzamazing/",
     image: {
       src: "/images/about/leadership/megha-mathur.jpg",
       alt: "Portrait of Megha Mathur",
@@ -220,6 +232,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Deep Ajmera",
     title: "Head — New Business, Pune",
+    linkedin: "https://www.linkedin.com/in/deep-ajmera-670b38ba/",
     image: {
       src: "/images/about/leadership/deep-ajmera.jpg",
       alt: "Portrait of Deep Ajmera",
@@ -240,6 +253,7 @@ export const aboutTeam: TeamMember[] = [
   {
     name: "Pramod Vishwakarma",
     title: "Head — Social Media",
+    linkedin: "https://www.linkedin.com/in/pramod-vishwakarma-1a447630/",
     image: {
       src: "/images/about/leadership/pramod-vishwakarma.jpg",
       alt: "Portrait of Pramod Vishwakarma",

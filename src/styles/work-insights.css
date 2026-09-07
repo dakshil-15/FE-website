@@ -37,6 +37,29 @@
   }
 }
 
+.work-rail--solo {
+  grid-auto-columns: 100%;
+  gap: 0;
+}
+@media (min-width: 640px) {
+  .work-rail--solo {
+    grid-auto-columns: 100%;
+    gap: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .work-rail--solo {
+    grid-auto-columns: 100%;
+    gap: 0;
+  }
+}
+@media (min-width: 1280px) {
+  .work-rail--solo {
+    grid-auto-columns: 100%;
+    gap: 0;
+  }
+}
+
 .work-filter-tabs {
   display: flex;
   align-items: center;

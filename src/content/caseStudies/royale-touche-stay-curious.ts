@@ -14,7 +14,8 @@ export const royaleToucheStayCurious: CaseStudy = {
       "Build awareness that shoppers can experience the full-size laminate sheet in-store",
       "Amplify the #StayCurious TVC across social, influencer, PR and paid channels",
     ],
-    executionSummary: "Multiple digital-first #StayCurious adaptations integrated across platforms — channels, off-beat ads, four influencer phases, earned media, and Reddit → LLM recognition.",
+    executionSummary:
+      "Created multiple digital-first adaptations of the #StayCurious campaign and integrated them across platforms to drive footfalls at Experience Centres — frequent social posting, large influencer activations, blogs and PR, social ads, contests, programmatic and impact video ads.",
     execution: [
       "Created multiple digital-first adaptations of #StayCurious and integrated them across platforms to drive Experience Centre footfalls",
       "Frequent social posting, large influencer activations, blogs and PR, social ads, contests, programmatic and impact video ads",
@@ -27,12 +28,7 @@ export const royaleToucheStayCurious: CaseStudy = {
       "Earned media: Prince of Udaipur Experience Centre visit, Google review testimonials, contest engagements",
       "Reddit: 8 handles, 9 subreddits, 120K impressions, 150+ engagements → LLM rating 4.9/5 and ChatGPT citations",
     ],
-    executionPillars: [
-      { title: "Digital System", description: "Social, ads, contests, programmatic and impact video across platforms." },
-      { title: "Channels Created", description: "PR backlinks, AI chatbot and store-locator pages for each Experience Centre." },
-      { title: "Influencer Phases", description: "Brand film buzz → marketing communities → unique creator content → monthly seeding." },
-      { title: "Reddit → LLM", description: "8 handles, 9 subreddits, 120K+ impressions — 4.9/5 LLM rating and ChatGPT source citations." },
-    ],
+    executionPillars: [],
     results: [
       { label: "Experience Centres", value: "200+" },
       { label: "Reddit impressions", value: "120K+" },
@@ -42,120 +38,177 @@ export const royaleToucheStayCurious: CaseStudy = {
       { label: "LLM impact", value: "Cited in ChatGPT & LLMs" },
     ],
     tags: ["Integrated", "Influencer", "SEO", "Reddit", "AI"],
-    hashtag: "#StayCurious",
-    linkGroups: [
-      {
-        title: "Phase 1 — Brand Film Buzz (Reposts & Stories)",
-        description:
-          "50 top interior designers and architects pan-India reshared the #StayCurious brand film as reposts and stories.",
-        links: [
-          { label: "Pragya", description: "Live reel", href: "https://www.instagram.com/reel/C0g0DcKPYCv/" },
-          { label: "StudioAdmix", description: "Live reel", href: "https://www.instagram.com/reel/C0hLCStyO20/" },
-          { label: "Cubix Global", description: "Live reel", href: "https://www.instagram.com/reel/C0lygnJooPl/" },
-          { label: "Ananya Bhatterjee", description: "@interiormaata", href: "https://www.instagram.com/interiormaata/" },
-          { label: "Ashwini Dongare", description: "@interiorsbyashwiiniidongare", href: "https://www.instagram.com/interiorsbyashwiiniidongare/" },
-          { label: "Sonika Khurrana", description: "@coloraza_interiordesign", href: "https://www.instagram.com/coloraza_interiordesign/" },
-          { label: "Nihara", description: "@nihara_iosis", href: "https://www.instagram.com/nihara_iosis/" },
-        ],
-      },
-      {
-        title: "Phase 2 — Marketing Communities",
-        description:
-          "Premium A&M pages broke down the Royale Touché TVC and the core idea behind #StayCurious.",
-        links: [
-          { label: "Mad Over Marketing", description: "Campaign breakdown", href: "https://www.instagram.com/madovermarketing_mom/p/C1EV5TDy5oh/" },
-          { label: "Social Samosa", description: "Campaign breakdown", href: "https://www.instagram.com/p/C0_t5VHoJHG/" },
-          { label: "Marketing Maverick", description: "Campaign breakdown", href: "https://www.instagram.com/p/C0_t5VHoJHG/" },
-          { label: "Marketing Mind", description: "Campaign breakdown", href: "https://www.instagram.com/madovermarketing_mom/p/C1EV5TDy5oh/" },
-        ],
-      },
-    ],
+    linkGroups: [],
     galleryGroups: [
       {
-        title: "Campaign Cover",
-        images: [
-          "/images/work/gallery/royale-touche-stay-curious/01.png",
-        ],
-      },
-      {
-        title: "Objective & Digital Adaptations",
-        images: [
-          "/images/work/gallery/royale-touche-stay-curious/02.png",
-          "/images/work/gallery/royale-touche-stay-curious/03.jpg",
-        ],
-      },
-      {
         title: "Digital Platforms Used",
+        density: "compact",
+        description:
+          "Platforms activated across the #StayCurious campaign — search, social, publishers, OTT, commerce and mobile branding.",
         images: [
-          "/images/work/gallery/royale-touche-stay-curious/04.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-01.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-02.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-03.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-04.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-05.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-06.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-07.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-08.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-09.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-10.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-11.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-12.png",
+          "/images/work/gallery/royale-touche-stay-curious/platforms-13.png",
         ],
       },
       {
         title: "Channels Created",
+        density: "solo",
+        pairRow: "channels-ads",
+        description:
+          "PR articles to drive healthy backlinks. AI-enabled chatbot for user engagement. Dedicated store-locator page for each Experience Centre.",
         images: [
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/06.jpg",
+            href: "https://economictimes.indiatimes.com/industry/services/retail/royale-touche-plans-to-expand-its-retail-footprint/articleshow/79428945.cms",
+          },
           "/images/work/gallery/royale-touche-stay-curious/05.jpg",
-          "/images/work/gallery/royale-touche-stay-curious/06.jpg",
           "/images/work/gallery/royale-touche-stay-curious/07.jpg",
         ],
       },
       {
         title: "Off-the-Beat Ad Types",
+        density: "solo",
+        pairRow: "channels-ads",
+        description:
+          "Interactive digital-first adaptations — room revamp experiences and off-the-beat formats built for the #StayCurious push.",
         images: [
-          "/images/work/gallery/royale-touche-stay-curious/08.png",
+          "/images/work/gallery/royale-touche-stay-curious/08-01.png",
+          "/images/work/gallery/royale-touche-stay-curious/08-02.png",
+          "/images/work/gallery/royale-touche-stay-curious/08-03.png",
+          "/images/work/gallery/royale-touche-stay-curious/08-04.png",
+        ],
+      },
+      {
+        title: "Local Store Visit Promotion Ads",
+        density: "solo",
+        pairRow: "channels-ads",
+        description:
+          "Local store visit promotion ads — map pins, directions CTAs and store cards to drive Experience Centre footfalls.",
+        images: [
+          "/images/work/gallery/royale-touche-stay-curious/36.png",
           "/images/work/gallery/royale-touche-stay-curious/09.png",
           "/images/work/gallery/royale-touche-stay-curious/10.png",
-          "/images/work/gallery/royale-touche-stay-curious/11.png",
         ],
       },
       {
-        title: "Influencer Reposts & Stories",
+        title: "Phase 1 — Brand Film Buzz",
+        density: "solo",
+        pairRow: "influencer-phases",
+        pairRowHeading: "Influencer Activity",
+        description:
+          "To amplify and create buzz about the launch of the Royale Touché TVC with interior designers across social media for awareness and brand recall. Activated 50 top interior designers and architects (pan-India) to reshare the brand film as reposts and stories.",
         images: [
-          "/images/work/gallery/royale-touche-stay-curious/12.png",
-          "/images/work/gallery/royale-touche-stay-curious/13.png",
-          "/images/work/gallery/royale-touche-stay-curious/14.png",
-          "/images/work/gallery/royale-touche-stay-curious/15.png",
-          "/images/work/gallery/royale-touche-stay-curious/16.png",
-          "/images/work/gallery/royale-touche-stay-curious/17.png",
-          "/images/work/gallery/royale-touche-stay-curious/18.png",
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/12.png",
+            href: "https://www.instagram.com/interiormaata/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/13.png",
+            href: "https://www.instagram.com/interiorsbyashwiiniidongare/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/14.png",
+            href: "https://www.instagram.com/coloraza_interiordesign/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/15.png",
+            href: "https://www.instagram.com/nihara_iosis/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/16.png",
+            href: "https://www.instagram.com/reel/C0g0DcKPYCv/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/17.png",
+            href: "https://www.instagram.com/reel/C0hLCStyO20/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/18.png",
+            href: "https://www.instagram.com/reel/C0lygnJooPl/",
+          },
         ],
       },
       {
-        title: "Marketing Communities",
+        title: "Phase 2 — Marketing Communities",
+        density: "solo",
+        pairRow: "influencer-phases",
+        description:
+          "Premium A&M pages like Mad Over Marketing and Social Samosa delivered a complete campaign breakdown of the Royale Touché TVC — highlighting the core idea behind #StayCurious and driving significant reach and engagement.",
         images: [
-          "/images/work/gallery/royale-touche-stay-curious/19.png",
-          "/images/work/gallery/royale-touche-stay-curious/20.png",
-          "/images/work/gallery/royale-touche-stay-curious/21.png",
-          "/images/work/gallery/royale-touche-stay-curious/22.png",
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/19.png",
+            href: "https://www.instagram.com/p/C1eI8c3S06I/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/20.png",
+            href: "https://www.instagram.com/madovermarketing_mom/p/C1EV5TDy5oh/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/21.png",
+            href: "https://www.instagram.com/p/C0_t5VHoJHG/",
+          },
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/22.png",
+            href: "https://www.instagram.com/p/C1CbWmPyG0O/",
+          },
         ],
       },
       {
-        title: "Unique Influencer Content",
+        title: "Phase 3 — Unique Influencer Content",
+        density: "solo",
+        pairRow: "influencer-phases",
+        description:
+          "Collaborated with influencers who created captivating videos around the Royale Touché TVC. They visited Royale Touché stores, maintaining excitement and showcasing unique selling points — significantly boosting awareness and interest. Featuring Technocrat Anshul and Oak Kitchen.",
         images: [
           "/images/work/gallery/royale-touche-stay-curious/23.png",
           "/images/work/gallery/royale-touche-stay-curious/24.png",
+        ],
+      },
+      {
+        title: "Phase 4 — Content Seeding",
+        density: "solo",
+        pairRow: "influencer-phases",
+        description:
+          "To keep the virality of the campaign, content seeding was done with interior designers who created trend-led content that helped brand recall and built credibility on a monthly basis. Featuring Luxury Property Vlogs and Salman Surf.",
+        images: [
           "/images/work/gallery/royale-touche-stay-curious/25.png",
           "/images/work/gallery/royale-touche-stay-curious/26.png",
         ],
       },
       {
         title: "Earned Media",
+        density: "solo",
+        pairRow: "earned-llm",
+        description:
+          "Prince of Udaipur visiting the Royale Touché Experience Centre. Followers gained. Testimonials via Google Reviews. Drove engagements via contests.",
         images: [
           "/images/work/gallery/royale-touche-stay-curious/27.png",
           "/images/work/gallery/royale-touche-stay-curious/28.png",
-          "/images/work/gallery/royale-touche-stay-curious/29.jpg",
+          {
+            src: "/images/work/gallery/royale-touche-stay-curious/29.jpg",
+            href: "https://www.instagram.com/p/CV0lv3nj3M5/",
+          },
           "/images/work/gallery/royale-touche-stay-curious/30.jpg",
           "/images/work/gallery/royale-touche-stay-curious/31.jpg",
         ],
       },
       {
-        title: "Reddit Presence",
-        images: [
-          "/images/work/gallery/royale-touche-stay-curious/32.png",
-          "/images/work/gallery/royale-touche-stay-curious/33.png",
-        ],
-      },
-      {
-        title: "LLM Recognition",
+        title: "LLM Impact",
+        density: "solo",
+        pairRow: "earned-llm",
+        description:
+          "Reddit presence successfully translated into LLM recognition — 4.9/5 LLM rating. Discussions now cited as source material in ChatGPT and other LLM platforms. Durability insights sourced from Reddit discussions. Customer sentiment aggregated across platforms.",
         images: [
           "/images/work/gallery/royale-touche-stay-curious/34.png",
           "/images/work/gallery/royale-touche-stay-curious/35.png",
@@ -163,18 +216,30 @@ export const royaleToucheStayCurious: CaseStudy = {
       },
     ],
     gallery: [
-      "/images/work/cases/royale-touche.png",
-      "/images/work/gallery/royale-touche-stay-curious/01.png",
-      "/images/work/gallery/royale-touche-stay-curious/02.png",
       "/images/work/gallery/royale-touche-stay-curious/03.jpg",
-      "/images/work/gallery/royale-touche-stay-curious/04.png",
-      "/images/work/gallery/royale-touche-stay-curious/05.jpg",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-01.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-02.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-03.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-04.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-05.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-06.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-07.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-08.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-09.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-10.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-11.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-12.png",
+      "/images/work/gallery/royale-touche-stay-curious/platforms-13.png",
       "/images/work/gallery/royale-touche-stay-curious/06.jpg",
+      "/images/work/gallery/royale-touche-stay-curious/05.jpg",
       "/images/work/gallery/royale-touche-stay-curious/07.jpg",
-      "/images/work/gallery/royale-touche-stay-curious/08.png",
+      "/images/work/gallery/royale-touche-stay-curious/08-01.png",
+      "/images/work/gallery/royale-touche-stay-curious/08-02.png",
+      "/images/work/gallery/royale-touche-stay-curious/08-03.png",
+      "/images/work/gallery/royale-touche-stay-curious/08-04.png",
+      "/images/work/gallery/royale-touche-stay-curious/36.png",
       "/images/work/gallery/royale-touche-stay-curious/09.png",
       "/images/work/gallery/royale-touche-stay-curious/10.png",
-      "/images/work/gallery/royale-touche-stay-curious/11.png",
       "/images/work/gallery/royale-touche-stay-curious/12.png",
       "/images/work/gallery/royale-touche-stay-curious/13.png",
       "/images/work/gallery/royale-touche-stay-curious/14.png",
@@ -195,8 +260,6 @@ export const royaleToucheStayCurious: CaseStudy = {
       "/images/work/gallery/royale-touche-stay-curious/29.jpg",
       "/images/work/gallery/royale-touche-stay-curious/30.jpg",
       "/images/work/gallery/royale-touche-stay-curious/31.jpg",
-      "/images/work/gallery/royale-touche-stay-curious/32.png",
-      "/images/work/gallery/royale-touche-stay-curious/33.png",
       "/images/work/gallery/royale-touche-stay-curious/34.png",
       "/images/work/gallery/royale-touche-stay-curious/35.png",
     ],
@@ -206,8 +269,15 @@ export const royaleToucheStayCurious: CaseStudy = {
       "Durability insights sourced from Reddit discussions",
       "Customer sentiment aggregated across platforms",
     ],
-    video: { title: "#StayCurious Film", description: "Impact video and campaign film for the #StayCurious Experience Centre push.", src: "/videos/work/royale-touche-stay-curious-1.mp4", poster: "/images/work/gallery/royale-touche-stay-curious/01.png" },
+    video: {
+      title: "#StayCurious Film",
+      description: "Impact video and campaign film for the #StayCurious Experience Centre push.",
+      src: "/videos/work/royale-touche-stay-curious-1.mp4",
+      poster: "/images/work/gallery/royale-touche-stay-curious/03.jpg",
+    },
+    heroVideo: true,
     clientLogo: "/images/partners/clients/royale-touche.png",
+    builtWithServices: [],
     flagship: true,
     featured: true,
     family: "integrated",

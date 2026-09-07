@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Layers, Play } from "lucide-react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
+import { LogoMarkGrid } from "@/components/home/PartnerLogos";
 import WorkDetailGallery from "@/components/work/WorkDetailGallery";
 import {
   ContentBlock,
@@ -13,12 +14,47 @@ import {
   SERVICE_ICONS,
 } from "@/components/work/WorkDetailShared";
 import WorkDetailVideoSlider from "@/components/work/WorkDetailVideoSlider";
-import type { WorkDetailModel, WorkDetailSectionId } from "@/content/workDetail";
+import type { PartnerLogo } from "@/content/partners";
+import type { WorkDetailModel, WorkDetailSectionId, WorkGalleryGroup } from "@/content/workDetail";
 import {
   parseWorkMetricValue,
   workDetailHeadlines,
   workResultGridClass,
 } from "@/content/workDetail";
+
+const PLATFORM_LOGO_META: Record<string, { name: string; width: number; height: number }> = {
+  "platforms-01.png": { name: "Google Ads", width: 350, height: 110 },
+  "platforms-02.png": { name: "Facebook", width: 158, height: 158 },
+  "platforms-03.png": { name: "Instagram", width: 154, height: 154 },
+  "platforms-04.png": { name: "Moneycontrol", width: 434, height: 95 },
+  "platforms-05.png": { name: "Quora", width: 384, height: 108 },
+  "platforms-06.png": { name: "Disney+", width: 352, height: 102 },
+  "platforms-07.png": { name: "Paytm", width: 347, height: 110 },
+  "platforms-08.png": { name: "Amazon", width: 352, height: 107 },
+  "platforms-09.png": { name: "YouTube", width: 464, height: 289 },
+  "platforms-10.png": { name: "Magicbricks", width: 487, height: 87 },
+  "platforms-11.png": { name: "Zirca", width: 311, height: 132 },
+  "platforms-12.png": { name: "mCanvas", width: 322, height: 80 },
+  "platforms-13.png": { name: "Pinterest", width: 768, height: 432 },
+};
+
+function galleryItemsToLogoMarks(group: WorkGalleryGroup): PartnerLogo[] {
+  return group.items
+    .filter((item): item is typeof item & { src: string } => Boolean(item.src))
+    .map((item, i) => {
+      const file = item.src.split("/").pop() ?? "";
+      const meta = PLATFORM_LOGO_META[file];
+      return {
+        slug: meta?.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") ?? `platform-${i + 1}`,
+        name: meta?.name ?? item.alt ?? item.label ?? `${group.title} ${i + 1}`,
+        src: item.src,
+        width: meta?.width ?? 360,
+        height: meta?.height ?? 240,
+        sourceMedia: item.src,
+        sourceSlide: 21,
+      };
+    });
+}
 
 type WorkDetailStoryProps = {
   title: WorkDetailModel["title"];
@@ -73,23 +109,16 @@ export default function WorkDetailStory({
           style={sectionScrollStyle}
           labelledBy="work-objective-heading"
         >
-          <div data-animate="fade-up">
+          <div data-animate="fade-up" className="flex flex-col gap-4 sm:gap-5">
             <SectionLabel
               id="objective"
               number={sectionNumber("objective")}
-              headingId="work-objective-label"
+              headingId="work-objective-heading"
+              asHeading
             />
-            <div className="section-intro">
-              <h2
-                id="work-objective-heading"
-                className="text-display-md m-0 text-balance"
-              >
-                {workDetailHeadlines.objective}
-              </h2>
-              <p className="text-body section-copy-on-light m-0 max-w-none pt-0 md:pt-1">
-                {objective}
-              </p>
-            </div>
+            <p className="text-body section-copy-on-light m-0 max-w-none">
+              {objective}
+            </p>
           </div>
         </ContentBlock>
         ) : null}
@@ -106,14 +135,9 @@ export default function WorkDetailStory({
             <SectionLabel
               id="mandate"
               number={sectionNumber("mandate")}
-              headingId="work-mandate-label"
+              headingId="work-mandate-heading"
+              asHeading
             />
-            <h2
-              id="work-mandate-heading"
-              className="text-display-md mt-4 mb-0 max-w-[42rem] text-balance"
-            >
-              {workDetailHeadlines.mandate}
-            </h2>
             <ul
               data-animate-stagger
               className="m-0 mt-8 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:mt-10 sm:grid-cols-2 lg:gap-x-10 xl:grid-cols-4"
@@ -134,6 +158,39 @@ export default function WorkDetailStory({
         </ContentBlock>
         ) : null}
 
+        {/* Digital Platforms — logo grid as its own numbered section */}
+        {hasSection("platforms") ? (
+          <ContentBlock
+            id="platforms"
+            className="mt-12 sm:mt-16"
+            style={sectionScrollStyle}
+            labelledBy="work-platforms-heading"
+          >
+            <div data-animate="fade-up" className="flex flex-col gap-4 sm:gap-5">
+              <SectionLabel
+                id="platforms"
+                number={sectionNumber("platforms")}
+                headingId="work-platforms-heading"
+                asHeading
+              />
+              {galleryGroups
+                .filter((group) => group.density === "compact")
+                .map((group) => (
+                  <div key={group.title} className="min-w-0">
+                    {group.description ? (
+                      <p className="text-body section-copy-on-light mb-6 max-w-[42rem]">
+                        {group.description}
+                      </p>
+                    ) : null}
+                    <div aria-label={`${title} — ${group.title}`}>
+                      <LogoMarkGrid logos={galleryItemsToLogoMarks(group)} />
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </ContentBlock>
+        ) : null}
+
         {/* Execution */}
         {hasSection("execution") ? (
         <ContentBlock
@@ -142,32 +199,24 @@ export default function WorkDetailStory({
           style={sectionScrollStyle}
           labelledBy="work-execution-heading"
         >
-          <SectionLabel
-            id="execution"
-            number={sectionNumber("execution")}
-            headingId="work-execution-label"
-          />
-          <div className="section-intro">
-            <h2
-              data-animate="fade-up"
-              id="work-execution-heading"
-              className="text-display-md m-0 text-balance"
-            >
-              {workDetailHeadlines.execution}
-            </h2>
+          <div data-animate="fade-up" className="flex flex-col gap-4 sm:gap-5">
+            <SectionLabel
+              id="execution"
+              number={sectionNumber("execution")}
+              headingId="work-execution-heading"
+              asHeading
+            />
             {executionSummary ? (
-              <p
-                data-animate="fade-up"
-                className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-              >
+              <p className="text-body section-copy-on-light m-0 max-w-none">
                 {executionSummary}
               </p>
             ) : null}
           </div>
 
+          {pillars.length > 0 ? (
           <ul
             data-animate-stagger
-            className="m-0 mt-8 grid list-none grid-cols-1 gap-3 p-0 xs:grid-cols-2 sm:mt-10 lg:grid-cols-4"
+            className="m-0 mt-8 grid list-none grid-cols-1 gap-x-8 gap-y-8 border-t border-line p-0 pt-8 xs:grid-cols-2 sm:mt-10 sm:gap-y-10 sm:pt-10 lg:grid-cols-4"
             aria-label="Execution pillars"
           >
             {pillars.map((pillar, i) => {
@@ -175,48 +224,174 @@ export default function WorkDetailStory({
               const num = String(i + 1).padStart(2, "0");
               return (
                 <li key={pillar.title} className="min-w-0">
-                  <article className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] sm:min-h-[240px] sm:rounded-[22px] sm:p-5 md:p-6">
-                    <svg
-                      className="pointer-events-none absolute -bottom-6 -left-8 h-[140px] w-[140px] text-red/[0.12]"
-                      viewBox="0 0 140 140"
-                      fill="none"
+                  <div className="flex items-center gap-3">
+                    <span className="grid size-9 shrink-0 place-items-center text-red" aria-hidden>
+                      <Icon size={20} strokeWidth={1.75} />
+                    </span>
+                    <span
+                      className="font-display text-[1.75rem] leading-none font-light tracking-tight text-line select-none"
                       aria-hidden
                     >
-                      <path
-                        d="M12 128C12 64 64 12 128 12"
-                        stroke="currentColor"
-                        strokeWidth="1.25"
-                      />
-                    </svg>
-
-                    <div className="relative flex items-start justify-between gap-3">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-14 sm:w-14">
-                        <Icon size={22} strokeWidth={1.75} aria-hidden className="text-white" />
-                      </span>
-                      <span
-                        className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
-                        aria-hidden
-                      >
-                        {num}
-                      </span>
-                    </div>
-
-                    <div className="relative mt-6 flex flex-1 flex-col sm:mt-7">
-                      <h3 className="m-0 w-full font-display text-[1.05rem] leading-[1.15] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]">
-                        {pillar.title}
-                      </h3>
-                      <span className="mt-3 block h-[3px] w-8 rounded-full bg-red" aria-hidden />
-                      {pillar.description ? (
-                        <p className="mt-3.5 mb-0 text-[13px] leading-snug text-muted sm:text-sm">
-                          {pillar.description}
-                        </p>
-                      ) : null}
-                    </div>
-                  </article>
+                      {num}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 mb-0 font-display text-[1.05rem] leading-[1.15] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]">
+                    {pillar.title}
+                  </h3>
+                  <span className="mt-3 block h-[3px] w-8 bg-red" aria-hidden />
+                  {pillar.description ? (
+                    <p className="mt-3.5 mb-0 text-[13px] leading-snug text-muted sm:text-sm">
+                      {pillar.description}
+                    </p>
+                  ) : null}
                 </li>
               );
             })}
           </ul>
+          ) : null}
+
+          {/* Creative proof — gallery + film in deck order, under Execution */}
+          {(() => {
+            const executionGroups = galleryGroups.filter((group) => group.density !== "compact");
+            const showExecutionVideo = videos.length > 0 && !caseStudy.heroVideo;
+            const hasExecutionGallery =
+              executionGroups.length > 0 ||
+              (galleryGroups.length === 0 && gallery.length > 0) ||
+              showExecutionVideo;
+            if (!hasExecutionGallery) return null;
+
+            return (
+            <div
+              id="gallery"
+              data-animate="fade-up"
+              className="mt-12 space-y-10 sm:mt-16 sm:space-y-12"
+            >
+              {(() => {
+                const videoBlock =
+                  showExecutionVideo ? (
+                    <div
+                      key="execution-video"
+                      id="video"
+                      className="min-w-0 overflow-x-clip"
+                    >
+                      <p className="text-eyebrow m-0 mb-4">
+                        {caseStudy.videoLabel ?? SECTION_META.video.label}
+                      </p>
+                      {caseStudy.videoIntro ? (
+                        <p className="text-body section-copy-on-light mb-6 max-w-none sm:mb-8">
+                          {caseStudy.videoIntro}
+                        </p>
+                      ) : null}
+                      <WorkDetailVideoSlider
+                        videos={videos}
+                        campaign={caseStudy.campaign}
+                        fallbackPoster={heroImage.src}
+                      />
+                    </div>
+                  ) : null;
+
+                const afterTitle = caseStudy.videoAfterGalleryTitle;
+                const blocks: ReactNode[] = [];
+                let videoPlaced = false;
+
+                const groups =
+                  executionGroups.length > 0
+                    ? executionGroups
+                    : gallery.length > 0
+                      ? [{ title: "Campaign Creatives", items: gallery, description: undefined }]
+                      : [];
+
+                const showGroupTitles = groups.length + (videoBlock ? 1 : 0) > 1;
+
+                const renderGalleryGroup = (
+                  group: (typeof groups)[number],
+                  { alignTitle }: { alignTitle?: boolean } = {},
+                ) => (
+                  <div key={group.title} className="flex h-full min-w-0 flex-col">
+                    {showGroupTitles ? (
+                      <p
+                        className={`text-eyebrow m-0 mb-4 ${
+                          alignTitle ? "min-h-[2.75rem]" : ""
+                        }`}
+                      >
+                        {group.title}
+                      </p>
+                    ) : null}
+                    <WorkDetailGallery
+                      items={group.items}
+                      title={`${title} — ${group.title}`}
+                      density={group.density === "solo" ? "solo" : "default"}
+                    />
+                    {group.description ? (
+                      <p className="text-body section-copy-on-light mt-4 mb-0 max-w-none">
+                        {group.description}
+                      </p>
+                    ) : null}
+                  </div>
+                );
+
+                let i = 0;
+                while (i < groups.length) {
+                  const group = groups[i]!;
+                  const rowKey = group.pairRow;
+                  if (rowKey) {
+                    const rowGroups = [group];
+                    let j = i + 1;
+                    while (j < groups.length && groups[j]?.pairRow === rowKey) {
+                      rowGroups.push(groups[j]!);
+                      j += 1;
+                    }
+                    const rowHeading =
+                      rowGroups.find((g) => g.pairRowHeading)?.pairRowHeading ?? null;
+                    blocks.push(
+                      <div key={`row-${rowKey}-${group.title}`} className="min-w-0">
+                        {rowHeading ? (
+                          <p className="m-0 mb-6 font-display text-lg font-bold tracking-[0.04em] text-ink uppercase sm:mb-7 sm:text-xl">
+                            {rowHeading}
+                          </p>
+                        ) : null}
+                        <div
+                          className={`grid grid-cols-1 items-stretch gap-8 sm:grid-cols-2 lg:gap-8 ${
+                            rowGroups.length >= 4
+                              ? "xl:grid-cols-4"
+                              : rowGroups.length >= 3
+                                ? "lg:grid-cols-3"
+                                : "lg:grid-cols-2 lg:gap-10"
+                          }`}
+                        >
+                          {rowGroups.map((rowGroup) =>
+                            renderGalleryGroup(rowGroup, { alignTitle: true }),
+                          )}
+                        </div>
+                      </div>,
+                    );
+                    for (const rowGroup of rowGroups) {
+                      if (videoBlock && afterTitle && rowGroup.title === afterTitle) {
+                        blocks.push(videoBlock);
+                        videoPlaced = true;
+                      }
+                    }
+                    i = j;
+                    continue;
+                  }
+
+                  blocks.push(renderGalleryGroup(group));
+                  if (videoBlock && afterTitle && group.title === afterTitle) {
+                    blocks.push(videoBlock);
+                    videoPlaced = true;
+                  }
+                  i += 1;
+                }
+
+                if (videoBlock && !videoPlaced) {
+                  blocks.push(videoBlock);
+                }
+
+                return blocks;
+              })()}
+            </div>
+            );
+          })()}
         </ContentBlock>
         ) : null}
 
@@ -323,74 +498,6 @@ export default function WorkDetailStory({
                   </ul>
                 </div>
               ))}
-            </div>
-          </ContentBlock>
-        ) : null}
-
-        {/* Gallery */}
-        {hasSection("gallery") ? (
-          <ContentBlock
-            id="gallery"
-            className="mt-12 sm:mt-16"
-            style={sectionScrollStyle}
-            labelledBy="work-gallery-heading"
-          >
-            <SectionLabel
-              id="gallery"
-              number={sectionNumber("gallery")}
-              headingId="work-gallery-label"
-            />
-            <h2
-              data-animate="fade-up"
-              id="work-gallery-heading"
-              className="text-display-sm mt-4 mb-0 max-w-[42rem] text-balance"
-            >
-              {workDetailHeadlines.gallery}
-            </h2>
-            <div data-animate="fade-up" className="mt-8 space-y-10 sm:mt-10 sm:space-y-12">
-              {galleryGroups.length > 0
-                ? galleryGroups.map((group) => (
-                    <div key={group.title} className="min-w-0">
-                      {galleryGroups.length > 1 ? (
-                        <p className="text-eyebrow m-0 mb-4">{group.title}</p>
-                      ) : null}
-                      <WorkDetailGallery items={group.items} title={`${title} — ${group.title}`} />
-                    </div>
-                  ))
-                : (
-                    <WorkDetailGallery items={gallery} title={title} />
-                  )}
-            </div>
-          </ContentBlock>
-        ) : null}
-
-        {/* Video — center-focus film slider */}
-        {hasSection("video") ? (
-          <ContentBlock
-            id="video"
-            className="mt-12 overflow-x-clip sm:mt-16"
-            style={sectionScrollStyle}
-            labelledBy="work-video-heading"
-          >
-            <div data-animate="fade-up" className="max-w-[42rem]">
-              <SectionLabel
-                id="video"
-                number={sectionNumber("video")}
-                headingId="work-video-label"
-              />
-              <h2
-                id="work-video-heading"
-                className="text-display-sm mt-4 mb-0 text-balance"
-              >
-                {workDetailHeadlines.video}
-              </h2>
-            </div>
-            <div data-animate="fade-up" className="mt-2 sm:mt-3">
-              <WorkDetailVideoSlider
-                videos={videos}
-                campaign={caseStudy.campaign}
-                fallbackPoster={heroImage.src}
-              />
             </div>
           </ContentBlock>
         ) : null}

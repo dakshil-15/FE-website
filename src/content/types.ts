@@ -43,9 +43,29 @@ export type CaseStudyVideo = {
 };
 
 /** Gallery images grouped by deck touchpoint / slide theme for a campaign. */
+export type CaseStudyGalleryImage =
+  | string
+  | {
+      src: string;
+      /** Live URL aligned to this creative (Instagram, article, etc.). */
+      href?: string;
+    };
+
 export type CaseStudyGalleryGroup = {
   title: string;
-  images: string[];
+  /** Deck caption shown under the group images */
+  description?: string;
+  images: CaseStudyGalleryImage[];
+  /**
+   * Gallery presentation:
+   * - compact → logo mark grid (own Platforms section)
+   * - solo → one image at a time in the carousel
+   */
+  density?: "default" | "compact" | "solo";
+  /** Groups sharing a row key render side-by-side in a single row. */
+  pairRow?: string;
+  /** Optional heading shown once above a paired row (set on the first group). */
+  pairRowHeading?: string;
 };
 
 /** External proof / activation link (Instagram, articles, live URLs). CMS-ready. */
@@ -73,7 +93,8 @@ export type CaseStudy = {
   hero: string;
   challenge: string;
   execution: string[];
-  results: Metric[];
+  /** Outcome metrics. Empty / omitted hides The Result section. */
+  results?: Metric[];
   flagship?: boolean;
   featured?: boolean;
   family: CaseStudyFamily;
@@ -91,7 +112,7 @@ export type CaseStudy = {
   objective?: string;
   /** Short intro above execution pillars */
   executionSummary?: string;
-  /** Named strategy pillars; defaults from execution lines */
+  /** Named strategy pillars; defaults from execution lines. Pass [] to omit pillar cards. */
   executionPillars?: CaseStudyPillar[];
   /** Creative gallery image paths under /public (flat list; used when galleryGroups omitted) */
   gallery?: string[];
@@ -101,12 +122,25 @@ export type CaseStudy = {
   resultHighlights?: string[];
   /** Live URLs / influencer / community links — section renders only when populated */
   linkGroups?: CaseStudyLinkGroup[];
+  /** When true, hero media shows `video` (or first of `videos`) instead of the still. */
+  heroVideo?: boolean;
   /** Brand film / reel block; omitted when absent. Prefer `videos` when a case has multiple films. */
   video?: CaseStudyVideo;
+  /** Campaign-specific Video section heading (defaults to "Video"). */
+  videoLabel?: string;
+  /** Insert the video block after this gallery group title (deck order). Defaults to after all groups. */
+  videoAfterGalleryTitle?: string;
+  /** Optional intro under the Video section heading (deck caption for the film block). */
+  videoIntro?: string;
   /** All campaign films from the deck (primary + cutdowns). Falls back to `video` when omitted. */
   videos?: CaseStudyVideo[];
   /** Optional client logo path under /public */
   clientLogo?: string;
+  /**
+   * Service slugs listed in Built With.
+   * Defaults to `services`. Pass [] to omit the Built With section.
+   */
+  builtWithServices?: string[];
 };
 
 export type IndustryTone = "campaign" | "restrained" | "fast" | "cinematic" | "premium" | "technical";

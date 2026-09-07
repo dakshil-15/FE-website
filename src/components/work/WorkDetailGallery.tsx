@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Expand, ExternalLink, X } from "lucide-react";
 import HorizontalCarousel from "@/components/HorizontalCarousel";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import type { MediaSlot } from "@/content/about";
@@ -11,9 +11,14 @@ import type { MediaSlot } from "@/content/about";
 type WorkDetailGalleryProps = {
   items: MediaSlot[];
   title: string;
+  density?: "default" | "solo";
 };
 
-export default function WorkDetailGallery({ items, title }: WorkDetailGalleryProps) {
+export default function WorkDetailGallery({
+  items,
+  title,
+  density = "default",
+}: WorkDetailGalleryProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const lastFocusRef = useRef<HTMLElement | null>(null);
@@ -104,6 +109,79 @@ export default function WorkDetailGallery({ items, title }: WorkDetailGalleryPro
 
   if (items.length === 0) return null;
 
+  const frameClass =
+    density === "solo"
+      ? "h-[17rem] w-full border-0 bg-[#111] transition duration-500 group-hover:[&_img]:scale-[1.02] sm:h-[18.5rem] lg:h-[20rem]"
+      : "aspect-[4/3] w-full border-0 bg-[#f3f3f3] transition duration-500 group-hover:[&_img]:scale-[1.02]";
+  const frameSizes =
+    density === "solo"
+      ? "(max-width: 1024px) 100vw, 33vw"
+      : "(max-width: 640px) 86vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw";
+
+  const tile = (item: MediaSlot, i: number) => {
+    const key = `${item.src ?? item.label}-${i}`;
+    const label = item.alt || item.label || `creative ${i + 1}`;
+    const media = (
+      <ImageSlot
+        asset={{ ...item, fit: item.fit ?? "contain" }}
+        className={frameClass}
+        sizes={frameSizes}
+      />
+    );
+
+    if (item.href) {
+      return (
+        <div
+          key={key}
+          className="group relative m-0 min-w-0 w-full overflow-hidden border border-line bg-mist transition hover:border-red"
+        >
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+            aria-label={`Open live link for ${label}`}
+          >
+            {media}
+          </a>
+          <span
+            className="pointer-events-none absolute left-3 bottom-3 inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-ink/55 px-2.5 py-1.5 text-[0.6875rem] font-medium tracking-wide text-white backdrop-blur-[2px]"
+            aria-hidden
+          >
+            <ExternalLink size={12} strokeWidth={2.25} />
+            Live
+          </span>
+          <button
+            type="button"
+            onClick={() => openLightbox(i)}
+            className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white opacity-100 backdrop-blur-[2px] transition duration-200 hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
+            aria-label={`Expand ${label}`}
+          >
+            <Expand size={15} strokeWidth={2.25} />
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <button
+        key={key}
+        type="button"
+        onClick={() => openLightbox(i)}
+        className="group relative m-0 block min-w-0 w-full cursor-zoom-in overflow-hidden border border-line bg-mist p-0 text-left transition hover:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+        aria-label={`Open ${label}`}
+      >
+        {media}
+        <span
+          className="pointer-events-none absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white opacity-100 backdrop-blur-[2px] transition duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
+          aria-hidden
+        >
+          <Expand size={15} strokeWidth={2.25} />
+        </span>
+      </button>
+    );
+  };
+
   const lightbox =
     mounted && lightboxOpen && lightboxItem
       ? createPortal(
@@ -130,15 +208,28 @@ export default function WorkDetailGallery({ items, title }: WorkDetailGalleryPro
                     · {lightboxIndex! + 1} / {items.length}
                   </span>
                 </p>
-                <button
-                  ref={closeBtnRef}
-                  type="button"
-                  aria-label="Close gallery viewer"
-                  onClick={closeLightbox}
-                  className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/30 text-white transition hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <X size={20} aria-hidden />
-                </button>
+                <div className="flex flex-none items-center gap-2">
+                  {lightboxItem.href ? (
+                    <a
+                      href={lightboxItem.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="tap-target inline-flex h-11 items-center gap-2 rounded-full border border-white/30 px-4 text-body-sm text-white transition hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      <ExternalLink size={15} aria-hidden />
+                      Live link
+                    </a>
+                  ) : null}
+                  <button
+                    ref={closeBtnRef}
+                    type="button"
+                    aria-label="Close gallery viewer"
+                    onClick={closeLightbox}
+                    className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/30 text-white transition hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    <X size={20} aria-hidden />
+                  </button>
+                </div>
               </div>
 
               <div className="relative overflow-hidden border border-white/15 bg-ink">
@@ -220,31 +311,14 @@ export default function WorkDetailGallery({ items, title }: WorkDetailGalleryPro
         liveRegion={(active, count) => `Showing slide ${active + 1} of ${count}`}
         getSlideLabel={(index) => `slide ${index + 1} of ${items.length}`}
         controls="light"
+        trackClassName={
+          density === "solo" ? "work-rail work-rail--solo w-full" : "work-rail w-full"
+        }
         dotsClassName="mt-5 flex justify-center gap-1"
         prevLabel="Previous creative"
         nextLabel="Next creative"
       >
-        {items.map((item, i) => (
-          <button
-            key={`${item.src ?? item.label}-${i}`}
-            type="button"
-            onClick={() => openLightbox(i)}
-            className="group relative m-0 min-w-0 cursor-zoom-in overflow-hidden border border-line bg-mist text-left transition hover:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-            aria-label={`Open ${item.alt || item.label || `creative ${i + 1}`}`}
-          >
-            <ImageSlot
-              asset={{ ...item, fit: item.fit ?? "contain" }}
-              className="aspect-[4/3] w-full border-0 bg-[#f3f3f3] transition duration-500 group-hover:[&_img]:scale-[1.02]"
-              sizes="(max-width: 640px) 86vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            />
-            <span
-              className="pointer-events-none absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white opacity-100 backdrop-blur-[2px] transition duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
-              aria-hidden
-            >
-              <Expand size={15} strokeWidth={2.25} />
-            </span>
-          </button>
-        ))}
+        {items.map((item, i) => tile(item, i))}
       </HorizontalCarousel>
 
       {lightbox}

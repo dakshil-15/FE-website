@@ -3,7 +3,6 @@
 import {
   useCallback,
   useEffect,
-  useId,
   useRef,
   useState,
   type KeyboardEvent,
@@ -39,7 +38,6 @@ export default function WorkDetailVideoSlider({
   const stageRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const readyRef = useRef(false);
-  const labelId = useId();
 
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -151,23 +149,14 @@ export default function WorkDetailVideoSlider({
 
   return (
     <div ref={rootRef} className="w-full">
-      <div className="max-w-[42rem]">
-        <p id={labelId} className="text-eyebrow m-0">
-          {activeClip.title}
-        </p>
-        <p className="text-body section-copy-on-light mt-3 mb-0 min-h-[3.25rem]">
-          {activeClip.description}
-        </p>
-      </div>
-
       <div
         ref={stageRef}
         role="region"
         aria-roledescription={isCarousel ? "carousel" : undefined}
-        aria-labelledby={labelId}
+        aria-label={`${campaign} films`}
         tabIndex={isCarousel ? 0 : undefined}
         onKeyDown={handleStageKeyDown}
-        className={`relative mt-8 sm:mt-10 ${isCarousel ? "[perspective:1400px]" : ""}`}
+        className={`relative ${isCarousel ? "[perspective:1400px]" : ""}`}
       >
         <div
           className={
@@ -315,17 +304,19 @@ export default function WorkDetailVideoSlider({
           <>
             <button
               type="button"
+              data-no-btn-motion
               aria-label="Previous film"
               onClick={() => step(-1)}
-              className="tap-target absolute top-1/2 left-0 z-30 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:left-1 lg:-left-1 lg:-translate-x-1/2"
+              className="tap-target absolute top-0 bottom-0 left-0 z-30 my-auto grid size-11 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:left-1 lg:left-2"
             >
               <ArrowLeft size={18} aria-hidden />
             </button>
             <button
               type="button"
+              data-no-btn-motion
               aria-label="Next film"
               onClick={() => step(1)}
-              className="tap-target absolute top-1/2 right-0 z-30 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:right-1 lg:-right-1 lg:translate-x-1/2"
+              className="tap-target absolute top-0 bottom-0 right-0 z-30 my-auto grid size-11 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:right-1 lg:right-2"
             >
               <ArrowRight size={18} aria-hidden />
             </button>
@@ -342,6 +333,7 @@ export default function WorkDetailVideoSlider({
                 <button
                   key={`${clip.src ?? clip.title}-dot`}
                   type="button"
+                  data-no-btn-motion
                   aria-label={`Show film ${i + 1}: ${clip.title}`}
                   aria-current={i === active ? "true" : undefined}
                   onClick={() => goTo(i)}
