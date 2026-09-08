@@ -200,6 +200,7 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   position: relative;
   min-width: 0;
   container-type: inline-size;
+  text-align: center;
   padding-top: var(--work-result-pad-y);
   border-top: 1px solid var(--work-result-rule);
 }
@@ -220,13 +221,12 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   .work-result-stat {
     border-top: none;
     border-left: 1px solid var(--work-result-rule);
-    padding: 0 0 0 var(--work-result-pad-x);
+    padding: 0 var(--work-result-pad-x);
   }
   .work-result-stat:not(:last-child) {
     padding-bottom: 0;
   }
   .work-result-stats > .work-result-stat:nth-child(odd) {
-    padding-left: 0;
     border-left: none;
   }
   /* Hairline centered in the row-gap */
@@ -261,7 +261,7 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
     border-top: none;
     border-left: 1px solid var(--work-result-rule);
     margin-top: 0;
-    padding: 0 0 0 var(--work-result-pad-x);
+    padding: 0 var(--work-result-pad-x);
   }
   .work-result-stat:not(:last-child) {
     padding-bottom: 0;
@@ -273,7 +273,6 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   /* 2 columns */
   .work-result-stats[data-cols="2"] > .work-result-stat:nth-child(odd),
   .work-result-stats[data-cols="2"] > .work-result-stat:first-child {
-    padding-left: 0;
     border-left: none;
   }
   .work-result-stats[data-cols="2"] > .work-result-stat:nth-child(n + 3)::before {
@@ -289,7 +288,6 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   /* 3 columns */
   .work-result-stats[data-cols="3"] > .work-result-stat:nth-child(3n + 1),
   .work-result-stats[data-cols="3"] > .work-result-stat:first-child {
-    padding-left: 0;
     border-left: none;
   }
   .work-result-stats[data-cols="3"] > .work-result-stat:nth-child(n + 4)::before {
@@ -307,7 +305,6 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   .work-result-stats[data-cols="4"] > .work-result-stat:first-child,
   .work-result-stats:not([data-cols]) > .work-result-stat:nth-child(4n + 1),
   .work-result-stats:not([data-cols]) > .work-result-stat:first-child {
-    padding-left: 0;
     border-left: none;
   }
   .work-result-stats[data-cols="4"] > .work-result-stat:nth-child(n + 5)::before,
@@ -327,7 +324,6 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   }
   .work-result-stats[data-cols="1"] > .work-result-stat {
     border-left: none;
-    padding-left: 0;
   }
   .work-result-stats[data-cols="1"] > .work-result-stat:not(:last-child) {
     padding-bottom: var(--work-result-pad-y);

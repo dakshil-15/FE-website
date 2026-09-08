@@ -37,6 +37,51 @@ const PLATFORM_LOGO_META: Record<string, { name: string; width: number; height: 
   "platforms-13.png": { name: "Pinterest", width: 768, height: 432 },
 };
 
+function ResultStatsGrid({ stats, className = "" }: { stats: WorkDetailModel["results"]; className?: string }) {
+  return (
+    <ul
+      data-animate-stagger
+      data-cols={
+        stats.length === 4 ? "4" : stats.length === 3 ? "3" : stats.length === 2 ? "2" : stats.length > 4 ? "3" : "1"
+      }
+      className={`work-result-stats m-0 grid list-none p-0 ${workResultGridClass(stats.length)} ${className}`.trim()}
+    >
+      {stats.map((metric) => {
+        const parsed = parseWorkMetricValue(metric.value);
+        const spoken = `${metric.value} ${metric.label}`;
+
+        return (
+          <li key={`${metric.label}-${metric.value}`} className="work-result-stat min-w-0">
+            <p
+              className={`m-0 text-white ${parsed.isPhrase ? "text-stat-phrase" : "text-stat"}`}
+              aria-label={spoken}
+            >
+              <span aria-hidden="true" className="inline-flex flex-wrap items-baseline">
+                <span>{parsed.figure}</span>
+                {parsed.unit ? (
+                  <span
+                    className={
+                      parsed.unit === "%" || parsed.unit === "x"
+                        ? undefined
+                        : "text-[0.55em] font-extrabold tracking-[0.02em]"
+                    }
+                  >
+                    {parsed.unit}
+                  </span>
+                ) : null}
+                {parsed.plus ? <span className="text-red">+</span> : null}
+              </span>
+            </p>
+            <p className="mt-2.5 mb-0 text-[11px] font-bold tracking-[0.1em] text-white/75 uppercase sm:mt-3 sm:text-[13px] sm:tracking-[0.14em]">
+              {metric.label}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 function galleryItemsToLogoMarks(group: WorkGalleryGroup): PartnerLogo[] {
   return group.items
     .filter((item): item is typeof item & { src: string } => Boolean(item.src))
@@ -482,70 +527,73 @@ export default function WorkDetailStory({
               onDark
             />
 
-            {resultHighlights.length > 0 ? (
-              <ul
-                data-animate-stagger
-                className="m-0 mt-8 grid list-none grid-cols-1 gap-3 p-0 sm:mt-10 sm:grid-cols-2"
-              >
-                {resultHighlights.map((line) => (
-                  <li
-                    key={line}
-                    className="flex gap-3 border border-white/15 bg-white/[0.04] px-4 py-3.5"
-                  >
-                    <span
-                      className="mt-0.5 grid size-5 flex-none place-items-center text-red"
-                      aria-hidden
-                    >
-                      <Check size={14} strokeWidth={2.5} />
-                    </span>
-                    <p className="text-body m-0 min-w-0 text-pretty text-white/85">{line}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
+            {caseStudy.resultGroups?.length ? (
+              <div className="mt-8 space-y-10 sm:mt-10 sm:space-y-12">
+                {caseStudy.resultGroups.map((group) => (
+                  <div key={group.heading} data-animate="fade-up">
+                    <h3 className="text-display-sm m-0 text-balance text-white">
+                      {group.heading}
+                    </h3>
 
-            {results.length > 0 ? (
-            <ul
-              data-animate-stagger
-              data-cols={
-                results.length === 4 ? "4" : results.length === 3 ? "3" : results.length === 2 ? "2" : results.length > 4 ? "3" : "1"
-              }
-              className={`work-result-stats m-0 mt-10 grid list-none p-0 sm:mt-12 ${workResultGridClass(results.length)}`}
-            >
-              {results.map((metric) => {
-                const parsed = parseWorkMetricValue(metric.value);
-                const spoken = `${metric.value} ${metric.label}`;
-
-                return (
-                  <li key={`${metric.label}-${metric.value}`} className="work-result-stat min-w-0">
-                    <p
-                      className={`m-0 text-white ${parsed.isPhrase ? "text-stat-phrase" : "text-stat"}`}
-                      aria-label={spoken}
-                    >
-                      <span aria-hidden="true" className="inline-flex flex-wrap items-baseline">
-                        <span>{parsed.figure}</span>
-                        {parsed.unit ? (
-                          <span
-                            className={
-                              parsed.unit === "%" || parsed.unit === "x"
-                                ? undefined
-                                : "text-[0.55em] font-extrabold tracking-[0.02em]"
-                            }
+                    {group.highlights?.length ? (
+                      <ul
+                        data-animate-stagger
+                        className="m-0 mt-5 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
+                      >
+                        {group.highlights.map((line) => (
+                          <li
+                            key={line}
+                            className="flex gap-3 border border-white/15 bg-white/[0.04] px-4 py-3.5"
                           >
-                            {parsed.unit}
-                          </span>
-                        ) : null}
-                        {parsed.plus ? <span className="text-red">+</span> : null}
-                      </span>
-                    </p>
-                    <p className="mt-2.5 mb-0 text-[11px] font-bold tracking-[0.1em] text-white/75 uppercase sm:mt-3 sm:text-[13px] sm:tracking-[0.14em]">
-                      {metric.label}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-            ) : null}
+                            <span
+                              className="mt-0.5 grid size-5 flex-none place-items-center text-red"
+                              aria-hidden
+                            >
+                              <Check size={14} strokeWidth={2.5} />
+                            </span>
+                            <p className="text-body m-0 min-w-0 text-pretty text-white/85">
+                              {line}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {group.stats.length > 0 ? (
+                      <ResultStatsGrid stats={group.stats} className="mt-6 sm:mt-8" />
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <>
+                {resultHighlights.length > 0 ? (
+                  <ul
+                    data-animate-stagger
+                    className="m-0 mt-8 grid list-none grid-cols-1 gap-3 p-0 sm:mt-10 sm:grid-cols-2"
+                  >
+                    {resultHighlights.map((line) => (
+                      <li
+                        key={line}
+                        className="flex gap-3 border border-white/15 bg-white/[0.04] px-4 py-3.5"
+                      >
+                        <span
+                          className="mt-0.5 grid size-5 flex-none place-items-center text-red"
+                          aria-hidden
+                        >
+                          <Check size={14} strokeWidth={2.5} />
+                        </span>
+                        <p className="text-body m-0 min-w-0 text-pretty text-white/85">{line}</p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {results.length > 0 ? (
+                  <ResultStatsGrid stats={results} className="mt-10 sm:mt-12" />
+                ) : null}
+              </>
+            )}
           </div>
         </ContentBlock>
         ) : null}

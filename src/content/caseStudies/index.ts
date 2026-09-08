@@ -12,10 +12,8 @@ import { ambassadorHotel } from "./ambassador-hotel";
 import { godrejGreenfront } from "./godrej-greenfront";
 import { amazonSamsungGreatIndianFestival } from "./amazon-samsung-great-indian-festival";
 import { adaniAirportsSafarKeHumsafar } from "./adani-airports-safar-ke-humsafar";
-import { poonawallaFraudAwareness } from "./poonawalla-fraud-awareness";
 import { waaree } from "./waaree";
 import { ajantaAiCreatives } from "./ajanta-ai-creatives";
-import { poonawallaAiCreatives } from "./poonawalla-ai-creatives";
 import { royaleToucheStayCurious } from "./royale-touche-stay-curious";
 
 /**
@@ -36,10 +34,8 @@ export const caseStudies: CaseStudy[] = [
   godrejGreenfront,
   amazonSamsungGreatIndianFestival,
   adaniAirportsSafarKeHumsafar,
-  poonawallaFraudAwareness,
   waaree,
   ajantaAiCreatives,
-  poonawallaAiCreatives,
   royaleToucheStayCurious,
 ];
 
@@ -57,9 +53,7 @@ export {
   godrejGreenfront,
   amazonSamsungGreatIndianFestival,
   adaniAirportsSafarKeHumsafar,
-  poonawallaFraudAwareness,
   waaree,
   ajantaAiCreatives,
-  poonawallaAiCreatives,
   royaleToucheStayCurious,
 };

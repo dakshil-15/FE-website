@@ -4,10 +4,9 @@ import type { CSSProperties } from "react";
 import GrowthCta from "@/components/GrowthCta";
 import HorizontalCarousel from "@/components/HorizontalCarousel";
 import WorkCaseCard from "@/components/work/WorkCaseCard";
-import { SECTION_META } from "@/components/work/WorkDetailShared";
+import { SectionLabel } from "@/components/work/WorkDetailShared";
 import { workCardTitle } from "@/content/workPage";
 import type { WorkDetailModel, WorkDetailSectionId } from "@/content/workDetail";
-import { workDetailHeadlines } from "@/content/workDetail";
 
 type WorkDetailRelatedProps = {
   related: WorkDetailModel["related"];
@@ -29,17 +28,13 @@ export default function WorkDetailRelated({
       aria-labelledby="work-related-heading"
     >
       <div className="section-inner">
-        <p data-animate="fade-up" className="text-eyebrow m-0">
-          {sectionNumber("related")} {SECTION_META.related.label}
-        </p>
-        <div className="section-intro mt-4">
-          <h2
-            data-animate="fade-up"
-            id="work-related-heading"
-            className="text-display-md m-0 text-balance"
-          >
-            {workDetailHeadlines.related}
-          </h2>
+        <div className="section-intro">
+          <SectionLabel
+            id="related"
+            number={sectionNumber("related")}
+            headingId="work-related-heading"
+            asHeading
+          />
           <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
             <GrowthCta href="/work" variant="secondary">
               View all work

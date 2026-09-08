@@ -41,11 +41,20 @@ export default function WorkDetailHero({
       ? caseStudy.videos?.[0] ?? caseStudy.video
       : undefined;
 
-  const frameClassName =
-    heroImage.fit === "contain"
+  const rotateDeg = heroClip?.rotate === "ccw" ? -90 : heroClip?.rotate === "cw" ? 90 : 0;
+
+  const frameClassName = heroClip
+    ? heroClip.rotate
+      ? "aspect-video w-full bg-[#0a1f3d]"
+      : heroClip.portrait
+        ? "aspect-[9/16] mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px] bg-[#0a1f3d]"
+        : "aspect-video w-full bg-[#0a1f3d]"
+    : heroImage.fit === "contain"
       ? caseStudy.slug === "royale-touche-stay-curious"
         ? "aspect-video w-full bg-[#1a1410]"
-        : "aspect-[1024/724] w-full bg-[#0a3d5c]"
+        : caseStudy.slug === "fedex-csk"
+          ? "aspect-[7/5] w-full bg-[#0a1f3d]"
+          : "aspect-[1024/724] w-full bg-[#0a3d5c]"
       : "aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]";
 
   const playHeroVideo = () => {
@@ -100,9 +109,13 @@ export default function WorkDetailHero({
                 width={200}
                 height={200}
                 className={
-                  ["royale-touche-stay-curious", "fedex-csk"].includes(caseStudy.slug)
-                    ? "h-16 w-auto object-contain sm:h-20"
-                    : "h-9 w-auto object-contain sm:h-10"
+                  caseStudy.slug === "fedex-csk"
+                    ? "h-20 w-auto object-contain sm:h-24 lg:h-28"
+                    : caseStudy.slug === "royale-touche-stay-curious"
+                      ? "h-16 w-auto object-contain sm:h-20"
+                      : caseStudy.slug === "ajanta-ai-creatives"
+                        ? "h-14 w-auto object-contain sm:h-16"
+                        : "h-9 w-auto object-contain sm:h-10"
                 }
               />
             </div>
@@ -132,20 +145,46 @@ export default function WorkDetailHero({
           >
             {heroClip?.src ? (
               <div className={`relative overflow-hidden ${frameClassName}`}>
-                <video
-                  ref={videoRef}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  playsInline
-                  preload="metadata"
-                  poster={heroClip.poster ?? heroImage.src}
-                  controls={playing}
-                  onPlay={() => setPlaying(true)}
-                  onPause={() => setPlaying(false)}
-                  onEnded={() => setPlaying(false)}
-                  aria-label={heroClip.title}
-                >
-                  <source src={heroClip.src} type="video/mp4" />
-                </video>
+                {rotateDeg ? (
+                  <div
+                    className="absolute top-1/2 left-1/2"
+                    style={{
+                      width: "56.25%",
+                      height: "177.7778%",
+                      transform: `translate(-50%, -50%) rotate(${rotateDeg}deg)`,
+                    }}
+                  >
+                    <video
+                      ref={videoRef}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      playsInline
+                      preload="metadata"
+                      poster={heroClip.poster ?? heroImage.src}
+                      controls={playing}
+                      onPlay={() => setPlaying(true)}
+                      onPause={() => setPlaying(false)}
+                      onEnded={() => setPlaying(false)}
+                      aria-label={heroClip.title}
+                    >
+                      <source src={heroClip.src} type="video/mp4" />
+                    </video>
+                  </div>
+                ) : (
+                  <video
+                    ref={videoRef}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    playsInline
+                    preload="metadata"
+                    poster={heroClip.poster ?? heroImage.src}
+                    controls={playing}
+                    onPlay={() => setPlaying(true)}
+                    onPause={() => setPlaying(false)}
+                    onEnded={() => setPlaying(false)}
+                    aria-label={heroClip.title}
+                  >
+                    <source src={heroClip.src} type="video/mp4" />
+                  </video>
+                )}
 
                 {!playing ? (
                   <button

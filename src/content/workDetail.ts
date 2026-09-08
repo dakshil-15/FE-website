@@ -32,7 +32,6 @@ export const workDetailCta = {
 export const workDetailHeadlines = {
   activations: "Live proof from the campaign",
   built: "Capabilities behind the work",
-  related: "More work worth exploring",
 };
 
 /** Split metric strings into figure + unit for home/work-style stat UI. */
@@ -81,6 +80,16 @@ export function parseWorkMetricValue(raw: string): {
 
   // Plain number / thousands: 75 | 1,000 | 25
   if (/^[\d,]+(?:\.[\d]+)?$/.test(core)) {
+    return { figure: core, unit: "", plus, isPhrase: false };
+  }
+
+  // Rating fractions: 4.9/5 | 9/10
+  if (/^[\d.]+\/[\d.]+$/.test(core)) {
+    return { figure: core, unit: "", plus, isPhrase: false };
+  }
+
+  // Short acronyms/words (e.g. "AI") read fine at full stat size
+  if (core.length <= 3 && !/\s/.test(core)) {
     return { figure: core, unit: "", plus, isPhrase: false };
   }
 
@@ -209,12 +218,17 @@ function gallerySlots(caseStudy: CaseStudy): MediaSlot[] {
     return [...extras, ...fromGroups];
   }
 
+  // Only fall back to the card cover photo when no gallery data was authored at all —
+  // an explicit empty `gallery`/`galleryGroups` means the case study intentionally has none.
+  const gallerySpecified = caseStudy.gallery !== undefined || caseStudy.galleryGroups !== undefined;
   const paths =
     caseStudy.gallery?.length
       ? caseStudy.gallery
-      : workPhotos[caseStudy.slug]
-        ? [workPhotos[caseStudy.slug]]
-        : [];
+      : gallerySpecified
+        ? []
+        : workPhotos[caseStudy.slug]
+          ? [workPhotos[caseStudy.slug]]
+          : [];
 
   return paths.map((src, i) => ({
     src,
@@ -384,11 +398,12 @@ const TAB_DEFINITIONS: {
     label: "Execution",
     hasContent: (m) => {
       const executionGroups = m.galleryGroups.filter((g) => g.density !== "compact");
+      const hasVideo = m.videos.length > 0 && !m.caseStudy.heroVideo;
       return (
         m.pillars.length > 0 ||
         executionGroups.length > 0 ||
         (m.galleryGroups.length === 0 && m.gallery.length > 0) ||
-        m.videos.length > 0 ||
+        hasVideo ||
         Boolean(m.executionSummary)
       );
     },

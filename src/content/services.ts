@@ -53,7 +53,7 @@ export const services: Service[] = [
       "Storyboarding",
       "AI-assisted production",
     ],
-    caseStudySlugs: ["cello-kidzbee", "young-bags", "ajanta-ai-creatives", "poonawalla-ai-creatives"],
+    caseStudySlugs: ["cello-kidzbee", "young-bags", "ajanta-ai-creatives"],
     family: "visual-creative",
   },
   {
@@ -190,7 +190,7 @@ export const services: Service[] = [
       "B2B social",
       "B2C social",
     ],
-    caseStudySlugs: ["poonawalla-fraud-awareness", "waaree"],
+    caseStudySlugs: ["waaree"],
     family: "social-creator",
   },
   {
@@ -232,7 +232,7 @@ export const services: Service[] = [
       "AI for search (AEO, GEO, LLM visibility)",
       "AI for operations",
     ],
-    caseStudySlugs: ["ajanta-ai-creatives", "poonawalla-ai-creatives", "royale-touche-stay-curious"],
+    caseStudySlugs: ["ajanta-ai-creatives", "royale-touche-stay-curious"],
     family: "ai",
   },
 ];

@@ -189,7 +189,6 @@ export const royaleToucheStayCurious: CaseStudy = {
       {
         title: "Earned Media",
         density: "solo",
-        pairRow: "earned-llm",
         description:
           "Prince of Udaipur visiting the Royale Touché Experience Centre. Followers gained. Testimonials via Google Reviews. Drove engagements via contests.",
         images: [
@@ -201,17 +200,6 @@ export const royaleToucheStayCurious: CaseStudy = {
           },
           "/images/work/gallery/royale-touche-stay-curious/30.jpg",
           "/images/work/gallery/royale-touche-stay-curious/31.jpg",
-        ],
-      },
-      {
-        title: "LLM Impact",
-        density: "solo",
-        pairRow: "earned-llm",
-        description:
-          "Reddit presence successfully translated into LLM recognition — 4.9/5 LLM rating. Discussions now cited as source material in ChatGPT and other LLM platforms. Durability insights sourced from Reddit discussions. Customer sentiment aggregated across platforms.",
-        images: [
-          "/images/work/gallery/royale-touche-stay-curious/34.png",
-          "/images/work/gallery/royale-touche-stay-curious/35.png",
         ],
       },
     ],
@@ -268,6 +256,26 @@ export const royaleToucheStayCurious: CaseStudy = {
       "Reddit discussions now cited as source material in ChatGPT and other LLM platforms",
       "Durability insights sourced from Reddit discussions",
       "Customer sentiment aggregated across platforms",
+    ],
+    resultGroups: [
+      {
+        heading: "What We Did on Reddit?",
+        stats: [
+          { label: "Reddit Handles", value: "8" },
+          { label: "Subreddits Targeted", value: "9" },
+          { label: "Impressions", value: "120K" },
+          { label: "Engagements", value: "150+" },
+        ],
+      },
+      {
+        heading: "Reddit presence successfully translated into LLM recognition",
+        stats: [
+          { label: "LLM Rating", value: "4.9/5" },
+          { label: "Impressions", value: "120K+" },
+          { label: "Engagements", value: "150+" },
+          { label: "Brand Mentions", value: "AI" },
+        ],
+      },
     ],
     video: {
       title: "#StayCurious Film",

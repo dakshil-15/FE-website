@@ -40,6 +40,14 @@ export type CaseStudyVideo = {
   poster?: string;
   /** Direct video file or YouTube/Vimeo embed URL */
   src?: string;
+  /** Vertical (9:16) source — the hero frame uses a portrait-friendly aspect instead of cropping to widescreen. */
+  portrait?: boolean;
+  /**
+   * Source file is encoded sideways (landscape footage stored as a portrait frame).
+   * The hero displays it in a widescreen frame, rotated back upright with CSS — the
+   * file itself is left untouched. "cw"/"ccw" is the on-screen correction direction.
+   */
+  rotate?: "cw" | "ccw";
 };
 
 /** Gallery images grouped by deck touchpoint / slide theme for a campaign. */
@@ -120,6 +128,12 @@ export type CaseStudy = {
   galleryGroups?: CaseStudyGalleryGroup[];
   /** Qualitative result narratives from the deck (shown with metrics) */
   resultHighlights?: string[];
+  /** Split The Result into labeled sub-sections (each with its own stats). Overrides `results` / `resultHighlights` rendering when present. */
+  resultGroups?: {
+    heading: string;
+    highlights?: string[];
+    stats: Metric[];
+  }[];
   /** Live URLs / influencer / community links — section renders only when populated */
   linkGroups?: CaseStudyLinkGroup[];
   /** When true, hero media shows `video` (or first of `videos`) instead of the still. */

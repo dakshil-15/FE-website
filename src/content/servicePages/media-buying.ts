@@ -158,7 +158,7 @@ export const mediaBuyingPage: ServicePageContent = {
         title: "Building Brand Recall at Scale",
         body: "1.2B+ impressions from an IPL association built for more than logo placement.",
         image: {
-          src: "/images/work/cases/fedex-csk.png",
+          src: "/images/work/cases/fedex-csk-v2.png",
           alt: "FedEx × Chennai Super Kings case study",
           label: "FedEx case study",
           fit: "cover",
@@ -183,7 +183,7 @@ export const mediaBuyingPage: ServicePageContent = {
         body: "Programmatic and CTV formats that turned mass reach into brand consideration.",
         href: "/work/fedex-csk",
         image: {
-          src: "/images/work/cases/fedex-csk.png",
+          src: "/images/work/cases/fedex-csk-v2.png",
           alt: "Out-of-home media case study",
           label: "OOH media case study",
           fit: "cover",

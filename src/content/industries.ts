@@ -16,7 +16,7 @@ export const industries: Industry[] = [
     overview:
       "Regulated, compliance-heavy and trust-driven — we build the technology, content and awareness systems that financial brands need to grow responsibly.",
     clients: ["Poonawalla Fincorp", "Mahindra Manulife"],
-    caseStudySlugs: ["mahindra-manulife", "poonawalla-fraud-awareness", "poonawalla-ai-creatives"],
+    caseStudySlugs: ["mahindra-manulife"],
     tone: "restrained",
   },
   {

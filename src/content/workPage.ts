@@ -57,28 +57,27 @@ export const workShowcaseOrder = [
   "godrej-blue",
   "fedex-csk",
   "royale-touche-stay-curious",
-  "poonawalla-fraud-awareness",
   "mahindra-manulife",
   "orpat-erp",
   "ajanta-ai-creatives",
   "waaree",
 ];
 
+/** Kept in sync with `familyLabels` in workDetail.ts — card tags mirror each case study's own detail-page eyebrow. */
 const familyTags: Record<CaseStudyFamily, string> = {
-  integrated: "360° Campaign",
-  "media-performance": "360° Campaign",
-  technology: "Brand Campaign",
-  "content-social": "Brand Campaign",
-  ai: "Brand Campaign",
+  integrated: "Integrated Campaign",
+  "media-performance": "Media Performance",
+  technology: "Technology",
+  "content-social": "Content & Social",
+  ai: "AI Solutions",
 };
 
 const titleOverrides: Record<string, string> = {
   "godrej-blue": "Godrej Blue",
   "godrej-greenfront": "Godrej Greenfront",
   "fedex-csk": "FedEx × CSK",
-  "ajanta-ai-creatives": "Ajanta Jewellery",
+  "ajanta-ai-creatives": "Ajanta Magic Moments",
   waaree: "Waaree Energies",
-  "poonawalla-ai-creatives": "Poonawalla AI",
   "royale-touche-stay-curious": "Royale Touché",
 };
 
@@ -91,8 +90,6 @@ const homeFeaturedSpotlight: Partial<Record<string, Metric>> = {
 const homeFeaturedEyebrowOverrides: Partial<Record<string, string>> = {
   "fedex-csk": "Brand Recall",
   "royale-touche-stay-curious": "Integrated Campaign",
-  "poonawalla-fraud-awareness": "Fraud Awareness",
-  "poonawalla-ai-creatives": "AI Creative",
 };
 
 export const homeFeaturedWorkLimit = 4;
@@ -141,7 +138,8 @@ export function workCardImage(caseStudy: CaseStudy): MediaSlot {
     // Designed campaign covers (type + logos) must not be cropped in the hero frame.
     fit:
       caseStudy.slug === "godrej-blue" ||
-      caseStudy.slug === "royale-touche-stay-curious"
+      caseStudy.slug === "royale-touche-stay-curious" ||
+      caseStudy.slug === "fedex-csk"
         ? "contain"
         : undefined,
   };
