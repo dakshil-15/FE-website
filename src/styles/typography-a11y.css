@@ -86,8 +86,8 @@ input[type="submit"]:not(:disabled) {
   font-family: var(--font-display), sans-serif;
   font-weight: 800;
   /* Prefer container width so 4-col bands don't overflow ("1,000+", etc.) */
-  font-size: clamp(2.25rem, 5vw + 0.75rem, 4.5rem); /* fallback */
-  font-size: clamp(2.25rem, 22cqi, 4.5rem); /* ~36–72, column-aware */
+  font-size: clamp(1.75rem, 5vw + 0.75rem, 4.5rem); /* fallback */
+  font-size: clamp(1.75rem, 22cqi, 4.5rem); /* ~28–72, column-aware */
   line-height: 0.95;
   letter-spacing: 0.005em;
   max-width: 100%;

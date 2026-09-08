@@ -27,9 +27,9 @@ type HorizontalCarouselProps = {
 const controlStyles = {
   dark: {
     arrow:
-      "tap-target absolute z-10 grid size-11 place-items-center rounded-full border border-white/40 bg-ink/80 text-white backdrop-blur-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:pointer-events-none disabled:opacity-40",
-    arrowLeft: "top-[34%] left-0 -translate-x-1/2 -translate-y-1/2 sm:top-[36%]",
-    arrowRight: "top-[34%] right-0 translate-x-1/2 -translate-y-1/2 sm:top-[36%]",
+      "tap-target absolute z-10 grid size-11 place-items-center rounded-full border border-white/40 bg-ink/80 text-white backdrop-blur-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:pointer-events-none disabled:opacity-40",
+    arrowLeft: "top-[34%] left-2 -translate-y-1/2 sm:top-[36%] sm:left-3",
+    arrowRight: "top-[34%] right-2 -translate-y-1/2 sm:top-[36%] sm:right-3",
     dotFocus: "focus-visible:outline-white",
     dotButton: "tap-target-sm grid place-items-center rounded-full",
     dotActive: "w-6 bg-red",
@@ -38,7 +38,7 @@ const controlStyles = {
   },
   "dark-inset": {
     arrow:
-      "tap-target absolute top-[42%] z-10 grid -translate-y-1/2 place-items-center rounded-full border border-white/55 bg-ink/70 text-white shadow-lg backdrop-blur-sm transition hover:border-red hover:text-red disabled:pointer-events-none disabled:opacity-40",
+      "tap-target absolute top-[42%] z-10 grid -translate-y-1/2 place-items-center rounded-full border border-white/55 bg-ink/70 text-white shadow-lg backdrop-blur-sm hover:border-red hover:text-red disabled:pointer-events-none disabled:opacity-40",
     arrowLeft: "left-2 sm:left-3",
     arrowRight: "right-2 sm:right-3",
     dotFocus: "",
@@ -49,9 +49,9 @@ const controlStyles = {
   },
   light: {
     arrow:
-      "tap-target absolute top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:pointer-events-none disabled:opacity-40",
-    arrowLeft: "left-0 -translate-x-1/2",
-    arrowRight: "right-0 translate-x-1/2",
+      "tap-target absolute top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:pointer-events-none disabled:opacity-40",
+    arrowLeft: "left-2 sm:left-3",
+    arrowRight: "right-2 sm:right-3",
     dotFocus: "focus-visible:outline-red",
     dotButton: "tap-target-sm grid place-items-center rounded-full",
     dotActive: "w-6 bg-red",
@@ -77,8 +77,8 @@ function arrowClassName(controls: CarouselControls, arrowPosition: "center" | "u
 
   const centerSide =
     side === "left"
-      ? "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
-      : "right-0 top-1/2 translate-x-1/2 -translate-y-1/2";
+      ? "left-2 top-1/2 -translate-y-1/2 sm:left-3"
+      : "right-2 top-1/2 -translate-y-1/2 sm:right-3";
   return `${styles.arrow} ${centerSide}`;
 }
 
@@ -138,6 +138,7 @@ export default function HorizontalCarousel({
             aria-label={prevLabel}
             aria-disabled={atStart}
             disabled={atStart}
+            data-no-btn-motion
             onClick={() => scrollByDir(-1)}
             className={arrowClassName(controls, arrowPosition, "left")}
           >
@@ -148,6 +149,7 @@ export default function HorizontalCarousel({
             aria-label={nextLabel}
             aria-disabled={atEnd}
             disabled={atEnd}
+            data-no-btn-motion
             onClick={() => scrollByDir(1)}
             className={arrowClassName(controls, arrowPosition, "right")}
           >
@@ -172,6 +174,7 @@ export default function HorizontalCarousel({
                   type="button"
                   aria-label={`Go to ${label}`}
                   aria-current={index === active ? "true" : undefined}
+                  data-no-btn-motion
                   onClick={() => scrollToIndex(index)}
                   className={`${styles.dotButton} ${dotFocusClass}`.trim()}
                 >

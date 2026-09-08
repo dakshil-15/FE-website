@@ -90,7 +90,7 @@ export function impactStatsForService(
   const stats: ServicePageStat[] = [];
 
   for (const study of tagged) {
-    for (const metric of study.results) {
+    for (const metric of study.results ?? []) {
       if (!isHeadlineStat(metric.value, metric.label)) continue;
       const key = `${metric.label}:${metric.value}`;
       if (seen.has(key)) continue;

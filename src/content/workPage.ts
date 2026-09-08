@@ -127,7 +127,7 @@ export function homeFeaturedEyebrow(caseStudy: CaseStudy) {
 export function homeFeaturedSpotlightMetric(caseStudy: CaseStudy): Metric {
   return (
     homeFeaturedSpotlight[caseStudy.slug] ??
-    caseStudy.results[0] ?? { value: "—", label: "Impact" }
+    caseStudy.results?.[0] ?? { value: "—", label: "Impact" }
   );
 }
 

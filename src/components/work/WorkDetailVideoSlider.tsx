@@ -219,6 +219,7 @@ export default function WorkDetailVideoSlider({
                       {!(isCenter && playing) ? (
                         <button
                           type="button"
+                          data-no-btn-motion
                           onClick={() => togglePlay(i)}
                           className="absolute inset-0 flex items-center justify-center bg-ink/25 transition hover:bg-ink/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-red"
                           aria-label={
@@ -290,6 +291,7 @@ export default function WorkDetailVideoSlider({
                 {isCarousel && !isCenter ? (
                   <button
                     type="button"
+                    data-no-btn-motion
                     className="absolute inset-0 z-10 cursor-pointer bg-transparent"
                     aria-label={`Show ${clip.title}`}
                     onClick={() => goTo(i)}
@@ -301,31 +303,21 @@ export default function WorkDetailVideoSlider({
         </div>
 
         {isCarousel ? (
-          <>
+          <div
+            className="mt-8 flex items-center justify-center gap-3 sm:mt-10 sm:gap-4"
+            role="group"
+            aria-label="Film slides"
+          >
             <button
               type="button"
               data-no-btn-motion
               aria-label="Previous film"
               onClick={() => step(-1)}
-              className="tap-target absolute top-0 bottom-0 left-0 z-30 my-auto grid size-11 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:left-1 lg:left-2"
+              className="tap-target grid size-11 flex-none place-items-center rounded-full border border-line bg-white text-ink shadow-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12"
             >
               <ArrowLeft size={18} aria-hidden />
             </button>
-            <button
-              type="button"
-              data-no-btn-motion
-              aria-label="Next film"
-              onClick={() => step(1)}
-              className="tap-target absolute top-0 bottom-0 right-0 z-30 my-auto grid size-11 place-items-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12 md:right-1 lg:right-2"
-            >
-              <ArrowRight size={18} aria-hidden />
-            </button>
-
-            <div
-              className="mt-8 flex flex-wrap items-center justify-center gap-1 sm:mt-10"
-              role="group"
-              aria-label="Film slides"
-            >
+            <div className="flex min-w-0 flex-wrap items-center justify-center gap-1">
               <span className="sr-only" aria-live="polite" aria-atomic="true">
                 Showing film {active + 1} of {total}: {activeClip.title}
               </span>
@@ -348,7 +340,16 @@ export default function WorkDetailVideoSlider({
                 </button>
               ))}
             </div>
-          </>
+            <button
+              type="button"
+              data-no-btn-motion
+              aria-label="Next film"
+              onClick={() => step(1)}
+              className="tap-target grid size-11 flex-none place-items-center rounded-full border border-line bg-white text-ink shadow-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:size-12"
+            >
+              <ArrowRight size={18} aria-hidden />
+            </button>
+          </div>
         ) : null}
       </div>
     </div>

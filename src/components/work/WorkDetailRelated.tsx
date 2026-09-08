@@ -2,8 +2,10 @@
 
 import type { CSSProperties } from "react";
 import GrowthCta from "@/components/GrowthCta";
+import HorizontalCarousel from "@/components/HorizontalCarousel";
 import WorkCaseCard from "@/components/work/WorkCaseCard";
 import { SECTION_META } from "@/components/work/WorkDetailShared";
+import { workCardTitle } from "@/content/workPage";
 import type { WorkDetailModel, WorkDetailSectionId } from "@/content/workDetail";
 import { workDetailHeadlines } from "@/content/workDetail";
 
@@ -30,7 +32,7 @@ export default function WorkDetailRelated({
         <p data-animate="fade-up" className="text-eyebrow m-0">
           {sectionNumber("related")} {SECTION_META.related.label}
         </p>
-        <div className="section-intro">
+        <div className="section-intro mt-4">
           <h2
             data-animate="fade-up"
             id="work-related-heading"
@@ -45,9 +47,25 @@ export default function WorkDetailRelated({
           </div>
         </div>
 
+        <div className="section-media sm:hidden">
+          <HorizontalCarousel
+            itemCount={Math.min(related.length, 3)}
+            ariaLabel="Related case studies"
+            slidesGroupLabel="Case study slides"
+            getSlideLabel={(index) => workCardTitle(related[index]!)}
+            controls="light"
+            prevLabel="Previous case study"
+            nextLabel="Next case study"
+          >
+            {related.slice(0, 3).map((item) => (
+              <WorkCaseCard key={item.slug} caseStudy={item} />
+            ))}
+          </HorizontalCarousel>
+        </div>
+
         <ul
           data-animate-stagger
-          className="section-media m-0 grid list-none grid-cols-1 gap-5 p-0 xs:gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="section-media m-0 hidden list-none gap-5 p-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
         >
           {related.slice(0, 3).map((item) => (
             <li key={item.slug}>

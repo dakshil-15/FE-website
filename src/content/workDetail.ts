@@ -31,7 +31,6 @@ export const workDetailCta = {
 /** Section display headlines — mirror Insights detail (label + display title + body). */
 export const workDetailHeadlines = {
   activations: "Live proof from the campaign",
-  result: "Outcomes that moved the needle",
   built: "Capabilities behind the work",
   related: "More work worth exploring",
 };
@@ -90,11 +89,11 @@ export function parseWorkMetricValue(raw: string): {
 
 export function workResultGridClass(count: number) {
   if (count <= 1) return "grid-cols-1 max-w-sm";
-  if (count === 2) return "grid-cols-1 xs:grid-cols-2";
-  if (count === 3) return "grid-cols-1 xs:grid-cols-2 lg:grid-cols-3";
-  if (count === 4) return "grid-cols-1 xs:grid-cols-2 lg:grid-cols-4";
-  if (count <= 6) return "grid-cols-1 xs:grid-cols-2 lg:grid-cols-3";
-  return "grid-cols-1 xs:grid-cols-2 lg:grid-cols-3";
+  if (count === 2) return "grid-cols-2";
+  if (count === 3) return "grid-cols-2 lg:grid-cols-3";
+  if (count === 4) return "grid-cols-2 lg:grid-cols-4";
+  if (count <= 6) return "grid-cols-2 lg:grid-cols-3";
+  return "grid-cols-2 lg:grid-cols-3";
 }
 
 const familyLabels: Record<CaseStudyFamily, string> = {
@@ -404,7 +403,7 @@ const TAB_DEFINITIONS: {
     label: "Results",
     hasContent: (m) => m.results.length > 0 || m.resultHighlights.length > 0,
   },
-  { id: "built-with", label: "Built With", hasContent: (m) => m.builtWith.length > 0 },
+  { id: "built-with", label: "Built With", hasContent: () => false },
   { id: "related", label: "Related", hasContent: (m) => m.related.length > 0 },
 ];
 

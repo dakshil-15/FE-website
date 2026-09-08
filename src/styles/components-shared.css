@@ -199,6 +199,7 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
 .work-result-stat {
   position: relative;
   min-width: 0;
+  container-type: inline-size;
   padding-top: var(--work-result-pad-y);
   border-top: 1px solid var(--work-result-rule);
 }
@@ -211,8 +212,8 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
   padding-bottom: var(--work-result-pad-y);
 }
 
-/* 2×n from xs → below lg */
-@media (min-width: 480px) and (max-width: 1023px) {
+/* 2×n from mobile → below lg */
+@media (max-width: 1023px) {
   .work-result-stats {
     row-gap: calc(var(--work-result-pad-y) * 2 + 1px);
   }
@@ -237,6 +238,14 @@ html[data-work-flip] #main-content[data-work-flip-reveal] {
     top: calc(-1 * var(--work-result-pad-y) - 1px);
     height: 1px;
     background: var(--work-result-rule);
+  }
+}
+
+/* Tighter gutters so 2 columns keep breathing room on narrow phones */
+@media (max-width: 479px) {
+  .work-result-stats {
+    --work-result-pad-x: 1rem;
+    --work-result-pad-y: 1.25rem;
   }
 }
 

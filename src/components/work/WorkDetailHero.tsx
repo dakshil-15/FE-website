@@ -100,7 +100,7 @@ export default function WorkDetailHero({
                 width={200}
                 height={200}
                 className={
-                  caseStudy.slug === "royale-touche-stay-curious"
+                  ["royale-touche-stay-curious", "fedex-csk"].includes(caseStudy.slug)
                     ? "h-16 w-auto object-contain sm:h-20"
                     : "h-9 w-auto object-contain sm:h-10"
                 }

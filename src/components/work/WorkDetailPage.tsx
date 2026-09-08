@@ -39,7 +39,6 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
     objective,
     mandate,
     executionSummary,
-    pillars,
     heroImage,
     gallery,
     galleryGroups,
@@ -276,7 +275,6 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
         objective={objective}
         mandate={mandate}
         executionSummary={executionSummary}
-        pillars={pillars}
         heroImage={heroImage}
         gallery={gallery}
         galleryGroups={galleryGroups}

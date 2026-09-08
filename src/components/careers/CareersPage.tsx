@@ -102,7 +102,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
 
           <ul
             data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-1 gap-8 p-0 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-5"
+            className="section-media m-0 grid list-none grid-cols-2 gap-x-4 gap-y-8 p-0 md:grid-cols-3 md:gap-x-6 lg:grid-cols-6 lg:gap-5"
           >
             {careersValues.map((value) => (
               <li key={value.title} className="min-w-0">
@@ -111,7 +111,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
                   size={56}
                   className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
                 />
-                <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
+                <h3 className="mt-2.5 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-3 sm:text-lg">
                   {value.title}
                 </h3>
                 <p className="text-body-sm mt-2 mb-0 max-w-[16rem] text-muted sm:mt-2.5">
@@ -140,7 +140,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
 
           <ul
             data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-1 gap-8 p-0 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
+            className="section-media m-0 grid list-none grid-cols-2 gap-x-5 gap-y-8 p-0 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
           >
             {careersBenefits.map((benefit) => (
               <li key={benefit.title} className="min-w-0">

@@ -61,7 +61,7 @@ function PartnerLogoFrame({ partner, alt, sizes, imageClassName = "" }: PartnerL
 function LogoItem({ partner, duplicate }: { partner: PartnerLogo; duplicate?: boolean }) {
   return (
     <li
-      className="group flex h-16 shrink-0 items-center justify-center px-6 sm:h-20 sm:px-8 md:h-[5.5rem] md:px-10"
+      className="group flex h-20 shrink-0 items-center justify-center rounded-xl border border-line bg-white px-6 sm:h-24 sm:px-8 md:h-28 md:px-10"
       aria-hidden={duplicate || undefined}
     >
       <span className="flex h-14 w-[168px] min-h-0 min-w-0 items-center justify-center sm:h-16 sm:w-[188px] md:h-[4.5rem] md:w-[210px]">
@@ -188,7 +188,10 @@ function MarqueeRow({
 
   return (
     <div ref={viewportRef} className="w-full overflow-hidden">
-      <ul ref={trackRef} className="flex w-max list-none items-center p-0 will-change-transform">
+      <ul
+        ref={trackRef}
+        className="flex w-max list-none items-center gap-3 p-0 will-change-transform sm:gap-4"
+      >
         {Array.from({ length: copies }, (_, setIndex) =>
           items.map((partner) => (
             <LogoItem
@@ -241,7 +244,7 @@ export default function PartnerLogos({ sectionId = "partners", layout = "marquee
                 <li key={partner.slug}>{partner.name}</li>
               ))}
             </ul>
-            <div aria-hidden="true">
+            <div aria-hidden="true" className="flex flex-col gap-3 sm:gap-4">
               <MarqueeRow items={rowLeft} direction="left" />
               <MarqueeRow items={rowRight} direction="right" />
             </div>

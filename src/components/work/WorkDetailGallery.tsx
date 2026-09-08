@@ -111,8 +111,8 @@ export default function WorkDetailGallery({
 
   const frameClass =
     density === "solo"
-      ? "h-[17rem] w-full border-0 bg-[#111] transition duration-500 group-hover:[&_img]:scale-[1.02] sm:h-[18.5rem] lg:h-[20rem]"
-      : "aspect-[4/3] w-full border-0 bg-[#f3f3f3] transition duration-500 group-hover:[&_img]:scale-[1.02]";
+      ? "h-[17rem] w-full border-0 bg-[#111] sm:h-[18.5rem] lg:h-[20rem]"
+      : "aspect-[4/3] w-full border-0 bg-[#f3f3f3]";
   const frameSizes =
     density === "solo"
       ? "(max-width: 1024px) 100vw, 33vw"
@@ -135,30 +135,32 @@ export default function WorkDetailGallery({
           key={key}
           className="group relative m-0 min-w-0 w-full overflow-hidden border border-line bg-mist transition hover:border-red"
         >
+          <button
+            type="button"
+            onClick={() => openLightbox(i)}
+            data-no-btn-motion
+            className="m-0 block w-full cursor-zoom-in border-0 bg-transparent p-0 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+            aria-label={`Open ${label}`}
+          >
+            {media}
+            <span
+              className="pointer-events-none absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white backdrop-blur-[2px]"
+              aria-hidden
+            >
+              <Expand size={15} strokeWidth={2.25} />
+            </span>
+          </button>
           <a
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="block cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+            data-no-btn-motion
+            className="absolute left-3 bottom-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-ink/55 px-2.5 py-1.5 text-[0.6875rem] font-medium tracking-wide text-white backdrop-blur-[2px] hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
             aria-label={`Open live link for ${label}`}
           >
-            {media}
-          </a>
-          <span
-            className="pointer-events-none absolute left-3 bottom-3 inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-ink/55 px-2.5 py-1.5 text-[0.6875rem] font-medium tracking-wide text-white backdrop-blur-[2px]"
-            aria-hidden
-          >
-            <ExternalLink size={12} strokeWidth={2.25} />
+            <ExternalLink size={12} strokeWidth={2.25} aria-hidden />
             Live
-          </span>
-          <button
-            type="button"
-            onClick={() => openLightbox(i)}
-            className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white opacity-100 backdrop-blur-[2px] transition duration-200 hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
-            aria-label={`Expand ${label}`}
-          >
-            <Expand size={15} strokeWidth={2.25} />
-          </button>
+          </a>
         </div>
       );
     }
@@ -168,12 +170,13 @@ export default function WorkDetailGallery({
         key={key}
         type="button"
         onClick={() => openLightbox(i)}
+        data-no-btn-motion
         className="group relative m-0 block min-w-0 w-full cursor-zoom-in overflow-hidden border border-line bg-mist p-0 text-left transition hover:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
         aria-label={`Open ${label}`}
       >
         {media}
         <span
-          className="pointer-events-none absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white opacity-100 backdrop-blur-[2px] transition duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
+          className="pointer-events-none absolute right-3 bottom-3 grid size-9 place-items-center rounded-full border border-white/80 bg-ink/55 text-white backdrop-blur-[2px]"
           aria-hidden
         >
           <Expand size={15} strokeWidth={2.25} />
@@ -190,6 +193,7 @@ export default function WorkDetailGallery({
               type="button"
               className="absolute inset-0 bg-ink/85 backdrop-blur-[2px]"
               aria-label="Close gallery viewer"
+              data-no-btn-motion
               onClick={closeLightbox}
             />
 
@@ -214,6 +218,7 @@ export default function WorkDetailGallery({
                       href={lightboxItem.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-no-btn-motion
                       className="tap-target inline-flex h-11 items-center gap-2 rounded-full border border-white/30 px-4 text-body-sm text-white transition hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       <ExternalLink size={15} aria-hidden />
@@ -224,8 +229,9 @@ export default function WorkDetailGallery({
                     ref={closeBtnRef}
                     type="button"
                     aria-label="Close gallery viewer"
+                    data-no-btn-motion
                     onClick={closeLightbox}
-                    className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/30 text-white transition hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/30 text-white hover:border-red hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     <X size={20} aria-hidden />
                   </button>
@@ -249,51 +255,55 @@ export default function WorkDetailGallery({
                     </div>
                   )}
                 </div>
-
-                {items.length > 1 ? (
-                  <>
-                    <button
-                      type="button"
-                      aria-label="Previous image"
-                      onClick={() => stepLightbox(-1)}
-                      className="tap-target absolute top-1/2 left-3 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-ink/70 text-white backdrop-blur-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:left-4"
-                    >
-                      <ArrowLeft size={18} aria-hidden />
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Next image"
-                      onClick={() => stepLightbox(1)}
-                      className="tap-target absolute top-1/2 right-3 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-ink/70 text-white backdrop-blur-sm transition hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-4"
-                    >
-                      <ArrowRight size={18} aria-hidden />
-                    </button>
-                  </>
-                ) : null}
               </div>
 
               {items.length > 1 ? (
-                <div className="flex justify-center gap-1" role="group" aria-label="Lightbox slides">
-                  <span className="sr-only" aria-live="polite" aria-atomic="true">
-                    Image {lightboxIndex! + 1} of {items.length}
-                  </span>
-                  {items.map((item, i) => (
-                    <button
-                      key={`${item.src ?? item.label}-lb-${i}`}
-                      type="button"
-                      aria-label={`View image ${i + 1} of ${items.length}`}
-                      aria-current={i === lightboxIndex ? "true" : undefined}
-                      onClick={() => setLightboxIndex(i)}
-                      className="tap-target-sm grid place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
-                      <span
-                        className={`block h-1.5 rounded-full transition ${
-                          i === lightboxIndex ? "w-6 bg-red" : "w-1.5 bg-white/35"
-                        }`}
-                        aria-hidden
-                      />
-                    </button>
-                  ))}
+                <div
+                  className="flex items-center justify-center gap-3 sm:gap-4"
+                  role="group"
+                  aria-label="Lightbox slides"
+                >
+                  <button
+                    type="button"
+                    aria-label="Previous image"
+                    data-no-btn-motion
+                    onClick={() => stepLightbox(-1)}
+                    className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/35 bg-ink/70 text-white backdrop-blur-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    <ArrowLeft size={18} aria-hidden />
+                  </button>
+                  <div className="flex min-w-0 items-center justify-center gap-1">
+                    <span className="sr-only" aria-live="polite" aria-atomic="true">
+                      Image {lightboxIndex! + 1} of {items.length}
+                    </span>
+                    {items.map((item, i) => (
+                      <button
+                        key={`${item.src ?? item.label}-lb-${i}`}
+                        type="button"
+                        aria-label={`View image ${i + 1} of ${items.length}`}
+                        aria-current={i === lightboxIndex ? "true" : undefined}
+                        data-no-btn-motion
+                        onClick={() => setLightboxIndex(i)}
+                        className="tap-target-sm grid place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      >
+                        <span
+                          className={`block h-1.5 rounded-full transition ${
+                            i === lightboxIndex ? "w-6 bg-red" : "w-1.5 bg-white/35"
+                          }`}
+                          aria-hidden
+                        />
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    aria-label="Next image"
+                    data-no-btn-motion
+                    onClick={() => stepLightbox(1)}
+                    className="tap-target grid size-11 flex-none place-items-center rounded-full border border-white/35 bg-ink/70 text-white backdrop-blur-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    <ArrowRight size={18} aria-hidden />
+                  </button>
                 </div>
               ) : null}
             </div>

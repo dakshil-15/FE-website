@@ -31,12 +31,7 @@
 }
 @media (min-width: 768px) {
   .foot-cols {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 1280px) {
-  .foot-cols {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

@@ -246,7 +246,7 @@ export default function AboutPage() {
           </h2>
           <ul
             data-animate-stagger
-            className="mt-8 grid list-none grid-cols-1 gap-8 p-0 xs:grid-cols-2 md:mt-10 lg:grid-cols-5 lg:gap-6"
+            className="mt-8 grid list-none grid-cols-2 gap-x-4 gap-y-8 p-0 md:mt-10 md:gap-x-6 lg:grid-cols-5 lg:gap-6"
           >
             {aboutValues.map((value) => (
               <li key={value.title} className="min-w-0">
@@ -255,7 +255,7 @@ export default function AboutPage() {
                   size={64}
                   className="h-12 w-12 text-ink sm:h-14 sm:w-14 md:h-16 md:w-16"
                 />
-                <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
+                <h3 className="mt-2.5 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-3 sm:text-lg">
                   {value.title}
                 </h3>
                 <p className="text-body-sm mt-2.5 mb-0 max-w-[16rem] text-muted">{value.body}</p>
@@ -332,10 +332,10 @@ export default function AboutPage() {
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
-                        <p className="m-0 min-w-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
-                          {office.city}
+                        <p className="m-0 flex min-w-0 flex-wrap items-baseline gap-x-1.5 gap-y-0.5 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                          <span className="min-w-0">{office.city}</span>
                           {office.isHq ? (
-                            <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                            <span className="shrink-0 text-[10px] tracking-[0.12em] text-red">HQ</span>
                           ) : null}
                         </p>
                         <span

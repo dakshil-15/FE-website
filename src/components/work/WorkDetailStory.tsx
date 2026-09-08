@@ -8,7 +8,6 @@ import { LogoMarkGrid } from "@/components/home/PartnerLogos";
 import WorkDetailGallery from "@/components/work/WorkDetailGallery";
 import {
   ContentBlock,
-  PILLAR_ICONS,
   SECTION_META,
   SectionLabel,
   SERVICE_ICONS,
@@ -62,7 +61,6 @@ type WorkDetailStoryProps = {
   objective: WorkDetailModel["objective"];
   mandate: WorkDetailModel["mandate"];
   executionSummary: WorkDetailModel["executionSummary"];
-  pillars: WorkDetailModel["pillars"];
   heroImage: WorkDetailModel["heroImage"];
   gallery: WorkDetailModel["gallery"];
   galleryGroups: WorkDetailModel["galleryGroups"];
@@ -82,7 +80,6 @@ export default function WorkDetailStory({
   objective,
   mandate,
   executionSummary,
-  pillars,
   heroImage,
   gallery,
   galleryGroups,
@@ -212,43 +209,6 @@ export default function WorkDetailStory({
               </p>
             ) : null}
           </div>
-
-          {pillars.length > 0 ? (
-          <ul
-            data-animate-stagger
-            className="m-0 mt-8 grid list-none grid-cols-1 gap-x-8 gap-y-8 border-t border-line p-0 pt-8 xs:grid-cols-2 sm:mt-10 sm:gap-y-10 sm:pt-10 lg:grid-cols-4"
-            aria-label="Execution pillars"
-          >
-            {pillars.map((pillar, i) => {
-              const Icon = PILLAR_ICONS[i % PILLAR_ICONS.length]!;
-              const num = String(i + 1).padStart(2, "0");
-              return (
-                <li key={pillar.title} className="min-w-0">
-                  <div className="flex items-center gap-3">
-                    <span className="grid size-9 shrink-0 place-items-center text-red" aria-hidden>
-                      <Icon size={20} strokeWidth={1.75} />
-                    </span>
-                    <span
-                      className="font-display text-[1.75rem] leading-none font-light tracking-tight text-line select-none"
-                      aria-hidden
-                    >
-                      {num}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 mb-0 font-display text-[1.05rem] leading-[1.15] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]">
-                    {pillar.title}
-                  </h3>
-                  <span className="mt-3 block h-[3px] w-8 bg-red" aria-hidden />
-                  {pillar.description ? (
-                    <p className="mt-3.5 mb-0 text-[13px] leading-snug text-muted sm:text-sm">
-                      {pillar.description}
-                    </p>
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
-          ) : null}
 
           {/* Creative proof — gallery + film in deck order, under Execution */}
           {(() => {
@@ -448,7 +408,7 @@ export default function WorkDetailStory({
                                   alt=""
                                   fill
                                   sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                  className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                                  className="object-cover"
                                   unoptimized
                                 />
                               ) : (
@@ -514,20 +474,13 @@ export default function WorkDetailStory({
             data-animate="fade-up"
             className="bg-ink px-5 pt-10 pb-12 text-white sm:px-8 sm:pt-12 sm:pb-16 lg:px-10 lg:pt-14 lg:pb-20"
           >
-            <p className="text-eyebrow-on-dark m-0" id="work-result-label">
-              {sectionNumber("result")} {SECTION_META.result.label}
-            </p>
-            <div className="section-intro mt-4">
-              <h2
-                id="work-result-heading"
-                className="text-display-md m-0 text-balance text-white"
-              >
-                {workDetailHeadlines.result}
-              </h2>
-              <p className="text-body section-copy section-copy-on-dark m-0 pt-0 md:pt-1">
-                Measurable outcomes from strategy, craft, and integrated execution.
-              </p>
-            </div>
+            <SectionLabel
+              id="result"
+              number={sectionNumber("result")}
+              headingId="work-result-heading"
+              asHeading
+              onDark
+            />
 
             {resultHighlights.length > 0 ? (
               <ul
@@ -585,7 +538,7 @@ export default function WorkDetailStory({
                         {parsed.plus ? <span className="text-red">+</span> : null}
                       </span>
                     </p>
-                    <p className="mt-2.5 mb-0 text-[13px] font-bold tracking-[0.14em] text-white/75 uppercase sm:mt-3">
+                    <p className="mt-2.5 mb-0 text-[11px] font-bold tracking-[0.1em] text-white/75 uppercase sm:mt-3 sm:text-[13px] sm:tracking-[0.14em]">
                       {metric.label}
                     </p>
                   </li>

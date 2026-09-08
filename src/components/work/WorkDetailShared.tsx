@@ -71,7 +71,10 @@ export function SectionLabel({
 
   if (asHeading) {
     return (
-      <h2 id={headingId} className="text-display-md m-0 text-balance">
+      <h2
+        id={headingId}
+        className={`text-display-md m-0 text-balance ${onDark ? "text-white" : ""}`}
+      >
         <span className="text-red">{number}</span> {label}
       </h2>
     );

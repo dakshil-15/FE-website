@@ -165,8 +165,8 @@
   position: absolute;
   right: -6%;
   bottom: -18%;
-  width: min(70vw, 780px);
-  height: min(55vw, 560px);
+  width: min(48vw, 620px);
+  height: min(38vw, 460px);
   background:
     radial-gradient(ellipse at 45% 40%, rgba(225, 38, 28, 0.16), transparent 58%),
     radial-gradient(ellipse at 62% 70%, rgba(225, 38, 28, 0.1), transparent 55%);
@@ -247,7 +247,7 @@
 
 @media (min-width: 960px) {
   .growth-hero__grid {
-    grid-template-columns: minmax(min(100%, 36rem), 0.46fr) minmax(0, 0.54fr);
+    grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 1fr);
     gap: clamp(1rem, 2.5vw, 2.75rem);
     align-items: center;
     min-height: 0;
@@ -256,19 +256,19 @@
 
 @media (min-width: 1280px) {
   .growth-hero__grid {
-    grid-template-columns: minmax(min(100%, 40rem), 0.47fr) minmax(0, 0.53fr);
+    grid-template-columns: minmax(20rem, 1fr) minmax(20rem, 1fr);
   }
 }
 
 @media (min-width: 1536px) {
   .growth-hero__grid {
-    grid-template-columns: minmax(min(100%, 44rem), 0.48fr) minmax(0, 0.52fr);
+    grid-template-columns: minmax(22rem, 1fr) minmax(22rem, 1fr);
   }
 }
 
 @media (min-width: 1920px) {
   .growth-hero__grid {
-    grid-template-columns: minmax(min(100%, 48rem), 0.48fr) minmax(0, 0.52fr);
+    grid-template-columns: minmax(24rem, 1fr) minmax(24rem, 1fr);
   }
 }
 
@@ -483,12 +483,14 @@
 }
 
 @media (min-width: 960px) {
-  .growth-hero__ctas {
-    flex-wrap: nowrap;
-  }
-
   .growth-cta {
     flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .growth-hero__ctas {
+    flex-wrap: nowrap;
   }
 }
 

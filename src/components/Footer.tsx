@@ -109,7 +109,7 @@ export default function Footer() {
             </address>
           </div>
 
-          <div className="border-t border-white/15 pt-6 xl:border-t-0 xl:border-l xl:pt-0 xl:pl-7">
+          <div className="border-t border-white/15 pt-6 md:border-t-0 md:border-l md:pt-0 md:pl-7">
             <p className="text-eyebrow m-0 !tracking-[0.17em] !text-white">Follow us</p>
             <ul className="mt-4 flex list-none flex-wrap gap-2.5 p-0">
               {socials.map(({ label, href, Icon }) => (

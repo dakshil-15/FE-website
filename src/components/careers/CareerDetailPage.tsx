@@ -395,7 +395,7 @@ export default function CareerDetailPage({
 
           <ul
             data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-1 gap-8 p-0 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
+            className="section-media m-0 grid list-none grid-cols-2 gap-x-5 gap-y-8 p-0 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
           >
             {careersBenefits.map((benefit) => (
               <li key={benefit.title} className="min-w-0">
