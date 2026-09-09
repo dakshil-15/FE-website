@@ -29,7 +29,7 @@ export default function LocationsSection() {
 
         <ul
           data-animate-stagger
-          className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:gap-4"
+          className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:gap-4 lg:grid-cols-4"
         >
           {aboutLocations.map((office) => (
             <li key={office.slug} className="min-w-0">

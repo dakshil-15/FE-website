@@ -25,16 +25,16 @@ export default function RouteStatus({
 }: RouteStatusProps) {
   return (
     <section
-      className="section-shell section-pad bg-paper"
+      className="section-shell section-pad flex min-h-[65vh] items-center bg-paper"
       aria-labelledby={headingId}
     >
-      <div className="section-inner max-w-2xl">
+      <div className="section-inner mx-auto max-w-2xl text-center">
         <p className="text-eyebrow m-0 text-red">{eyebrow}</p>
         <h1 id={headingId} className="text-display-md mt-4 m-0 text-balance">
           {title}
         </h1>
-        <p className="text-body mt-5 m-0 max-w-lg text-muted">{body}</p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <p className="text-body mx-auto mt-5 m-0 max-w-lg text-muted">{body}</p>
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
           {onPrimaryClick ? (
             <GrowthCta
               type="button"

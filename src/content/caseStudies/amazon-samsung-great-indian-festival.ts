@@ -30,24 +30,9 @@ export const amazonSamsungGreatIndianFestival: CaseStudy = {
       { title: "Value Framing", description: "Premium value under ₹15K with flagship feature comparisons." },
       { title: "Sale Timing", description: "Long-form and short-form timed to Amazon Great Indian Festival." },
     ],
-    results: [
-      { label: "Format mix", value: "Short-form + long-form" },
-    ],
     tags: ["Influencer", "Mobile", "Festive", "Amazon"],
-    galleryGroups: [
-      {
-        title: "Creator Content",
-        images: [
-          "/images/work/gallery/amazon-samsung-great-indian-festival/01.png",
-          "/images/work/gallery/amazon-samsung-great-indian-festival/02.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/cases/amazon-samsung-great-indian-festival.png",
-      "/images/work/gallery/amazon-samsung-great-indian-festival/01.png",
-      "/images/work/gallery/amazon-samsung-great-indian-festival/02.png",
-    ],
+    galleryGroups: [],
+    gallery: [],
     family: "content-social",
     accentColor: "#1428A0",
   };

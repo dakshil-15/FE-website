@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer());
   const resumeBase64 = resumeBuffer.toString("base64");
 
-  const recipients = notificationRecipients("careers@firsteconomy.in", "CAREERS_NOTIFICATION_EMAIL");
+  const recipients = notificationRecipients("p&c@firsteconomy.com", "CAREERS_NOTIFICATION_EMAIL");
 
   const result = await sendNotificationEmail({
     to: recipients,

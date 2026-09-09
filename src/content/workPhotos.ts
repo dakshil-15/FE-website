@@ -3,11 +3,11 @@ export const workPhotos: Record<string, string> = {
   "fedex-csk": "/images/work/cases/fedex-csk-v2.png",
   "royale-touche-stay-curious":
     "/images/work/gallery/royale-touche-stay-curious/03.jpg",
-  "mahindra-manulife": "/images/work/cases/mahindra-manulife.png",
+  "mahindra-manulife": "/images/work/cases/mahindra-manulife-v2.png",
   "orpat-erp": "/images/work/cases/orpat-erp.png",
   "ajanta-ai-creatives": "/images/work/cases/ajanta-ai-creatives-v2.png",
   waaree: "/images/work/cases/waaree.png",
-  "vip-industries": "/images/work/vip-industries.png",
+  "vip-industries": "/images/work/cases/vip-industries.png",
   "akbar-travels-seo": "/images/work/akbar-travels-seo.png",
   "shoppers-stop-local-seo": "/images/work/cases/shoppers-stop-local-seo.png",
   "cello-kidzbee": "/images/work/cases/cello-kidzbee-v3.webp",

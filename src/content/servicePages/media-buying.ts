@@ -170,7 +170,7 @@ export const mediaBuyingPage: ServicePageContent = {
         title: "Turning Visibility Into Visits",
         body: "64M+ impressions converted into measured footfall across 180+ stores.",
         image: {
-          src: "/images/work/vip-industries.png",
+          src: "/images/work/cases/vip-industries.png",
           alt: "VIP Industries case study",
           label: "VIP Industries case study",
           fit: "cover",

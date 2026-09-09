@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Layers, Play } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
+import DeviceShowcase from "@/components/work/DeviceShowcase";
 import WorkDetailGallery from "@/components/work/WorkDetailGallery";
 import {
   ContentBlock,
@@ -13,6 +14,13 @@ import {
   SERVICE_ICONS,
 } from "@/components/work/WorkDetailShared";
 import WorkDetailVideoSlider from "@/components/work/WorkDetailVideoSlider";
+import YouTubeVideoSlider from "@/components/work/YouTubeVideoSlider";
+import {
+  LAPTOP_SCREEN_INSET,
+  MAHINDRA_MANULIFE_LIVE_URL,
+  MAHINDRA_MANULIFE_SCREENS,
+  MOBILE_SCREEN_INSET,
+} from "@/content/deviceShowcases";
 import type { PartnerLogo } from "@/content/partners";
 import type { WorkDetailModel, WorkDetailSectionId, WorkGalleryGroup } from "@/content/workDetail";
 import {
@@ -254,6 +262,68 @@ export default function WorkDetailStory({
               </p>
             ) : null}
           </div>
+
+          {caseStudy.slug === "adani-airports-safar-ke-humsafar" ? (
+            <ul
+              data-animate-stagger
+              className="m-0 mt-8 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:mt-10 sm:grid-cols-2"
+            >
+              {caseStudy.execution.map((item) => (
+                <li key={item} className="flex gap-3.5">
+                  <span
+                    className="mt-0.5 grid size-6 flex-none place-items-center border border-red/50 text-red"
+                    aria-hidden
+                  >
+                    <Check size={14} strokeWidth={2.5} />
+                  </span>
+                  <p className="text-body section-copy-on-light m-0 min-w-0 text-pretty">{item}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {caseStudy.slug === "mahindra-manulife" ? (
+            <div
+              data-animate="fade-up"
+              className="mt-12 flex flex-wrap items-end justify-center gap-6 sm:mt-16 sm:gap-8"
+            >
+              <DeviceShowcase
+                frameSrc="/images/work/laptop-mockup.png"
+                frameWidth={1536}
+                frameHeight={1024}
+                screenInset={LAPTOP_SCREEN_INSET}
+                screenRadius="1%"
+                contentAboveFrame={false}
+                viewport={{ width: 1440, height: 884 }}
+                liveUrl={MAHINDRA_MANULIFE_LIVE_URL}
+                images={MAHINDRA_MANULIFE_SCREENS}
+                maxWidthClassName="max-w-[19rem] xs:max-w-[23rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[35rem]"
+                className="flex-none !mx-0"
+              />
+              <DeviceShowcase
+                frameSrc="/images/work/mobile-mockup.png"
+                frameWidth={941}
+                frameHeight={1672}
+                screenInset={MOBILE_SCREEN_INSET}
+                screenRadius="9.12% / 4.48%"
+                contentAboveFrame
+                viewport={{ width: 390, height: 826 }}
+                liveUrl={MAHINDRA_MANULIFE_LIVE_URL}
+                images={MAHINDRA_MANULIFE_SCREENS}
+                maxWidthClassName="max-w-[7rem] xs:max-w-[8.5rem] sm:max-w-[10rem] md:max-w-[11.5rem] lg:max-w-[13rem]"
+                className="flex-none !mx-0"
+              />
+            </div>
+          ) : null}
+
+          {caseStudy.slug === "amazon-samsung-great-indian-festival" ? (
+            <div data-animate="fade-up" className="mt-12 sm:mt-16">
+              <YouTubeVideoSlider
+                videoIds={["ASsnHpbWNZ4", "Ryl-xiVfTWk", "C-PAyRM-1I8", "ontMrJSCOUo", "cMd1T50cAvQ"]}
+                title={caseStudy.campaign}
+              />
+            </div>
+          ) : null}
 
           {/* Creative proof — gallery + film in deck order, under Execution */}
           {(() => {
@@ -591,6 +661,21 @@ export default function WorkDetailStory({
 
                 {results.length > 0 ? (
                   <ResultStatsGrid stats={results} className="mt-10 sm:mt-12" />
+                ) : null}
+
+                {caseStudy.slug === "adani-airports-safar-ke-humsafar" ? (
+                  <div className="mt-10 opacity-75 sm:mt-12">
+                    <WorkDetailGallery
+                      title="Engagement Outcomes"
+                      items={["06", "07", "08", "09", "10"].map((n, i) => ({
+                        src: `/images/work/gallery/adani-airports-safar-ke-humsafar/${n}.png`,
+                        alt: `${caseStudy.client} — Engagement Outcomes ${i + 1}`,
+                        label: "Engagement Outcomes",
+                        grayscale: false,
+                        fit: "contain",
+                      }))}
+                    />
+                  </div>
                 ) : null}
               </>
             )}

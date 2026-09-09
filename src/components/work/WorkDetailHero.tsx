@@ -5,6 +5,12 @@ import { useRef, useState, type RefObject } from "react";
 import { Play } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
+import DeviceShowcase from "@/components/work/DeviceShowcase";
+import {
+  LAPTOP_SCREEN_INSET,
+  MAHINDRA_MANULIFE_LIVE_URL,
+  MAHINDRA_MANULIFE_SCREENS,
+} from "@/content/deviceShowcases";
 import type { WorkDetailModel } from "@/content/workDetail";
 import { workHero } from "@/content/workPage";
 
@@ -53,8 +59,12 @@ export default function WorkDetailHero({
       ? caseStudy.slug === "royale-touche-stay-curious"
         ? "aspect-video w-full bg-[#1a1410]"
         : caseStudy.slug === "fedex-csk"
-          ? "aspect-[7/5] w-full bg-[#0a1f3d]"
-          : "aspect-[1024/724] w-full bg-[#0a3d5c]"
+          ? "aspect-[8/5] w-full bg-[#1c8ef0]"
+          : caseStudy.slug === "amazon-samsung-great-indian-festival"
+            ? "aspect-[8/5] w-full bg-[#e2e1e2]"
+            : caseStudy.slug === "adani-airports-safar-ke-humsafar"
+              ? "aspect-[8/5] w-full bg-[#c5eafc]"
+              : "aspect-[8/5] w-full bg-[#004c8d]"
       : "aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]";
 
   const playHeroVideo = () => {
@@ -203,6 +213,21 @@ export default function WorkDetailHero({
                     </span>
                   </button>
                 ) : null}
+              </div>
+            ) : caseStudy.slug === "mahindra-manulife" ? (
+              <div className="flex h-full items-center justify-center py-4">
+                <DeviceShowcase
+                  frameSrc="/images/work/laptop-mockup.png"
+                  frameWidth={1536}
+                  frameHeight={1024}
+                  screenInset={LAPTOP_SCREEN_INSET}
+                  screenRadius="1%"
+                  contentAboveFrame={false}
+                  viewport={{ width: 1440, height: 884 }}
+                  liveUrl={MAHINDRA_MANULIFE_LIVE_URL}
+                  images={MAHINDRA_MANULIFE_SCREENS}
+                  maxWidthClassName="max-w-[22rem] xs:max-w-[26rem] sm:max-w-[30rem] md:max-w-[34rem] lg:max-w-[40rem]"
+                />
               </div>
             ) : (
               <ImageSlot

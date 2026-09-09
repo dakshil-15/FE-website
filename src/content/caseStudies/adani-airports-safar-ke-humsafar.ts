@@ -4,6 +4,7 @@ export const adaniAirportsSafarKeHumsafar: CaseStudy = {
     slug: "adani-airports-safar-ke-humsafar",
     client: "Adani Airports",
     campaign: "Safar Ke Humsafar",
+    clientLogo: "/images/partners/clients/adani-airports.png",
     industry: "travel-hospitality",
     services: ["influencer-marketing"],
     hero: "Real traveller stories built into a UGC-driven campaign of human moments.",
@@ -32,53 +33,9 @@ export const adaniAirportsSafarKeHumsafar: CaseStudy = {
       { title: "Human Focus", description: "Airport staff as enablers of meaningful journeys." },
       { title: "Social Amplification", description: "Reels, CTAs and community participation at scale." },
     ],
-    results: [
-      { label: "Engagement", value: "High — emotion-led" },
-      { label: "Perception", value: "Stronger people-first brand" },
-      { label: "Participation", value: "Organic audience conversations" },
-    ],
     tags: ["Influencer", "UGC", "Airports", "Social"],
-    hashtag: "#HumSirfWorldClassAirportsNahiBanateAapkeSafarMaiHumSafarBanJaateHai",
-    galleryGroups: [
-      {
-        title: "Campaign Cover",
-        images: [
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/01.png",
-        ],
-      },
-      {
-        title: "UGC Influencer Execution",
-        images: [
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/02.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/03.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/04.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/05.png",
-        ],
-      },
-      {
-        title: "Engagement Outcomes",
-        images: [
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/06.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/07.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/08.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/09.png",
-          "/images/work/gallery/adani-airports-safar-ke-humsafar/10.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/cases/adani-airports-safar-ke-humsafar.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/01.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/02.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/03.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/04.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/05.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/06.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/07.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/08.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/09.png",
-      "/images/work/gallery/adani-airports-safar-ke-humsafar/10.png",
-    ],
+    galleryGroups: [],
+    gallery: [],
     resultHighlights: [
       "High engagement driven by relatable, emotion-led storytelling",
       "Strengthened brand perception as a people-first airport experience",

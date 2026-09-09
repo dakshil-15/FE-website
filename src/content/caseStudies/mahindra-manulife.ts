@@ -29,41 +29,10 @@ export const mahindraManulife: CaseStudy = {
       { title: "Unified Architecture", description: "One transaction architecture across digital channels." },
       { title: "Audit & Compliance", description: "End-to-end audit trail and regulatory traceability built in." },
     ],
-    results: [
-      { label: "Platforms rebuilt", value: "2" },
-      { label: "Critical integrations", value: "5+" },
-      { label: "Transaction re-engineering", value: "End-to-end" },
-      { label: "Outcome", value: "Faster time-to-market for new fund offerings" },
-    ],
     tags: ["Technology", "Platform", "Compliance", "Fintech"],
-    galleryGroups: [
-      {
-        title: "Platform Brief",
-        images: [
-          "/images/work/gallery/mahindra-manulife/01.png",
-        ],
-      },
-      {
-        title: "Transaction Rebuild",
-        images: [
-          "/images/work/gallery/mahindra-manulife/02.png",
-        ],
-      },
-      {
-        title: "Delivery Outcomes",
-        images: [
-          "/images/work/gallery/mahindra-manulife/03.png",
-          "/images/work/gallery/mahindra-manulife/04.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/cases/mahindra-manulife.png",
-      "/images/work/gallery/mahindra-manulife/01.png",
-      "/images/work/gallery/mahindra-manulife/02.png",
-      "/images/work/gallery/mahindra-manulife/03.png",
-      "/images/work/gallery/mahindra-manulife/04.png",
-    ],
+    clientLogo: "/images/partners/clients/mahindra-manulife.png",
+    galleryGroups: [],
+    gallery: [],
     resultHighlights: [
       "Two digital platforms fully rebuilt and operational",
       "Five-plus critical ecosystem integrations delivered",

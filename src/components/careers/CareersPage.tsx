@@ -4,21 +4,12 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import GrowthCta from "@/components/GrowthCta";
 import PageHero from "@/components/PageHero";
-import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
+import { IconSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import type { CareerRole } from "@/content/careers";
 import { getCareerRoleHref } from "@/lib/careers";
-import {
-  careersBenefits,
-  careersCta,
-  careersCulture,
-  careersHero,
-  careersOpenings,
-  careersValues,
-  careersWhyJoin,
-} from "@/content/careers";
+import { careersCta, careersHero, careersOpenings } from "@/content/careers";
 
 type CareersPageProps = {
   roles: CareerRole[];
@@ -36,7 +27,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
         breadcrumbTone="accent"
         breadcrumbCurrentClassName="text-ink"
-        titleClassName="text-display-xl mt-0 mb-0 text-balance"
+        titleClassName="text-display-xl mt-4 mb-0 text-balance"
         title={
           <>
             {careersHero.headlineBefore}{" "}
@@ -45,121 +36,14 @@ export default function CareersPage({ roles }: CareersPageProps) {
           </>
         }
         body={careersHero.body}
-        copyAfterBody={
-          <div data-animate="hero-copy">
-            <GrowthCta href={careersHero.cta.href} variant="primary" className="mt-7 sm:mt-8">
-              {careersHero.cta.label}
-            </GrowthCta>
-          </div>
-        }
-        media={
-          <>
-            <ImageSlot
-              asset={careersHero.image}
-              priority
-              className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <p
-              className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-xs"
-              aria-hidden
-            >
-              {careersHero.verticalMark}
-            </p>
-          </>
-        }
+        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
+        media={null}
+        showMediaRule={false}
+        gridClassName="grid grid-cols-1"
+        copyColumnClassName="relative z-[1] mx-auto flex max-w-5xl min-w-0 flex-col items-center text-center"
         burstSrc={careersHero.burst}
-        seam={{
-          href: "#our-culture",
-          ariaLabel: "Continue to our culture",
-          arrowSrc: careersHero.arrow,
-        }}
+        burstClassName="hidden"
       />
-
-      {/* ── Our Culture (mist) ─────────────────────────── */}
-      <section
-        id="our-culture"
-        data-animate-section
-        className="section-shell section-pad bg-mist"
-        aria-labelledby="culture-heading"
-      >
-        <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow m-0">
-            {careersCulture.eyebrow}
-          </p>
-          <div className="section-intro">
-            <h2 data-animate="fade-up" id="culture-heading" className="text-display-md m-0">
-              {careersCulture.titleBefore}{" "}
-              <span className="text-red">{careersCulture.titleAccent}</span>
-            </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-            >
-              {careersCulture.body}
-            </p>
-          </div>
-
-          <ul
-            data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-2 gap-x-4 gap-y-8 p-0 md:grid-cols-3 md:gap-x-6 lg:grid-cols-6 lg:gap-5"
-          >
-            {careersValues.map((value) => (
-              <li key={value.title} className="min-w-0">
-                <IconSlot
-                  asset={value.icon}
-                  size={56}
-                  className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
-                />
-                <h3 className="mt-2.5 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-3 sm:text-lg">
-                  {value.title}
-                </h3>
-                <p className="text-body-sm mt-2 mb-0 max-w-[16rem] text-muted sm:mt-2.5">
-                  {value.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ── Why Join Us (paper) ────────────────────────── */}
-      <section
-        data-animate-section
-        className="section-shell section-pad bg-paper"
-        aria-labelledby="why-join-heading"
-      >
-        <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow m-0">
-            {careersWhyJoin.eyebrow}
-          </p>
-          <h2 data-animate="fade-up" id="why-join-heading" className="text-display-md mt-4 mb-0 max-w-3xl">
-            {careersWhyJoin.titleBefore}{" "}
-            <span className="text-red">{careersWhyJoin.titleAccent}</span>
-          </h2>
-
-          <ul
-            data-animate-stagger
-            className="section-media m-0 grid list-none grid-cols-2 gap-x-5 gap-y-8 p-0 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-6"
-          >
-            {careersBenefits.map((benefit) => (
-              <li key={benefit.title} className="min-w-0">
-                <IconSlot
-                  asset={benefit.icon}
-                  size={56}
-                  className="h-11 w-11 text-ink sm:h-12 sm:w-12 md:h-14 md:w-14"
-                />
-                <h3 className="mt-4 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-5 sm:text-lg">
-                  {benefit.title}
-                </h3>
-                <p className="text-body-sm mt-2 mb-0 max-w-[16rem] text-muted sm:mt-2.5">
-                  {benefit.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       {/* ── Open Positions (mist) ──────────────────────── */}
       <section
@@ -176,15 +60,6 @@ export default function CareersPage({ roles }: CareersPageProps) {
             <h2 data-animate="fade-up" id="openings-heading" className="text-display-md m-0">
               {careersOpenings.title}
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <Link
-                href={careersOpenings.viewAll.href}
-                className="text-cta link-cta mt-0 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"
-              >
-                {careersOpenings.viewAll.label}
-                <ArrowRight size={16} strokeWidth={2} aria-hidden />
-              </Link>
-            </div>
           </div>
 
           {/* Mobile: stacked cards (no horizontal scroll) */}
@@ -294,17 +169,6 @@ export default function CareersPage({ roles }: CareersPageProps) {
               </tbody>
             </table>
           </div>
-
-          <p data-animate="fade-up" className="mt-8 mb-0 flex flex-wrap items-center gap-x-2 gap-y-1 sm:mt-10">
-            <span className="text-body text-muted">{careersOpenings.emptyNote}</span>
-            <a
-              href={careersOpenings.resumeCta.href}
-              className="text-cta link-cta mt-0 inline-flex min-h-11 items-center gap-2 text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"
-            >
-              {careersOpenings.resumeCta.label}
-              <ArrowRight size={16} strokeWidth={2} aria-hidden />
-            </a>
-          </p>
         </div>
       </section>
 

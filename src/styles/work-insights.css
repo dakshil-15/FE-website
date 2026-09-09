@@ -1,3 +1,15 @@
+.laptop-screen-scroll {
+  scrollbar-width: none;
+  scroll-snap-type: y proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.laptop-screen-scroll::-webkit-scrollbar {
+  display: none;
+}
+.laptop-screen-scroll > * {
+  scroll-snap-align: start;
+}
+
 .work-rail {
   display: grid;
   grid-auto-flow: column;

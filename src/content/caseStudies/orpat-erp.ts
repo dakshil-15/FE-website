@@ -27,13 +27,8 @@ export const orpatErp: CaseStudy = {
       { title: "Commercial & People", description: "Sales, marketing, accounting and HR on the same platform." },
       { title: "Adoption by Design", description: "Built around how operations already function — driving natural adoption and scale." },
     ],
-    results: [
-      { label: "Adoption", value: "Exceptionally strong" },
-      { label: "Visibility", value: "Procurement to commercial" },
-      { label: "Planning", value: "SKU-level BOM intelligence" },
-      { label: "Coordination", value: "Better day-to-day decisions" },
-    ],
     tags: ["Technology", "ERP", "Manufacturing"],
+    clientLogo: "/images/partners/clients/orpat.png",
     galleryGroups: [
       {
         title: "Manufacturing Brief",

@@ -71,10 +71,10 @@ export type CareerRoleDetail = {
 };
 
 export const careersHero = {
-  headlineBefore: "Build your career.",
-  headlineAccent: "Engineer impact.",
-  headlineAfter: "Grow with us.",
-  body: "At First Economy, we don't just create campaigns — we engineer growth systems that create real impact. Join a team where strategy, creative, media, technology and data work as one.",
+  headlineBefore: "Your next big move",
+  headlineAccent: "could start here.",
+  headlineAfter: "",
+  body: "At First Economy, we're here to make work that gets noticed and build a place where people love doing it. Bring your ideas, challenge the obvious, learn something new and grow with a team that's always rooting for you.",
   cta: { label: "Explore openings", href: "#open-positions" },
   image: {
     src: "/images/careers/team.png",
@@ -210,7 +210,7 @@ export const careersOpenings = {
   title: "Find your next opportunity.",
   viewAll: { label: "View all openings", href: "#open-positions" },
   emptyNote: "Don't see the right role?",
-  resumeCta: { label: "Send us your resume", href: "mailto:careers@firsteconomy.in" },
+  resumeCta: { label: "Send us your resume", href: "mailto:p&c@firsteconomy.com" },
 };
 
 export const careersRoles: CareerRole[] = [
@@ -499,8 +499,8 @@ export const careersCta = {
   titleAccent: "Together.",
   email: {
     label: "Send your resume to",
-    value: "careers@firsteconomy.in",
-    href: "mailto:careers@firsteconomy.in",
+    value: "p&c@firsteconomy.com",
+    href: "mailto:p&c@firsteconomy.com",
     icon: {
       src: "/images/careers/cta/send-resume.svg",
       alt: "",
@@ -517,5 +517,5 @@ export const careersCta = {
       label: "Life at FE",
     } satisfies MediaSlot,
   },
-  button: { label: "Join our team", href: "mailto:careers@firsteconomy.in" },
+  button: { label: "Join our team", href: "mailto:p&c@firsteconomy.com" },
 };

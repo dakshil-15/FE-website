@@ -9,8 +9,17 @@ import { contactInfo } from "@/content/site";
 
 export const contactHero = {
   eyebrow: "Contact Us",
-  headlineBefore: "Let's engineer your next",
-  headlineAccent: "growth system.",
+  headlineBefore: "Let's Discuss",
+  headlineAccentWords: [
+    "Media Buying",
+    "AI",
+    "SEO",
+    "Strategy",
+    "Innovation & Branding",
+    "Social Media",
+    "Video Production",
+    "Tech",
+  ],
   body: "Tell us about your challenge and our experts will get back to you within 24 hours.",
   cta: { label: "Send a message", href: "#contact-form" },
   image: {
@@ -81,7 +90,7 @@ export const contactTouch = {
 
 export const contactOfficesCopy = {
   eyebrow: "Our Offices",
-  title: "We are where you are.",
+  title: "Our Offices",
   body: "Four cities. One mission. Building growth systems that drive real impact.",
 };
 

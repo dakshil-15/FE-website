@@ -83,7 +83,7 @@ export function PortraitSlot({
   if (asset.src) {
     const isLeadershipPhoto = asset.src.startsWith("/images/about/leadership/");
     const src = isLeadershipPhoto
-      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=9`
+      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=12`
       : asset.src;
 
     return (

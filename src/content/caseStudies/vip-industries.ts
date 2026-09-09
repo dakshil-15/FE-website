@@ -41,38 +41,9 @@ export const vipIndustries: CaseStudy = {
       { label: "Store footfall", value: "2K" },
     ],
     tags: ["Media", "Performance", "Retail", "Attribution"],
-    galleryGroups: [
-      {
-        title: "Strategy Overview",
-        images: [
-          "/images/work/gallery/vip-industries/01.png",
-          "/images/work/gallery/vip-industries/02.png",
-        ],
-      },
-      {
-        title: "Audience & Media Execution",
-        images: [
-          "/images/work/gallery/vip-industries/03.png",
-          "/images/work/gallery/vip-industries/04.png",
-          "/images/work/gallery/vip-industries/05.png",
-        ],
-      },
-      {
-        title: "Performance Snapshot",
-        images: [
-          "/images/work/gallery/vip-industries/06.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/vip-industries.png",
-      "/images/work/gallery/vip-industries/01.png",
-      "/images/work/gallery/vip-industries/02.png",
-      "/images/work/gallery/vip-industries/03.png",
-      "/images/work/gallery/vip-industries/04.png",
-      "/images/work/gallery/vip-industries/05.png",
-      "/images/work/gallery/vip-industries/06.png",
-    ],
+    clientLogo: "/images/partners/clients/vip-industries.png",
+    galleryGroups: [],
+    gallery: [],
     resultHighlights: [
       "Achieved large-scale brand visibility across premium and youth segments",
       "Drove high engagement through audience-creative resonance",

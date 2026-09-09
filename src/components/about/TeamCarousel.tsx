@@ -25,11 +25,12 @@ export default function TeamCarousel() {
 
             <div className="relative flex min-h-[5.25rem] flex-1 items-start justify-between gap-3 px-4 py-4 sm:min-h-[5.75rem] sm:px-5 sm:py-5">
               <div className="min-w-0 w-full sm:flex-1 sm:w-auto">
-                <h3 className="m-0 pr-12 font-display text-[1.05rem] leading-[1.12] font-bold tracking-[0.02em] text-ink uppercase sm:pr-0 sm:text-[1.15rem]">
+                <h3 className="m-0 pr-12 font-display text-[1.05rem] leading-[1.12] font-bold tracking-[0.02em] text-ink uppercase sm:pr-0 sm:text-[1.15rem] sm:whitespace-nowrap">
                   {firstName}
                   {lastName ? (
                     <>
-                      <br />
+                      <br className="sm:hidden" />
+                      <span className="hidden sm:inline"> </span>
                       {lastName}
                     </>
                   ) : null}

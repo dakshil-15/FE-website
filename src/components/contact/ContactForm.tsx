@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import GrowthCta from "@/components/GrowthCta";
 import { contactFormCopy, contactInterests } from "@/content/contact";
@@ -10,7 +9,7 @@ import { isValidEmail } from "@/lib/forms/validation";
 const fieldClass =
   "field-control min-h-12 bg-white px-4 py-3.5 transition-[border-color] duration-200";
 
-type FieldName = "name" | "email" | "phone" | "company" | "interest" | "requirement" | "consent";
+type FieldName = "name" | "email" | "phone" | "company" | "interest" | "requirement";
 
 export default function ContactForm() {
   const formId = useId();
@@ -31,7 +30,6 @@ export default function ContactForm() {
     const phone = String(data.get("phone") ?? "").trim();
     const company = String(data.get("company") ?? "").trim();
     const requirement = String(data.get("requirement") ?? "").trim();
-    const consent = data.get("consent") === "on";
 
     if (!name) nextErrors.name = "Enter your full name.";
     if (!email) nextErrors.email = "Enter your email address.";
@@ -39,11 +37,10 @@ export default function ContactForm() {
     if (!phone) nextErrors.phone = "Enter your phone number.";
     if (!company) nextErrors.company = "Enter your company name.";
     if (!requirement) nextErrors.requirement = "Tell us about your requirement.";
-    if (!consent) nextErrors.consent = "Please agree to the Privacy Policy and Terms & Conditions.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
-      const order: FieldName[] = ["name", "email", "phone", "company", "interest", "requirement", "consent"];
+      const order: FieldName[] = ["name", "email", "phone", "company", "interest", "requirement"];
       const firstInvalid = order.find((key) => nextErrors[key]);
       const target = firstInvalid
         ? form.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)
@@ -86,8 +83,6 @@ export default function ContactForm() {
       </div>
     );
   }
-
-  const consentId = `${formId}-consent`;
 
   return (
     <form
@@ -185,42 +180,6 @@ export default function ContactForm() {
         {errors.requirement ? (
           <p id={`${formId}-requirement-error`} className="mt-1.5 text-sm text-red" role="alert">
             {errors.requirement}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="sm:col-span-2">
-        <div className="flex items-start gap-3">
-          <input
-            id={consentId}
-            type="checkbox"
-            name="consent"
-            required
-            disabled={status === "submitting"}
-            aria-invalid={errors.consent ? true : undefined}
-            aria-describedby={errors.consent ? `${formId}-consent-error` : undefined}
-            className="contact-check mt-[0.15em]"
-          />
-          <label htmlFor={consentId} className="min-w-0 cursor-pointer text-sm leading-snug text-muted">
-            {contactFormCopy.privacyPrefix}
-            <Link
-              href="/privacy-policy"
-              className="text-red underline-offset-2 transition hover:underline focus-visible:rounded-sm focus-visible:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-            >
-              {contactFormCopy.privacyLink}
-            </Link>
-            {contactFormCopy.privacyJoin}
-            <Link
-              href="/terms"
-              className="text-red underline-offset-2 transition hover:underline focus-visible:rounded-sm focus-visible:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-            >
-              {contactFormCopy.termsLink}
-            </Link>
-          </label>
-        </div>
-        {errors.consent ? (
-          <p id={`${formId}-consent-error`} className="mt-1.5 text-sm text-red" role="alert">
-            {errors.consent}
           </p>
         ) : null}
       </div>

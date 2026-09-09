@@ -14,7 +14,7 @@ const primaryNav = [
   { label: "Capabilities", href: "/capabilities" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {

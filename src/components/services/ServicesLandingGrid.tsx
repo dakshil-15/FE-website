@@ -19,7 +19,7 @@ export default function ServicesLandingGrid() {
             <Link
               href={service.href}
               aria-labelledby={titleId}
-              className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[248px] sm:rounded-[22px] sm:p-5 md:min-h-[268px] md:p-6"
+              className="group relative flex h-full min-h-[160px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[188px] sm:rounded-[22px] sm:p-5 md:min-h-[208px] md:p-6"
             >
               <div className="relative flex items-start justify-between gap-3">
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-[4.75rem] lg:w-[4.75rem]">
@@ -39,7 +39,7 @@ export default function ServicesLandingGrid() {
                 </span>
               </div>
 
-              <div className="relative mt-5 flex flex-1 flex-col sm:mt-6">
+              <div className="relative mt-4 flex flex-1 flex-col sm:mt-5">
                 <h3
                   id={titleId}
                   className="m-0 w-full font-display text-[1.05rem] leading-[1.2] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]"
@@ -47,10 +47,9 @@ export default function ServicesLandingGrid() {
                   {service.title}
                 </h3>
                 <span className="mt-3 block h-[3px] w-8 rounded-full bg-red" aria-hidden />
-                <p className="text-body-sm mt-3.5 mb-0 text-muted">{service.body}</p>
               </div>
 
-              <div className="relative mt-5 flex min-h-11 items-center justify-between gap-3 sm:mt-6">
+              <div className="relative mt-4 flex min-h-11 items-center justify-between gap-3 sm:mt-5">
                 <span className="text-cta text-ink transition group-hover:text-red">Learn More</span>
                 <span
                   className="grid h-11 w-11 flex-none place-items-center rounded-full border border-red bg-white text-red transition duration-200 group-hover:bg-red group-hover:text-white"

@@ -86,6 +86,55 @@ body > footer#contact {
   color: #333;
 }
 
+/* Rotating headline word (see RotatingWord.tsx) */
+.rotating-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.rotating-word__item {
+  display: inline-block;
+  animation: rotating-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes rotating-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotating-word__item {
+    animation: none;
+  }
+}
+
+/* Rotating hero image (see WorkHeroCarousel.tsx) */
+.work-hero-carousel__slide {
+  animation: work-hero-carousel-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes work-hero-carousel-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-hero-carousel__slide {
+    animation: none;
+  }
+}
+
 .section-media {
   margin-top: 1.75rem;
 }

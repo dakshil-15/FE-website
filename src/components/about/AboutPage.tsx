@@ -14,8 +14,6 @@ import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   aboutHero,
   aboutLocations,
-  aboutStory,
-  aboutTimeline,
   aboutValues,
   aboutWhatWeDo,
   aboutTeamTagline,
@@ -117,63 +115,14 @@ export default function AboutPage() {
         }
         burstSrc={aboutHero.burst}
         seam={{
-          href: "#our-story",
-          ariaLabel: "Continue to our story",
+          href: "#what-we-do",
+          ariaLabel: "Continue to what we do",
           arrowSrc: aboutHero.arrow,
         }}
       />
 
       <section
-        id="our-story"
-        data-animate-section
-        className="section-shell section-pad bg-paper"
-        aria-labelledby="story-heading"
-      >
-        <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow m-0">
-            {aboutStory.eyebrow}
-          </p>
-          <div className="section-intro">
-            <h2 data-animate="fade-up" id="story-heading" className="text-display-md m-0">
-              {aboutStory.title}
-            </h2>
-            <p data-animate="fade-up" className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1">
-              {aboutStory.body}
-            </p>
-          </div>
-
-          <div className="about-timeline-wrap section-media relative">
-            <div data-timeline-line className="about-timeline-line" aria-hidden />
-            <ol data-story-timeline className="about-timeline m-0 list-none p-0">
-              {aboutTimeline.map((item) => (
-                <li key={item.year} className="about-timeline-item relative min-w-0">
-                  <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-0">
-                    <span
-                      data-timeline-icon
-                      className="about-timeline-icon grid h-12 w-12 flex-none place-items-center rounded-full border border-red bg-paper text-red sm:h-14 sm:w-14 md:h-16 md:w-16"
-                    >
-                      <IconSlot
-                        asset={item.icon}
-                        size={48}
-                        className="h-[70%] w-[70%] sm:h-[72%] sm:w-[72%]"
-                      />
-                    </span>
-                    <div data-timeline-copy className="min-w-0 md:mt-6">
-                      <p className="m-0 font-display text-xl tracking-[0.04em] text-red uppercase">{item.year}</p>
-                      <p className="mt-1 mb-0 font-display text-[1.05rem] leading-tight tracking-[0.03em] uppercase sm:text-lg">
-                        {item.title}
-                      </p>
-                      <p className="text-body-sm mt-2 mb-0 max-w-[16rem] text-muted">{item.body}</p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section
+        id="what-we-do"
         data-animate-section
         className="section-shell section-pad bg-mist"
         aria-labelledby="what-we-do-heading"
@@ -225,7 +174,7 @@ export default function AboutPage() {
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
               <p className="text-body section-copy section-copy-on-dark m-0">
-                {aboutTeamTagline}. The people who design the system, lead the work, and stay accountable for growth.
+                {aboutTeamTagline}.
               </p>
             </div>
           </div>
@@ -367,8 +316,6 @@ export default function AboutPage() {
         primaryHref={aboutCta.button.href}
         secondaryLabel={aboutCta.secondary.label}
         secondaryHref={aboutCta.secondary.href}
-        tertiaryLabel={aboutCta.tertiary.label}
-        tertiaryHref={aboutCta.tertiary.href}
         burstSrc={aboutCta.burst}
       />
     </div>

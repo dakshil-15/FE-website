@@ -14,7 +14,7 @@ export default function ServiceIconGrid() {
           <li key={service.slug} className="min-w-0">
             <Link
               href={service.href}
-              className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[268px] sm:rounded-[22px] sm:p-5 md:min-h-[292px] md:p-6"
+              className="group relative flex h-full min-h-[180px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[200px] sm:rounded-[22px] sm:p-5 md:min-h-[220px] md:p-6"
             >
               <svg
                 className="pointer-events-none absolute -bottom-6 -left-8 h-[140px] w-[140px] text-red/[0.12]"
@@ -30,12 +30,12 @@ export default function ServiceIconGrid() {
               </svg>
 
               <div className="relative flex items-start justify-between gap-3">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-[4.75rem] lg:w-[4.75rem]">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
                   {Icon ? (
                     <Icon
-                      size={36}
+                      size={28}
                       aria-hidden
-                      className="h-7 w-7 text-white sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10"
+                      className="h-6 w-6 text-white sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-9 lg:w-9"
                     />
                   ) : null}
                 </span>
@@ -47,17 +47,14 @@ export default function ServiceIconGrid() {
                 </span>
               </div>
 
-              <div className="relative mt-7 flex flex-1 flex-col sm:mt-8">
+              <div className="relative mt-5 flex flex-1 flex-col sm:mt-6">
                 <h3 className="m-0 w-full font-display text-[1.05rem] leading-[1.15] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]">
                   {service.name}
                 </h3>
                 <span className="mt-3 block h-[3px] w-8 rounded-full bg-red" aria-hidden />
-                <p className="mt-3.5 mb-0 text-[13px] leading-snug text-muted sm:text-sm">
-                  {service.description}
-                </p>
               </div>
 
-              <div className="relative mt-6 flex justify-end">
+              <div className="relative mt-4 flex justify-end">
                 <span
                   className="grid h-11 w-11 place-items-center rounded-full border border-red bg-white text-red transition duration-200 group-hover:bg-red group-hover:text-white"
                   aria-hidden

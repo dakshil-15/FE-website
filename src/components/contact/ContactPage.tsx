@@ -3,9 +3,8 @@
 import { useRef } from "react";
 import { Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import RotatingWord from "@/components/RotatingWord";
 import ContactForm from "@/components/contact/ContactForm";
-import GrowthCta from "@/components/GrowthCta";
-import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   contactFormCopy,
@@ -33,50 +32,23 @@ export default function ContactPage() {
         headingId="contact-hero-heading"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
         breadcrumbCurrentClassName="text-ink"
-        titleClassName="text-display-xl mt-0 mb-0 text-balance"
+        titleClassName="text-display-xl mt-4 mb-0 text-balance"
         title={
           <>
             {contactHero.headlineBefore}
             <br className="hidden xs:block" />
             <span className="xs:hidden"> </span>
-            <span className="text-red">{contactHero.headlineAccent}</span>
+            <RotatingWord words={contactHero.headlineAccentWords} className="text-red" />
           </>
         }
         body={contactHero.body}
-        copyAfterBody={
-          <div data-animate="hero-copy">
-            <GrowthCta
-              href={contactHero.cta.href}
-              variant="primary"
-              block
-              className="mt-7 xs:w-auto sm:mt-8"
-            >
-              {contactHero.cta.label}
-            </GrowthCta>
-          </div>
-        }
-        media={
-          <>
-            <ImageSlot
-              asset={contactHero.image}
-              priority
-              className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[min(420px,55vh)]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <p
-              className="pointer-events-none absolute top-1/2 right-4 z-[3] hidden max-h-[85%] -translate-y-1/2 overflow-hidden font-display text-[10px] leading-none font-bold tracking-[0.42em] text-red uppercase [writing-mode:vertical-rl] rotate-180 lg:block xl:right-6 xl:text-[11px]"
-              aria-hidden
-            >
-              {contactHero.verticalMark}
-            </p>
-          </>
-        }
+        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
+        media={null}
+        showMediaRule={false}
+        gridClassName="grid grid-cols-1"
+        copyColumnClassName="relative z-[1] mx-auto flex max-w-5xl min-w-0 flex-col items-center text-center"
         burstSrc={contactHero.burst}
-        seam={{
-          href: "#contact-form",
-          ariaLabel: "Continue to the contact form",
-          arrowSrc: contactHero.arrow,
-        }}
+        burstClassName="hidden"
       />
 
       <section
@@ -136,21 +108,10 @@ export default function ContactPage() {
         aria-labelledby="contact-offices-heading"
       >
         <div className="section-inner">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
-            <p data-animate="fade-up" className="text-eyebrow m-0">
-              {contactOfficesCopy.eyebrow}
-            </p>
-            <p
-              data-animate="fade-up"
-              className="text-body-sm m-0 max-w-[28rem] text-muted sm:text-right"
-            >
-              {contactOfficesCopy.body}
-            </p>
-          </div>
           <h2
             data-animate="fade-up"
             id="contact-offices-heading"
-            className="text-display-md mt-4 mb-0 sm:mt-5"
+            className="text-display-md m-0"
           >
             {contactOfficesCopy.title}
           </h2>

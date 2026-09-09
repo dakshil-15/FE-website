@@ -135,12 +135,6 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} First Economy. All rights reserved.
         </span>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-          <Link href="/privacy-policy" className="hover:text-white focus-visible:text-white">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" className="hover:text-white focus-visible:text-white">
-            Terms &amp; Conditions
-          </Link>
           <button
             type="button"
             aria-label="Back to top"

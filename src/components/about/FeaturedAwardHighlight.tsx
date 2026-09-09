@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { aboutFeaturedAchievement, featuredCampaignAward } from "@/content/about";
 
 export default function FeaturedAwardHighlight() {
@@ -37,10 +36,6 @@ export default function FeaturedAwardHighlight() {
             {aboutFeaturedAchievement.title}
           </h3>
           <p className="text-body-sm mt-4 mb-0 max-w-[32rem] text-muted-on-dark sm:mt-5">{aboutFeaturedAchievement.body}</p>
-          <span className="text-cta mt-6 inline-flex items-center gap-2 text-white transition group-hover:text-red sm:mt-7">
-            View the campaign
-            <ArrowRight size={16} aria-hidden className="transition group-hover:translate-x-0.5" />
-          </span>
         </div>
       </div>
     </Link>

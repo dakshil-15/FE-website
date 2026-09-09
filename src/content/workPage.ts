@@ -22,34 +22,37 @@ export const workHero = {
   arrow: "/images/work/hero/arrow-circle.svg",
 };
 
+/** Tabs mirror the card tags below one-for-one — every case study filters into exactly the tab matching its own badge. */
 export const workFilters = [
   { key: "all", label: "All Cases" },
-  { key: "media", label: "Media" },
-  { key: "creative", label: "Creative" },
-  { key: "branding", label: "Branding" },
-  { key: "technology", label: "Technology" },
-  { key: "social", label: "Social" },
+  { key: "integrated", label: "Integrated Campaign" },
+  { key: "media-buying", label: "360° Media Buying" },
+  { key: "tech", label: "Tech Solutions" },
+  { key: "social", label: "Social Media" },
   { key: "seo", label: "SEO" },
-  { key: "ai", label: "AI" },
-  { key: "performance", label: "Performance" },
+  { key: "video", label: "Video Production" },
+  { key: "creative", label: "Creative Solutions" },
+  { key: "influencer", label: "Influencer Marketing" },
+  { key: "ai", label: "AI Solutions" },
 ] as const;
 
 export type WorkFilterKey = (typeof workFilters)[number]["key"];
 
-const filterServices: Record<Exclude<WorkFilterKey, "all" | "performance">, string[]> = {
-  media: ["media-buying"],
-  creative: ["video-production", "creative"],
-  branding: ["branding"],
-  technology: ["technology"],
-  social: ["social-media", "influencer-marketing"],
-  seo: ["seo"],
-  ai: ["ai-solutions"],
+const filterTagLabels: Record<Exclude<WorkFilterKey, "all">, string> = {
+  integrated: "Integrated Campaign",
+  "media-buying": "360° Media Buying",
+  tech: "Tech Solutions",
+  social: "Social Media",
+  seo: "SEO",
+  video: "Video Production",
+  creative: "Creative Solutions",
+  influencer: "Influencer Marketing",
+  ai: "AI Solutions",
 };
 
 export function matchesWorkFilter(caseStudy: CaseStudy, key: WorkFilterKey) {
   if (key === "all") return true;
-  if (key === "performance") return caseStudy.family === "media-performance";
-  return caseStudy.services.some((service) => filterServices[key].includes(service));
+  return workCardTag(caseStudy) === filterTagLabels[key];
 }
 
 /** Mockup order first, then remaining studies. */
@@ -70,6 +73,25 @@ const familyTags: Record<CaseStudyFamily, string> = {
   technology: "Technology",
   "content-social": "Content & Social",
   ai: "AI Solutions",
+};
+
+/** Per-case-study card tag — takes priority over the family-based `familyTags` fallback. */
+const cardTagOverrides: Record<string, string> = {
+  "godrej-blue": "Integrated Campaign",
+  "royale-touche-stay-curious": "Integrated Campaign",
+  "fedex-csk": "360° Media Buying",
+  "vip-industries": "360° Media Buying",
+  "mahindra-manulife": "Tech Solutions",
+  "orpat-erp": "Tech Solutions",
+  waaree: "Social Media",
+  "akbar-travels-seo": "SEO",
+  "shoppers-stop-local-seo": "SEO",
+  "cello-kidzbee": "Video Production",
+  "young-bags": "Video Production",
+  "ambassador-hotel": "Creative Solutions",
+  "godrej-greenfront": "Creative Solutions",
+  "amazon-samsung-great-indian-festival": "Influencer Marketing",
+  "adani-airports-safar-ke-humsafar": "Influencer Marketing",
 };
 
 const titleOverrides: Record<string, string> = {
@@ -99,7 +121,7 @@ export function workCardTitle(caseStudy: CaseStudy) {
 }
 
 export function workCardTag(caseStudy: CaseStudy) {
-  return familyTags[caseStudy.family];
+  return cardTagOverrides[caseStudy.slug] ?? familyTags[caseStudy.family];
 }
 
 export function caseStudyIndustryName(caseStudy: CaseStudy) {
@@ -139,7 +161,9 @@ export function workCardImage(caseStudy: CaseStudy): MediaSlot {
     fit:
       caseStudy.slug === "godrej-blue" ||
       caseStudy.slug === "royale-touche-stay-curious" ||
-      caseStudy.slug === "fedex-csk"
+      caseStudy.slug === "fedex-csk" ||
+      caseStudy.slug === "amazon-samsung-great-indian-festival" ||
+      caseStudy.slug === "adani-airports-safar-ke-humsafar"
         ? "contain"
         : undefined,
   };
