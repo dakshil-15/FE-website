@@ -95,7 +95,7 @@ body > footer#contact {
 
 .rotating-word__item {
   display: inline-block;
-  animation: rotating-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: rotating-word-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes rotating-word-in {
@@ -115,22 +115,40 @@ body > footer#contact {
   }
 }
 
-/* Rotating hero image (see WorkHeroCarousel.tsx) */
-.work-hero-carousel__slide {
-  animation: work-hero-carousel-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Rotating hero image crossfade (see WorkHeroCarousel.tsx) */
+.work-hero-carousel__slide-in {
+  animation: work-hero-carousel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.work-hero-carousel__slide-out {
+  animation: work-hero-carousel-out 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes work-hero-carousel-in {
   from {
     opacity: 0;
+    transform: scale(1.03);
   }
   to {
     opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes work-hero-carousel-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .work-hero-carousel__slide {
+  .work-hero-carousel__slide-in,
+  .work-hero-carousel__slide-out {
     animation: none;
   }
 }

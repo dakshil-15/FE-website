@@ -6,7 +6,7 @@ export const shoppersStopLocalSeo: CaseStudy = {
     campaign: "Local SEO",
     industry: "consumer-retail",
     services: ["seo"],
-    hero: "Turning weak local visibility into stronger store-level discovery.",
+    hero: "Making Shoppers Stop easier to find, easier to trust and ultimately, easier to visit.",
     challenge: "Low local visibility, limited reviews and a weak Google Business Profile — impacting foot traffic and trust.",
     objective: "Shoppers Stop had low visibility in local search results, impacting foot traffic. Few customer reviews affected rankings and trust, and the GMB profile lacked relevant keywords, categories and engaging content.",
     mandate: [
@@ -26,38 +26,14 @@ export const shoppersStopLocalSeo: CaseStudy = {
       { title: "Local Keywords", description: "Relevant keywords woven into descriptions, posts and services." },
       { title: "Store Outcomes", description: "Higher visibility, engagement and foot traffic to physical stores." },
     ],
-    results: [
-      { label: "Local visibility", value: "Improved rankings" },
-      { label: "Store footfall", value: "Increased" },
-      { label: "GMB engagement", value: "Higher views, clicks, calls" },
-      { label: "Reviews & credibility", value: "More and better" },
+    resultHighlights: [
+      "Improved local search rankings, boosting visibility",
+      "Increased foot traffic to physical stores",
+      "Higher customer engagement via GMB profile — more views, clicks and calls",
+      "More and better customer reviews, enhancing credibility",
     ],
     tags: ["SEO", "Local", "Retail", "GMB"],
-    galleryGroups: [
-      {
-        title: "Local Visibility Challenge",
-        images: [
-          "/images/work/gallery/shoppers-stop-local-seo/02.png",
-        ],
-      },
-      {
-        title: "Local SEO Outcomes",
-        images: [
-          "/images/work/gallery/shoppers-stop-local-seo/03.png",
-        ],
-      },
-      {
-        title: "GMB & Store Presence",
-        images: [
-          "/images/work/gallery/shoppers-stop-local-seo/01.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/cases/shoppers-stop-local-seo.png",
-      "/images/work/gallery/shoppers-stop-local-seo/02.png",
-      "/images/work/gallery/shoppers-stop-local-seo/03.png",
-      "/images/work/gallery/shoppers-stop-local-seo/01.png",
-    ],
+    galleryGroups: [],
+    gallery: [],
     family: "media-performance",
   };

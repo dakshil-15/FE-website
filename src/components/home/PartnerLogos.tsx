@@ -78,8 +78,8 @@ function LogoItem({ partner, duplicate }: { partner: PartnerLogo; duplicate?: bo
 
 function GridLogoItem({ partner }: { partner: PartnerLogo }) {
   return (
-    <li className="flex min-h-[7.5rem] items-center justify-center rounded-xl border border-line bg-white px-3 py-5 sm:min-h-[8rem] sm:px-4 sm:py-6">
-      <span className="flex h-16 w-full min-h-0 min-w-0 max-w-[200px] items-center justify-center sm:h-[4.5rem] sm:max-w-[220px]">
+    <li className="flex min-h-[7.5rem] items-center justify-center overflow-hidden rounded-xl border border-line bg-white sm:min-h-[8rem]">
+      <span className="flex h-full w-full min-h-0 min-w-0 items-center justify-center">
         <PartnerLogoFrame
           partner={partner}
           alt={`${partner.name} logo`}

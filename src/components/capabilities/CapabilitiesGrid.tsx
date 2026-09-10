@@ -18,13 +18,14 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
             <Link
               href={card.href}
               aria-labelledby={titleId}
-              className="group relative flex h-full min-h-[160px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[188px] sm:rounded-[22px] sm:p-5 md:min-h-[208px] md:p-6"
+              className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[264px] sm:rounded-[22px] sm:p-5 md:min-h-[280px] md:p-6"
             >
               <div className="relative flex items-start justify-between gap-3">
                 <IconSlot
                   asset={card.icon}
-                  size={80}
-                  className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20"
+                  size={48}
+                  tone="accent"
+                  className="h-10 w-10 sm:h-12 sm:w-12"
                 />
                 <span
                   className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
@@ -34,7 +35,7 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
                 </span>
               </div>
 
-              <div className="relative mt-4 flex flex-1 flex-col sm:mt-5">
+              <div className="relative mt-5 flex flex-1 flex-col sm:mt-6">
                 <h3
                   id={titleId}
                   className="m-0 w-full font-display text-[1.05rem] leading-[1.2] font-bold tracking-[0.02em] text-ink uppercase sm:text-[1.125rem]"
@@ -42,6 +43,7 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
                   {card.title}
                 </h3>
                 <span className="mt-3 block h-[3px] w-8 rounded-full bg-red" aria-hidden />
+                <p className="text-body-sm mt-3.5 mb-0 text-muted">{card.body}</p>
               </div>
 
               <div className="relative mt-4 flex min-h-11 items-center justify-between gap-3 sm:mt-5">

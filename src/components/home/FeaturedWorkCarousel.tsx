@@ -33,7 +33,7 @@ export default function FeaturedWorkCarousel() {
         const image = workCardImage(caseStudy);
         const spotlight = homeFeaturedSpotlightMetric(caseStudy);
         const titleId = `featured-work-${caseStudy.slug}`;
-        const src = image.src ?? "/images/work/cases/godrej-blue-v2.png";
+        const src = image.src ?? "/images/work/cases/godrej-blue.png";
 
         return (
           <Link

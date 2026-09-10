@@ -23,8 +23,7 @@ export default function WorkPage() {
         titleClassName="text-display-xl mt-0 mb-0 text-balance"
         title={
           <>
-            {workHero.headlineBefore}
-            <br />
+            {workHero.headlineBefore}{" "}
             <span className="text-red">{workHero.headlineAccent}</span>
           </>
         }

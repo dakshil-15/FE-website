@@ -6,7 +6,7 @@ export const akbarTravelsSeo: CaseStudy = {
     campaign: "SEO Growth",
     industry: "travel-hospitality",
     services: ["seo"],
-    hero: "Visa leads grew from 1,000+ to 20,000+ a month through SEO alone.",
+    hero: "Taking on travel giants and technical roadblocks to make a mark in one of the most competitive search spaces.",
     challenge: "Compete against major OTAs and government visa-search properties, with Angular JS technical constraints on parts of the site.",
     objective: "Win organic visibility against established OTAs (MakeMyTrip, Yatra, EaseMyTrip) and government websites for visa-related queries — despite Angular JS limitations on certain site sections.",
     mandate: [
@@ -37,47 +37,9 @@ export const akbarTravelsSeo: CaseStudy = {
       { label: "AI Overview keywords", value: "38.5K / 87.1K" },
     ],
     tags: ["SEO", "Travel", "AI Overviews", "Content"],
-    galleryGroups: [
-      {
-        title: "SEO Challenge",
-        images: [
-          "/images/work/gallery/akbar-travels-seo/02.png",
-          "/images/work/gallery/akbar-travels-seo/03.png",
-        ],
-      },
-      {
-        title: "Keyword & Growth Strategy",
-        images: [
-          "/images/work/gallery/akbar-travels-seo/04.png",
-        ],
-      },
-      {
-        title: "AI Overview Visibility",
-        images: [
-          "/images/work/gallery/akbar-travels-seo/05.png",
-          "/images/work/gallery/akbar-travels-seo/06.png",
-          "/images/work/gallery/akbar-travels-seo/07.png",
-          "/images/work/gallery/akbar-travels-seo/08.png",
-        ],
-      },
-      {
-        title: "SEO Dashboard",
-        images: [
-          "/images/work/gallery/akbar-travels-seo/01.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/akbar-travels-seo.png",
-      "/images/work/gallery/akbar-travels-seo/02.png",
-      "/images/work/gallery/akbar-travels-seo/03.png",
-      "/images/work/gallery/akbar-travels-seo/04.png",
-      "/images/work/gallery/akbar-travels-seo/05.png",
-      "/images/work/gallery/akbar-travels-seo/06.png",
-      "/images/work/gallery/akbar-travels-seo/07.png",
-      "/images/work/gallery/akbar-travels-seo/08.png",
-      "/images/work/gallery/akbar-travels-seo/01.png",
-    ],
+    clientLogo: "/images/partners/clients/akbar-travels.png",
+    galleryGroups: [],
+    gallery: [],
     flagship: true,
     featured: true,
     family: "media-performance",

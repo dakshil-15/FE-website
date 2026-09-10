@@ -10,7 +10,7 @@ type RotatingWordProps = {
 };
 
 /** Cycles through `words` one at a time, in sequence, looping forever. */
-export default function RotatingWord({ words, interval = 2600, className = "" }: RotatingWordProps) {
+export default function RotatingWord({ words, interval = 1500, className = "" }: RotatingWordProps) {
   const [index, setIndex] = useState(0);
   const wordsRef = useRef(words);
   wordsRef.current = words;

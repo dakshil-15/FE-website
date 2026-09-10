@@ -134,7 +134,7 @@ export default function PageHero({
   body,
   copyAfterBody,
   media,
-  showMediaRule = true,
+  showMediaRule = false,
   burstSrc,
   burstClassName = DEFAULT_BURST_CLASS,
   seam,

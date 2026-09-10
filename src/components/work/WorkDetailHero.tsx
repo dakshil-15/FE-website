@@ -125,7 +125,7 @@ export default function WorkDetailHero({
                       ? "h-16 w-auto object-contain sm:h-20"
                       : caseStudy.slug === "ajanta-ai-creatives"
                         ? "h-14 w-auto object-contain sm:h-16"
-                        : "h-9 w-auto object-contain sm:h-10"
+                        : "h-12 w-auto object-contain sm:h-14"
                 }
               />
             </div>

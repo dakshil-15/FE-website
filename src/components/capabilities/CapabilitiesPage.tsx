@@ -152,12 +152,6 @@ export default function CapabilitiesPage() {
               {advantageToolsSection.titleBefore}{" "}
               <span className="text-red">{advantageToolsSection.titleAccent}</span>
             </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-            >
-              {advantageToolsSection.body}
-            </p>
           </div>
 
           <div data-animate="fade-up" className="section-media">
@@ -182,12 +176,6 @@ export default function CapabilitiesPage() {
               {ecosystemSection.titleBefore}{" "}
               <span className="text-red">{ecosystemSection.titleAccent}</span>
             </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-            >
-              {ecosystemSection.body}
-            </p>
           </div>
 
           <div data-animate="fade-up" className="section-media" aria-label="Platform partner logos">

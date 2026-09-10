@@ -7,7 +7,7 @@ export const adaniAirportsSafarKeHumsafar: CaseStudy = {
     clientLogo: "/images/partners/clients/adani-airports.png",
     industry: "travel-hospitality",
     services: ["influencer-marketing"],
-    hero: "Real traveller stories built into a UGC-driven campaign of human moments.",
+    hero: "Drive mass awareness by positioning Adani Airports as a human-centric, world-class gateway to modern India.",
     challenge: "Build mass awareness and emotional engagement around the airport experience.",
     objective: "Drive mass awareness and engagement by amplifying the brand film and positioning Adani Airports as a human-centric, world-class airport experience — while highlighting its role in modern travel and India’s growth story.",
     mandate: [

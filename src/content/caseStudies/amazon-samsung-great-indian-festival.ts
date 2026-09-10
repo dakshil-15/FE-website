@@ -4,9 +4,10 @@ export const amazonSamsungGreatIndianFestival: CaseStudy = {
     slug: "amazon-samsung-great-indian-festival",
     client: "Amazon × Samsung",
     campaign: "Great Indian Festival 2025",
+    clientLogo: "/images/partners/clients/amazon.png",
     industry: "consumer-retail",
     services: ["influencer-marketing"],
-    hero: "Positioning the Galaxy M36 5G as the value pick under ₹15K.",
+    hero: "To position Galaxy M36 5G as the best-value 5G smartphone under ₹15K during the festive season.",
     challenge: "Maximise Samsung Galaxy M36 5G visibility, position it as strong value under ₹15K, and build pre-buzz ahead of the Amazon Great Indian Festival.",
     objective: "Maximize visibility for Samsung Galaxy M36 5G during the festive sale; establish it as the best-value 5G smartphone under ₹15K; highlight standout features; borrow aspiration from Galaxy A55 and S24 Ultra; strengthen Samsung’s premium innovation across the lineup.",
     mandate: [

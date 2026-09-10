@@ -42,6 +42,7 @@ export const SECTION_META: Record<WorkDetailSectionId, { label: string }> = {
   mandate: { label: "The Mandate" },
   platforms: { label: "Digital Platforms Used" },
   execution: { label: "The Execution" },
+  creatives: { label: "Creatives" },
   activations: { label: "Live Activations" },
   gallery: { label: "Creative Gallery" },
   video: { label: "Video" },

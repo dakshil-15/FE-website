@@ -6,9 +6,10 @@ import { ArrowRight, MapPin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import GrowthCta from "@/components/GrowthCta";
-import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
+import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import TeamCarousel from "@/components/about/TeamCarousel";
 import FeaturedAwardHighlight from "@/components/about/FeaturedAwardHighlight";
+import ValuesSlider from "@/components/about/ValuesSlider";
 import PartnerLogos from "@/components/home/PartnerLogos";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
@@ -190,27 +191,13 @@ export default function AboutPage() {
         aria-labelledby="values-heading"
       >
         <div className="section-inner">
-          <h2 data-animate="fade-up" id="values-heading" className="text-eyebrow m-0">
+          <h2 data-animate="fade-up" id="values-heading" className="text-display-md m-0 text-center">
             Our Values
           </h2>
-          <ul
-            data-animate-stagger
-            className="mt-8 grid list-none grid-cols-2 gap-x-4 gap-y-8 p-0 md:mt-10 md:gap-x-6 lg:grid-cols-5 lg:gap-6"
-          >
-            {aboutValues.map((value) => (
-              <li key={value.title} className="min-w-0">
-                <IconSlot
-                  asset={value.icon}
-                  size={64}
-                  className="h-12 w-12 text-ink sm:h-14 sm:w-14 md:h-16 md:w-16"
-                />
-                <h3 className="mt-2.5 mb-0 font-display text-base tracking-[0.06em] uppercase sm:mt-3 sm:text-lg">
-                  {value.title}
-                </h3>
-                <p className="text-body-sm mt-2.5 mb-0 max-w-[16rem] text-muted">{value.body}</p>
-              </li>
-            ))}
-          </ul>
+
+          <div data-animate="fade-up">
+            <ValuesSlider values={aboutValues} />
+          </div>
         </div>
       </section>
 
@@ -229,9 +216,6 @@ export default function AboutPage() {
               A few of our many <span className="text-red">achievements.</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-light m-0">
-                {aboutFeaturedAchievement.body}
-              </p>
               <Link href={aboutFeaturedAchievement.sectionCta.href} className="text-cta link-cta text-ink">
                 {aboutFeaturedAchievement.sectionCta.label}
                 <ArrowRight size={16} aria-hidden />

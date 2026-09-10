@@ -35,12 +35,6 @@ export const serviceOfferings: ServiceOffering[] = [
     href: "/services/influencer-marketing",
   },
   {
-    slug: "marketplace-management",
-    name: "Marketplace Management",
-    description: "End-to-end brand presence managed as a growth channel.",
-    href: "/services/marketplace-management",
-  },
-  {
     slug: "technology",
     name: "Tech Solutions",
     description: "Platforms and systems built for scale, compliance and growth.",

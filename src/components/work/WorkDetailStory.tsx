@@ -7,6 +7,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
 import DeviceShowcase from "@/components/work/DeviceShowcase";
 import WorkDetailGallery from "@/components/work/WorkDetailGallery";
+import PhoneCoverflowGallery from "@/components/work/PhoneCoverflowGallery";
 import {
   ContentBlock,
   SECTION_META,
@@ -16,10 +17,13 @@ import {
 import WorkDetailVideoSlider from "@/components/work/WorkDetailVideoSlider";
 import YouTubeVideoSlider from "@/components/work/YouTubeVideoSlider";
 import {
+  AMBASSADOR_HOTEL_PHONE_SCREENS,
   LAPTOP_SCREEN_INSET,
   MAHINDRA_MANULIFE_LIVE_URL,
   MAHINDRA_MANULIFE_SCREENS,
   MOBILE_SCREEN_INSET,
+  ORPAT_ERP_LAPTOP_SCREENS,
+  ORPAT_ERP_MOBILE_SCREENS,
 } from "@/content/deviceShowcases";
 import type { PartnerLogo } from "@/content/partners";
 import type { WorkDetailModel, WorkDetailSectionId, WorkGalleryGroup } from "@/content/workDetail";
@@ -263,7 +267,8 @@ export default function WorkDetailStory({
             ) : null}
           </div>
 
-          {caseStudy.slug === "adani-airports-safar-ke-humsafar" ? (
+          {caseStudy.slug === "adani-airports-safar-ke-humsafar" ||
+          caseStudy.slug === "ambassador-hotel" ? (
             <ul
               data-animate-stagger
               className="m-0 mt-8 grid list-none grid-cols-1 gap-x-8 gap-y-5 p-0 sm:mt-10 sm:grid-cols-2"
@@ -316,6 +321,44 @@ export default function WorkDetailStory({
             </div>
           ) : null}
 
+          {caseStudy.slug === "orpat-erp" ? (
+            <div
+              data-animate="fade-up"
+              className="mt-12 flex flex-wrap items-end justify-center gap-6 sm:mt-16 sm:gap-8"
+            >
+              <DeviceShowcase
+                frameSrc="/images/work/laptop-mockup.png"
+                frameWidth={1536}
+                frameHeight={1024}
+                screenInset={LAPTOP_SCREEN_INSET}
+                screenRadius="1%"
+                contentAboveFrame={false}
+                viewport={{ width: 1440, height: 884 }}
+                images={ORPAT_ERP_LAPTOP_SCREENS}
+                maxWidthClassName="max-w-[19rem] xs:max-w-[23rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[35rem]"
+                className="flex-none !mx-0"
+              />
+              <DeviceShowcase
+                frameSrc="/images/work/mobile-mockup.png"
+                frameWidth={941}
+                frameHeight={1672}
+                screenInset={MOBILE_SCREEN_INSET}
+                screenRadius="9.12% / 4.48%"
+                contentAboveFrame
+                viewport={{ width: 390, height: 826 }}
+                images={ORPAT_ERP_MOBILE_SCREENS}
+                maxWidthClassName="max-w-[7rem] xs:max-w-[8.5rem] sm:max-w-[10rem] md:max-w-[11.5rem] lg:max-w-[13rem]"
+                className="flex-none !mx-0"
+              />
+            </div>
+          ) : null}
+
+          {caseStudy.slug === "ambassador-hotel" ? (
+            <div data-animate="fade-up" className="mt-12 sm:mt-16">
+              <PhoneCoverflowGallery images={AMBASSADOR_HOTEL_PHONE_SCREENS} title={title} />
+            </div>
+          ) : null}
+
           {caseStudy.slug === "amazon-samsung-great-indian-festival" ? (
             <div data-animate="fade-up" className="mt-12 sm:mt-16">
               <YouTubeVideoSlider
@@ -330,9 +373,10 @@ export default function WorkDetailStory({
             const executionGroups = galleryGroups.filter((group) => group.density !== "compact");
             const showExecutionVideo = videos.length > 0 && !caseStudy.heroVideo;
             const hasExecutionGallery =
-              executionGroups.length > 0 ||
-              (galleryGroups.length === 0 && gallery.length > 0) ||
-              showExecutionVideo;
+              caseStudy.slug !== "waaree" &&
+              (executionGroups.length > 0 ||
+                (galleryGroups.length === 0 && gallery.length > 0) ||
+                showExecutionVideo);
             if (!hasExecutionGallery) return null;
 
             return (
@@ -467,6 +511,38 @@ export default function WorkDetailStory({
             </div>
             );
           })()}
+        </ContentBlock>
+        ) : null}
+
+        {/* Creatives — dedicated numbered section for case studies with distinct creative workstreams */}
+        {hasSection("creatives") ? (
+        <ContentBlock
+          id="creatives"
+          className="mt-12 sm:mt-16"
+          style={sectionScrollStyle}
+          labelledBy="work-creatives-heading"
+        >
+          <div data-animate="fade-up" className="flex flex-col gap-4 sm:gap-5">
+            <SectionLabel
+              id="creatives"
+              number={sectionNumber("creatives")}
+              headingId="work-creatives-heading"
+              asHeading
+            />
+          </div>
+
+          <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
+            {galleryGroups.map((group) => (
+              <div key={group.title} data-animate="fade-up" className="min-w-0">
+                <p className="text-eyebrow m-0 mb-4">{group.title}</p>
+                <WorkDetailGallery
+                  items={group.items}
+                  title={`${title} — ${group.title}`}
+                  density={group.density === "solo" ? "solo" : "default"}
+                />
+              </div>
+            ))}
+          </div>
         </ContentBlock>
         ) : null}
 

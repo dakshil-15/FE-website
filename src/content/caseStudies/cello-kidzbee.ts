@@ -6,7 +6,7 @@ export const celloKidzbee: CaseStudy = {
     campaign: "Back to School",
     industry: "consumer-retail",
     services: ["video-production"],
-    hero: "A visually rich campaign film turned around in under a week.",
+    hero: "Turning everyday school moments into colourful experiences with Cello Kidzbee’s Back to School campaign.",
     challenge: "Position Kidzbee products as vibrant and essential school companions for children and parents.",
     objective: "To position Cello Kidzbee products, through the “Back to School” campaign, as vibrant and essential companions in a child’s daily routine — building emotional connection with children and parents and enhancing overall brand recall.",
     mandate: [],

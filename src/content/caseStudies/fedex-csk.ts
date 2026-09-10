@@ -6,7 +6,7 @@ export const fedexCsk: CaseStudy = {
   campaign: "FedEx × Chennai Super Kings",
   industry: "consumer-retail",
   services: ["media-buying"],
-  hero: "1.2B+ impressions from an IPL association built for more than logo placement.",
+  hero: "Brand recall campaign",
   challenge:
     "Go beyond logo placement to drive real brand visibility and recall — reaching mass consumers and core SME/business audiences through IPL scale.",
   objective:
@@ -77,7 +77,7 @@ export const fedexCsk: CaseStudy = {
     },
   ],
   gallery: [
-    "/images/work/cases/fedex-csk-v2.png",
+    "/images/work/cases/fedex-csk.png",
     "/images/work/gallery/fedex-csk/02.png",
     "/images/work/gallery/fedex-csk/03.png",
     "/images/work/gallery/fedex-csk/04.png",

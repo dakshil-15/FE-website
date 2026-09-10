@@ -6,7 +6,7 @@ export const youngBags: CaseStudy = {
     campaign: "Brand Repositioning",
     industry: "consumer-retail",
     services: ["video-production"],
-    hero: "Repositioning a functional bags brand as contemporary and youthful.",
+    hero: "Turning Young Bag into a brand that speaks the language of today’s youth, where style meets everyday functionality.",
     challenge: "Reposition Young Bags as contemporary, dynamic, youthful, stylish and functional.",
     objective: "Reposition Young Bag as a contemporary, dynamic brand — appealing to modern youth through style and functionality, and highlighting both aesthetic appeal and everyday practicality.",
     mandate: [],

@@ -6,7 +6,7 @@ export const waaree: CaseStudy = {
     campaign: "Integrated B2B/B2C Social",
     industry: "technology-manufacturing-energy",
     services: ["social-media"],
-    hero: "One unified narrative across B2B and B2C audiences for a solar manufacturing leader.",
+    hero: "Bringing Waaree’s clean energy story to the forefront across B2B and B2C audiences.",
     challenge: "Strengthen integrated brand presence across B2B and B2C audiences.",
     objective: "To strengthen Waaree’s integrated brand presence across B2B and B2C audiences through strategic communication that builds trust, sharpens market leadership, and amplifies its role in the clean energy transition.",
     mandate: [
@@ -27,15 +27,10 @@ export const waaree: CaseStudy = {
       { title: "RR Partnership", description: "Rajasthan Royals partnership creatives." },
       { title: "Consumer & Solution", description: "Creative systems for B2C and B2B audiences." },
     ],
-    results: [
-      { label: "Leadership", value: "Reinforced market position" },
-      { label: "Visibility", value: "Manufacturing + innovation" },
-      { label: "Narrative", value: "Unified B2B/B2C" },
-    ],
     tags: ["Social", "Energy", "B2B", "B2C"],
     galleryGroups: [
       {
-        title: "Rajasthan Royals Partnership",
+        title: "Partnership with Rajasthan Royals",
         images: [
           "/images/work/gallery/waaree/02.jpg",
           "/images/work/gallery/waaree/03.jpg",
@@ -51,15 +46,8 @@ export const waaree: CaseStudy = {
           "/images/work/gallery/waaree/08.png",
         ],
       },
-      {
-        title: "Brand Narrative",
-        images: [
-          "/images/work/gallery/waaree/01.png",
-        ],
-      },
     ],
     gallery: [
-      "/images/work/cases/waaree.png",
       "/images/work/gallery/waaree/02.jpg",
       "/images/work/gallery/waaree/03.jpg",
       "/images/work/gallery/waaree/04.jpg",
@@ -67,7 +55,6 @@ export const waaree: CaseStudy = {
       "/images/work/gallery/waaree/06.png",
       "/images/work/gallery/waaree/07.png",
       "/images/work/gallery/waaree/08.png",
-      "/images/work/gallery/waaree/01.png",
     ],
     resultHighlights: [
       "Reinforced Waaree’s market leadership through consistent digital communication across B2B and B2C audiences",

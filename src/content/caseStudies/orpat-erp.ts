@@ -6,7 +6,7 @@ export const orpatErp: CaseStudy = {
     campaign: "Manufacturing ERP Transformation",
     industry: "technology-manufacturing-energy",
     services: ["technology"],
-    hero: "A purpose-built ERP that unified raw material to dispatch across a manufacturing operation.",
+    hero: "Engineering the operational core of a manufacturing leader.",
     challenge: "Streamline complex cross-functional manufacturing workflows spanning raw material, SKU-level production, BOM, quality control, finished goods, dispatch, sales, accounts and HR.",
     objective: "To streamline cross-functional communication across complex manufacturing workflows, from raw material planning to final dispatch.",
     mandate: [
@@ -29,34 +29,8 @@ export const orpatErp: CaseStudy = {
     ],
     tags: ["Technology", "ERP", "Manufacturing"],
     clientLogo: "/images/partners/clients/orpat.png",
-    galleryGroups: [
-      {
-        title: "Manufacturing Brief",
-        images: [
-          "/images/work/gallery/orpat-erp/01.png",
-        ],
-      },
-      {
-        title: "ERP Capability Map",
-        images: [
-          "/images/work/gallery/orpat-erp/02.png",
-        ],
-      },
-      {
-        title: "Adoption Outcomes",
-        images: [
-          "/images/work/gallery/orpat-erp/03.png",
-          "/images/work/gallery/orpat-erp/04.png",
-        ],
-      },
-    ],
-    gallery: [
-      "/images/work/cases/orpat-erp.png",
-      "/images/work/gallery/orpat-erp/01.png",
-      "/images/work/gallery/orpat-erp/02.png",
-      "/images/work/gallery/orpat-erp/03.png",
-      "/images/work/gallery/orpat-erp/04.png",
-    ],
+    galleryGroups: [],
+    gallery: [],
     resultHighlights: [
       "Exceptionally strong adoption driven by deep alignment with existing processes",
       "Better visibility across procurement, production, inventory, dispatch, and commercial operations",

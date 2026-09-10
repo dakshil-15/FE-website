@@ -21,7 +21,7 @@ export const ajantaAiCreatives: CaseStudy = {
       "The film was completed with custom-composed music and a carefully crafted voiceover.",
     ],
     heroVideo: true,
-    video: { title: "Ajanta Magic Moments", description: "AI-assisted film with fairy metaphor, custom music and crafted voiceover.", src: "/videos/work/ajanta-ai-creatives-1.mp4", portrait: true, rotate: "ccw" },
+    video: { title: "Ajanta Magic Moments", description: "AI-assisted film with fairy metaphor, custom music and crafted voiceover.", src: "/videos/work/ajanta-ai-creatives-1.mp4", poster: "/images/work/cases/ajanta-ai-creatives.png", portrait: true, rotate: "ccw" },
     clientLogo: "/images/partners/clients/ajanta-quartz.png",
     flagship: true,
     featured: true,

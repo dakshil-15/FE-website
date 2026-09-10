@@ -9,15 +9,9 @@ import type { CaseStudy, CaseStudyFamily, Metric } from "@/content/types";
 import { workPhotos } from "@/content/workPhotos";
 
 export const workHero = {
-  headlineBefore: "Case studies.",
-  headlineAccent: "Real impact.",
+  headlineBefore: "Our",
+  headlineAccent: "Work.",
   body: "Explore how we engineer growth systems that solve real business challenges and deliver measurable results.",
-  image: {
-    src: "/images/work/hero/work-banner.jpg",
-    alt: "First Economy team in a strategy meeting reviewing growth analytics on a boardroom display",
-    label: "Work hero banner",
-    grayscale: false,
-  } satisfies MediaSlot,
   burst: "/images/work/hero/radial-burst.svg",
   arrow: "/images/work/hero/arrow-circle.svg",
 };

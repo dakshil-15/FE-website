@@ -6,7 +6,7 @@ export const godrejGreenfront: CaseStudy = {
     campaign: "The Greenfront",
     industry: "real-estate",
     services: ["branding"],
-    hero: "Infinite Shades of Green — a campaign built around the site’s natural abundance.",
+    hero: "Bringing the project’s natural surroundings into the heart of the campaign.",
     challenge: "Build a campaign rooted in the site’s natural abundance — not imposed on it.",
     objective: "Godrej Properties was launching a new project in a location defined by its natural abundance. The brief was to build a campaign that felt rooted in the environment, not imposed on it.",
     mandate: [

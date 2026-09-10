@@ -5,11 +5,12 @@ import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
+import CareersCultureGallery from "@/components/careers/CareersCultureGallery";
 import { IconSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import type { CareerRole } from "@/content/careers";
 import { getCareerRoleHref } from "@/lib/careers";
-import { careersCta, careersHero, careersOpenings } from "@/content/careers";
+import { careersCta, careersGallery, careersHero, careersOpenings } from "@/content/careers";
 
 type CareersPageProps = {
   roles: CareerRole[];
@@ -168,6 +169,29 @@ export default function CareersPage({ roles }: CareersPageProps) {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Life at First Economy (white) ─────────────── */}
+      <section
+        id="our-culture"
+        data-animate-section
+        className="section-shell section-pad bg-white"
+        aria-labelledby="culture-heading"
+      >
+        <div className="section-inner">
+          <p data-animate="fade-up" className="text-eyebrow m-0">
+            {careersGallery.eyebrow}
+          </p>
+          <div className="section-intro">
+            <h2 data-animate="fade-up" id="culture-heading" className="text-display-md m-0">
+              {careersGallery.title}
+            </h2>
+          </div>
+
+          <div data-animate="fade-up" className="section-media">
+            <CareersCultureGallery images={careersGallery.images} />
           </div>
         </div>
       </section>

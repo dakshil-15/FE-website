@@ -6,7 +6,7 @@ export const royaleToucheStayCurious: CaseStudy = {
     campaign: "#StayCurious",
     industry: "consumer-retail",
     services: ["seo", "ai-solutions", "influencer-marketing", "social-media"],
-    hero: "A Reddit presence of 120K impressions that translated into LLM recognition — 4.9/5.",
+    hero: "Making it easier to see, feel and experience Royalé Touché laminates.",
     challenge: "Build awareness and communicate the full-size laminate experience across 200+ Experience Centres.",
     objective: "Create awareness and communicate that you can experience the full-size laminate sheet across Royale Touché’s 200+ Experience Centres.",
     mandate: [

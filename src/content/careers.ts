@@ -494,6 +494,20 @@ function buildFallbackDetail(role: CareerRole): CareerRoleDetail {
 
 export { buildFallbackDetail };
 
+/** "Life at First Economy" photo gallery — sits right after Open Positions. */
+export const careersGallery = {
+  eyebrow: "Life at First Economy",
+  title: "Where the work happens.",
+  images: [
+    { src: "/images/careers/life-at-fe/01.jpg", alt: "The First Economy team celebrating a Guinness World Records achievement" },
+    { src: "/images/careers/life-at-fe/02.jpg", alt: "The First Economy team together in the office" },
+    { src: "/images/careers/life-at-fe/03.jpg", alt: "The team celebrating together at a company event" },
+    { src: "/images/careers/life-at-fe/04.jpg", alt: "The whole First Economy team at an office celebration" },
+    { src: "/images/careers/life-at-fe/05.jpg", alt: "The First Economy team in branded tees at an outdoor gathering" },
+    { src: "/images/careers/life-at-fe/06.jpg", alt: "The First Economy team at a company offsite retreat" },
+  ],
+};
+
 export const careersCta = {
   titleBefore: "Let's build what's next.",
   titleAccent: "Together.",

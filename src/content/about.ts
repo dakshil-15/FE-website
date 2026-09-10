@@ -273,31 +273,29 @@ export const aboutUi = {
   arrowCircle: "/images/about/ui/arrow-right-circle.svg",
 };
 
+export const aboutValuesIntro =
+  "Our values aren't words on a wall. They're everyday behaviors that shape how we work, collaborate, and grow.";
+
 export const aboutValues = [
   {
-    title: "Innovation",
-    body: "We look for better ways to grow, not just more ways to spend.",
-    icon: { src: "/images/about/values/innovation.svg", alt: "", label: "Innovation" } satisfies MediaSlot,
+    title: "We Own It",
+    body: "We take responsibility from brief to delivery. No passing the buck, no excuses, just a commitment to make things happen.",
   },
   {
-    title: "Collaboration",
-    body: "Media, creative, technology and data work as one team.",
-    icon: { src: "/images/about/values/collaboration.svg", alt: "", label: "Collaboration" } satisfies MediaSlot,
+    title: "We Stay Curious",
+    body: "We question the obvious, explore what's next and keep learning. Because better work starts with better questions.",
   },
   {
-    title: "Impact",
-    body: "Every system is built around a measurable growth outcome.",
-    icon: { src: "/images/about/values/impact.svg", alt: "", label: "Impact" } satisfies MediaSlot,
+    title: "We Respect People",
+    body: "Good work comes from good relationships. We listen, speak up, give credit and treat every client, colleague and partner with respect.",
   },
   {
-    title: "Integrity",
-    body: "We own the work, the numbers, and the partnership.",
-    icon: { src: "/images/about/values/integrity.svg", alt: "", label: "Integrity" } satisfies MediaSlot,
+    title: "We Move Together",
+    body: "Ideas get better when people come together. We collaborate across teams, share what we know and have each other's backs.",
   },
   {
-    title: "Passion",
-    body: "Ambitious people, ambitious brands, ambitious results.",
-    icon: { src: "/images/about/values/passion.svg", alt: "", label: "Passion" } satisfies MediaSlot,
+    title: "We Keep Raising the Bar",
+    body: "We don't just chase big wins. We notice the small breakthroughs, learn from every project and keep pushing the work forward.",
   },
 ];
 

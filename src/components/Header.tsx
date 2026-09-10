@@ -9,10 +9,9 @@ import GrowthCta from "@/components/GrowthCta";
 import MobileNavSidebar from "@/components/MobileNavSidebar";
 
 const primaryNav = [
-  { label: "Work", href: "/work" },
-  { label: "Services", href: "/services" },
-  { label: "Capabilities", href: "/capabilities" },
   { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/work" },
   { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
 ];
@@ -134,8 +133,8 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`rounded-sm border-b pb-0.5 transition hover:text-red focus-visible:outline-offset-4 ${
-                    active ? "border-red text-ink" : "border-transparent"
+                  className={`rounded-sm pb-0.5 transition hover:text-red focus-visible:outline-offset-4 ${
+                    active ? "text-red" : ""
                   }`}
                 >
                   {item.label}

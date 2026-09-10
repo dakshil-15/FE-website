@@ -27,7 +27,7 @@ export const godrejBlue: CaseStudy = {
     executionPillars: [],
     results: [],
     builtWithServices: [],
-    tags: ["Branding", "OOH", "Influencer", "Experiential", "Print"],
+    tags: ["Branding", "OOH", "Influencer", "Print"],
     year: 2024,
     galleryGroups: [
       {
@@ -62,7 +62,7 @@ export const godrejBlue: CaseStudy = {
       },
     ],
     gallery: [
-      "/images/work/cases/godrej-blue-v2.png",
+      "/images/work/cases/godrej-blue.png",
       "/images/work/gallery/godrej-blue/04.png",
       "/images/work/gallery/godrej-blue/03.png",
       "/images/work/gallery/godrej-blue/07.png",

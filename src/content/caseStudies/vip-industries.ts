@@ -6,7 +6,7 @@ export const vipIndustries: CaseStudy = {
     campaign: "Turning Visibility Into Visits",
     industry: "consumer-retail",
     services: ["media-buying"],
-    hero: "64M+ impressions converted into measured footfall across 180+ stores.",
+    hero: "Turning VIP Industries’ digital visibility into real-world impact, from online discovery to website visits and store footfalls.",
     challenge: "Accelerate D2C growth by converting awareness into measurable website traffic and store visits.",
     objective: "To accelerate D2C growth for VIP Industries by maximizing visibility and engagement across key audience segments and converting awareness into measurable website traffic and in-store footfalls nationwide.",
     mandate: [

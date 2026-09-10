@@ -1,11 +1,20 @@
 import { IconSlot } from "@/components/media/AssetPlaceholder";
 import type { ServicePageValueCard } from "@/content/servicePages/types";
 
-export default function ServiceValueGrid({ cards }: { cards: ServicePageValueCard[] }) {
+type ServiceValueGridProps = {
+  cards: ServicePageValueCard[];
+  /** Grid column classes — defaults to a 2-column cap for the paired `why` layout. */
+  gridClassName?: string;
+};
+
+export default function ServiceValueGrid({
+  cards,
+  gridClassName = "grid-cols-1 xs:grid-cols-2",
+}: ServiceValueGridProps) {
   return (
     <ul
       data-animate-stagger
-      className="m-0 grid list-none grid-cols-1 gap-4 p-0 xs:grid-cols-2 xs:gap-5"
+      className={`m-0 grid list-none gap-4 p-0 xs:gap-5 ${gridClassName}`.trim()}
     >
       {cards.map((card, index) => {
         const num = String(index + 1).padStart(2, "0");

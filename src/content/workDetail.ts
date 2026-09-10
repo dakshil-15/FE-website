@@ -16,7 +16,7 @@ import type {
   CaseStudyVideo,
   Metric,
 } from "@/content/types";
-import { workCardImage, workCardTitle } from "@/content/workPage";
+import { workCardImage, workCardTag, workCardTitle } from "@/content/workPage";
 import { workPhotos } from "@/content/workPhotos";
 import { fetchInstagramThumbnail } from "@/lib/instagram";
 
@@ -313,7 +313,7 @@ export function buildWorkDetailModel(caseStudy: CaseStudy): WorkDetailModel {
   return {
     caseStudy,
     title: workCardTitle(caseStudy),
-    familyLabel: workFamilyLabel(caseStudy.family),
+    familyLabel: workCardTag(caseStudy),
     familyOverviewLabel: workFamilyOverviewLabel(caseStudy.family),
     tags: serviceTags(caseStudy),
     industryName: industry?.name ?? caseStudy.industry,
@@ -368,6 +368,7 @@ export type WorkDetailSectionId =
   | "mandate"
   | "platforms"
   | "execution"
+  | "creatives"
   | "activations"
   | "gallery"
   | "video"
@@ -407,6 +408,11 @@ const TAB_DEFINITIONS: {
         Boolean(m.executionSummary)
       );
     },
+  },
+  {
+    id: "creatives",
+    label: "Creatives",
+    hasContent: (m) => m.caseStudy.slug === "waaree",
   },
   {
     id: "activations",
