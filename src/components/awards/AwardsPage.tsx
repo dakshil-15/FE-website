@@ -104,12 +104,6 @@ export default function AwardsPage() {
             <h2 data-animate="fade-up" id="awards-gallery-heading" className="text-display-md m-0">
               {awardsGallerySection.title}
             </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-            >
-              {awardsGallerySection.body}
-            </p>
           </div>
 
           <div className="section-media">
