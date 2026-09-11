@@ -21,7 +21,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
         <Link href="/" className="relative z-10 inline-flex" aria-label="First Economy home">
           <Image
-            src="/assets/fe_logo.svg"
+            src="/images/brand/fe_logo.svg"
             alt="First Economy"
             width={143}
             height={46}
@@ -51,7 +51,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="w-full max-w-[26rem]">
           <Link href="/" className="mb-10 inline-flex lg:hidden" aria-label="First Economy home">
             <Image
-              src="/assets/fe_logo_black.svg"
+              src="/images/brand/fe_logo_black.svg"
               alt="First Economy"
               width={143}
               height={46}

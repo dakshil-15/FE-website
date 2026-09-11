@@ -186,7 +186,7 @@ export default function MobileNavSidebar({
             tabIndex={open ? 0 : -1}
           >
             <Image
-              src="/assets/fe_logo_black.svg"
+              src="/images/brand/fe_logo_black.svg"
               alt=""
               width={120}
               height={38}

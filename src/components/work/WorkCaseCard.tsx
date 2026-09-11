@@ -73,7 +73,7 @@ export default function WorkCaseCard({ caseStudy }: { caseStudy: CaseStudy }) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6">
+      <div className="flex flex-1 flex-col border-t border-line px-5 py-5 sm:px-6 sm:py-6">
         <p className="text-eyebrow m-0">{tag}</p>
         <h3
           id={titleId}

@@ -40,7 +40,7 @@ export default function AdminSidebar({ nav }: { nav: AdminNav }) {
       <div className="flex items-center justify-between border-b border-line bg-paper px-[var(--gutter)] py-3 lg:hidden">
         <Link href="/admin" className="flex items-center" aria-label="Admin dashboard">
           <Image
-            src="/assets/fe_logo_black.svg"
+            src="/images/brand/fe_logo_black.svg"
             alt="First Economy"
             width={143}
             height={46}
@@ -70,7 +70,7 @@ export default function AdminSidebar({ nav }: { nav: AdminNav }) {
         <div className="hidden border-b border-line px-5 py-[18px] lg:block">
           <Link href="/admin" className="block" aria-label="Admin dashboard">
             <Image
-              src="/assets/fe_logo_black.svg"
+              src="/images/brand/fe_logo_black.svg"
               alt="First Economy"
               width={143}
               height={46}

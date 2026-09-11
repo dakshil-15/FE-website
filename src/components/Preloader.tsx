@@ -312,7 +312,7 @@ export default function Preloader() {
           className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center"
         >
           <Image
-            src="/assets/fe_logo_black.svg"
+            src="/images/brand/fe_logo_black.svg"
             alt="First Economy"
             width={200}
             height={64}

@@ -112,7 +112,7 @@ export default function Header() {
         <div className="mx-auto flex max-w-[var(--content)] items-center justify-between gap-3 sm:gap-[clamp(16px,2.5vw,40px)]">
           <Link href="/" className="flex min-w-0 flex-none items-center" aria-label="First Economy home">
             <Image
-              src="/assets/fe_logo_black.svg"
+              src="/images/brand/fe_logo_black.svg"
               alt="First Economy — Your Growth Partner"
               width={143}
               height={46}

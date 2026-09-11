@@ -77,7 +77,7 @@ export const careersHero = {
   body: "At First Economy, we're here to make work that gets noticed and build a place where people love doing it. Bring your ideas, challenge the obvious, learn something new and grow with a team that's always rooting for you.",
   cta: { label: "Explore openings", href: "#open-positions" },
   image: {
-    src: "/images/careers/team.png",
+    src: "/images/careers/hero/team.png",
     alt: "First Economy teammates collaborating around a long office table",
     label: "Careers hero team photo",
     grayscale: false,

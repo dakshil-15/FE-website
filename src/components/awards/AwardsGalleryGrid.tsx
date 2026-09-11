@@ -1,26 +1,26 @@
 import Image from "next/image";
 import { awardsGallery, type AwardGalleryItem } from "@/content/awards";
 
-function statSlug(organization: string, year: string, tier: string) {
-  return `${organization}-${year}-${tier}`.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+function statSlug(src: string) {
+  return src.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function AwardCard({ award }: { award: AwardGalleryItem }) {
-  const titleId = `award-${statSlug(award.organization, award.year, award.tier)}`;
+  const titleId = `award-${statSlug(award.image.src || award.organization)}`;
 
   return (
     <article
       className="flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-white sm:rounded-[22px]"
       aria-labelledby={titleId}
     >
-      <div className="relative aspect-[4/5] shrink-0 overflow-hidden bg-[#111]">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-[#111]">
         {award.image.src ? (
           <Image
             src={award.image.src}
             alt={award.image.alt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-            className="object-contain p-4 transition duration-500 sm:p-5"
+            className="object-contain transition duration-500"
           />
         ) : (
           <div
@@ -60,7 +60,7 @@ export default function AwardsGalleryGrid({ headingId }: AwardsGalleryGridProps)
       aria-labelledby={headingId}
     >
       {awardsGallery.map((award) => (
-        <li key={award.organization} className="min-w-0">
+        <li key={award.image.src || award.organization} className="min-w-0">
           <AwardCard award={award} />
         </li>
       ))}

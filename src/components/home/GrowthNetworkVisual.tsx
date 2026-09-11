@@ -657,15 +657,21 @@ export default function GrowthNetworkVisual() {
               );
             })}
 
-            {SYSTEM_NODES.map((node) => (
-              <circle
-                key={`packet-${node.id}`}
-                data-gs-packet={node.id}
-                r={3}
-                fill="#E1261C"
-                filter={`url(#${uid}-glow)`}
-              />
-            ))}
+            {SYSTEM_NODES.map((node) => {
+              const start = polar(node.angle, RAY_OUTER - 10);
+              return (
+                <circle
+                  key={`packet-${node.id}`}
+                  data-gs-packet={node.id}
+                  cx={start.x}
+                  cy={start.y}
+                  r={3}
+                  fill="#E1261C"
+                  filter={`url(#${uid}-glow)`}
+                  suppressHydrationWarning
+                />
+              );
+            })}
 
             {!isCoarse &&
               ORBIT_PARTICLES.map((p) => {

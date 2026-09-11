@@ -330,7 +330,7 @@ export default function HomePage() {
           aria-hidden="true"
         >
           <Image
-            src="/assets/ui-scroll.png"
+            src="/images/brand/ui-scroll.png"
             alt=""
             width={40}
             height={52}

@@ -28,10 +28,6 @@ export const godrejGreenfront: CaseStudy = {
       { title: "Asset Rollout", description: "Brochure, newspaper, standee, hoarding and social." },
       { title: "Zepto Activation", description: "Shade cards, QR landing page, bag doodles and map integration." },
     ],
-    results: [
-      { label: "Concept", value: "Infinite Shades of Green" },
-      { label: "Activation", value: "Offline + digital + Zepto" },
-    ],
     tags: ["Branding", "Real Estate", "OOH", "Activation"],
     galleryGroups: [
       {
@@ -58,12 +54,6 @@ export const godrejGreenfront: CaseStudy = {
         images: [
           "/images/work/gallery/godrej-greenfront/06.png",
           "/images/work/gallery/godrej-greenfront/07.png",
-        ],
-      },
-      {
-        title: "Campaign Cover",
-        images: [
-          "/images/work/gallery/godrej-greenfront/01.png",
         ],
       },
     ],

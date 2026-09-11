@@ -15,6 +15,7 @@ import {
   SERVICE_ICONS,
 } from "@/components/work/WorkDetailShared";
 import WorkDetailVideoSlider from "@/components/work/WorkDetailVideoSlider";
+import WorkDetailVideoMockupSlider from "@/components/work/WorkDetailVideoMockupSlider";
 import YouTubeVideoSlider from "@/components/work/YouTubeVideoSlider";
 import {
   AMBASSADOR_HOTEL_PHONE_SCREENS,
@@ -401,11 +402,19 @@ export default function WorkDetailStory({
                           {caseStudy.videoIntro}
                         </p>
                       ) : null}
-                      <WorkDetailVideoSlider
-                        videos={videos}
-                        campaign={caseStudy.campaign}
-                        fallbackPoster={heroImage.src}
-                      />
+                      {caseStudy.slug === "godrej-blue" ? (
+                        <WorkDetailVideoMockupSlider
+                          videos={videos}
+                          campaign={caseStudy.campaign}
+                          fallbackPoster={heroImage.src}
+                        />
+                      ) : (
+                        <WorkDetailVideoSlider
+                          videos={videos}
+                          campaign={caseStudy.campaign}
+                          fallbackPoster={heroImage.src}
+                        />
+                      )}
                     </div>
                   ) : null;
 

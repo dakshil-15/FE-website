@@ -161,37 +161,37 @@ export const servicesTrusted = {
   logos: [
     {
       name: "Godrej",
-      src: "/assets/logo-godrej.png",
+      src: "/images/services/logos/godrej.png",
       w: 972,
       h: 479,
     },
     {
       name: "FedEx",
-      src: "/assets/logo-fedex.png",
+      src: "/images/services/logos/fedex.png",
       w: 806,
       h: 245,
     },
     {
       name: "Mahindra",
-      src: "/assets/logo-mahindra.png",
+      src: "/images/services/logos/mahindra.png",
       w: 954,
       h: 142,
     },
     {
       name: "Ajanta",
-      src: "/assets/logo-ajanta.png",
+      src: "/images/services/logos/ajanta.png",
       w: 905,
       h: 273,
     },
     {
       name: "Waaree",
-      src: "/assets/logo-waaree.png",
+      src: "/images/services/logos/waaree.png",
       w: 952,
       h: 287,
     },
     {
       name: "Orpat",
-      src: "/assets/logo-orpat.png",
+      src: "/images/services/logos/orpat.png",
       w: 937,
       h: 276,
     },

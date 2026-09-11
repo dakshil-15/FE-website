@@ -41,7 +41,7 @@ export default function ValuesSlider({ values }: { values: Value[] }) {
         className="relative min-h-[11rem] text-center sm:min-h-[9rem]"
       >
         <div key={active} className="work-hero-carousel__slide-in">
-          <h3 className="font-display text-2xl tracking-[0.04em] text-ink uppercase sm:text-3xl">
+          <h3 className="font-display text-2xl tracking-[0.04em] text-red uppercase sm:text-3xl">
             {current.title}
           </h3>
           <p className="text-body section-copy-on-light mx-auto mt-4 mb-0 max-w-3xl">
@@ -61,29 +61,9 @@ export default function ValuesSlider({ values }: { values: Value[] }) {
           >
             <ArrowLeft size={18} aria-hidden />
           </button>
-          <div className="flex min-w-0 items-center justify-center gap-1">
-            <span className="sr-only" aria-live="polite" aria-atomic="true">
-              Showing value {active + 1} of {total}
-            </span>
-            {values.map((value, i) => (
-              <button
-                key={value.title}
-                type="button"
-                data-no-btn-motion
-                aria-label={`Show ${value.title}`}
-                aria-current={i === active ? "true" : undefined}
-                onClick={() => goTo(i)}
-                className="tap-target-sm grid place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-              >
-                <span
-                  className={`block h-1.5 rounded-full transition ${
-                    i === active ? "w-6 bg-red" : "w-1.5 bg-line"
-                  }`}
-                  aria-hidden
-                />
-              </button>
-            ))}
-          </div>
+          <span className="sr-only" aria-live="polite" aria-atomic="true">
+            Showing value {active + 1} of {total}
+          </span>
           <button
             type="button"
             data-no-btn-motion

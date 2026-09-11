@@ -295,7 +295,7 @@ export default function PhoneCoverflowGallery({ images, title }: PhoneCoverflowG
                 sizes="16rem"
               />
               <div
-                className="absolute z-10 overflow-hidden bg-ink"
+                className="absolute z-10 flex flex-col overflow-hidden bg-ink"
                 style={{
                   top: `${MOBILE_SCREEN_INSET.top}%`,
                   left: `${MOBILE_SCREEN_INSET.left}%`,
@@ -304,14 +304,17 @@ export default function PhoneCoverflowGallery({ images, title }: PhoneCoverflowG
                   borderRadius: "9.12% / 4.48%",
                 }}
               >
-                <Image
-                  key={activeImage.src}
-                  src={activeImage.src}
-                  alt={activeImage.alt}
-                  fill
-                  sizes="16rem"
-                  className="work-hero-carousel__slide-in object-cover"
-                />
+                <div className="relative h-[60%] w-full shrink-0 overflow-hidden">
+                  <Image
+                    key={activeImage.src}
+                    src={activeImage.src}
+                    alt={activeImage.alt}
+                    fill
+                    sizes="16rem"
+                    className="work-hero-carousel__slide-in object-cover"
+                  />
+                </div>
+                <div className="h-[40%] w-full shrink-0 bg-ink" />
               </div>
             </button>
           </div>
@@ -328,29 +331,9 @@ export default function PhoneCoverflowGallery({ images, title }: PhoneCoverflowG
             >
               <ArrowLeft size={18} aria-hidden />
             </button>
-            <div className="flex min-w-0 flex-wrap items-center justify-center gap-1">
-              <span className="sr-only" aria-live="polite" aria-atomic="true">
-                Showing image {active + 1} of {total}
-              </span>
-              {images.map((img, i) => (
-                <button
-                  key={`${img.src}-dot`}
-                  type="button"
-                  data-no-btn-motion
-                  aria-label={`Show image ${i + 1}`}
-                  aria-current={i === active ? "true" : undefined}
-                  onClick={() => goTo(i)}
-                  className="tap-target-sm grid place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-                >
-                  <span
-                    className={`block h-1.5 rounded-full transition ${
-                      i === active ? "w-6 bg-red" : "w-1.5 bg-line"
-                    }`}
-                    aria-hidden
-                  />
-                </button>
-              ))}
-            </div>
+            <span className="sr-only" aria-live="polite" aria-atomic="true">
+              Showing image {active + 1} of {total}
+            </span>
             <button
               type="button"
               data-no-btn-motion

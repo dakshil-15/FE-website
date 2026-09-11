@@ -17,7 +17,6 @@ import {
   aboutLocations,
   aboutValues,
   aboutWhatWeDo,
-  aboutTeamTagline,
   aboutFeaturedAchievement,
   aboutCta,
 } from "@/content/about";
@@ -173,11 +172,6 @@ export default function AboutPage() {
             <h2 data-animate="fade-up" id="team-heading" className="text-display-md m-0">
               Leadership that builds <span className="text-red">what&rsquo;s next.</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-dark m-0">
-                {aboutTeamTagline}.
-              </p>
-            </div>
           </div>
           <div className="section-media">
             <TeamCarousel />

@@ -302,29 +302,9 @@ export default function CareersCultureGallery({ images }: CareersCultureGalleryP
             >
               <ArrowLeft size={18} aria-hidden />
             </button>
-            <div className="flex min-w-0 flex-wrap items-center justify-center gap-1">
-              <span className="sr-only" aria-live="polite" aria-atomic="true">
-                Showing image {active + 1} of {total}
-              </span>
-              {images.map((img, i) => (
-                <button
-                  key={`${img.src}-dot`}
-                  type="button"
-                  data-no-btn-motion
-                  aria-label={`Show image ${i + 1}`}
-                  aria-current={i === active ? "true" : undefined}
-                  onClick={() => goTo(i)}
-                  className="tap-target-sm grid place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
-                >
-                  <span
-                    className={`block h-1.5 rounded-full transition ${
-                      i === active ? "w-6 bg-red" : "w-1.5 bg-line"
-                    }`}
-                    aria-hidden
-                  />
-                </button>
-              ))}
-            </div>
+            <span className="sr-only" aria-live="polite" aria-atomic="true">
+              Showing image {active + 1} of {total}
+            </span>
             <button
               type="button"
               data-no-btn-motion
