@@ -210,16 +210,6 @@
     "height": 500
   },
   {
-    "index": 22,
-    "slug": "adani-realty",
-    "name": "Adani Realty",
-    "src": "/images/partners/clients/adani-realty.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
-  },
-  {
     "index": 23,
     "slug": "glenmark",
     "name": "Glenmark",
@@ -254,16 +244,6 @@
     "slug": "times-group",
     "name": "The Times Group",
     "src": "/images/partners/clients/times-group.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
-  },
-  {
-    "index": 27,
-    "slug": "radiant-world",
-    "name": "Radiant World",
-    "src": "/images/partners/clients/radiant-world.png",
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
@@ -392,7 +372,7 @@
   {
     "index": 40,
     "slug": "avene",
-    "name": "Avène",
+    "name": "Av\u00c3\u00a8ne",
     "src": "/images/partners/clients/avene.png",
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
@@ -570,26 +550,6 @@
     "height": 500
   },
   {
-    "index": 58,
-    "slug": "lotus-developers",
-    "name": "Lotus Developers",
-    "src": "/images/partners/clients/lotus-developers.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
-  },
-  {
-    "index": 59,
-    "slug": "shree-naman-group",
-    "name": "Shree Naman Group",
-    "src": "/images/partners/clients/shree-naman-group.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
-  },
-  {
     "index": 60,
     "slug": "jp-infra",
     "name": "JP Infra",
@@ -604,16 +564,6 @@
     "slug": "adani-airports",
     "name": "Adani Airports",
     "src": "/images/partners/clients/adani-airports.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
-  },
-  {
-    "index": 62,
-    "slug": "ajanta-quartz",
-    "name": "Ajanta Quartz",
-    "src": "/images/partners/clients/ajanta-quartz.png",
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,

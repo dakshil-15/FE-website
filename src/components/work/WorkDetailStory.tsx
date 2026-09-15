@@ -809,9 +809,8 @@ export default function WorkDetailStory({
                       : "xs:grid-cols-2 lg:grid-cols-4"
               }`}
             >
-              {builtWith.map((service, i) => {
+              {builtWith.map((service) => {
                 const Icon = SERVICE_ICONS[service.slug] ?? Layers;
-                const num = String(i + 1).padStart(2, "0");
                 const titleId = `built-with-${service.slug}`;
 
                 return (
@@ -834,15 +833,9 @@ export default function WorkDetailStory({
                         />
                       </svg>
 
-                      <div className="relative flex items-start justify-between gap-3">
+                      <div className="relative flex items-start gap-3">
                         <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-14 sm:w-14">
                           <Icon size={26} aria-hidden className="h-6 w-6 text-white sm:h-7 sm:w-7" />
-                        </span>
-                        <span
-                          className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
-                          aria-hidden
-                        >
-                          {num}
                         </span>
                       </div>
 

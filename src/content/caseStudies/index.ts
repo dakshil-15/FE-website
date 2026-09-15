@@ -29,7 +29,6 @@ export const caseStudies: CaseStudy[] = [
   akbarTravelsSeo,
   shoppersStopLocalSeo,
   celloKidzbee,
-  youngBags,
   ambassadorHotel,
   godrejGreenfront,
   amazonSamsungGreatIndianFestival,

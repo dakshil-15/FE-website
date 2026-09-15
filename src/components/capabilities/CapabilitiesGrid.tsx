@@ -9,8 +9,7 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
       data-animate-stagger
       className="m-0 grid list-none grid-cols-1 gap-4 p-0 xs:grid-cols-2 xs:gap-5 lg:grid-cols-4 lg:gap-5 xl:gap-6"
     >
-      {cards.map((card, index) => {
-        const num = String(index + 1).padStart(2, "0");
+      {cards.map((card) => {
         const titleId = `capability-card-${card.id}`;
 
         return (
@@ -20,19 +19,13 @@ export default function CapabilitiesGrid({ cards }: { cards: CapabilityCard[] })
               aria-labelledby={titleId}
               className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-red/35 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] focus-visible:border-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:min-h-[264px] sm:rounded-[22px] sm:p-5 md:min-h-[280px] md:p-6"
             >
-              <div className="relative flex items-start justify-between gap-3">
+              <div className="relative flex items-start gap-3">
                 <IconSlot
                   asset={card.icon}
                   size={48}
                   tone="accent"
                   className="h-10 w-10 sm:h-12 sm:w-12"
                 />
-                <span
-                  className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
-                  aria-hidden
-                >
-                  {num}
-                </span>
               </div>
 
               <div className="relative mt-5 flex flex-1 flex-col sm:mt-6">

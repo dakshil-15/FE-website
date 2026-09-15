@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useHorizontalCarousel } from "@/hooks/useHorizontalCarousel";
 
 type CarouselControls = "dark" | "light" | "dark-inset";
@@ -22,6 +22,8 @@ type HorizontalCarouselProps = {
   prevLabel?: string;
   nextLabel?: string;
   className?: string;
+  /** Auto-advance interval in ms; omit or 0 to disable. Pauses on hover/focus and respects reduced motion. */
+  autoPlayInterval?: number;
 };
 
 const controlStyles = {
@@ -97,6 +99,7 @@ export default function HorizontalCarousel({
   prevLabel = "Previous slide",
   nextLabel = "Next slide",
   className = "relative",
+  autoPlayInterval,
 }: HorizontalCarouselProps) {
   const {
     trackRef,
@@ -109,6 +112,26 @@ export default function HorizontalCarousel({
     scrollToIndex,
     handleKeyDown,
   } = useHorizontalCarousel({ itemCount });
+
+  const [autoPlayPaused, setAutoPlayPaused] = useState(false);
+  const activeRef = useRef(active);
+  activeRef.current = active;
+
+  useEffect(() => {
+    if (!autoPlayInterval || !canScroll || autoPlayPaused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = window.setInterval(() => {
+      const next = activeRef.current + 1;
+      if (next >= itemCount) {
+        scrollToIndex(0);
+      } else {
+        scrollByDir(1);
+      }
+    }, autoPlayInterval);
+
+    return () => window.clearInterval(timer);
+  }, [autoPlayInterval, canScroll, autoPlayPaused, itemCount, scrollByDir, scrollToIndex]);
 
   const styles = controlStyles[controls];
   const currentSlideLabel = getSlideLabel?.(active);
@@ -127,6 +150,10 @@ export default function HorizontalCarousel({
         aria-label={ariaLabel}
         tabIndex={canScroll ? 0 : undefined}
         onKeyDown={canScroll ? handleKeyDown : undefined}
+        onPointerEnter={autoPlayInterval ? () => setAutoPlayPaused(true) : undefined}
+        onPointerLeave={autoPlayInterval ? () => setAutoPlayPaused(false) : undefined}
+        onFocus={autoPlayInterval ? () => setAutoPlayPaused(true) : undefined}
+        onBlur={autoPlayInterval ? () => setAutoPlayPaused(false) : undefined}
       >
         {children}
       </div>

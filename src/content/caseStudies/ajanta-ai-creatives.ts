@@ -22,7 +22,6 @@ export const ajantaAiCreatives: CaseStudy = {
     ],
     heroVideo: true,
     video: { title: "Ajanta Magic Moments", description: "AI-assisted film with fairy metaphor, custom music and crafted voiceover.", src: "/videos/work/ajanta-ai-creatives-1.mp4", poster: "/images/work/cases/ajanta-ai-creatives.png", portrait: true, rotate: "ccw" },
-    clientLogo: "/images/partners/clients/ajanta-quartz.png",
     flagship: true,
     featured: true,
     family: "ai",

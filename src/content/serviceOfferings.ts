@@ -54,7 +54,7 @@ export const serviceOfferings: ServiceOffering[] = [
   },
   {
     slug: "seo",
-    name: "SEO Solutions",
+    name: "SEO/AEO/GEO",
     description: "Technical, local and AI-era search built to be found.",
     href: "/services/seo",
   },

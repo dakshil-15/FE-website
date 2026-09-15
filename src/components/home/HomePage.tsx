@@ -16,7 +16,9 @@ import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
 import CTASection from "@/components/CTASection";
 import GrowthCta from "@/components/GrowthCta";
 import {
+  AwardsIcon,
   CitiesIcon,
+  GrowthSystemIcon,
   MindsIcon,
 } from "@/components/brandIcons";
 import { homeOfficeStats } from "@/content/stats";
@@ -27,6 +29,8 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const heroStatIcons = {
   Cities: CitiesIcon,
   Employees: MindsIcon,
+  "Media Awards": AwardsIcon,
+  Billings: GrowthSystemIcon,
 } as const;
 
 const heroStats = homeOfficeStats.map((stat) => ({
@@ -62,7 +66,7 @@ export default function HomePage() {
 
           gsap.set(".growth-hero__line-inner", { y: "110%" });
           gsap.set(
-            "[data-animate='hero-eyebrow'], [data-animate='hero-support'], [data-animate='hero-ctas'], [data-animate='hero-status'], [data-animate='hero-visual'], [data-animate='scroll-hint']",
+            "[data-animate='hero-eyebrow'], [data-animate='hero-support'], [data-animate='hero-ctas'], [data-animate='hero-visual'], [data-animate='scroll-hint']",
             { autoAlpha: 0, y: 0 },
           );
           gsap.set("[data-animate='hero-support']", { y: 16 });
@@ -98,14 +102,6 @@ export default function HomePage() {
                 duration: 0.55,
               },
               "-=0.35",
-            )
-            .to(
-              "[data-animate='hero-status']",
-              {
-                autoAlpha: 1,
-                duration: 0.5,
-              },
-              "-=0.3",
             )
             .to(
               "[data-animate='hero-visual']",
@@ -302,21 +298,11 @@ export default function HomePage() {
               <GrowthCta href="/work" variant="primary">
                 Explore our work
               </GrowthCta>
-              <GrowthCta href="/services" variant="secondary">
+              <GrowthCta href="/services" variant="accent">
                 Explore our services
               </GrowthCta>
             </div>
 
-            <div data-animate="hero-status" className="growth-hero__status" aria-hidden="true">
-              <span className="growth-hero__status-dots">
-                <span className="growth-hero__status-dot is-active" />
-                <span className="growth-hero__status-dot" />
-                <span className="growth-hero__status-dot" />
-                <span className="growth-hero__status-dot" />
-              </span>
-              <span className="growth-hero__status-rule" />
-              <span>Built to scale. Designed to compound.</span>
-            </div>
           </div>
 
           <div data-animate="hero-visual" className="growth-hero__visual">
@@ -348,12 +334,12 @@ export default function HomePage() {
         <div className="section-inner">
           <div
             data-animate-stagger
-            className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-5 xs:max-w-3xl xs:grid-cols-2 xs:gap-6 lg:max-w-4xl lg:gap-8"
+            className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-5 xs:max-w-3xl xs:grid-cols-2 xs:gap-6 lg:max-w-6xl lg:grid-cols-4 lg:gap-6"
           >
             {heroStats.map((stat) => (
               <div
                 key={stat.label}
-                className="stat-item rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-6 sm:px-6 sm:py-7"
+                className="stat-item"
               >
                 <div
                   className="mb-3.5 flex h-10 w-10 items-center justify-center border border-white/30 text-white sm:mb-4 sm:h-12 sm:w-12 md:h-14 md:w-14"

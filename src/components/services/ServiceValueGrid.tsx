@@ -16,25 +16,17 @@ export default function ServiceValueGrid({
       data-animate-stagger
       className={`m-0 grid list-none gap-4 p-0 xs:gap-5 ${gridClassName}`.trim()}
     >
-      {cards.map((card, index) => {
-        const num = String(index + 1).padStart(2, "0");
-
+      {cards.map((card) => {
         return (
           <li key={card.id} className="min-w-0">
             <article className="relative flex h-full min-h-[200px] flex-col overflow-hidden rounded-[20px] border border-[#e6e6e6] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] sm:min-h-[220px] sm:rounded-[22px] sm:p-5 md:p-6">
-              <div className="relative flex items-start justify-between gap-3">
+              <div className="relative flex items-start gap-3">
                 <IconSlot
                   asset={card.icon}
                   size={48}
                   tone="accent"
                   className="h-10 w-10 sm:h-12 sm:w-12"
                 />
-                <span
-                  className="font-display text-[2.5rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[2.75rem]"
-                  aria-hidden
-                >
-                  {num}
-                </span>
               </div>
 
               <div className="relative mt-5 flex flex-1 flex-col sm:mt-6">

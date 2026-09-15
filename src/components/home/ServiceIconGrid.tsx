@@ -6,8 +6,7 @@ import { serviceOfferings } from "@/content/serviceOfferings";
 export default function ServiceIconGrid() {
   return (
     <ul data-animate-stagger className="caps list-none p-0">
-      {serviceOfferings.map((service, index) => {
-        const num = String(index + 1).padStart(2, "0");
+      {serviceOfferings.map((service) => {
         const Icon = serviceOfferingIconBySlug[service.slug];
 
         return (
@@ -29,7 +28,7 @@ export default function ServiceIconGrid() {
                 />
               </svg>
 
-              <div className="relative flex items-start justify-between gap-3">
+              <div className="relative flex items-start gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-red text-white shadow-[0_8px_20px_rgba(210,37,37,0.3)] sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
                   {Icon ? (
                     <Icon
@@ -38,12 +37,6 @@ export default function ServiceIconGrid() {
                       className="h-6 w-6 text-white sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-9 lg:w-9"
                     />
                   ) : null}
-                </span>
-                <span
-                  className="font-display text-[2.75rem] leading-none font-light tracking-tight text-[#e4e4e4] select-none sm:text-[3rem]"
-                  aria-hidden
-                >
-                  {num}
                 </span>
               </div>
 

@@ -52,7 +52,7 @@ export const aboutStats = networkStats.map((stat) => ({
 export const aboutStory = {
   eyebrow: "Our Story",
   title: "A partner. A team. A system that works.",
-  body: "First Economy began as a digital-first partner for ambitious brands. Over a decade we have grown into 250+ minds across four cities — building one connected growth system instead of a collection of disconnected services.",
+  body: "First Economy began as a digital-first partner for ambitious brands. Over a decade we have grown into 302+ minds across four cities — building one connected growth system instead of a collection of disconnected services.",
 };
 
 export const aboutTimeline = [

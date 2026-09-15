@@ -58,7 +58,7 @@ export const companyOfficeScale = {
   cities: { value: 4, label: "Cities", showPlus: false as const },
 } as const;
 
-/** Home page company scale strip — cities and team size. */
+/** Home page company scale strip — cities, team size, awards and billings. */
 export const homeOfficeStats: NetworkStat[] = [
   {
     value: companyOfficeScale.cities.value,
@@ -74,6 +74,8 @@ export const homeOfficeStats: NetworkStat[] = [
     description:
       "Specialists across strategy, creative, media, technology and data — building as one team.",
   },
+  networkStats.find((stat) => stat.label === "Media Awards")!,
+  { ...networkStats.find((stat) => stat.label === "Billings")!, footnoteMarker: false },
 ];
 
 export function formatNetworkStatValue(stat: NetworkStat): string {

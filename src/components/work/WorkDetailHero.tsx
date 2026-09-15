@@ -129,7 +129,7 @@ export default function WorkDetailHero({
                 }
               />
             </div>
-          ) : (
+          ) : caseStudy.slug === "ajanta-ai-creatives" ? null : (
             <p
               data-animate="hero-copy"
               className="text-body-sm mt-6 mb-0 font-semibold tracking-wide text-muted sm:mt-7"

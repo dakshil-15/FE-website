@@ -38,30 +38,19 @@ export default function LocationsSection() {
                 aria-label={`${office.city}${office.isHq ? " headquarters" : ""} — ${office.description}`}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-[border-color,box-shadow] duration-200 hover:border-ink focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
               >
-                <div className="flex flex-1 flex-col gap-3 px-3.5 py-3.5 sm:gap-3.5 sm:px-4 sm:py-4 lg:px-5 lg:py-[18px]">
-                  <div className="flex items-start gap-3">
-                    <span
-                      className="grid h-9 w-9 flex-none place-items-center rounded-full border border-red bg-white text-red sm:h-10 sm:w-10"
-                      aria-hidden
-                    >
-                      <MapPin size={16} fill="currentColor" strokeWidth={0} />
-                    </span>
-                    <p className="m-0 flex min-w-0 flex-1 flex-wrap items-baseline gap-x-1.5 gap-y-0.5 text-balance font-display text-sm leading-[1.15] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
-                      <span className="min-w-0">{office.city}</span>
-                      {office.isHq ? (
-                        <span className="shrink-0 text-[10px] tracking-[0.12em] text-red">HQ</span>
-                      ) : null}
-                    </p>
-                  </div>
-                  <p className="text-body-sm m-0 w-full leading-snug text-muted">
-                    {office.description}
-                  </p>
+                <div className="flex flex-1 flex-col items-center justify-center gap-3 px-3.5 py-6 text-center sm:gap-3.5 sm:px-4 sm:py-7 lg:px-5 lg:py-8">
                   <span
-                    className="mt-auto grid h-9 w-9 flex-none place-items-center self-end rounded-full border border-line text-ink transition-[border-color,color,background-color] duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:h-10 sm:w-10"
+                    className="grid h-9 w-9 flex-none place-items-center rounded-full border border-red bg-white text-red sm:h-10 sm:w-10"
                     aria-hidden
                   >
-                    <ArrowRight size={14} />
+                    <MapPin size={16} fill="currentColor" strokeWidth={0} />
                   </span>
+                  <p className="m-0 flex min-w-0 flex-wrap items-baseline justify-center gap-x-1.5 gap-y-0.5 text-balance font-display text-sm leading-[1.15] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                    <span className="min-w-0">{office.city}</span>
+                    {office.isHq ? (
+                      <span className="shrink-0 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                    ) : null}
+                  </p>
                 </div>
               </Link>
             </li>

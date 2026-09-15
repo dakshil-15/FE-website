@@ -8,13 +8,11 @@ import { caseStudies } from "@/content/caseStudies/index";
 import {
   caseStudyIndustryName,
   homeFeaturedEyebrow,
-  homeFeaturedSpotlightMetric,
-  homeFeaturedWorkStudies,
   workCardImage,
   workCardTitle,
 } from "@/content/workPage";
 
-const featuredCases = homeFeaturedWorkStudies(caseStudies);
+const featuredCases = caseStudies;
 
 export default function FeaturedWorkCarousel() {
   return (
@@ -27,11 +25,11 @@ export default function FeaturedWorkCarousel() {
       arrowPosition="upper"
       prevLabel="Previous case study"
       nextLabel="Next case study"
+      autoPlayInterval={3000}
     >
       {featuredCases.map((caseStudy) => {
         const title = workCardTitle(caseStudy);
         const image = workCardImage(caseStudy);
-        const spotlight = homeFeaturedSpotlightMetric(caseStudy);
         const titleId = `featured-work-${caseStudy.slug}`;
         const src = image.src ?? "/images/work/cases/godrej-blue.png";
 
@@ -52,7 +50,7 @@ export default function FeaturedWorkCarousel() {
               />
             </div>
 
-            <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6">
+            <div className="flex flex-1 flex-col border-t border-line px-5 py-5 sm:px-6 sm:py-6">
               <p className="text-eyebrow m-0">{homeFeaturedEyebrow(caseStudy)}</p>
               <h3
                 id={titleId}
@@ -62,14 +60,7 @@ export default function FeaturedWorkCarousel() {
               </h3>
               <p className="text-body-sm mt-2 mb-0 text-muted">{caseStudyIndustryName(caseStudy)}</p>
 
-              <div className="mt-auto border-t border-line pt-4 sm:pt-5">
-                <p className="m-0 font-display text-[1.65rem] leading-none font-extrabold tracking-tight text-red sm:text-[1.85rem]">
-                  {spotlight.value}
-                </p>
-                <p className="mt-2 mb-0 text-[13px] leading-snug text-muted">{spotlight.label}</p>
-              </div>
-
-              <span className="text-cta mt-4 inline-flex min-h-11 items-center gap-2.5 text-ink transition group-hover:text-red sm:mt-5">
+              <span className="text-cta mt-auto inline-flex min-h-11 items-center gap-2.5 pt-4 text-ink transition group-hover:text-red sm:pt-5">
                 View case study
                 <span
                   className="grid size-7 flex-none place-items-center rounded-full border border-current transition duration-200 group-hover:border-red group-hover:bg-red group-hover:text-white sm:size-8"
