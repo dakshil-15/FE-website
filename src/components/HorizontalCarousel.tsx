@@ -24,6 +24,7 @@ type HorizontalCarouselProps = {
   className?: string;
   /** Auto-advance interval in ms; omit or 0 to disable. Pauses on hover/focus and respects reduced motion. */
   autoPlayInterval?: number;
+  showDots?: boolean;
 };
 
 const controlStyles = {
@@ -100,6 +101,7 @@ export default function HorizontalCarousel({
   nextLabel = "Next slide",
   className = "relative",
   autoPlayInterval,
+  showDots = true,
 }: HorizontalCarouselProps) {
   const {
     trackRef,
@@ -183,38 +185,44 @@ export default function HorizontalCarousel({
             <ArrowRight size={arrowIconSize} aria-hidden />
           </button>
 
-          <div className={dotsClassName} role="group" aria-label={slidesGroupLabel}>
-            {liveMessage ? (
-              <span className="sr-only" aria-live="polite" aria-atomic={Boolean(liveRegion)}>
-                {liveMessage}
-              </span>
-            ) : null}
-            {Array.from({ length: itemCount }, (_, index) => {
-              const label = getSlideLabel?.(index) ?? `Slide ${index + 1}`;
-              const dotFocusClass = styles.dotFocus
-                ? `focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${styles.dotFocus}`
-                : "";
+          {showDots ? (
+            <div className={dotsClassName} role="group" aria-label={slidesGroupLabel}>
+              {liveMessage ? (
+                <span className="sr-only" aria-live="polite" aria-atomic={Boolean(liveRegion)}>
+                  {liveMessage}
+                </span>
+              ) : null}
+              {Array.from({ length: itemCount }, (_, index) => {
+                const label = getSlideLabel?.(index) ?? `Slide ${index + 1}`;
+                const dotFocusClass = styles.dotFocus
+                  ? `focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${styles.dotFocus}`
+                  : "";
 
-              return (
-                <button
-                  key={label + index}
-                  type="button"
-                  aria-label={`Go to ${label}`}
-                  aria-current={index === active ? "true" : undefined}
-                  data-no-btn-motion
-                  onClick={() => scrollToIndex(index)}
-                  className={`${styles.dotButton} ${dotFocusClass}`.trim()}
-                >
-                  <span
-                    className={`${styles.dotSpan} ${
-                      index === active ? styles.dotActive : styles.dotInactive
-                    }`}
-                    aria-hidden
-                  />
-                </button>
-              );
-            })}
-          </div>
+                return (
+                  <button
+                    key={label + index}
+                    type="button"
+                    aria-label={`Go to ${label}`}
+                    aria-current={index === active ? "true" : undefined}
+                    data-no-btn-motion
+                    onClick={() => scrollToIndex(index)}
+                    className={`${styles.dotButton} ${dotFocusClass}`.trim()}
+                  >
+                    <span
+                      className={`${styles.dotSpan} ${
+                        index === active ? styles.dotActive : styles.dotInactive
+                      }`}
+                      aria-hidden
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          ) : liveMessage ? (
+            <span className="sr-only" aria-live="polite" aria-atomic={Boolean(liveRegion)}>
+              {liveMessage}
+            </span>
+          ) : null}
         </>
       ) : null}
     </div>

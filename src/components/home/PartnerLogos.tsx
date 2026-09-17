@@ -61,14 +61,14 @@ function PartnerLogoFrame({ partner, alt, sizes, imageClassName = "" }: PartnerL
 function LogoItem({ partner, duplicate }: { partner: PartnerLogo; duplicate?: boolean }) {
   return (
     <li
-      className="group flex h-20 shrink-0 items-center justify-center rounded-xl border border-line bg-white px-6 sm:h-24 sm:px-8 md:h-28 md:px-10"
+      className="group flex h-20 w-[220px] shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white sm:h-24 sm:w-[250px] md:h-28 md:w-[280px]"
       aria-hidden={duplicate || undefined}
     >
-      <span className="flex h-14 w-[168px] min-h-0 min-w-0 items-center justify-center sm:h-16 sm:w-[188px] md:h-[4.5rem] md:w-[210px]">
+      <span className="flex h-full w-full min-h-0 min-w-0 items-center justify-center px-4 py-3 sm:px-5 sm:py-4">
         <PartnerLogoFrame
           partner={partner}
           alt={duplicate ? "" : `${partner.name} logo`}
-          sizes="210px"
+          sizes="300px"
           imageClassName="opacity-90 transition duration-300 group-hover:opacity-100"
         />
       </span>
@@ -78,8 +78,8 @@ function LogoItem({ partner, duplicate }: { partner: PartnerLogo; duplicate?: bo
 
 function GridLogoItem({ partner }: { partner: PartnerLogo }) {
   return (
-    <li className="flex min-h-[7.5rem] items-center justify-center overflow-hidden rounded-xl border border-line bg-white sm:min-h-[8rem]">
-      <span className="flex h-full w-full min-h-0 min-w-0 items-center justify-center">
+    <li className="flex h-[7.5rem] items-center justify-center overflow-hidden rounded-xl border border-line bg-white sm:h-[8rem]">
+      <span className="flex h-full w-full min-h-0 min-w-0 items-center justify-center p-4 sm:p-5">
         <PartnerLogoFrame
           partner={partner}
           alt={`${partner.name} logo`}

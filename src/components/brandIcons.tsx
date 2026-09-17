@@ -211,6 +211,26 @@ export function GrowthSystemIcon(props: IconProps) {
   );
 }
 
+export function YearsIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="32" cy="34" r="20" />
+      <path d="M32 22v12l9 6" />
+      <path d="M24 6h16M32 6v8" />
+    </Icon>
+  );
+}
+
+export function ActiveClientsIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="10" y="24" width="44" height="28" rx="4" />
+      <path d="M22 24v-4a10 10 0 0 1 20 0v4" />
+      <path d="M24 36l6 6 10-12" />
+    </Icon>
+  );
+}
+
 export function GlobeIcon(props: IconProps) {
   return (
     <Icon {...props}>

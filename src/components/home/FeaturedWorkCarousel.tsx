@@ -26,6 +26,7 @@ export default function FeaturedWorkCarousel() {
       prevLabel="Previous case study"
       nextLabel="Next case study"
       autoPlayInterval={3000}
+      showDots={false}
     >
       {featuredCases.map((caseStudy) => {
         const title = workCardTitle(caseStudy);

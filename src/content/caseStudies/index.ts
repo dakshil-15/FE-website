@@ -27,7 +27,6 @@ export const caseStudies: CaseStudy[] = [
   mahindraManulife,
   orpatErp,
   akbarTravelsSeo,
-  shoppersStopLocalSeo,
   celloKidzbee,
   ambassadorHotel,
   godrejGreenfront,

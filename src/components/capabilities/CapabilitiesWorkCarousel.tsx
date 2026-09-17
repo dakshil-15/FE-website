@@ -31,6 +31,7 @@ export default function CapabilitiesWorkCarousel({ cases }: { cases: CapabilityC
       controls="light"
       prevLabel="Previous case study"
       nextLabel="Next case study"
+      showDots={false}
     >
       {cases.map((item, index) => {
         const href = item.href ?? `/work/${item.slug}`;

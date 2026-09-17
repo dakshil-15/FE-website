@@ -54,7 +54,7 @@ export const networkStats: NetworkStat[] = [
 
 /** First Economy office scale — referenced in about copy, not shown in stat counters. */
 export const companyOfficeScale = {
-  people: { value: 300, label: "People", showPlus: false as const },
+  people: { value: 302, label: "People", showPlus: false as const },
   cities: { value: 4, label: "Cities", showPlus: false as const },
 } as const;
 
@@ -70,12 +70,24 @@ export const homeOfficeStats: NetworkStat[] = [
   {
     value: companyOfficeScale.people.value,
     suffix: "",
-    label: "Employees",
+    label: "Specialists",
     description:
       "Specialists across strategy, creative, media, technology and data — building as one team.",
   },
-  networkStats.find((stat) => stat.label === "Media Awards")!,
-  { ...networkStats.find((stat) => stat.label === "Billings")!, footnoteMarker: false },
+  {
+    value: 12,
+    suffix: "",
+    label: "Years",
+    description: "Over a decade engineering growth systems for ambitious brands.",
+    showPlus: true,
+  },
+  {
+    value: 83,
+    suffix: "",
+    label: "Active Clients",
+    description: "Brands we're currently partnering with to build growth systems.",
+    showPlus: true,
+  },
 ];
 
 export function formatNetworkStatValue(stat: NetworkStat): string {

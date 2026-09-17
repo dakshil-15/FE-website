@@ -16,10 +16,10 @@ import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
 import CTASection from "@/components/CTASection";
 import GrowthCta from "@/components/GrowthCta";
 import {
-  AwardsIcon,
+  ActiveClientsIcon,
   CitiesIcon,
-  GrowthSystemIcon,
   MindsIcon,
+  YearsIcon,
 } from "@/components/brandIcons";
 import { homeOfficeStats } from "@/content/stats";
 import { homeCta } from "@/content/home";
@@ -28,9 +28,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const heroStatIcons = {
   Cities: CitiesIcon,
-  Employees: MindsIcon,
-  "Media Awards": AwardsIcon,
-  Billings: GrowthSystemIcon,
+  Specialists: MindsIcon,
+  Years: YearsIcon,
+  "Active Clients": ActiveClientsIcon,
 } as const;
 
 const heroStats = homeOfficeStats.map((stat) => ({
@@ -396,10 +396,6 @@ export default function HomePage() {
               drive growth
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-light m-0">
-                An integrated suite of solutions across the entire marketing and technology ecosystem — one growth
-                system, not disconnected departments.
-              </p>
               <Link href="/services" className="text-cta link-cta text-ink">
                 Explore all services
                 <ArrowRight size={16} aria-hidden />

@@ -7,7 +7,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      174,
+      660,
+      152
+    ]
   },
   {
     "index": 2,
@@ -17,7 +23,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      75,
+      80,
+      649,
+      340
+    ]
   },
   {
     "index": 3,
@@ -27,7 +39,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      130,
+      659,
+      241
+    ]
   },
   {
     "index": 4,
@@ -37,7 +55,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      79,
+      82,
+      641,
+      334
+    ]
   },
   {
     "index": 5,
@@ -47,7 +71,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      247,
+      80,
+      306,
+      340
+    ]
   },
   {
     "index": 6,
@@ -57,7 +87,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      71,
+      150,
+      658,
+      200
+    ]
   },
   {
     "index": 7,
@@ -67,7 +103,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      138,
+      657,
+      221
+    ]
   },
   {
     "index": 8,
@@ -77,7 +119,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      74,
+      105,
+      653,
+      289
+    ]
   },
   {
     "index": 9,
@@ -87,7 +135,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      73,
+      132,
+      657,
+      236
+    ]
   },
   {
     "index": 10,
@@ -97,7 +151,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      168,
+      660,
+      169
+    ]
   },
   {
     "index": 11,
@@ -107,7 +167,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      153,
+      80,
+      494,
+      338
+    ]
   },
   {
     "index": 12,
@@ -117,7 +183,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      110,
+      660,
+      279
+    ]
   },
   {
     "index": 13,
@@ -127,7 +199,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      159,
+      660,
+      180
+    ]
   },
   {
     "index": 14,
@@ -137,7 +215,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      140,
+      660,
+      219
+    ]
   },
   {
     "index": 15,
@@ -147,7 +231,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      167,
+      660,
+      165
+    ]
   },
   {
     "index": 16,
@@ -157,7 +247,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      231,
+      80,
+      338,
+      340
+    ]
   },
   {
     "index": 17,
@@ -167,7 +263,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      72,
+      190,
+      657,
+      121
+    ]
   },
   {
     "index": 18,
@@ -177,7 +279,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      71,
+      185,
+      658,
+      129
+    ]
   },
   {
     "index": 19,
@@ -187,7 +295,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      72,
+      143,
+      656,
+      213
+    ]
   },
   {
     "index": 20,
@@ -197,7 +311,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      129,
+      660,
+      241
+    ]
   },
   {
     "index": 21,
@@ -207,7 +327,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      207,
+      143,
+      465,
+      276
+    ]
   },
   {
     "index": 23,
@@ -217,7 +343,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      90,
+      660,
+      321
+    ]
   },
   {
     "index": 24,
@@ -227,7 +359,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      73,
+      176,
+      657,
+      148
+    ]
   },
   {
     "index": 25,
@@ -237,7 +375,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      73,
+      125,
+      653,
+      252
+    ]
   },
   {
     "index": 26,
@@ -247,7 +391,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      152,
+      80,
+      496,
+      340
+    ]
   },
   {
     "index": 28,
@@ -257,7 +407,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      167,
+      80,
+      465,
+      340
+    ]
   },
   {
     "index": 29,
@@ -267,7 +423,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      72,
+      141,
+      655,
+      216
+    ]
   },
   {
     "index": 30,
@@ -277,7 +439,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      243,
+      80,
+      313,
+      340
+    ]
   },
   {
     "index": 31,
@@ -287,7 +455,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      128,
+      81,
+      545,
+      339
+    ]
   },
   {
     "index": 32,
@@ -297,7 +471,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      156,
+      660,
+      187
+    ]
   },
   {
     "index": 33,
@@ -307,7 +487,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      72,
+      172,
+      656,
+      156
+    ]
   },
   {
     "index": 34,
@@ -317,7 +503,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      117,
+      80,
+      565,
+      338
+    ]
   },
   {
     "index": 35,
@@ -327,7 +519,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      171,
+      659,
+      158
+    ]
   },
   {
     "index": 36,
@@ -337,7 +535,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      287,
+      81,
+      226,
+      339
+    ]
   },
   {
     "index": 37,
@@ -347,7 +551,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      71,
+      142,
+      659,
+      215
+    ]
   },
   {
     "index": 38,
@@ -357,7 +567,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      138,
+      80,
+      523,
+      340
+    ]
   },
   {
     "index": 39,
@@ -367,17 +583,29 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      116,
+      660,
+      269
+    ]
   },
   {
     "index": 40,
     "slug": "avene",
-    "name": "Av\u00c3\u00a8ne",
+    "name": "AvÃ¨ne",
     "src": "/images/partners/clients/avene.png",
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      123,
+      660,
+      251
+    ]
   },
   {
     "index": 41,
@@ -387,7 +615,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      283,
+      80,
+      272,
+      339
+    ]
   },
   {
     "index": 42,
@@ -397,7 +631,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      71,
+      132,
+      659,
+      237
+    ]
   },
   {
     "index": 43,
@@ -407,7 +647,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      143,
+      80,
+      513,
+      340
+    ]
   },
   {
     "index": 44,
@@ -417,7 +663,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      124,
+      660,
+      251
+    ]
   },
   {
     "index": 45,
@@ -427,7 +679,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      216,
+      80,
+      367,
+      340
+    ]
   },
   {
     "index": 46,
@@ -437,7 +695,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      117,
+      80,
+      565,
+      340
+    ]
   },
   {
     "index": 47,
@@ -447,7 +711,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      133,
+      660,
+      234
+    ]
   },
   {
     "index": 48,
@@ -457,7 +727,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      176,
+      80,
+      450,
+      340
+    ]
   },
   {
     "index": 49,
@@ -467,7 +743,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      86,
+      80,
+      628,
+      340
+    ]
   },
   {
     "index": 50,
@@ -477,7 +759,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      141,
+      659,
+      218
+    ]
   },
   {
     "index": 51,
@@ -487,7 +775,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      164,
+      660,
+      171
+    ]
   },
   {
     "index": 52,
@@ -497,7 +791,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      117,
+      80,
+      565,
+      340
+    ]
   },
   {
     "index": 53,
@@ -507,7 +807,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      220,
+      80,
+      359,
+      340
+    ]
   },
   {
     "index": 54,
@@ -517,7 +823,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      151,
+      660,
+      198
+    ]
   },
   {
     "index": 55,
@@ -527,7 +839,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      157,
+      660,
+      185
+    ]
   },
   {
     "index": 56,
@@ -537,7 +855,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      145,
+      660,
+      209
+    ]
   },
   {
     "index": 57,
@@ -547,7 +871,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      213,
+      80,
+      373,
+      339
+    ]
   },
   {
     "index": 60,
@@ -557,7 +887,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      162,
+      660,
+      176
+    ]
   },
   {
     "index": 61,
@@ -567,7 +903,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      133,
+      660,
+      234
+    ]
   },
   {
     "index": 63,
@@ -577,7 +919,13 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      70,
+      164,
+      660,
+      172
+    ]
   },
   {
     "index": 64,
@@ -587,16 +935,12 @@
     "sourceMedia": "uniform_logo_cards_800x500",
     "sourceSlide": 0,
     "width": 800,
-    "height": 500
-  },
-  {
-    "index": 65,
-    "slug": "young-bags",
-    "name": "Young Bags",
-    "src": "/images/partners/clients/young-bags.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
-    "sourceSlide": 0,
-    "width": 800,
-    "height": 500
+    "height": 500,
+    "contentBox": [
+      71,
+      128,
+      658,
+      243
+    ]
   }
 ]

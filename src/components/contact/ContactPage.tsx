@@ -41,8 +41,6 @@ export default function ContactPage() {
             <RotatingWord words={contactHero.headlineAccentWords} className="text-red" />
           </>
         }
-        body={contactHero.body}
-        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
         media={null}
         showMediaRule={false}
         gridClassName="grid grid-cols-1"
