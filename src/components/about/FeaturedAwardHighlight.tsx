@@ -28,7 +28,7 @@ export default function FeaturedAwardHighlight() {
         </div>
 
         <div className="flex flex-col justify-center px-5 py-6 sm:px-7 sm:py-8 lg:px-8 lg:py-10">
-          <p className="text-eyebrow m-0 text-red">{aboutFeaturedAchievement.eyebrow}</p>
+          <p className="text-eyebrow-on-dark m-0">{aboutFeaturedAchievement.eyebrow}</p>
           <p className="mt-3 mb-0 font-display text-xl leading-[1.08] font-bold tracking-[0.03em] text-white uppercase sm:mt-4 sm:text-2xl">
             {featuredCampaignAward.client}
           </p>

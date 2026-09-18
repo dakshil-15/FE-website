@@ -213,19 +213,6 @@ export default function GrowthNetworkVisual() {
     applyActiveVisuals(activeId);
   }, [activeId, applyActiveVisuals]);
 
-  useEffect(() => {
-    if (reduceMotion) return;
-
-    const timer = window.setInterval(() => {
-      if (hoverPausedRef.current) return;
-      const idx = SYSTEM_NODES.findIndex((n) => n.id === activeIdRef.current);
-      const next = SYSTEM_NODES[(idx + 1) % SYSTEM_NODES.length];
-      setActiveId(next.id);
-    }, 3000);
-
-    return () => window.clearInterval(timer);
-  }, [reduceMotion]);
-
   useGSAP(
     () => {
       const root = rootRef.current;
@@ -340,42 +327,121 @@ export default function GrowthNetworkVisual() {
         });
       });
 
-      SYSTEM_NODES.forEach((node, i) => {
-        const ring = `[data-gs-node-ring="${node.id}"]`;
-        gsap.to(ring, {
-          scale: 1.55,
-          opacity: 0,
-          duration: 2.8,
-          ease: "sine.out",
-          repeat: -1,
-          delay: i * 0.7,
-          transformOrigin: "50% 50%",
-        });
+      gsap.to("[data-gs-node-ring]", {
+        scale: 1.55,
+        opacity: 0,
+        duration: 2.8,
+        ease: "sine.out",
+        repeat: -1,
+        transformOrigin: "50% 50%",
       });
 
-      SYSTEM_NODES.forEach((node, i) => {
-        if (coarsePointer && i > 1) return;
-        const start = polar(node.angle, RAY_OUTER - 10);
-        const end = polar(node.angle, RAY_INNER + 10);
-        const packet = `[data-gs-packet="${node.id}"]`;
+      const activePacketNodes = SYSTEM_NODES.filter((_, i) => !(coarsePointer && i > 1));
+      const packetStarts = activePacketNodes.map((node) => polar(node.angle, RAY_OUTER - 10));
+      const packetEnds = activePacketNodes.map((node) => polar(node.angle, RAY_INNER + 10));
+      const packets = activePacketNodes
+        .map((node) => root.querySelector<SVGCircleElement>(`[data-gs-packet="${node.id}"]`))
+        .filter((el): el is SVGCircleElement => el !== null);
 
-        gsap.set(packet, { attr: { cx: start.x, cy: start.y }, autoAlpha: 0 });
+      packets.forEach((packet, i) => {
+        gsap.set(packet, { attr: { cx: packetStarts[i]!.x, cy: packetStarts[i]!.y }, autoAlpha: 0 });
+      });
 
-        gsap
-          .timeline({ repeat: -1, delay: 1.4 + i * 0.85 })
-          .to(packet, { autoAlpha: 0.9, duration: 0.18 })
+      // All ring dots, orbit particles and spoke packets converge into the hub
+      // together, in one synchronized moment, with the core glow bursting as
+      // they arrive — then everything resets together for the next cycle.
+      const convergeDots = Array.from(
+        root.querySelectorAll<SVGCircleElement>(
+          '[data-gs-ring="r-dots"] circle, [data-gs-orbit] circle',
+        ),
+      );
+
+      if (convergeDots.length) {
+        const restPositions = convergeDots.map((dot) => ({
+          cx: Number(dot.getAttribute("cx")),
+          cy: Number(dot.getAttribute("cy")),
+        }));
+
+        const convergeTl = gsap.timeline({ repeat: -1, delay: 1.6, repeatDelay: 1.6 });
+
+        convergeTl.to(
+          convergeDots,
+          {
+            attr: { cx: CENTER, cy: CENTER },
+            autoAlpha: 0,
+            duration: 1.1,
+            ease: "power2.in",
+          },
+          0,
+        );
+
+        if (packets.length) {
+          convergeTl
+            .to(
+              packets,
+              {
+                attr: {
+                  cx: (i: number) => packetEnds[i]!.x,
+                  cy: (i: number) => packetEnds[i]!.y,
+                },
+                duration: 1.1,
+                ease: "power1.inOut",
+              },
+              0,
+            )
+            .to(packets, { autoAlpha: 0.9, duration: 0.18 }, 0)
+            .to(packets, { autoAlpha: 0, duration: 0.22 }, "-=0.3");
+        }
+
+        convergeTl
           .to(
-            packet,
-            {
-              attr: { cx: end.x, cy: end.y },
-              duration: 1.55,
-              ease: "power1.inOut",
-            },
-            0,
+            "[data-gs-spoke]",
+            { stroke: "#E1261C", strokeWidth: 1.8, opacity: 1, duration: 0.3, ease: "power2.out" },
+            "-=0.35",
           )
-          .to(packet, { autoAlpha: 0, duration: 0.22 }, "-=0.22")
-          .to({}, { duration: 2.4 });
-      });
+          .to(
+            "[data-gs-hub-glow]",
+            { attr: { r: HUB_R + 26, "stroke-width": 4 }, duration: 0.3, ease: "power2.out" },
+            "<",
+          )
+          .to(
+            "[data-gs-spoke]",
+            {
+              stroke: "rgba(8,8,8,0.38)",
+              strokeWidth: 1.2,
+              opacity: 0.45,
+              duration: 0.65,
+              ease: "power2.inOut",
+            },
+            "-=0.02",
+          )
+          .to(
+            "[data-gs-hub-glow]",
+            { attr: { r: HUB_R + 10, "stroke-width": 2 }, duration: 0.65, ease: "power2.inOut" },
+            "<",
+          )
+          .set(convergeDots, {
+            attr: {
+              cx: (i: number) => restPositions[i]!.cx,
+              cy: (i: number) => restPositions[i]!.cy,
+            },
+            autoAlpha: 1,
+          });
+
+        if (packets.length) {
+          convergeTl.set(
+            packets,
+            {
+              attr: {
+                cx: (i: number) => packetStarts[i]!.x,
+                cy: (i: number) => packetStarts[i]!.y,
+              },
+              autoAlpha: 0,
+            },
+            "<",
+          );
+        }
+      }
     },
     { scope: rootRef },
   );
@@ -694,6 +760,7 @@ export default function GrowthNetworkVisual() {
 
           <g ref={coreParallaxRef} data-gs-hub>
             <circle
+              data-gs-hub-glow
               cx={CENTER}
               cy={CENTER}
               r={HUB_R + 10}

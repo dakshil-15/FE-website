@@ -73,6 +73,7 @@ export default function CTASection({
   const bodyClass = isMist ? "text-muted" : "text-muted-on-dark";
   const ctaTone = isMist ? "light" : "dark";
   const primaryVariant = isMist ? "primary" : "accent";
+  const secondaryVariant = isMist ? "accent" : "primary";
 
   const gridClass = hasAside
     ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_auto] xl:gap-12"
@@ -103,12 +104,12 @@ export default function CTASection({
         {primaryLabel}
       </GrowthCta>
       {hasSecondary ? (
-        <GrowthCta href={secondaryHref!} variant="secondary" tone={ctaTone} block>
+        <GrowthCta href={secondaryHref!} variant={secondaryVariant} tone={ctaTone} block>
           {secondaryLabel}
         </GrowthCta>
       ) : null}
       {hasTertiary ? (
-        <GrowthCta href={tertiaryHref!} variant="secondary" tone={ctaTone} block>
+        <GrowthCta href={tertiaryHref!} variant={secondaryVariant} tone={ctaTone} block>
           {tertiaryLabel}
         </GrowthCta>
       ) : null}

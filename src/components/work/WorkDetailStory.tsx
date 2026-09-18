@@ -789,12 +789,6 @@ export default function WorkDetailStory({
               >
                 {workDetailHeadlines.built}
               </h2>
-              <p
-                data-animate="fade-up"
-                className="text-body section-copy section-copy-on-light m-0 pt-0 md:pt-1"
-              >
-                The capabilities that powered this campaign — explore each service for more.
-              </p>
             </div>
 
             <ul

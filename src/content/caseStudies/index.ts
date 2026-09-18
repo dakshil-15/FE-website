@@ -31,7 +31,6 @@ export const caseStudies: CaseStudy[] = [
   ambassadorHotel,
   godrejGreenfront,
   amazonSamsungGreatIndianFestival,
-  adaniAirportsSafarKeHumsafar,
   waaree,
   ajantaAiCreatives,
   royaleToucheStayCurious,

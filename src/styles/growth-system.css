@@ -22,8 +22,11 @@
 
 @media (min-width: 960px) {
   .growth-hero {
-    max-height: calc(100svh - var(--hero-chrome));
     height: calc(100svh - var(--hero-chrome));
+    /* min-height (set above) wins over max-height when the two conflict, so
+       it must be reset here or the cap below is silently ignored. */
+    min-height: 0;
+    max-height: 48rem; /* cap hero height on tall viewports */
   }
 }
 
@@ -496,8 +499,8 @@
 
 .growth-cta {
   --gs-ink: #080808;
-  --gs-red: #e1261c;
-  --gs-red-glow: rgba(225, 38, 28, 0.35);
+  --gs-red: #007da6;
+  --gs-red-glow: rgba(0, 125, 166, 0.35);
   --cta-bevel: 12px;
   position: relative;
   display: inline-flex;
@@ -607,36 +610,70 @@
   transform: translateX(5px);
 }
 
-/* Primary — beveled black face + persistent red glow + corner ticks */
+/* Primary — transparent pill, ink border + drop shadow */
 .growth-cta--primary .growth-cta__face {
-  color: #fff;
+  color: var(--gs-ink);
   background: transparent;
+  transition: color 0.3s ease;
 }
 
 .growth-cta--primary .growth-cta__shell {
-  background: #080808;
-  border: 1px solid #080808;
-  filter: drop-shadow(0 0 10px rgba(225, 38, 28, 0.45))
-    drop-shadow(0 0 22px rgba(225, 38, 28, 0.28));
+  clip-path: none;
+  border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid var(--gs-ink);
+  box-shadow:
+    0 10px 24px rgba(8, 8, 8, 0.22),
+    0 3px 8px rgba(8, 8, 8, 0.15);
   transition:
     border-color 0.3s ease,
     background-color 0.3s ease,
-    filter 0.3s ease;
+    box-shadow 0.3s ease;
 }
 
 .growth-cta--primary:hover .growth-cta__shell,
 .growth-cta--primary:focus-visible .growth-cta__shell {
-  border-color: var(--gs-red);
-  background: #0c0c0c;
-  filter: drop-shadow(0 0 12px rgba(225, 38, 28, 0.55))
-    drop-shadow(0 0 28px rgba(225, 38, 28, 0.35));
+  background: var(--gs-ink);
+  border-color: var(--gs-ink);
+  box-shadow:
+    0 14px 30px rgba(8, 8, 8, 0.3),
+    0 4px 10px rgba(8, 8, 8, 0.2);
 }
 
+.growth-cta--primary:hover .growth-cta__face,
+.growth-cta--primary:focus-visible .growth-cta__face {
+  color: #fff;
+}
+
+/* On dark bands, ink text/border would be invisible — flip to white. */
+.growth-cta--on-dark.growth-cta--primary .growth-cta__face {
+  color: #fff;
+}
+
+.growth-cta--on-dark.growth-cta--primary .growth-cta__shell {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 10px 24px rgba(255, 255, 255, 0.12),
+    0 3px 8px rgba(255, 255, 255, 0.08);
+}
+
+.growth-cta--on-dark.growth-cta--primary:hover .growth-cta__shell,
+.growth-cta--on-dark.growth-cta--primary:focus-visible .growth-cta__shell {
+  background: #fff;
+  border-color: #fff;
+  box-shadow:
+    0 14px 30px rgba(255, 255, 255, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.growth-cta--on-dark.growth-cta--primary:hover .growth-cta__face,
+.growth-cta--on-dark.growth-cta--primary:focus-visible .growth-cta__face {
+  color: var(--gs-ink);
+}
+
+/* Corner-tick frame retired in favor of the pill treatment above. */
 .growth-cta__frame {
-  position: absolute;
-  inset: -5px;
-  z-index: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .growth-cta__corner {
@@ -660,42 +697,21 @@
   border-width: 0 2px 2px 0;
 }
 
-/* Light sweep along bottom edge on hover */
-.growth-cta--primary .growth-cta__shell::after {
-  content: "";
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(225, 38, 28, 0.85),
-    transparent
-  );
-  opacity: 0.55;
-  transform: scaleX(0.4);
-  transform-origin: left center;
-  transition: transform 0.45s ease, opacity 0.3s ease;
-}
-
-.growth-cta--primary:hover .growth-cta__shell::after,
-.growth-cta--primary:focus-visible .growth-cta__shell::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-/* Secondary — outline rectangle + red corner pip */
+/* Secondary — transparent pill, muted border + drop shadow */
 .growth-cta--secondary .growth-cta__face {
   color: var(--gs-ink);
-  background: rgba(245, 245, 243, 0.65);
-  border: 1px solid rgba(8, 8, 8, 0.55);
+  background: transparent;
+  border: 1.5px solid rgba(8, 8, 8, 0.55);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 24px rgba(8, 8, 8, 0.14),
+    0 3px 8px rgba(8, 8, 8, 0.1);
   overflow: hidden;
   transition:
     color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.35s ease,
-    background-color 0.35s ease;
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .growth-cta--secondary .growth-cta__face::before {
@@ -721,50 +737,44 @@
 }
 
 .growth-cta__pip {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  z-index: 2;
-  width: 6px;
-  height: 6px;
-  background: var(--gs-red);
-  box-shadow: 0 0 8px rgba(225, 38, 28, 0.55);
-  pointer-events: none;
+  display: none;
 }
 
-/* Accent — beveled red face for dark / ink bands */
+/* Accent — transparent pill, colored border + drop shadow */
 .growth-cta--accent .growth-cta__face {
-  color: #fff;
+  color: var(--gs-ink);
   background: transparent;
   transition: color 0.3s ease;
 }
 
+.growth-cta--on-dark.growth-cta--accent .growth-cta__face {
+  color: #fff;
+}
+
 .growth-cta--accent .growth-cta__shell {
-  background: var(--gs-red);
-  border: 1px solid var(--gs-red);
-  filter: drop-shadow(0 0 10px rgba(225, 38, 28, 0.4))
-    drop-shadow(0 0 20px rgba(225, 38, 28, 0.22));
+  clip-path: none;
+  border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid var(--gs-red);
+  box-shadow:
+    0 10px 24px rgba(0, 125, 166, 0.28),
+    0 3px 8px rgba(0, 125, 166, 0.18);
   transition:
     border-color 0.3s ease,
     background-color 0.3s ease,
-    filter 0.3s ease;
+    box-shadow 0.3s ease;
 }
 
 .growth-cta--accent .growth-cta__arrow {
+  color: var(--gs-red);
+}
+
+.growth-cta--on-dark.growth-cta--accent .growth-cta__arrow {
   color: #fff;
 }
 
 .growth-cta--accent .growth-cta__shell::after {
-  content: "";
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
-  opacity: 0.45;
-  transform: scaleX(0.4);
-  transform-origin: left center;
+  display: none;
   transition: transform 0.45s ease, opacity 0.3s ease;
 }
 
@@ -777,19 +787,14 @@
 .growth-cta--accent:focus-visible .growth-cta__shell {
   background: #fff;
   border-color: #fff;
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2))
-    drop-shadow(0 0 18px rgba(225, 38, 28, 0.35));
+  box-shadow:
+    0 14px 30px rgba(0, 125, 166, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 .growth-cta--accent:hover .growth-cta__arrow,
 .growth-cta--accent:focus-visible .growth-cta__arrow {
   color: var(--gs-red);
-}
-
-.growth-cta--accent:hover .growth-cta__shell::after,
-.growth-cta--accent:focus-visible .growth-cta__shell::after {
-  opacity: 1;
-  transform: scaleX(1);
 }
 
 /* Secondary on dark surfaces */

@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ServiceIconGrid from "@/components/home/ServiceIconGrid";
+import AiServicesHub from "@/components/home/AiServicesHub";
 import FeaturedWorkCarousel from "@/components/home/FeaturedWorkCarousel";
 import PartnerLogos from "@/components/home/PartnerLogos";
 import LocationsSection from "@/components/home/LocationsSection";
@@ -387,14 +387,20 @@ export default function HomePage() {
       >
         <div className="section-inner">
           <p data-animate="fade-up" className="text-eyebrow m-0">
-            What we do
+            AI-powered growth solutions
           </p>
           <div className="section-intro">
-            <h2 data-animate="fade-up" id="services-heading" className="text-display-md m-0">
-              Capabilities that
-              <br />
-              drive growth
-            </h2>
+            <div data-animate="fade-up" className="min-w-0">
+              <h2 id="services-heading" className="text-display-md m-0">
+                Everything we do
+                <br />
+                powered by AI
+              </h2>
+              <p className="text-body section-copy section-copy-on-light mt-4 mb-0">
+                Different services. One intelligent engine. AI is integrated into every solution we
+                deliver — helping you move faster, think bigger and grow smarter.
+              </p>
+            </div>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
               <Link href="/services" className="text-cta link-cta text-ink">
                 Explore all services
@@ -402,8 +408,8 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="section-media">
-            <ServiceIconGrid />
+          <div data-animate="fade-up" className="section-media">
+            <AiServicesHub />
           </div>
         </div>
       </section>
@@ -415,7 +421,7 @@ export default function HomePage() {
         aria-labelledby="work-heading"
       >
         <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow m-0">
+          <p data-animate="fade-up" className="text-eyebrow-on-dark m-0">
             Our work
           </p>
           <div className="section-intro">
@@ -425,11 +431,6 @@ export default function HomePage() {
               <span className="text-red">Results delivered.</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-dark m-0">
-                Real challenges. Integrated thinking.
-                <br />
-                Measurable impact.
-              </p>
               <Link href="/work" className="text-cta link-cta text-white">
                 View all case studies
                 <ArrowRight size={16} aria-hidden />

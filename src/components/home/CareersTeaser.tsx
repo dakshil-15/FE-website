@@ -20,9 +20,6 @@ export default function CareersTeaser() {
             with the best people.
           </h2>
           <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-            <p className="text-body section-copy section-copy-on-light m-0">
-              302+ specialists across four cities, engineering growth systems for ambitious brands.
-            </p>
             <Link href="/careers" className="text-cta link-cta text-ink">
               Explore careers
               <ArrowRight size={16} aria-hidden />

@@ -80,11 +80,6 @@ export const contactTouch = {
       value: "Mon - Fri: 10:30 AM – 7:30 PM",
       icon: "hours" as const,
     },
-    {
-      label: "Response time",
-      value: "Within 24 working hours",
-      icon: "response" as const,
-    },
   ],
 };
 

@@ -262,7 +262,7 @@ export default function AboutPage() {
                         <p className="m-0 flex min-w-0 flex-wrap items-baseline gap-x-1.5 gap-y-0.5 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                           <span className="min-w-0">{office.city}</span>
                           {office.isHq ? (
-                            <span className="shrink-0 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                            <span className="shrink-0 text-xs tracking-[0.1em] text-red">HQ</span>
                           ) : null}
                         </p>
                         <span

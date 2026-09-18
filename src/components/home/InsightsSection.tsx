@@ -23,7 +23,7 @@ export default function InsightsSection() {
       aria-labelledby="insights-heading"
     >
       <div className="section-inner">
-        <p data-animate="fade-up" className="text-eyebrow m-0">
+        <p data-animate="fade-up" className="text-eyebrow-on-dark m-0">
           Intelligence
         </p>
         <div className="section-intro">
@@ -33,10 +33,6 @@ export default function InsightsSection() {
             drives growth.
           </h2>
           <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-            <p className="text-body section-copy section-copy-on-dark m-0">
-              Perspectives on media, strategy, performance and technology — the systems that turn attention into
-              outcomes.
-            </p>
             <Link href="/insights" className="text-cta link-cta text-white">
               All insights
               <ArrowRight size={16} aria-hidden />

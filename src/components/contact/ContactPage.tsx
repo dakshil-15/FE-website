@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { Clock, Mail, MapPin, Phone, Send, type LucideIcon } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import RotatingWord from "@/components/RotatingWord";
 import ContactForm from "@/components/contact/ContactForm";
@@ -18,7 +18,6 @@ const touchIcons: Record<(typeof contactTouch.items)[number]["icon"], LucideIcon
   phone: Phone,
   email: Mail,
   hours: Clock,
-  response: Send,
 };
 
 export default function ContactPage() {
@@ -135,7 +134,7 @@ export default function ContactPage() {
                       <p className="m-0 font-display text-sm leading-[1.1] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
                         {office.city}
                         {office.isHq ? (
-                          <span className="ml-1.5 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                          <span className="ml-1.5 text-xs tracking-[0.1em] text-red">HQ</span>
                         ) : null}
                       </p>
                       <p className="text-body-sm mt-1.5 mb-0 break-words leading-snug text-muted">

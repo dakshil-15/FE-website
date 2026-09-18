@@ -137,13 +137,22 @@ function MarqueeRow({
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         let tween: gsap.core.Tween | undefined;
+        let lastSetWidth = 0;
+        let pending = false;
 
-        const start = () => {
-          tween?.kill();
-
+        // Only actually restart (and snap position) when the measured width
+        // has genuinely changed — late image `load` events and incidental
+        // resize ticks would otherwise re-trigger this with an unchanged
+        // width and yank the track back to its start, jerking the marquee.
+        const recalc = () => {
           const setWidth = track.scrollWidth / copies;
           const viewportWidth = viewport.clientWidth;
           if (setWidth < 40 || viewportWidth < 40) return;
+
+          if (tween && Math.abs(setWidth - lastSetWidth) < 1) return;
+          lastSetWidth = setWidth;
+
+          tween?.kill();
 
           const fromX = direction === "right" ? -setWidth : 0;
           const toX = direction === "right" ? 0 : -setWidth;
@@ -157,15 +166,26 @@ function MarqueeRow({
           });
         };
 
-        start();
+        // Coalesce bursts of triggers (many images loading in quick
+        // succession) into a single recalculation per animation frame.
+        const requestRecalc = () => {
+          if (pending) return;
+          pending = true;
+          requestAnimationFrame(() => {
+            pending = false;
+            recalc();
+          });
+        };
 
-        const ro = new ResizeObserver(() => start());
+        recalc();
+
+        const ro = new ResizeObserver(() => requestRecalc());
         ro.observe(viewport);
         ro.observe(track);
 
         const images = track.querySelectorAll("img");
         images.forEach((img) => {
-          if (!img.complete) img.addEventListener("load", start, { once: true });
+          if (!img.complete) img.addEventListener("load", requestRecalc, { once: true });
         });
 
         const pause = () => tween?.pause();
@@ -223,7 +243,7 @@ export default function PartnerLogos({ sectionId = "partners", layout = "marquee
       <div className="section-inner">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-6">
           <h2 id="partners-heading" className="text-eyebrow m-0">
-            Trusted by visionaries
+            Trusted by
           </h2>
           {!isAboutGrid ? (
             <Link href="/about#trusted-by" className="text-cta link-cta text-ink">

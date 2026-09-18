@@ -45,10 +45,10 @@ export default function LocationsSection() {
                   >
                     <MapPin size={16} fill="currentColor" strokeWidth={0} />
                   </span>
-                  <p className="m-0 flex min-w-0 flex-wrap items-baseline justify-center gap-x-1.5 gap-y-0.5 text-balance font-display text-sm leading-[1.15] font-bold tracking-[0.04em] uppercase sm:text-[15px]">
+                  <p className="m-0 flex min-w-0 flex-wrap items-baseline justify-center gap-x-1.5 gap-y-0.5 text-balance font-display text-base leading-[1.15] font-bold tracking-[0.04em] uppercase sm:text-lg lg:text-xl">
                     <span className="min-w-0">{office.city}</span>
                     {office.isHq ? (
-                      <span className="shrink-0 text-[10px] tracking-[0.12em] text-red">HQ</span>
+                      <span className="shrink-0 text-xs tracking-[0.12em] text-red sm:text-sm">HQ</span>
                     ) : null}
                   </p>
                 </div>

@@ -9,7 +9,7 @@ import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWork
 import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
 import { ImageSlot } from "@/components/media/AssetPlaceholder";
-import ServicesLandingGrid from "@/components/services/ServicesLandingGrid";
+import AiServicesHub from "@/components/home/AiServicesHub";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   advantageToolsSection,
@@ -83,15 +83,10 @@ export default function ServicesPage() {
               <br className="hidden sm:block" />
               {servicesGrid.titleAfter}
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-light m-0">
-                {servicesGrid.body}
-              </p>
-            </div>
           </div>
 
           <div className="section-media">
-            <ServicesLandingGrid />
+            <AiServicesHub />
           </div>
         </div>
       </section>
@@ -206,9 +201,6 @@ export default function ServicesPage() {
               <span className="text-red">{techCaseStudiesSection.titleAccent}</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
-              <p className="text-body section-copy section-copy-on-light m-0">
-                {techCaseStudiesSection.body}
-              </p>
               <Link href={techCaseStudiesSection.exploreHref} className="text-cta link-cta mt-0 text-ink">
                 {techCaseStudiesSection.exploreLabel}
                 <ArrowRight size={16} aria-hidden />
