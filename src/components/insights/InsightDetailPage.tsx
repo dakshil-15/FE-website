@@ -68,7 +68,7 @@ function SectionLabel({
 }) {
   if (onDark) {
     return (
-      <p id={headingId} className="text-eyebrow-on-dark m-0">
+      <p id={headingId} className="text-eyebrow text-eyebrow-on-dark m-0">
         {SECTION_NUMBERS[id]} {SECTION_LABELS[id]}
       </p>
     );
@@ -466,7 +466,7 @@ export default function InsightDetailPage({
               {showFeaturedCard ? (
                 <div className="overflow-hidden border border-line bg-ink text-white">
                   <div className="p-5 sm:p-6">
-                    <p className="text-eyebrow-on-dark m-0">{insightsFeaturedCard.eyebrow}</p>
+                    <p className="text-eyebrow text-eyebrow-on-dark m-0">{insightsFeaturedCard.eyebrow}</p>
                     <span className="insight-tag mt-4 inline-block border border-white/40 px-3 py-1 text-white">
                       {insightsFeaturedCard.tag}
                     </span>

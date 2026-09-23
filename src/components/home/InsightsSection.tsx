@@ -23,7 +23,7 @@ export default function InsightsSection() {
       aria-labelledby="insights-heading"
     >
       <div className="section-inner">
-        <p data-animate="fade-up" className="text-eyebrow-on-dark m-0">
+        <p data-animate="fade-up" className="text-eyebrow text-eyebrow-on-dark m-0">
           Intelligence
         </p>
         <div className="section-intro">

@@ -59,7 +59,7 @@ export default function InsightsSidebar({ activeFilter, onFilterChange }: Insigh
 
       <article className="mt-6 overflow-hidden border border-line bg-ink text-white sm:mt-8">
         <div className="p-5 sm:p-6">
-          <p className="text-eyebrow-on-dark m-0">{insightsFeaturedCard.eyebrow}</p>
+          <p className="text-eyebrow text-eyebrow-on-dark m-0">{insightsFeaturedCard.eyebrow}</p>
           <span className="mt-4 inline-block border border-white/50 px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase">
             {insightsFeaturedCard.tag}
           </span>

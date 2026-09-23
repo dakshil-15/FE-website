@@ -66,10 +66,9 @@ export default function HomePage() {
 
           gsap.set(".growth-hero__line-inner", { y: "110%" });
           gsap.set(
-            "[data-animate='hero-eyebrow'], [data-animate='hero-support'], [data-animate='hero-ctas'], [data-animate='hero-visual'], [data-animate='scroll-hint']",
+            "[data-animate='hero-eyebrow'], [data-animate='hero-ctas'], [data-animate='hero-visual'], [data-animate='scroll-hint']",
             { autoAlpha: 0, y: 0 },
           );
-          gsap.set("[data-animate='hero-support']", { y: 16 });
 
           const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
           heroTl
@@ -85,15 +84,6 @@ export default function HomePage() {
                 stagger: 0.08,
               },
               "-=0.25",
-            )
-            .to(
-              "[data-animate='hero-support']",
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.65,
-              },
-              "-=0.35",
             )
             .to(
               "[data-animate='hero-ctas']",
@@ -256,43 +246,37 @@ export default function HomePage() {
         <div className="growth-hero__grid">
           <div className="growth-hero__copy">
             <p data-animate="hero-eyebrow" className="growth-hero__eyebrow" aria-hidden="true">
-              <span>Strategy</span>
-              <span className="growth-hero__eyebrow-mark" />
-              <span>Media</span>
-              <span className="growth-hero__eyebrow-mark" />
-              <span>Creative</span>
+              <span>360 Media</span>
               <span className="growth-hero__eyebrow-mark" />
               <span>Technology</span>
+              <span className="growth-hero__eyebrow-mark" />
+              <span>Strategy</span>
+              <span className="growth-hero__eyebrow-mark" />
+              <span>Creativity</span>
             </p>
 
             <h1 id="hero-heading" className="growth-hero__title">
               <span className="growth-hero__line">
                 <span data-animate="hero-line" className="growth-hero__line-inner">
-                  We don&rsquo;t offer
+                  We don&rsquo;t just
                 </span>
               </span>
               <span className="growth-hero__line">
                 <span data-animate="hero-line" className="growth-hero__line-inner">
-                  services in silos.
+                  connect the dots.
                 </span>
               </span>
               <span className="growth-hero__line growth-hero__line--accent">
                 <span data-animate="hero-line" className="growth-hero__line-inner">
-                  We engineer
+                  We make
                 </span>
               </span>
               <span className="growth-hero__line growth-hero__line--accent">
                 <span data-animate="hero-line" className="growth-hero__line-inner">
-                  growth systems.
+                  them count.
                 </span>
               </span>
             </h1>
-
-            <p data-animate="hero-support" className="growth-hero__support">
-              Strategy. Media. Creative. Technology.
-              <br />
-              Built around one growth objective.
-            </p>
 
             <div data-animate="hero-ctas" className="growth-hero__ctas">
               <GrowthCta href="/work" variant="primary">
@@ -421,7 +405,7 @@ export default function HomePage() {
         aria-labelledby="work-heading"
       >
         <div className="section-inner">
-          <p data-animate="fade-up" className="text-eyebrow-on-dark m-0">
+          <p data-animate="fade-up" className="text-eyebrow text-eyebrow-on-dark m-0">
             Our work
           </p>
           <div className="section-intro">
@@ -453,7 +437,6 @@ export default function HomePage() {
         titleBreak
         titleBefore={homeCta.titleBefore}
         titleAccent={homeCta.titleAccent}
-        body={homeCta.body}
         primaryLabel={homeCta.button.label}
         primaryHref={homeCta.button.href}
       />

@@ -83,7 +83,7 @@ export function SectionLabel({
 
   if (onDark) {
     return (
-      <p id={headingId} className="text-eyebrow-on-dark m-0">
+      <p id={headingId} className="text-eyebrow text-eyebrow-on-dark m-0">
         {number} {label}
       </p>
     );
