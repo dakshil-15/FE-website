@@ -64,28 +64,27 @@ export const homeOfficeStats: NetworkStat[] = [
     value: companyOfficeScale.cities.value,
     suffix: "",
     label: "Cities",
-    description:
-      "Strategic hubs across India — Mumbai, Bengaluru, Chattrapati Sambhaji Nagar and Pune.",
+    description: "A growing presence across cities.",
   },
   {
     value: companyOfficeScale.people.value,
     suffix: "",
     label: "Specialists",
     description:
-      "Specialists across strategy, creative, media, technology and data — building as one team.",
+      "A diverse team of thinkers, makers and doers, working together to solve what's next.",
   },
   {
     value: 12,
     suffix: "",
     label: "Years",
-    description: "Over a decade engineering growth systems for ambitious brands.",
+    description: "Years of learning, building, adapting and helping brands move forward.",
     showPlus: true,
   },
   {
     value: 83,
     suffix: "",
     label: "Active Clients",
-    description: "Brands we're currently partnering with to build growth systems.",
+    description: "Brands that trust us to think bigger, move faster and make things happen.",
     showPlus: true,
   },
 ];

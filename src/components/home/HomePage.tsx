@@ -410,9 +410,9 @@ export default function HomePage() {
           </p>
           <div className="section-intro">
             <h2 data-animate="fade-up" id="work-heading" className="text-display-md m-0">
-              Ideas engineered.
+              A closer look at
               <br />
-              <span className="text-red">Results delivered.</span>
+              <span className="text-red">how we make things happen.</span>
             </h2>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
               <Link href="/work" className="text-cta link-cta text-white">

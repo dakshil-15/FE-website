@@ -12,15 +12,10 @@ export default function LocationsSection() {
     >
       <div className="section-inner grid grid-cols-1 items-start gap-7 sm:gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.8fr)] lg:gap-10">
         <div data-animate="fade-up" className="min-w-0 lg:pt-1">
-          <p className="text-eyebrow m-0">Our locations</p>
+          <p className="text-eyebrow m-0">Our offices</p>
           <h2 id="locations-heading" className="text-display-md mt-4 mb-0 sm:mt-5">
-            Where we build
-            <br />
-            what&rsquo;s next.
+            Where we <span className="text-red">operate.</span>
           </h2>
-          <p className="text-body section-copy section-copy-on-light mt-4 mb-0 sm:mt-5">
-            Strategic hubs. Local expertise. Global mindset.
-          </p>
           <Link href="/contact#offices" className="text-cta link-cta text-ink">
             View all locations
             <ArrowRight size={16} aria-hidden />

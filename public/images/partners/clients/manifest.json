@@ -68,16 +68,10 @@
     "slug": "royale-touche",
     "name": "Royale Touche",
     "src": "/images/partners/clients/royale-touche.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
+    "sourceMedia": "official-brand-logo",
     "sourceSlide": 0,
-    "width": 800,
-    "height": 500,
-    "contentBox": [
-      247,
-      80,
-      306,
-      340
-    ]
+    "width": 165,
+    "height": 153
   },
   {
     "index": 6,
@@ -660,16 +654,10 @@
     "slug": "neelkanth-realty",
     "name": "Neelkanth Realty",
     "src": "/images/partners/clients/neelkanth-realty.png",
-    "sourceMedia": "uniform_logo_cards_800x500",
+    "sourceMedia": "official-brand-logo",
     "sourceSlide": 0,
-    "width": 800,
-    "height": 500,
-    "contentBox": [
-      70,
-      124,
-      660,
-      251
-    ]
+    "width": 548,
+    "height": 197
   },
   {
     "index": 45,
