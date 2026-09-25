@@ -83,7 +83,7 @@ export const creativePage: ServicePageContent = {
     titleBefore: "Creative Built to",
     titleAccent: "Perform",
     body: "We make creative that works in culture and in the auction — brand systems and performance assets from one team.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "brand-performance",
@@ -141,7 +141,7 @@ export const creativePage: ServicePageContent = {
           titleBefore: "Creative That",
           titleAccent: "Works.",
           body: "Campaign and performance creative that moved brands and metrics.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=creative",
           items: caseItems,
         },
@@ -160,7 +160,7 @@ export const creativePage: ServicePageContent = {
   cta: {
     titleBefore: "Ready for creative that",
     titleAccent: "looks good and works?",
-    body: "Let's build campaign and performance creative across every format that matters.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s build campaign and performance creative across every format that matters.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

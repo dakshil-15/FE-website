@@ -41,7 +41,7 @@ export default function CTASection({
   titleAccent,
   titleBreak = false,
   body,
-  primaryLabel = "Start a Project",
+  primaryLabel = "Let’s talk",
   primaryHref = "/contact",
   secondaryLabel,
   secondaryHref,

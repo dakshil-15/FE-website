@@ -23,7 +23,7 @@ export const networkStats: NetworkStat[] = [
     suffix: "",
     label: "Marketing Agencies",
     description:
-      "Backed by one of the world's largest independent agency networks, blending global exposure with agility.",
+      "Backed by one of the world’s largest independent agency networks, blending global exposure with agility.",
     showPlus: true,
   },
   {
@@ -71,7 +71,7 @@ export const homeOfficeStats: NetworkStat[] = [
     suffix: "",
     label: "Specialists",
     description:
-      "A diverse team of thinkers, makers and doers, working together to solve what's next.",
+      "A diverse team of thinkers, makers and doers, working together to solve what’s next.",
   },
   {
     value: 12,

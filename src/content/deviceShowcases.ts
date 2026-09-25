@@ -24,11 +24,11 @@ export const AMBASSADOR_HOTEL_PHONE_SCREENS = [
   { src: "/images/work/gallery/ambassador-hotel/07.png", alt: "The Ambassador Hotel — Craft Outcomes", width: 912, height: 496 },
 ];
 
-/** Screen bounds measured from the laptop mockup's alpha channel (1536×1024) — the true transparent cutout, not the outer chassis. */
+/** Screen bounds measured from the laptop mockup’s alpha channel (1536×1024) — the true transparent cutout, not the outer chassis. */
 export const LAPTOP_SCREEN_INSET = { top: 9.86, left: 15.3, right: 15.17, bottom: 26.07 };
 /**
  * Phone mockup screen bounds (941×1672 canvas) — usable screen 713×1450px at x:113, y:100,
- * with a small safety margin added on every side so content clips inside the frame's own
+ * with a small safety margin added on every side so content clips inside the frame’s own
  * rounded-corner curve instead of spilling onto the metal edge at the corners.
  * The Dynamic Island sits inside this area at the top, so live-site content there can be
  * partially covered — unavoidable for a live embed, just worth knowing.

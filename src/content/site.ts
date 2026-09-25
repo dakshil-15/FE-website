@@ -16,7 +16,7 @@ export const contactInfo = {
 
 export const footerCta = {
   headline: "Ready to engineer your growth system?",
-  primaryLabel: "Let's talk",
+  primaryLabel: "Let’s talk",
   primaryHref: "/contact",
 };
 

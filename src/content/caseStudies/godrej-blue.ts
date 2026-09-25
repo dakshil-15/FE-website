@@ -8,9 +8,9 @@ export const godrejBlue: CaseStudy = {
     services: ["branding", "influencer-marketing"],
     hero: "Making Godrej Blue the symbol of Godrej Properties grand arrival in Kolkata, with citywide top of mind recall.",
     challenge: "Make the launch synonymous with Godrej Properties' entry into Kolkata and create citywide top-of-mind recall.",
-    objective: "To make the launch of Godrej Blue synonymous with Godrej Properties's grand entry into Kolkata. The ambition is not just project awareness, but citywide TOM recall — ensuring Kolkata collectively recognizes that Godrej Properties has arrived meaningfully.",
+    objective: "To make the launch of Godrej Blue synonymous with Godrej Properties’s grand entry into Kolkata. The ambition is not just project awareness, but citywide TOM recall — ensuring Kolkata collectively recognizes that Godrej Properties has arrived meaningfully.",
     mandate: [
-      "Own Kolkata's most visible outdoor real estate for launch",
+      "Own Kolkata’s most visible outdoor real estate for launch",
       "Light up iconic landmarks as living brand moments",
       "Activate culture through celebrity and creator collaborations",
       "Pair print, airport LEDs and an Amazon packaging partnership for unavoidable presence",
@@ -33,7 +33,7 @@ export const godrejBlue: CaseStudy = {
       {
         title: "Iconic Landmarks Lit Up",
         description:
-          "Iconic landmarks like Howrah Bridge, Big Ben Clock Tower, South City Mall, and Acropolis Mall were illuminated in the campaign's theme.",
+          "Iconic landmarks like Howrah Bridge, Big Ben Clock Tower, South City Mall, and Acropolis Mall were illuminated in the campaign’s theme.",
         images: ["/images/work/gallery/godrej-blue/04.png"],
       },
       {
@@ -78,7 +78,7 @@ export const godrejBlue: CaseStudy = {
       poster: "/images/work/gallery/godrej-blue/01.png",
     },
     videoIntro:
-      "Collaborations included Kolkata's celebrated actor Prosenjit Chatterjee, Kamiya Jani from Curly Tales, Trina Saha, and singer Antara Mitra.",
+      "Collaborations included Kolkata’s celebrated actor Prosenjit Chatterjee, Kamiya Jani from Curly Tales, Trina Saha, and singer Antara Mitra.",
     videoLabel: "Influencer Activity",
     videoAfterGalleryTitle: "Packaging with Amazon",
     videos: [

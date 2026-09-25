@@ -83,7 +83,7 @@ export const marketplaceManagementPage: ServicePageContent = {
     titleBefore: "Marketplaces as a",
     titleAccent: "Growth Channel",
     body: "We manage marketplace presence like media — measurable, optimised and connected to the wider growth system.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "full-funnel",
@@ -141,7 +141,7 @@ export const marketplaceManagementPage: ServicePageContent = {
           titleBefore: "Marketplaces That",
           titleAccent: "Convert.",
           body: "Marketplace programmes where presence, content and promotion drove growth.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=marketplace-management",
           items: caseItems,
         },
@@ -160,7 +160,7 @@ export const marketplaceManagementPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to treat marketplaces as a",
     titleAccent: "real growth channel?",
-    body: "Let's manage listings, stores and retail media as one connected system.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s manage listings, stores and retail media as one connected system.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

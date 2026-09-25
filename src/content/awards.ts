@@ -58,7 +58,7 @@ export { aboutFeaturedAchievement };
 export const awardsCta = {
   titleBefore: "Recognition motivates us.",
   titleAccent: "Impact defines us.",
-  body: "Let's engineer the next chapter of growth together.",
-  button: { label: "Let's talk", href: "/contact" },
+  body: "Let’s engineer the next chapter of growth together.",
+  button: { label: "Let’s talk", href: "/contact" },
   burst: "/images/about/hero/radial-burst.svg",
 };

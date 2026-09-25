@@ -83,7 +83,7 @@ export const technologyPage: ServicePageContent = {
     titleBefore: "Systems Growth",
     titleAccent: "Runs On",
     body: "We build the infrastructure behind campaigns and operations — not just the interfaces people see.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "ground-up",
@@ -146,7 +146,7 @@ export const technologyPage: ServicePageContent = {
           titleBefore: "Systems That",
           titleAccent: "Scale.",
           body: "Platform and ERP work built for compliance, operations and growth.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=technology",
           items: caseItems,
         },
@@ -165,7 +165,7 @@ export const technologyPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to build systems",
     titleAccent: "growth can run on?",
-    body: "Let's engineer platforms and integrations that outgrow off-the-shelf limits.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s engineer platforms and integrations that outgrow off-the-shelf limits.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

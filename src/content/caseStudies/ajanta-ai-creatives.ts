@@ -8,7 +8,7 @@ export const ajantaAiCreatives: CaseStudy = {
     services: ["ai-solutions", "video-production"],
     hero: "A fairy-led magic metaphor, produced end-to-end with AI-assisted craft.",
     challenge: "Produce a premium, Swarovski-inspired creative film on an accelerated timeline.",
-    objective: "For Ajanta Magic Moments, our focus wasn't on showcasing a product, but on translating an idea into an experience.",
+    objective: "For Ajanta Magic Moments, our focus wasn’t on showcasing a product, but on translating an idea into an experience.",
     mandate: [],
     executionSummary: "",
     execution: [],

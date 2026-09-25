@@ -83,7 +83,7 @@ export const aiSolutionsPage: ServicePageContent = {
     titleBefore: "Intelligence Built",
     titleAccent: "In",
     body: "We apply AI as a practical accelerator across creative, analytics, search and operations — not as a slideware promise.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "creative-ai",
@@ -141,7 +141,7 @@ export const aiSolutionsPage: ServicePageContent = {
           titleBefore: "AI That",
           titleAccent: "Delivers.",
           body: "Practical AI applied to creative, analytics and discoverability with measurable results.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=ai-solutions",
           items: caseItems,
         },
@@ -160,7 +160,7 @@ export const aiSolutionsPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready for AI that",
     titleAccent: "actually accelerates?",
-    body: "Let's apply intelligence across creative, analytics, search and operations.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s apply intelligence across creative, analytics, search and operations.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

@@ -172,7 +172,7 @@ export const services: Service[] = [
   },
   {
     slug: "social-media",
-    name: "Social Media Management",
+    name: "Social Media",
     shortName: "Social",
     summary:
       "Always-on social strategy, content and community management for both B2B and B2C audiences.",
@@ -195,7 +195,7 @@ export const services: Service[] = [
   },
   {
     slug: "seo",
-    name: "SEO Solutions",
+    name: "SEO/AEO/GEO",
     shortName: "SEO",
     summary:
       "Technical, on-page and local SEO built for how search actually works now — including AI Overviews, AEO and GEO.",

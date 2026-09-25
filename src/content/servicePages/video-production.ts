@@ -97,7 +97,7 @@ export const videoProductionPage: ServicePageContent = {
     titleBefore: "Video Built to",
     titleAccent: "Hold Attention",
     body: "We produce for how people watch — short-form, long-form and everything between — without losing brand craft or campaign intent.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "story-first",
@@ -155,7 +155,7 @@ export const videoProductionPage: ServicePageContent = {
           titleBefore: "Films That",
           titleAccent: "Deliver.",
           body: "Production work where story, craft and distribution drove measurable outcomes.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=video-production",
           items: caseItems,
         },
@@ -174,7 +174,7 @@ export const videoProductionPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to produce video that",
     titleAccent: "people actually watch?",
-    body: "Let's build films and social video engineered for attention and outcomes.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s build films and social video engineered for attention and outcomes.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

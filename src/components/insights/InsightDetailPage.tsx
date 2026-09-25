@@ -46,7 +46,7 @@ const SECTION_LABELS: Record<InsightDetailSectionId, string> = {
   pillars: "Key Pillars",
   examples: "Real-World Examples",
   impact: "Impact",
-  "whats-next": "What's Next",
+  "whats-next": "What’s Next",
 };
 
 function formatDate(iso: string) {

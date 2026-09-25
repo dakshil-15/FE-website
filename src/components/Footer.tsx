@@ -10,6 +10,7 @@ import {
   LinkedInIcon,
   YouTubeIcon,
 } from "@/components/SocialIcons";
+import { serviceOfferings } from "@/content/serviceOfferings";
 import { contactInfo, footerCta, socialLinks } from "@/content/site";
 import { pageHasEndCta } from "@/lib/pageCta";
 
@@ -25,13 +26,7 @@ const columns = [
   },
   {
     title: "Services",
-    links: [
-      { label: "Media", href: "/services/media-buying" },
-      { label: "Creative", href: "/services/creative" },
-      { label: "Technology", href: "/services/technology" },
-      { label: "AI Solutions", href: "/services/ai-solutions" },
-      { label: "Digital", href: "/services" },
-    ],
+    links: serviceOfferings.map((service) => ({ label: service.name, href: service.href })),
   },
 ];
 

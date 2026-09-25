@@ -20,7 +20,7 @@ const impactStats = [
 
 export const seoPage: ServicePageContent = {
   slug: "seo",
-  name: "SEO Solutions",
+  name: "SEO/AEO/GEO",
   summary:
     "Technical, on-page and local SEO built for how search actually works now — including AI Overviews, AEO and GEO.",
   hero: {
@@ -89,7 +89,7 @@ export const seoPage: ServicePageContent = {
     titleBefore: "Built to Be",
     titleAccent: "Found",
     body: "We optimise for search engines and for AI discovery — technical depth, content architecture and local presence as one system.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "technical",
@@ -147,7 +147,7 @@ export const seoPage: ServicePageContent = {
           titleBefore: "Search That",
           titleAccent: "Converts.",
           body: "SEO programmes that improved visibility, traffic and local discovery.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=seo",
           items: caseItems,
         },
@@ -166,7 +166,7 @@ export const seoPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to be found by search",
     titleAccent: "and by AI?",
-    body: "Let's build technical, local and AI-era SEO that compounds discoverability.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s build technical, local and AI-era SEO that compounds discoverability.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

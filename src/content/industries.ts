@@ -5,7 +5,7 @@ export const industries: Industry[] = [
     slug: "real-estate",
     name: "Real Estate",
     overview:
-      "From city-wide launch takeovers to campaigns built around a site's own character, we help real estate brands turn attention into footfall and sales.",
+      "From city-wide launch takeovers to campaigns built around a site’s own character, we help real estate brands turn attention into footfall and sales.",
     clients: ["Godrej Properties"],
     caseStudySlugs: ["godrej-blue", "godrej-greenfront"],
     tone: "campaign",

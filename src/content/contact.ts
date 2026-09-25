@@ -9,7 +9,7 @@ import { contactInfo } from "@/content/site";
 
 export const contactHero = {
   eyebrow: "Contact Us",
-  headlineBefore: "Let's Discuss",
+  headlineBefore: "Let’s Discuss",
   headlineAccentWords: [
     "Media Buying",
     "AI",

@@ -100,10 +100,10 @@ export const insightsFeaturedCard = {
 };
 
 export const insightsCta = {
-  titleBefore: "Let's engineer growth,",
+  titleBefore: "Let’s engineer growth,",
   titleAccent: "together.",
-  body: "Have a challenge or an idea? Let's build what's next.",
-  button: { label: "Let's talk", href: "/contact" },
+  body: "Have a challenge or an idea? Let’s build what’s next.",
+  button: { label: "Let’s talk", href: "/contact" },
 };
 
 /** Footer Insights column — each link targets a distinct destination. */
@@ -204,7 +204,7 @@ export const insightPosts: InsightPost[] = [
     date: "2024-05-08",
     readTime: "6 min read",
     excerpt:
-      "Attention is scarce, fragmented and expensive. Brands that win aren't just buying reach — they're engineering relevance across every touchpoint.",
+      "Attention is scarce, fragmented and expensive. Brands that win aren’t just buying reach — they’re engineering relevance across every touchpoint.",
     thumbnail: listingThumb(undefined, "When Attention Becomes the Battleground thumbnail"),
   },
   {
@@ -217,7 +217,7 @@ export const insightPosts: InsightPost[] = [
     readTime: "6 min read",
     featured: true,
     excerpt:
-      "AI is reshaping how brands allocate budget, personalize experiences and measure outcomes — but only when it's built into the system, not bolted on.",
+      "AI is reshaping how brands allocate budget, personalize experiences and measure outcomes — but only when it’s built into the system, not bolted on.",
     thumbnail: listingThumb("ai-data.png", "Performance marketing in an AI-powered world thumbnail"),
   },
   {
@@ -230,7 +230,7 @@ export const insightPosts: InsightPost[] = [
     readTime: "5 min read",
     featured: true,
     excerpt:
-      "Influencer partnerships fail when they're treated as media buys. The brands that scale them treat creators as strategic growth channels.",
+      "Influencer partnerships fail when they’re treated as media buys. The brands that scale them treat creators as strategic growth channels.",
     thumbnail: listingThumb("media-intelligence.png", "Influencer marketing intelligence thumbnail"),
   },
   {
@@ -243,7 +243,7 @@ export const insightPosts: InsightPost[] = [
     readTime: "7 min read",
     featured: true,
     excerpt:
-      "Retail media is no longer a side channel — it's a full-funnel growth system that connects product discovery, consideration and conversion.",
+      "Retail media is no longer a side channel — it’s a full-funnel growth system that connects product discovery, consideration and conversion.",
     thumbnail: listingThumb("retail-media.png", "Retail media networks thumbnail"),
   },
   {
@@ -268,7 +268,7 @@ export const insightPosts: InsightPost[] = [
     date: "2024-04-24",
     readTime: "8 min read",
     excerpt:
-      "AI is transforming how brands connect, convert and grow. The opportunity isn't in isolated tools — it's in building intelligent systems that learn and adapt.",
+      "AI is transforming how brands connect, convert and grow. The opportunity isn’t in isolated tools — it’s in building intelligent systems that learn and adapt.",
     thumbnail: listingThumb(undefined, "AI in modern marketing systems thumbnail"),
   },
   {
@@ -281,7 +281,7 @@ export const insightPosts: InsightPost[] = [
     readTime: "9 min read",
     featured: true,
     excerpt:
-      "How a unified media and commerce strategy turned brand visibility into measurable store visits and sales lift for one of India's leading luggage brands.",
+      "How a unified media and commerce strategy turned brand visibility into measurable store visits and sales lift for one of India’s leading luggage brands.",
     thumbnail: listingThumb(undefined, "VIP Industries case study thumbnail"),
   },
   {
@@ -305,7 +305,7 @@ export const insightPosts: InsightPost[] = [
     date: "2024-01-18",
     readTime: "5 min read",
     excerpt:
-      "Performance creative isn't about more variants — it's about systematic testing, brand consistency and data-informed iteration at scale.",
+      "Performance creative isn’t about more variants — it’s about systematic testing, brand consistency and data-informed iteration at scale.",
     thumbnail: listingThumb(undefined, "Creative that converts thumbnail"),
   },
 ];
@@ -348,14 +348,14 @@ export const insightArticles: Record<string, InsightArticle> = {
     headlineBefore: "AI at the Core:",
     headlineAccent: "Building Smarter Marketing Systems.",
     excerpt:
-      "AI is transforming how brands connect, convert and grow. The opportunity isn't in isolated tools — it's in building intelligent systems that learn, adapt and compound value over time.",
+      "AI is transforming how brands connect, convert and grow. The opportunity isn’t in isolated tools — it’s in building intelligent systems that learn, adapt and compound value over time.",
     author: "First Economy Team",
     heroImage: aiArticleHero,
     overview: {
-      headline: "The brands that win won't just use AI tools. They'll build AI-powered systems.",
-      body: "Marketing has always been about connecting the right message to the right audience at the right moment. What's changed is the scale, speed and precision now possible — and the expectation that every interaction feels personal, relevant and timely.",
+      headline: "The brands that win won’t just use AI tools. They’ll build AI-powered systems.",
+      body: "Marketing has always been about connecting the right message to the right audience at the right moment. What’s changed is the scale, speed and precision now possible — and the expectation that every interaction feels personal, relevant and timely.",
       quote:
-        "The brands that win won't just use AI tools. They'll build AI-powered systems.",
+        "The brands that win won’t just use AI tools. They’ll build AI-powered systems.",
     },
     opportunity: {
       headline: "A seismic shift in how marketing creates value.",
@@ -380,7 +380,7 @@ export const insightArticles: Record<string, InsightArticle> = {
     },
     perspective: {
       headline: "We see AI as an enabler, not a replacement.",
-      subheadline: "Intelligent marketing systems amplify human judgment — they don't eliminate it.",
+      subheadline: "Intelligent marketing systems amplify human judgment — they don’t eliminate it.",
       items: [
         {
           title: "Human + AI Collaboration",
@@ -433,7 +433,7 @@ export const insightArticles: Record<string, InsightArticle> = {
     ],
     examples: {
       headline: "AI in action across marketing.",
-      subheadline: "Real applications we're building and deploying for growth-focused brands.",
+      subheadline: "Real applications we’re building and deploying for growth-focused brands.",
       items: [
         {
           category: "Media",
@@ -458,7 +458,7 @@ export const insightArticles: Record<string, InsightArticle> = {
     },
     impact: {
       headline: "Smarter systems. Stronger growth.",
-      subheadline: "Outcomes we're seeing with AI-powered marketing systems.",
+      subheadline: "Outcomes we’re seeing with AI-powered marketing systems.",
       stats: [
         { value: "35%+", label: "Improvement in ROI" },
         { value: "50%+", label: "Faster Decisioning" },
@@ -467,7 +467,7 @@ export const insightArticles: Record<string, InsightArticle> = {
       ],
     },
     whatsNext:
-      "The brands that treat AI as a strategic capability — not a tactical add-on — will build durable advantages in how they acquire, engage and retain customers. The question isn't whether to adopt AI. It's how quickly you can move from experiments to systems that compound value over time.",
+      "The brands that treat AI as a strategic capability — not a tactical add-on — will build durable advantages in how they acquire, engage and retain customers. The question isn’t whether to adopt AI. It’s how quickly you can move from experiments to systems that compound value over time.",
   },
 };
 
@@ -477,7 +477,7 @@ function buildStubArticle(post: InsightPost): InsightArticle {
     categoryParent: post.category,
     headlineBefore: post.title.split(":")[0] ?? post.title,
     headlineAccent: post.title.includes(":") ? `${post.title.split(":").slice(1).join(":").trim()}.` : "",
-    excerpt: "A perspective from the First Economy team on what's changing — and what it means for brands building for growth.",
+    excerpt: "A perspective from the First Economy team on what’s changing — and what it means for brands building for growth.",
     author: "First Economy Team",
     heroImage: {
       alt: `${post.title} hero image`,
@@ -486,7 +486,7 @@ function buildStubArticle(post: InsightPost): InsightArticle {
     overview: {
       headline: post.title,
       body: "This article is in development. Check back soon for the full perspective from our team.",
-      quote: "Growth systems built for what's next — not just what's now.",
+      quote: "Growth systems built for what’s next — not just what’s now.",
     },
     opportunity: { headline: "The opportunity", subheadline: "", items: [] },
     perspective: { headline: "Our perspective", subheadline: "", items: [] },

@@ -37,7 +37,7 @@ export default function WorkDetailRelated({
           />
           <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
             <GrowthCta href="/work" variant="secondary">
-              View all work
+              View all case studies
             </GrowthCta>
           </div>
         </div>

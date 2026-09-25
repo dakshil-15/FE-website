@@ -14,7 +14,7 @@ const impactStats = impactStatsForService("social-media");
 
 export const socialMediaPage: ServicePageContent = {
   slug: "social-media",
-  name: "Social Media Management",
+  name: "Social Media",
   summary:
     "Always-on social strategy, content and community management for both B2B and B2C audiences.",
   hero: {
@@ -83,7 +83,7 @@ export const socialMediaPage: ServicePageContent = {
     titleBefore: "Social That",
     titleAccent: "Compounds",
     body: "We run social as a continuous system — strategy, content and community working together for B2B and B2C brands.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "always-on",
@@ -141,7 +141,7 @@ export const socialMediaPage: ServicePageContent = {
           titleBefore: "Social That",
           titleAccent: "Sticks.",
           body: "Always-on and campaign social work that built presence and trust.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=social-media",
           items: caseItems,
         },
@@ -160,7 +160,7 @@ export const socialMediaPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready for social that",
     titleAccent: "compounds over time?",
-    body: "Let's build always-on strategy, content and community that grow brand equity.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s build always-on strategy, content and community that grow brand equity.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

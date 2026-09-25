@@ -309,10 +309,10 @@ export const capabilityCaseStudies: CapabilityCaseStudy[] = workShowcaseOrder
   }));
 
 export const capabilitiesCta = {
-  titleBefore: "Let's build intelligent",
+  titleBefore: "Let’s build intelligent",
   titleAccent: "marketing systems.",
   body: "Ready to engineer technology, AI and data into your growth operations?",
-  button: { label: "Let's talk", href: "/contact" },
+  button: { label: "Let’s talk", href: "/contact" },
 };
 
 /** @deprecated Use capabilityCards — kept for any external imports */

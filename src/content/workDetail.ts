@@ -21,10 +21,10 @@ import { workPhotos } from "@/content/workPhotos";
 import { fetchInstagramThumbnail } from "@/lib/instagram";
 
 export const workDetailCta = {
-  titleBefore: "Let's create impact",
+  titleBefore: "Let’s create impact",
   titleAccent: "together",
-  body: "Have a challenge worth solving? Let's engineer a growth system custom-built for your brand.",
-  button: { label: "Start a Conversation", href: "/contact" },
+  body: "Have a challenge worth solving? Let’s engineer a growth system custom-built for your brand.",
+  button: { label: "Let’s talk", href: "/contact" },
   burst: "/images/work/cta-burst.svg",
 };
 

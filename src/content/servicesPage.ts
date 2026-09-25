@@ -81,7 +81,7 @@ const serviceOfferingIcons: Record<string, MediaSlot> = {
   seo: {
     src: "/images/services/icons/data_analytics_pie.svg",
     alt: "",
-    label: "SEO Solutions",
+    label: "SEO/AEO/GEO",
   },
   "ai-solutions": {
     src: "/images/services/icons/strategy_consulting_target.svg",
@@ -199,8 +199,8 @@ export const servicesTrusted = {
 };
 
 export const servicesCta = {
-  titleBefore: "Let's build your next",
+  titleBefore: "Let’s build your next",
   titleAccent: "growth system.",
   body: "Ready to scale your brand with strategy, creativity and technology?",
-  button: { label: "Start a Project", href: "/contact" },
+  button: { label: "Let’s talk", href: "/contact" },
 };

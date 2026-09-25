@@ -177,7 +177,7 @@ export default function CareerApplyForm({
           name="coverLetter"
           rows={4}
           disabled={status === "submitting"}
-          placeholder="Tell us why you're a great fit for this role"
+          placeholder="Tell us why you’re a great fit for this role"
           className={`${fieldClass} min-h-[6.5rem] resize-y`}
         />
       </div>

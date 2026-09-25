@@ -232,7 +232,7 @@ export default function CareerDetailPage({
                 className="mt-12 w-full min-w-0 bg-paper px-4 py-8 sm:mt-14 sm:px-6 sm:py-10 lg:px-8 lg:py-12"
                 aria-labelledby="work-areas-heading"
               >
-                <h2 id="work-areas-heading" className="text-eyebrow m-0">What you&apos;ll work on</h2>
+                <h2 id="work-areas-heading" className="text-eyebrow m-0">What you&rsquo;ll work on</h2>
                 <ul
                   data-animate-stagger
                   className="m-0 mt-6 grid list-none grid-cols-1 gap-2.5 p-0 sm:mt-8 xs:grid-cols-2"

@@ -74,7 +74,7 @@ export const careersHero = {
   headlineBefore: "Your next big move",
   headlineAccent: "could start here.",
   headlineAfter: "",
-  body: "At First Economy, we're here to make work that gets noticed and build a place where people love doing it. Bring your ideas, challenge the obvious, learn something new and grow with a team that's always rooting for you.",
+  body: "At First Economy, we’re here to make work that gets noticed and build a place where people love doing it. Bring your ideas, challenge the obvious, learn something new and grow with a team that’s always rooting for you.",
   cta: { label: "Explore openings", href: "#open-positions" },
   image: {
     src: "/images/careers/hero/team.png",
@@ -209,7 +209,7 @@ export const careersOpenings = {
   eyebrow: "Open Positions",
   title: "Find your next opportunity.",
   viewAll: { label: "View all openings", href: "#open-positions" },
-  emptyNote: "Don't see the right role?",
+  emptyNote: "Don’t see the right role?",
   resumeCta: { label: "Send us your resume", href: "mailto:p&c@firsteconomy.com" },
 };
 
@@ -516,7 +516,7 @@ export const careersGallery = {
 };
 
 export const careersCta = {
-  titleBefore: "Let's build what's next.",
+  titleBefore: "Let’s build what’s next.",
   titleAccent: "Together.",
   email: {
     label: "Send your resume to",

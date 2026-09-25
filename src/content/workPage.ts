@@ -60,7 +60,7 @@ export const workShowcaseOrder = [
   "waaree",
 ];
 
-/** Kept in sync with `familyLabels` in workDetail.ts — card tags mirror each case study's own detail-page eyebrow. */
+/** Kept in sync with `familyLabels` in workDetail.ts — card tags mirror each case study’s own detail-page eyebrow. */
 const familyTags: Record<CaseStudyFamily, string> = {
   integrated: "Integrated Campaign",
   "media-performance": "Media Performance",
@@ -189,7 +189,7 @@ export const workStats = {
 export const workCta = {
   titleBefore: "Have a challenge",
   titleAccent: "worth solving?",
-  body: "Let's engineer a growth system custom-built for your brand.",
-  button: { label: "Start a Conversation", href: "/contact" },
+  body: "Let’s engineer a growth system custom-built for your brand.",
+  button: { label: "Let’s talk", href: "/contact" },
   burst: "/images/work/cta-burst.svg",
 };

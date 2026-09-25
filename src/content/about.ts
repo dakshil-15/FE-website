@@ -22,7 +22,7 @@ export const aboutHero = {
   headlineBefore: "We engineer",
   headlineAccent: "growth systems",
   headlineAfter: "that drive real impact",
-  body: "First Economy is a growth partner for brands that want to go beyond marketing and build a sustainable advantage in today's digital world.",
+  body: "First Economy is a growth partner for brands that want to go beyond marketing and build a sustainable advantage in today’s digital world.",
   image: {
     src: "/images/about/hero/meeting-room.jpg",
     alt: "First Economy team in a glass meeting room",
@@ -84,7 +84,7 @@ export const aboutTimeline = [
 
 export const aboutWhatWeDo = {
   eyebrow: "What We Do",
-  titleBefore: "We don't offer services in silos. We",
+  titleBefore: "We don’t offer services in silos. We",
   titleAccent: "engineer growth systems.",
   body: "Instead of presenting capabilities as disconnected departments, we design strategy, creative, media, technology and data to work together — built around a single growth outcome.",
   cta: { label: "Explore our services", href: "/services" },
@@ -274,7 +274,7 @@ export const aboutUi = {
 };
 
 export const aboutValuesIntro =
-  "Our values aren't words on a wall. They're everyday behaviors that shape how we work, collaborate, and grow.";
+  "Our values aren’t words on a wall. They’re everyday behaviors that shape how we work, collaborate, and grow.";
 
 export const aboutValues = [
   {
@@ -283,7 +283,7 @@ export const aboutValues = [
   },
   {
     title: "We Stay Curious",
-    body: "We question the obvious, explore what's next and keep learning. Because better work starts with better questions.",
+    body: "We question the obvious, explore what’s next and keep learning. Because better work starts with better questions.",
   },
   {
     title: "We Respect People",
@@ -291,11 +291,11 @@ export const aboutValues = [
   },
   {
     title: "We Move Together",
-    body: "Ideas get better when people come together. We collaborate across teams, share what we know and have each other's backs.",
+    body: "Ideas get better when people come together. We collaborate across teams, share what we know and have each other’s backs.",
   },
   {
     title: "We Keep Raising the Bar",
-    body: "We don't just chase big wins. We notice the small breakthroughs, learn from every project and keep pushing the work forward.",
+    body: "We don’t just chase big wins. We notice the small breakthroughs, learn from every project and keep pushing the work forward.",
   },
 ];
 
@@ -609,14 +609,14 @@ export const campaignAwards: CampaignAward[] = [
     } satisfies MediaSlot,
   },
   {
-    client: "Natural's Ice Cream",
+    client: "Natural’s Ice Cream",
     organization: "afaqs! DIGIES Awards",
     accolade: "Best Brand Awareness Campaign",
     category: "Digital.",
     image: {
       src: "/images/about/awards/naturals-icecream-digies-brand-awareness.png",
-      alt: "Natural's Ice Cream afaqs! DIGIES Awards trophy",
-      label: "Natural's Ice Cream",
+      alt: "Natural’s Ice Cream afaqs! DIGIES Awards trophy",
+      label: "Natural’s Ice Cream",
       fit: "contain",
       grayscale: false,
     } satisfies MediaSlot,
@@ -818,7 +818,7 @@ export const aboutCta = {
   titleBefore: "Ready to engineer",
   titleAccent: "your growth system?",
   body: "Partner with a team built around strategy, creative, media, technology and data — working as one growth system.",
-  button: { label: "Let's talk", href: "/contact" },
+  button: { label: "Let’s talk", href: "/contact" },
   secondary: { label: "View awards", href: "/awards" },
   tertiary: { label: "Our offices", href: "/contact#offices" },
   burst: "/images/about/hero/radial-burst.svg",

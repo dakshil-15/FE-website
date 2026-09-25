@@ -45,7 +45,7 @@ export const brandingPage: ServicePageContent = {
         number: "01",
         id: "brand-strategy-positioning",
         title: "Brand Strategy & Positioning",
-        body: "Defining the brand's purpose, positioning, and voice to guide all communication.",
+        body: "Defining the brand’s purpose, positioning, and voice to guide all communication.",
         icon: { ...processIcons.strategize, label: "Brand Strategy & Positioning" },
       },
       {
@@ -96,8 +96,8 @@ export const brandingPage: ServicePageContent = {
     eyebrow: "Why First Economy",
     titleBefore: "Identity That Holds",
     titleAccent: "Everywhere",
-    body: "We don't stop at the logo deck — branding is engineered through every touchpoint where people meet the brand.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "We don’t stop at the logo deck — branding is engineered through every touchpoint where people meet the brand.",
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "strategy-led",
@@ -155,7 +155,7 @@ export const brandingPage: ServicePageContent = {
           titleBefore: "Brands Built to",
           titleAccent: "Last.",
           body: "Identity and launch work that held up on screen, on street and in culture.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=branding",
           items: caseItems,
         },
@@ -174,7 +174,7 @@ export const brandingPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to build a brand that",
     titleAccent: "holds everywhere?",
-    body: "Let's shape identity systems that work on screen and on the storefront.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s shape identity systems that work on screen and on the storefront.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

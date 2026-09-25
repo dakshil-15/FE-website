@@ -78,7 +78,7 @@ export function isHeadlineStat(value: string, label: string): boolean {
 
 /**
  * Pull a short list of headline metrics from cases tagged to this service.
- * Returns [] when there aren't enough clean stats — omit the impact section.
+ * Returns [] when there aren’t enough clean stats — omit the impact section.
  */
 export function impactStatsForService(
   serviceSlug: string,

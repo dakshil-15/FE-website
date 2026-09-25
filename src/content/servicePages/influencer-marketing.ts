@@ -90,7 +90,7 @@ export const influencerMarketingPage: ServicePageContent = {
     titleBefore: "Creators as a",
     titleAccent: "Growth System",
     body: "We treat influencers as a connected system — not one-off activations — so authenticity scales without losing control.",
-    button: { label: "Let's talk", href: "/contact" },
+    button: { label: "Let’s talk", href: "/contact" },
     valueCards: [
       {
         id: "system-scale",
@@ -163,7 +163,7 @@ export const influencerMarketingPage: ServicePageContent = {
           titleBefore: "Creators That",
           titleAccent: "Move Culture.",
           body: "Influencer programmes that delivered scale, authenticity and measurable amplification.",
-          exploreLabel: "View all cases",
+          exploreLabel: "View all case studies",
           exploreHref: "/work?service=influencer-marketing",
           items: caseItems,
         },
@@ -182,7 +182,7 @@ export const influencerMarketingPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to build creator programmes that",
     titleAccent: "actually scale?",
-    body: "Let's engineer influencer systems for authenticity and measurable growth.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s engineer influencer systems for authenticity and measurable growth.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };

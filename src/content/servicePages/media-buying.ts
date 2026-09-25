@@ -93,7 +93,7 @@ export const mediaBuyingPage: ServicePageContent = {
     titleBefore: "Media That Delivers",
     titleAccent: "Results.",
     body: "Campaigns where integrated media planning drove measurable brand and business outcomes.",
-    exploreLabel: "View all cases",
+    exploreLabel: "View all case studies",
     exploreHref: "/work?service=media-buying",
     items: caseItems,
   },
@@ -112,7 +112,7 @@ export const mediaBuyingPage: ServicePageContent = {
   cta: {
     titleBefore: "Ready to build high-impact",
     titleAccent: "media campaigns?",
-    body: "Let's connect the right audience with the right message and drive measurable growth.",
-    button: { label: "Let's talk", href: "/contact" },
+    body: "Let’s connect the right audience with the right message and drive measurable growth.",
+    button: { label: "Let’s talk", href: "/contact" },
   },
 };
