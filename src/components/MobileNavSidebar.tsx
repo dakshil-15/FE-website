@@ -263,14 +263,14 @@ export default function MobileNavSidebar({
           <div className="flex flex-col gap-2 text-sm" data-sidebar-footer>
             <a
               href={contactInfo.phoneHref}
-              className="text-muted transition hover:text-red focus-visible:outline-offset-2"
+              className="flex min-h-11 items-center text-muted transition hover:text-red focus-visible:outline-offset-2"
               tabIndex={open ? 0 : -1}
             >
               {contactInfo.phone}
             </a>
             <a
               href={contactInfo.emailHref}
-              className="text-muted transition hover:text-red focus-visible:outline-offset-2"
+              className="flex min-h-11 items-center text-muted transition hover:text-red focus-visible:outline-offset-2"
               tabIndex={open ? 0 : -1}
             >
               {contactInfo.email}

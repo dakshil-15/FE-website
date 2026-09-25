@@ -14,7 +14,7 @@ type HorizontalCarouselProps = {
   getSlideLabel?: (index: number) => string;
   liveRegion?: (active: number, itemCount: number) => string;
   controls?: CarouselControls;
-  /** Upper places arrows on card image midpoint (dark controls only) */
+  /** Upper places arrows on the card image (dark and light controls) */
   arrowPosition?: "center" | "upper";
   dotsClassName?: string;
   arrowIconSize?: number;
@@ -52,9 +52,12 @@ const controlStyles = {
   },
   light: {
     arrow:
-      "tap-target absolute top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:pointer-events-none disabled:opacity-40",
-    arrowLeft: "left-2 sm:left-3",
-    arrowRight: "right-2 sm:right-3",
+      "tap-target absolute z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-sm hover:border-red hover:text-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red disabled:pointer-events-none disabled:opacity-40",
+    arrowLeft: "top-1/2 left-2 sm:left-3",
+    arrowRight: "top-1/2 right-2 sm:right-3",
+    // Card carousels: sit on the card image, not on the text below it.
+    arrowLeftUpper: "top-[30%] left-2 sm:left-3",
+    arrowRightUpper: "top-[30%] right-2 sm:right-3",
     dotFocus: "focus-visible:outline-red",
     dotButton: "tap-target-sm grid place-items-center rounded-full",
     dotActive: "w-6 bg-red",
@@ -71,7 +74,10 @@ function arrowClassName(controls: CarouselControls, arrowPosition: "center" | "u
   }
 
   if (controls === "light") {
-    return `${styles.arrow} ${side === "left" ? styles.arrowLeft : styles.arrowRight}`;
+    const upper = arrowPosition === "upper";
+    const left = upper ? controlStyles.light.arrowLeftUpper : styles.arrowLeft;
+    const right = upper ? controlStyles.light.arrowRightUpper : styles.arrowRight;
+    return `${styles.arrow} ${side === "left" ? left : right}`;
   }
 
   if (arrowPosition === "upper") {

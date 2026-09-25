@@ -129,6 +129,7 @@ export default function CareerDetailPage({
               <GrowthCta
                 type="button"
                 variant="primary"
+                block
                 className="mt-7 sm:mt-8"
                 onClick={() => scrollToElement("apply")}
               >

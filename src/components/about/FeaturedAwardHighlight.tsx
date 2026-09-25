@@ -22,7 +22,7 @@ export default function FeaturedAwardHighlight() {
               className="object-contain p-6 transition duration-500 group-hover:scale-[1.03] sm:p-8"
             />
           ) : null}
-          <span className="absolute top-4 left-4 rounded-full bg-red px-3 py-1 text-[10px] font-bold tracking-[0.16em] text-white uppercase sm:top-5 sm:left-5 sm:px-3.5 sm:py-1.5 sm:text-[11px]">
+          <span className="absolute top-4 left-4 rounded-full bg-red px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-white uppercase sm:top-5 sm:left-5 sm:px-3.5 sm:py-1.5">
             Guinness World Record
           </span>
         </div>

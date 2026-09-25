@@ -1,3 +1,5 @@
+import { contactInfo } from "@/content/site";
+
 export type LegalSection = {
   id: string;
   title: string;
@@ -109,7 +111,7 @@ export const privacyPolicyContent: LegalDocumentContent = {
     },
   ],
   contactNote:
-    "For privacy-related questions or requests, email hello@firsteconomy.in or write to First Economy Private Limited, Mumbai, India.",
+    `For privacy-related questions or requests, email ${contactInfo.email} or write to First Economy Private Limited, Mumbai, India.`,
 };
 
 export const termsContent: LegalDocumentContent = {
@@ -212,5 +214,5 @@ export const termsContent: LegalDocumentContent = {
     },
   ],
   contactNote:
-    "For questions about these Terms, contact hello@firsteconomy.in.",
+    `For questions about these Terms, contact ${contactInfo.email}.`,
 };

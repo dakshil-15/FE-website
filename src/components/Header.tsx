@@ -109,7 +109,7 @@ export default function Header() {
           open ? "z-[120]" : "z-50"
         }`}
       >
-        <div className="mx-auto flex max-w-[var(--content)] items-center justify-between gap-3 sm:gap-[clamp(16px,2.5vw,40px)]">
+        <div className="mx-auto flex max-w-[var(--content)] items-center justify-between gap-2 sm:gap-[clamp(16px,2.5vw,40px)]">
           <Link href="/" className="flex min-w-0 flex-none items-center" aria-label="First Economy home">
             <Image
               src="/images/brand/fe_logo_black.svg"
@@ -143,8 +143,8 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="relative z-[121] flex flex-none items-center gap-2 sm:gap-3">
-            <GrowthCta href="/contact" variant="primary" compact className="hidden md:inline-flex">
+          <div className="relative z-[121] flex flex-none items-center gap-1.5 sm:gap-3">
+            <GrowthCta href="/contact" variant="primary" compact className="max-[360px]:hidden!">
               Let&rsquo;s talk
             </GrowthCta>
 

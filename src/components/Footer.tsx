@@ -93,10 +93,13 @@ export default function Footer() {
               </a>
               <a
                 href={contactInfo.emailHref}
-                className="flex min-h-11 items-center gap-2.5 break-all transition hover:text-white focus-visible:text-white"
+                className="flex min-h-11 items-center gap-2.5 transition hover:text-white focus-visible:text-white"
               >
                 <Mail size={14} strokeWidth={2} className="flex-none" aria-hidden />
-                <span>{contactInfo.email}</span>
+                <span className="[overflow-wrap:anywhere]">
+                  {contactInfo.email.split("@")[0]}@<wbr />
+                  {contactInfo.email.split("@")[1]}
+                </span>
               </a>
               <span className="flex items-start gap-2.5">
                 <MapPin size={14} strokeWidth={2} className="mt-[3px] flex-none" aria-hidden />

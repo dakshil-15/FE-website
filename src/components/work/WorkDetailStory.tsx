@@ -69,7 +69,7 @@ function ResultStatsGrid({ stats, className = "" }: { stats: WorkDetailModel["re
               className={`m-0 text-white ${parsed.isPhrase ? "text-stat-phrase" : "text-stat"}`}
               aria-label={spoken}
             >
-              <span aria-hidden="true" className="inline-flex flex-wrap items-baseline">
+              <span aria-hidden="true">
                 <span>{parsed.figure}</span>
                 {parsed.unit ? (
                   <span

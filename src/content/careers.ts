@@ -424,6 +424,13 @@ export const careerRoleDetails: Record<string, CareerRoleDetail> = {
   },
 };
 
+/** "a Video Editor" / "an AI & Data Analyst" / "an SEO Specialist". */
+function withArticle(title: string) {
+  const first = title.split(" ")[0] ?? "";
+  const vowelSound = /^[AEIOU]/i.test(first) || (/^[A-Z]{2,4}$/.test(first) && /^[FHLMNRSX]/.test(first));
+  return `${vowelSound ? "an" : "a"} ${title}`;
+}
+
 function buildFallbackDetail(role: CareerRole): CareerRoleDetail {
   const titleParts = role.title.split(" ");
   const splitAt = Math.ceil(titleParts.length / 2);
@@ -433,10 +440,10 @@ function buildFallbackDetail(role: CareerRole): CareerRoleDetail {
     eyebrow: "We are hiring",
     headlineBefore: titleParts.slice(0, splitAt).join(" "),
     headlineAccent: titleParts.slice(splitAt).join(" "),
-    summary: `Join our ${role.department} team in ${role.location} as a ${role.title}. Help us engineer growth for leading brands across channels and markets.`,
+    summary: `Join our ${role.department} team in ${role.location} as ${withArticle(role.title)}. Help us engineer growth for leading brands across channels and markets.`,
     heroImage: careerDetailHeroImage,
     heroBurst: "/images/careers/hero/radial-burst.svg",
-    aboutRole: `We are looking for a ${role.title} to join our ${role.department} practice in ${role.location}. This is a ${role.type.toLowerCase()} role${
+    aboutRole: `We are looking for ${withArticle(role.title)} to join our ${role.department} practice in ${role.location}. This is a ${role.type.toLowerCase()} role${
       role.experience ? ` suited for professionals with ${role.experience} of relevant experience` : ""
     }.`,
     responsibilities: [

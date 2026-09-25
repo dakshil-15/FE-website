@@ -49,6 +49,7 @@ export default function WorkDetailRelated({
             slidesGroupLabel="Case study slides"
             getSlideLabel={(index) => workCardTitle(related[index]!)}
             controls="light"
+            arrowPosition="upper"
             prevLabel="Previous case study"
             nextLabel="Next case study"
           >

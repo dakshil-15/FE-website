@@ -65,7 +65,7 @@ export default function WorkDetailHero({
             : caseStudy.slug === "adani-airports-safar-ke-humsafar"
               ? "aspect-[8/5] w-full bg-[#c5eafc]"
               : "aspect-[8/5] w-full bg-[#004c8d]"
-      : "aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]";
+      : "aspect-[8/5] w-full lg:aspect-auto lg:h-full lg:min-h-[420px]";
 
   const playHeroVideo = () => {
     const el = videoRef.current;

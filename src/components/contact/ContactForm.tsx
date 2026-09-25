@@ -194,6 +194,7 @@ export default function ContactForm() {
         <GrowthCta
           type="submit"
           variant="primary"
+          block
           loading={status === "submitting"}
         >
           {status === "submitting" ? "Sending…" : contactFormCopy.submit}

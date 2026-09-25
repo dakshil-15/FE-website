@@ -29,6 +29,7 @@ export default function CapabilitiesWorkCarousel({ cases }: { cases: CapabilityC
       slidesGroupLabel="Case study slides"
       getSlideLabel={(index) => cases[index]?.client ?? ""}
       controls="light"
+      arrowPosition="upper"
       prevLabel="Previous case study"
       nextLabel="Next case study"
       showDots={false}
