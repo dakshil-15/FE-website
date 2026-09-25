@@ -33,7 +33,7 @@ function PartnerLogoFrame({ partner, alt, sizes, imageClassName = "" }: PartnerL
         height={partner.height}
         unoptimized
         sizes={sizes}
-        className={`max-h-full max-w-full object-contain ${imageClassName}`.trim()}
+        className={`h-auto max-h-full w-auto max-w-full object-contain ${imageClassName}`.trim()}
       />
     );
   }

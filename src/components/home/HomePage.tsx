@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AiServicesHub from "@/components/home/AiServicesHub";
+import AiServicesStack from "@/components/home/AiServicesStack";
 import FeaturedWorkCarousel from "@/components/home/FeaturedWorkCarousel";
 import PartnerLogos from "@/components/home/PartnerLogos";
 import LocationsSection from "@/components/home/LocationsSection";
@@ -392,8 +392,8 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div data-animate="fade-up" className="section-media">
-            <AiServicesHub />
+          <div className="section-media">
+            <AiServicesStack />
           </div>
         </div>
       </section>

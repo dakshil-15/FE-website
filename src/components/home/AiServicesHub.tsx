@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { serviceOfferingIconBySlug } from "@/components/serviceOfferingIcons";
 import { serviceOfferings, type ServiceOffering } from "@/content/serviceOfferings";
 
-const ACCENTS = [
+export const ACCENTS = [
   { bg: "bg-red/10", text: "text-red" },
   { bg: "bg-violet-100", text: "text-violet-600" },
   { bg: "bg-emerald-100", text: "text-emerald-600" },
@@ -14,7 +14,7 @@ const ACCENTS = [
   { bg: "bg-purple-100", text: "text-purple-600" },
 ] as const;
 
-const spokes = serviceOfferings.filter((service) => service.slug !== "ai-solutions");
+export const spokes = serviceOfferings.filter((service) => service.slug !== "ai-solutions");
 
 function AiHub() {
   return (
