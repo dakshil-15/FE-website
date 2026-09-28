@@ -172,8 +172,8 @@ export const brandingPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to build a brand that",
-    titleAccent: "holds everywhere?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s shape identity systems that work on screen and on the storefront.",
     button: { label: "Let’s talk", href: "/contact" },
   },

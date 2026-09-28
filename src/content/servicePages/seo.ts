@@ -164,8 +164,8 @@ export const seoPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to be found by search",
-    titleAccent: "and by AI?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s build technical, local and AI-era SEO that compounds discoverability.",
     button: { label: "Let’s talk", href: "/contact" },
   },

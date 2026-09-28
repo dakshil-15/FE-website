@@ -158,8 +158,8 @@ export const marketplaceManagementPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to treat marketplaces as a",
-    titleAccent: "real growth channel?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s manage listings, stores and retail media as one connected system.",
     button: { label: "Let’s talk", href: "/contact" },
   },

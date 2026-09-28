@@ -6,10 +6,10 @@
 import type { MediaSlot } from "@/content/about";
 
 export const servicesHero = {
-  headlineBefore: "Solutions that",
-  headlineAccent: "drive growth.",
-  headlineAfter: "Impact that lasts.",
-  body: "From strategy to execution, we engineer growth systems that help brands scale, perform and lead with purpose.",
+  headlineBefore: "Big challenges need",
+  headlineAccent: "more than one kind",
+  headlineAfter: "of thinking.",
+  body: "That’s where we come in. From strategy and creative to media, technology and AI, we bring different capabilities together to get brands moving.",
   image: {
     src: "/images/services/hero/meeting.jpg",
     alt: "First Economy team in a glass meeting room with wall graphic Strategy Creative Media Technology Data equals Growth",
@@ -199,8 +199,8 @@ export const servicesTrusted = {
 };
 
 export const servicesCta = {
-  titleBefore: "Let’s build your next",
-  titleAccent: "growth system.",
+  titleBefore: "Got a challenge?",
+  titleAccent: "Bring it on.",
   body: "Ready to scale your brand with strategy, creativity and technology?",
   button: { label: "Let’s talk", href: "/contact" },
 };

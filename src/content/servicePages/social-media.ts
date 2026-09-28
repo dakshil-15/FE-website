@@ -158,8 +158,8 @@ export const socialMediaPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready for social that",
-    titleAccent: "compounds over time?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s build always-on strategy, content and community that grow brand equity.",
     button: { label: "Let’s talk", href: "/contact" },
   },

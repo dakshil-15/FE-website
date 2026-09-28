@@ -110,8 +110,8 @@ export const mediaBuyingPage: ServicePageContent = {
     ],
   },
   cta: {
-    titleBefore: "Ready to build high-impact",
-    titleAccent: "media campaigns?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s connect the right audience with the right message and drive measurable growth.",
     button: { label: "Let’s talk", href: "/contact" },
   },

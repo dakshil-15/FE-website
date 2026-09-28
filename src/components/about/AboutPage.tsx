@@ -95,8 +95,7 @@ export default function AboutPage() {
         title={
           <>
             {aboutHero.headlineBefore}{" "}
-            <span className="text-red">{aboutHero.headlineAccent}</span>{" "}
-            {aboutHero.headlineAfter}
+            <span className="text-red">{aboutHero.headlineAccent}</span>
             <span
               className="ml-[0.12em] inline-block h-[0.22em] w-[0.22em] translate-y-[-0.08em] bg-red align-middle"
               aria-hidden
@@ -104,21 +103,13 @@ export default function AboutPage() {
           </>
         }
         body={aboutHero.body}
-        gridClassName="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-0 lg:items-stretch"
-        media={
-          <ImageSlot
-            asset={aboutHero.image}
-            priority
-            className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[420px]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        }
+        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
+        media={null}
+        showMediaRule={false}
+        gridClassName="grid grid-cols-1"
+        copyColumnClassName="relative z-[1] mx-auto flex max-w-5xl min-w-0 flex-col items-center text-center"
         burstSrc={aboutHero.burst}
-        seam={{
-          href: "#what-we-do",
-          ariaLabel: "Continue to what we do",
-          arrowSrc: aboutHero.arrow,
-        }}
+        burstClassName="hidden"
       />
 
       <section
@@ -127,7 +118,7 @@ export default function AboutPage() {
         className="section-shell section-pad bg-mist"
         aria-labelledby="what-we-do-heading"
       >
-        <div className="section-inner grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-12">
+        <div className="section-inner grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:items-stretch lg:gap-12">
           <div className="min-w-0">
             <p data-animate="fade-up" className="text-eyebrow m-0">
               {aboutWhatWeDo.eyebrow}
@@ -151,7 +142,7 @@ export default function AboutPage() {
           <div data-animate="fade-up" className="min-w-0">
             <ImageSlot
               asset={aboutWhatWeDo.image}
-              className="aspect-[4/3] w-full lg:aspect-[5/4] lg:min-h-[400px]"
+              className="aspect-[4/3] w-full lg:aspect-auto lg:h-full lg:min-h-[320px]"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -287,14 +278,11 @@ export default function AboutPage() {
       <CTASection
         animate
         headingId="about-cta-heading"
+        titleBreak
         titleBefore={aboutCta.titleBefore}
         titleAccent={aboutCta.titleAccent}
-        body={aboutCta.body}
         primaryLabel={aboutCta.button.label}
         primaryHref={aboutCta.button.href}
-        secondaryLabel={aboutCta.secondary.label}
-        secondaryHref={aboutCta.secondary.href}
-        burstSrc={aboutCta.burst}
       />
     </div>
   );

@@ -8,7 +8,6 @@ import PageHero from "@/components/PageHero";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
-import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import AiServicesHub from "@/components/home/AiServicesHub";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
@@ -45,20 +44,13 @@ export default function ServicesPage() {
           </>
         }
         body={servicesHero.body}
-        media={
-          <ImageSlot
-            asset={servicesHero.image}
-            priority
-            className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        }
+        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
+        media={null}
+        showMediaRule={false}
+        gridClassName="grid grid-cols-1"
+        copyColumnClassName="relative z-[1] mx-auto flex max-w-5xl min-w-0 flex-col items-center text-center"
         burstSrc={servicesHero.burst}
-        seam={{
-          href: "#our-services",
-          ariaLabel: "Continue to our services",
-          arrowSrc: servicesHero.arrow,
-        }}
+        burstClassName="hidden"
       />
 
       {/* ── Our Services (mist) ────────────────────────── */}
@@ -172,9 +164,9 @@ export default function ServicesPage() {
       <CTASection
         animate
         headingId="services-cta-heading"
+        titleBreak
         titleBefore={servicesCta.titleBefore}
         titleAccent={servicesCta.titleAccent}
-        body={servicesCta.body}
         primaryLabel={servicesCta.button.label}
         primaryHref={servicesCta.button.href}
       />

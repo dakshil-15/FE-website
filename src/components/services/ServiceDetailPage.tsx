@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import ServiceValueGrid from "@/components/services/ServiceValueGrid";
-import { IconSlot, ImageSlot } from "@/components/media/AssetPlaceholder";
+import { IconSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import type { ServicePageContent } from "@/content/servicePages/types";
 
@@ -15,7 +15,6 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
   const rootRef = useRef<HTMLDivElement>(null);
   const { hero, process, caseStudies, cta } = content;
   const idPrefix = content.slug;
-  const processAnchor = process ? `#${idPrefix}-process` : undefined;
 
   usePageReveal({
     scope: rootRef,
@@ -40,11 +39,12 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
           </>
         }
         body={hero.body}
+        bodyClassName="text-body section-copy-on-light mt-5 mb-0 mx-auto max-w-[44rem] text-center sm:mt-6"
         copyAfterBody={
           hero.highlights.length > 0 ? (
             <ul
               data-animate="hero-copy"
-              className="mt-8 flex list-none flex-wrap gap-x-6 gap-y-4 p-0 sm:mt-10 sm:gap-x-8"
+              className="mt-8 flex list-none flex-wrap justify-center gap-x-6 gap-y-4 p-0 sm:mt-10 sm:gap-x-8"
             >
               {hero.highlights.map((item) => (
                 <li key={item.id} className="flex min-w-[8.5rem] items-center gap-2.5">
@@ -62,24 +62,12 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
             </ul>
           ) : null
         }
-        media={
-          <ImageSlot
-            asset={hero.visual}
-            priority
-            className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        }
+        media={null}
+        showMediaRule={false}
+        gridClassName="grid grid-cols-1"
+        copyColumnClassName="relative z-[1] mx-auto flex max-w-5xl min-w-0 flex-col items-center text-center"
         burstSrc={hero.burst}
-        seam={
-          processAnchor
-            ? {
-                href: processAnchor,
-                ariaLabel: `Continue to ${content.name} capabilities`,
-                arrowSrc: hero.arrow,
-              }
-            : undefined
-        }
+        burstClassName="hidden"
       />
 
       {process && process.steps.length > 0 && (
@@ -154,6 +142,7 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
           headingId={`${idPrefix}-cta-heading`}
           titleBefore={cta.titleBefore}
           titleAccent={cta.titleAccent}
+          titleBreak
           body={cta.body}
           primaryLabel={cta.button.label}
           primaryHref={cta.button.href}

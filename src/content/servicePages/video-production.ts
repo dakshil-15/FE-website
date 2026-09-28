@@ -172,8 +172,8 @@ export const videoProductionPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to produce video that",
-    titleAccent: "people actually watch?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s build films and social video engineered for attention and outcomes.",
     button: { label: "Let’s talk", href: "/contact" },
   },

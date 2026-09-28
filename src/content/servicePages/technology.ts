@@ -163,8 +163,8 @@ export const technologyPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to build systems",
-    titleAccent: "growth can run on?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s engineer platforms and integrations that outgrow off-the-shelf limits.",
     button: { label: "Let’s talk", href: "/contact" },
   },

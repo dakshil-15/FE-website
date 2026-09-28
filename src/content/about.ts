@@ -19,10 +19,9 @@ export type MediaSlot = {
 
 export const aboutHero = {
   eyebrow: "About Us",
-  headlineBefore: "We engineer",
-  headlineAccent: "growth systems",
-  headlineAfter: "that drive real impact",
-  body: "First Economy is a growth partner for brands that want to go beyond marketing and build a sustainable advantage in today’s digital world.",
+  headlineBefore: "We don’t just market brands.",
+  headlineAccent: "We build their next move.",
+  body: "First Economy brings together creative thinking, strategic minds, technology, media and AI to help ambitious brands find smarter ways to grow.",
   image: {
     src: "/images/about/hero/meeting-room.jpg",
     alt: "First Economy team in a glass meeting room",
@@ -84,9 +83,9 @@ export const aboutTimeline = [
 
 export const aboutWhatWeDo = {
   eyebrow: "What We Do",
-  titleBefore: "We don’t offer services in silos. We",
-  titleAccent: "engineer growth systems.",
-  body: "Instead of presenting capabilities as disconnected departments, we design strategy, creative, media, technology and data to work together — built around a single growth outcome.",
+  titleBefore: "We don’t believe in doing things",
+  titleAccent: "one department at a time.",
+  body: "Strategy, creative, media, technology, data and AI work as one connected team at FE. Because better ideas happen when different minds come together.",
   cta: { label: "Explore our services", href: "/services" },
   image: {
     src: "/images/about/what-we-do/office-growth-wall.jpg",
@@ -815,8 +814,8 @@ export const aboutFeaturedAchievement = {
 };
 
 export const aboutCta = {
-  titleBefore: "Ready to engineer",
-  titleAccent: "your growth system?",
+  titleBefore: "Got a challenge?",
+  titleAccent: "Bring it on.",
   body: "Partner with a team built around strategy, creative, media, technology and data — working as one growth system.",
   button: { label: "Let’s talk", href: "/contact" },
   secondary: { label: "View awards", href: "/awards" },

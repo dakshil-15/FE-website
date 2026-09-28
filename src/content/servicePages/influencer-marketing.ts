@@ -180,8 +180,8 @@ export const influencerMarketingPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready to build creator programmes that",
-    titleAccent: "actually scale?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s engineer influencer systems for authenticity and measurable growth.",
     button: { label: "Let’s talk", href: "/contact" },
   },

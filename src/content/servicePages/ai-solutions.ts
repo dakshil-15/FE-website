@@ -158,8 +158,8 @@ export const aiSolutionsPage: ServicePageContent = {
       }
     : {}),
   cta: {
-    titleBefore: "Ready for AI that",
-    titleAccent: "actually accelerates?",
+    titleBefore: "Got a challenge?",
+    titleAccent: "Bring it on.",
     body: "Let’s apply intelligence across creative, analytics, search and operations.",
     button: { label: "Let’s talk", href: "/contact" },
   },
