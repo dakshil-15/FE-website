@@ -246,7 +246,7 @@ export default function HomePage() {
         <div className="growth-hero__grid">
           <div className="growth-hero__copy">
             <p data-animate="hero-eyebrow" className="growth-hero__eyebrow" aria-hidden="true">
-              <span>360 Media</span>
+              <span>360° Media</span>
               <span className="growth-hero__eyebrow-mark" />
               <span>Technology</span>
               <span className="growth-hero__eyebrow-mark" />
@@ -257,23 +257,19 @@ export default function HomePage() {
 
             <h1 id="hero-heading" className="growth-hero__title">
               <span className="growth-hero__line">
-                <span data-animate="hero-line" className="growth-hero__line-inner">
-                  We don&rsquo;t just
-                </span>
-              </span>
-              <span className="growth-hero__line">
-                <span data-animate="hero-line" className="growth-hero__line-inner">
-                  connect the dots.
-                </span>
-              </span>
-              <span className="growth-hero__line growth-hero__line--accent">
-                <span data-animate="hero-line" className="growth-hero__line-inner">
-                  We make
+                <span
+                  data-animate="hero-line"
+                  className="growth-hero__line-inner growth-hero__line-inner--flow"
+                >
+                  We don&rsquo;t just connect the dots.
                 </span>
               </span>
               <span className="growth-hero__line growth-hero__line--accent">
-                <span data-animate="hero-line" className="growth-hero__line-inner">
-                  them count.
+                <span
+                  data-animate="hero-line"
+                  className="growth-hero__line-inner growth-hero__line-inner--flow"
+                >
+                  We make them count.
                 </span>
               </span>
             </h1>
@@ -376,13 +372,13 @@ export default function HomePage() {
           <div className="section-intro">
             <div data-animate="fade-up" className="min-w-0">
               <h2 id="services-heading" className="text-display-md m-0">
-                Everything we do
+                AI is not an add-on.
                 <br />
-                powered by AI
+                It&rsquo;s how we build.
               </h2>
               <p className="text-body section-copy section-copy-on-light mt-4 mb-0">
-                Different services. One intelligent engine. AI is integrated into every solution we
-                deliver — helping you move faster, think bigger and grow smarter.
+                We weave AI into strategy, creativity, media and technology to help brands think
+                bigger, move faster and grow smarter.
               </p>
             </div>
             <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">

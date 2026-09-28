@@ -361,29 +361,35 @@
 
 @media (min-width: 960px) {
   .growth-hero__title {
-    font-size: clamp(3.1rem, 3.6vw + 0.65rem, 5rem);
+    font-size: clamp(3.25rem, 4.2vw + 0.6rem, 6rem);
   }
 
   .growth-hero__line-inner {
     white-space: nowrap;
   }
+
+  /* One flowing sentence per colour — wraps only where it runs out of room,
+     instead of a manually fixed break. */
+  .growth-hero__line-inner.growth-hero__line-inner--flow {
+    white-space: normal;
+  }
 }
 
 @media (min-width: 1280px) {
   .growth-hero__title {
-    font-size: clamp(3.5rem, 3.8vw + 0.4rem, 5.5rem);
+    font-size: clamp(4rem, 5vw + 0.5rem, 7rem);
   }
 }
 
 @media (min-width: 1536px) {
   .growth-hero__title {
-    font-size: clamp(4rem, 4vw + 0.25rem, 6rem);
+    font-size: clamp(4.5rem, 5vw + 0.4rem, 7.5rem);
   }
 }
 
 @media (min-width: 1920px) {
   .growth-hero__title {
-    font-size: clamp(4.5rem, 3.6vw, 6.5rem);
+    font-size: clamp(5rem, 5.35vw, 8rem);
   }
 }
 
@@ -515,6 +521,23 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 0;
+}
+
+/* Tablet/small-laptop: trim the buttons just enough to sit side by side
+   instead of stacking, without shrinking type below the site's floor. */
+@media (min-width: 960px) and (max-width: 1279px) {
+  .growth-hero__ctas {
+    gap: 0.75rem;
+  }
+
+  .growth-cta {
+    min-width: 0;
+  }
+
+  .growth-cta__face {
+    gap: 0.5rem;
+    padding: 0.75rem 1.1rem 0.75rem 1.05rem;
+  }
 }
 
 .growth-cta__shell {
@@ -720,7 +743,12 @@
 }
 
 .growth-cta--on-dark.growth-cta--accent .growth-cta__face {
-  color: #fff;
+  color: var(--gs-ink);
+}
+
+.growth-cta--on-dark.growth-cta--accent .growth-cta__shell {
+  background: #fff;
+  border-color: #fff;
 }
 
 .growth-cta--accent .growth-cta__shell {
@@ -742,7 +770,7 @@
 }
 
 .growth-cta--on-dark.growth-cta--accent .growth-cta__arrow {
-  color: #fff;
+  color: var(--gs-red);
 }
 
 .growth-cta--accent .growth-cta__shell::after {

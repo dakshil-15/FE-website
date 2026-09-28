@@ -30,7 +30,7 @@ type SystemNode = {
 const SYSTEM_NODES: SystemNode[] = [
   {
     id: "media",
-    label: "360 MEDIA",
+    label: "360° MEDIA",
     angle: -90,
     labelOffset: { x: 0, y: -52 },
     textAnchor: "middle",
@@ -515,7 +515,7 @@ export default function GrowthNetworkVisual() {
           viewBox={`0 0 ${SIZE} ${SIZE}`}
           className="gs-engine__svg"
           role="img"
-          aria-label="Interactive growth system connecting 360 Media, Technology, Strategy, and Creativity"
+          aria-label="Interactive growth system connecting 360° Media, Technology, Strategy, and Creativity"
           suppressHydrationWarning
         >
           <defs>
