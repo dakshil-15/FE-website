@@ -202,6 +202,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
         headingId="careers-cta-heading"
         titleBefore={careersCta.titleBefore}
         titleAccent={careersCta.titleAccent}
+        titleBreak
         primaryLabel={careersCta.button.label}
         primaryHref={careersCta.button.href}
         aside={

@@ -516,8 +516,8 @@ export const careersGallery = {
 };
 
 export const careersCta = {
-  titleBefore: "Let’s build what’s next.",
-  titleAccent: "Together.",
+  titleBefore: "Got a challenge?",
+  titleAccent: "Bring it on.",
   email: {
     label: "Send your resume to",
     value: "p&c@firsteconomy.com",
