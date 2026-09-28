@@ -4,7 +4,7 @@ export const offices: Office[] = [
   { slug: "mumbai", city: "Mumbai", isHq: true },
   { slug: "bengaluru", city: "Bengaluru" },
   { slug: "pune", city: "Pune" },
-  { slug: "aurangabad", city: "Chattrapati Sambhaji Nagar" },
+  { slug: "aurangabad", city: "Chhatrapati Sambhaji Nagar" },
 ];
 
 export const contactInfo = {

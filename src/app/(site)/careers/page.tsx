@@ -5,7 +5,7 @@ import { getCareerRoles } from "@/lib/careers";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Build your career at First Economy — engineer impact across media, creative, technology and data. Explore open roles across Mumbai, Bengaluru, Pune and Chattrapati Sambhaji Nagar.",
+    "Build your career at First Economy — engineer impact across media, creative, technology and data. Explore open roles across Mumbai, Bengaluru, Pune and Chhatrapati Sambhaji Nagar.",
 };
 
 export const revalidate = 3600;

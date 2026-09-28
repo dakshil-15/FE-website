@@ -101,7 +101,7 @@ export default function Footer() {
                 <span>
                   Mumbai, Bengaluru,
                   <br />
-                  Chattrapati Sambhaji Nagar, Pune.
+                  Chhatrapati Sambhaji Nagar, Pune.
                 </span>
               </span>
             </address>

@@ -56,13 +56,13 @@ export const officeLocations: OfficeLocation[] = [
   },
   {
     slug: "aurangabad",
-    city: "Chattrapati Sambhaji Nagar",
+    city: "Chhatrapati Sambhaji Nagar",
     description: "Heritage city. Emerging tomorrow.",
     address:
-      "Office 101, First Floor, Vastu Elite Square, Beed Bypass, Chattrapati Sambhaji Nagar (Aurangabad), 431001",
+      "Office 101, First Floor, Vastu Elite Square, Beed Bypass, Chhatrapati Sambhaji Nagar (Aurangabad), 431001",
     image: {
       src: "/images/about/locations/aurangabad.jpg",
-      alt: "Historic monument and gardens in Chattrapati Sambhaji Nagar",
+      alt: "Historic monument and gardens in Chhatrapati Sambhaji Nagar",
     },
   },
   {
