@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
-import CTASection from "@/components/CTASection";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -11,8 +9,7 @@ import {
   YouTubeIcon,
 } from "@/components/SocialIcons";
 import { serviceOfferings } from "@/content/serviceOfferings";
-import { contactInfo, footerCta, socialLinks } from "@/content/site";
-import { pageHasEndCta } from "@/lib/pageCta";
+import { contactInfo, socialLinks } from "@/content/site";
 
 const columns = [
   {
@@ -43,23 +40,9 @@ const socials = socialLinks.map((link) => ({
 }));
 
 export default function Footer() {
-  const pathname = usePathname();
-  const showFooterCta = !pageHasEndCta(pathname);
-
   return (
     <footer id="contact" className="section-shell section-pad-sm bg-ink text-white !pb-0">
-      <div className={`foot-top${showFooterCta ? "" : " foot-top--links-only"}`}>
-        {showFooterCta ? (
-          <CTASection
-            layout="embedded"
-            headingId="footer-cta-heading"
-            headline={footerCta.headline}
-            headlineClassName="m-0 font-display text-[clamp(1.625rem,5vw,2rem)] leading-[1.05] tracking-[0.01em] uppercase"
-            primaryLabel={footerCta.primaryLabel}
-            primaryHref={footerCta.primaryHref}
-          />
-        ) : null}
-
+      <div className="foot-top">
         <div className="foot-cols">
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
