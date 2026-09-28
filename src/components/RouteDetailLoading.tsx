@@ -1,6 +1,6 @@
 type RouteDetailLoadingProps = {
   label: string;
-  variant: "work" | "insights" | "careers" | "services";
+  variant: "work" | "careers" | "services";
 };
 
 function Pulse({ className }: { className?: string }) {
@@ -117,13 +117,13 @@ export default function RouteDetailLoading({ label, variant }: RouteDetailLoadin
     <div aria-busy="true" aria-live="polite">
       <p className="sr-only">{label}</p>
       <HeroSkeleton />
-      {variant === "work" || variant === "insights" || variant === "careers" ? (
+      {variant === "work" || variant === "careers" ? (
         <StickyNavSkeleton />
       ) : null}
       {variant === "services" ? (
         <ServiceSectionsSkeleton />
       ) : (
-        <BodySkeleton aside={variant === "insights" || variant === "careers"} />
+        <BodySkeleton aside={variant === "careers"} />
       )}
       {variant === "work" ? (
         <section className="section-shell section-pad bg-mist" aria-hidden>

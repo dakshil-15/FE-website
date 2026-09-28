@@ -33,17 +33,14 @@ const STATIC_ROUTES = new Set([
   "/",
   "/about",
   "/awards",
-  "/capabilities",
   "/careers",
   "/contact",
-  "/insights",
   "/privacy-policy",
   "/services",
-  "/terms",
   "/work",
 ]);
 
-const DYNAMIC_PREFIXES = ["/work/", "/insights/", "/careers/", "/services/"];
+const DYNAMIC_PREFIXES = ["/work/", "/careers/", "/services/"];
 
 const ASSET_EXTENSIONS = /\.(png|jpe?g|webp|avif|gif|svg|mp4|webm|mov|pdf)$/i;
 

@@ -42,7 +42,7 @@ export default function CacheControls({ paths }: { paths: string[] }) {
                 id="path"
                 name="path"
                 type="text"
-                placeholder="/insights"
+                placeholder="/work/godrej-blue"
                 required
                 className={inputClass}
                 list="known-paths"

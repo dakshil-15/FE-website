@@ -24,19 +24,16 @@ export const SITE_PATHS = [
   "/",
   "/about",
   "/awards",
-  "/capabilities",
   "/careers",
   "/contact",
-  "/insights",
   "/privacy-policy",
   "/services",
   "/services/media-buying",
-  "/terms",
   "/work",
 ] as const;
 
 /** Dynamic route patterns need the `'page'` type argument. */
-const DYNAMIC_PATTERNS = ["/work/[slug]", "/insights/[slug]", "/careers/[slug]", "/services/[slug]"];
+const DYNAMIC_PATTERNS = ["/work/[slug]", "/careers/[slug]", "/services/[slug]"];
 
 export async function revalidatePaths(
   paths: string[],

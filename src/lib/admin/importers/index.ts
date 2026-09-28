@@ -42,18 +42,6 @@ export const IMPORTERS: ModuleImporter[] = [
     },
   },
   {
-    moduleKey: "insights",
-    load: async () => {
-      const { insightPosts, insightArticles } = await import("@/content/insights");
-      return insightPosts.map((post) => ({
-        slug: post.slug,
-        title: post.title,
-        // Merge the listing card and the full article into one record.
-        data: asJson({ ...post, article: insightArticles[post.slug] ?? null }),
-      }));
-    },
-  },
-  {
     moduleKey: "careers",
     load: async () => {
       const { careersRoles, careerRoleDetails } = await import("@/content/careers");
@@ -113,9 +101,8 @@ export const IMPORTERS: ModuleImporter[] = [
   {
     moduleKey: "home-page",
     load: async () => {
-      const [home, insights, workPage] = await Promise.all([
+      const [home, workPage] = await Promise.all([
         import("@/content/home"),
-        import("@/content/insights"),
         import("@/content/workPage"),
       ]);
       return [
@@ -124,7 +111,6 @@ export const IMPORTERS: ModuleImporter[] = [
           title: "Home",
           data: asJson({
             cta: home.homeCta,
-            featuredInsightSlugs: insights.homeFeaturedInsightSlugs,
             featuredWorkLimit: workPage.homeFeaturedWorkLimit,
           }),
         },
@@ -148,32 +134,6 @@ export const IMPORTERS: ModuleImporter[] = [
             teamTagline: about.aboutTeamTagline,
             featuredAchievement: about.aboutFeaturedAchievement,
             cta: about.aboutCta,
-          }),
-        },
-      ];
-    },
-  },
-  {
-    moduleKey: "capabilities-page",
-    load: async () => {
-      const capabilities = await import("@/content/capabilities");
-      return [
-        {
-          slug: "capabilities",
-          title: "Capabilities",
-          data: asJson({
-            hero: capabilities.capabilitiesHero,
-            gridSection: capabilities.capabilitiesGridSection,
-            cards: capabilities.capabilityCards,
-            growthSystem: capabilities.growthSystemSection,
-            growthSystemSteps: capabilities.growthSystemSteps,
-            intelligence: capabilities.intelligenceSection,
-            advantageTools: capabilities.advantageToolsSection,
-            ecosystem: capabilities.ecosystemSection,
-            techCaseStudies: capabilities.techCaseStudiesSection,
-            capabilityCaseStudies: capabilities.capabilityCaseStudies,
-            architecture: capabilities.architectureSection,
-            cta: capabilities.capabilitiesCta,
           }),
         },
       ];
@@ -268,11 +228,6 @@ export const IMPORTERS: ModuleImporter[] = [
           slug: "privacy-policy",
           title: legal.privacyPolicyContent.title,
           data: asJson(legal.privacyPolicyContent),
-        },
-        {
-          slug: "terms",
-          title: legal.termsContent.title,
-          data: asJson(legal.termsContent),
         },
       ];
     },
