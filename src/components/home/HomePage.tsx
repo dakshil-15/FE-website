@@ -318,7 +318,7 @@ export default function HomePage() {
         <div className="section-inner">
           <div
             data-animate-stagger
-            className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-5 xs:max-w-3xl xs:grid-cols-2 xs:gap-6 lg:max-w-6xl lg:grid-cols-4 lg:gap-6"
+            className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-4 xs:max-w-3xl xs:gap-6 lg:max-w-6xl lg:grid-cols-4 lg:gap-6"
           >
             {heroStats.map((stat) => (
               <div
@@ -385,7 +385,7 @@ export default function HomePage() {
                 deliver — helping you move faster, think bigger and grow smarter.
               </p>
             </div>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
               <Link href="/services" className="text-cta link-cta text-ink">
                 Explore all services
                 <ArrowRight size={16} aria-hidden />
@@ -414,7 +414,7 @@ export default function HomePage() {
               <br />
               <span className="text-red">how we make things happen.</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
               <Link href="/work" className="text-cta link-cta text-white">
                 View all case studies
                 <ArrowRight size={16} aria-hidden />

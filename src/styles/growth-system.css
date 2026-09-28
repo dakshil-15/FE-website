@@ -819,6 +819,18 @@
   }
 }
 
+/* Two-button CTA rows (e.g. "Let's talk" + "View awards"): sit side by side
+   even on phones, each taking half the row, instead of stacking. */
+@media (max-width: 639px) {
+  .cta-actions--pair .growth-cta {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .cta-actions--pair .growth-cta__face {
+    padding-inline: 1rem;
+  }
+}
+
 .growth-cta:disabled,
 .growth-cta[aria-disabled="true"] {
   cursor: not-allowed;

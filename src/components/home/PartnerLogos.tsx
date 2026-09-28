@@ -160,7 +160,9 @@ function MarqueeRow({
           gsap.set(track, { x: fromX });
           tween = gsap.to(track, {
             x: toX,
-            duration: Math.max(setWidth / 45, 24),
+            // Slower crawl (~28px/s instead of ~45px/s) so more logos stay
+            // on screen at once during a typical glance at the section.
+            duration: Math.max(setWidth / 28, 36),
             ease: "none",
             repeat: -1,
           });

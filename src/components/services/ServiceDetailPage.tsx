@@ -133,7 +133,7 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
                 {caseStudies.titleBefore}{" "}
                 <span className="text-red">{caseStudies.titleAccent}</span>
               </h2>
-              <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+              <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
                 <Link href={caseStudies.exploreHref} className="text-cta link-cta mt-4 text-ink">
                   {caseStudies.exploreLabel}
                   <ArrowRight size={16} aria-hidden />

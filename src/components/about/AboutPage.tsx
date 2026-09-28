@@ -209,7 +209,7 @@ export default function AboutPage() {
             <h2 data-animate="fade-up" id="awards-heading" className="text-display-md m-0">
               A few of our many <span className="text-red">achievements.</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
               <Link href={aboutFeaturedAchievement.sectionCta.href} className="text-cta link-cta text-ink">
                 {aboutFeaturedAchievement.sectionCta.label}
                 <ArrowRight size={16} aria-hidden />

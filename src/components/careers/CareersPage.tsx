@@ -217,7 +217,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
                 <p className="text-body-sm m-0 text-muted-on-dark">{careersCta.email.label}</p>
                 <a
                   href={careersCta.email.href}
-                  className="text-body mt-0.5 inline-block rounded-sm text-white transition hover:text-[#e84848] focus-visible:text-[#e84848] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="text-body mt-0.5 flex min-h-11 items-center rounded-sm text-white transition hover:text-[#e84848] focus-visible:text-[#e84848] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   {careersCta.email.value}
                 </a>
@@ -234,7 +234,7 @@ export default function CareersPage({ roles }: CareersPageProps) {
                 <p className="text-body-sm m-0 text-muted-on-dark">{careersCta.culture.label}</p>
                 <Link
                   href={careersCta.culture.href}
-                  className="text-body mt-0.5 inline-block rounded-sm text-white transition hover:text-[#e84848] focus-visible:text-[#e84848] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="text-body mt-0.5 flex min-h-11 items-center rounded-sm text-white transition hover:text-[#e84848] focus-visible:text-[#e84848] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   {careersCta.culture.value}
                 </Link>

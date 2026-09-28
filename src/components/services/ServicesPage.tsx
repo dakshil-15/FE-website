@@ -15,7 +15,6 @@ import {
   advantageToolsSection,
   capabilityCaseStudies,
   ecosystemSection,
-  intelligenceSection,
   platformPartnerLogos,
   techCaseStudiesSection,
 } from "@/content/capabilities";
@@ -91,51 +90,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Intelligent solutions (mist) ────────────────── */}
-      <section
-        id="intelligence"
-        data-animate-section
-        className="section-shell section-pad scroll-mt-[5.5rem] bg-mist"
-        aria-labelledby="intelligence-heading"
-      >
-        <div className="section-inner grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-12">
-          <div className="min-w-0">
-            <p data-animate="fade-up" className="text-eyebrow m-0">
-              {intelligenceSection.eyebrow}
-            </p>
-            <h2 data-animate="fade-up" id="intelligence-heading" className="text-display-md mt-4 mb-0">
-              {intelligenceSection.titleBefore}{" "}
-              <span className="text-red">{intelligenceSection.titleAccent}</span>
-            </h2>
-            <p
-              data-animate="fade-up"
-              className="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6"
-            >
-              {intelligenceSection.body}
-            </p>
-            <ul
-              data-animate-stagger
-              className="intelligence-stats m-0 mt-8 list-none p-0 sm:mt-10"
-            >
-              {intelligenceSection.stats.map((stat) => (
-                <li key={stat.label} className="intelligence-stat min-w-0">
-                  <p className="intelligence-stat-value m-0 text-red">{stat.value}</p>
-                  <p className="intelligence-stat-label m-0 text-ink">{stat.label}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div data-animate="fade-up" className="min-w-0">
-            <ImageSlot
-              asset={intelligenceSection.image}
-              className="aspect-[4/3] w-full lg:aspect-[5/4] lg:min-h-[400px]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* ── Advantage tools (paper) ──────────────────────── */}
       <section
         id="advantage"
@@ -200,7 +154,7 @@ export default function ServicesPage() {
               {techCaseStudiesSection.titleBefore}{" "}
               <span className="text-red">{techCaseStudiesSection.titleAccent}</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
               <Link href={techCaseStudiesSection.exploreHref} className="text-cta link-cta mt-0 text-ink">
                 {techCaseStudiesSection.exploreLabel}
                 <ArrowRight size={16} aria-hidden />

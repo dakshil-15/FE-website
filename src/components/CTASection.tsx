@@ -94,22 +94,24 @@ export default function CTASection({
     headline
   );
 
+  const isPair = hasSecondary && !hasTertiary;
+
   const actions = (
     <div
-      className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center${
+      className={`flex ${isPair ? "cta-actions--pair flex-row flex-wrap" : "flex-col"} items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center${
         body && !hasAside && layout === "section" ? " mt-6 sm:mt-7" : ""
       }${layout === "embedded" ? " mt-6 sm:mt-8" : ""}`}
     >
-      <GrowthCta href={primaryHref} variant={primaryVariant} tone={ctaTone} block>
+      <GrowthCta href={primaryHref} variant={primaryVariant} tone={ctaTone}>
         {primaryLabel}
       </GrowthCta>
       {hasSecondary ? (
-        <GrowthCta href={secondaryHref!} variant={secondaryVariant} tone={ctaTone} block>
+        <GrowthCta href={secondaryHref!} variant={secondaryVariant} tone={ctaTone}>
           {secondaryLabel}
         </GrowthCta>
       ) : null}
       {hasTertiary ? (
-        <GrowthCta href={tertiaryHref!} variant={secondaryVariant} tone={ctaTone} block>
+        <GrowthCta href={tertiaryHref!} variant={secondaryVariant} tone={ctaTone}>
           {tertiaryLabel}
         </GrowthCta>
       ) : null}

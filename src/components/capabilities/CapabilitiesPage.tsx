@@ -195,7 +195,7 @@ export default function CapabilitiesPage() {
               {techCaseStudiesSection.titleBefore}{" "}
               <span className="text-red">{techCaseStudiesSection.titleAccent}</span>
             </h2>
-            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+            <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
               <Link href={techCaseStudiesSection.exploreHref} className="text-cta link-cta mt-0 text-ink">
                 {techCaseStudiesSection.exploreLabel}
                 <ArrowRight size={16} aria-hidden />

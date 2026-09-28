@@ -429,7 +429,7 @@ export default function CareerDetailPage({
               <h2 data-animate="fade-up" id="related-roles-heading" className="text-display-md m-0">
                 More roles <span className="text-red">you might like</span>
               </h2>
-              <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+              <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
                 <Link
                   href="/careers#open-positions"
                   className="text-cta link-cta mt-0 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red"

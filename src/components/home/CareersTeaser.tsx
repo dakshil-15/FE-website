@@ -19,7 +19,7 @@ export default function CareersTeaser() {
             <br />
             We have a place for you.
           </h2>
-          <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1">
+          <div data-animate="fade-up" className="min-w-0 pt-0 md:pt-1 md:justify-self-end md:self-end">
             <Link href="/careers" className="text-cta link-cta text-ink">
               Explore careers
               <ArrowRight size={16} aria-hidden />

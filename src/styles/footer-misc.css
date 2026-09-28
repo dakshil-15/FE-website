@@ -35,34 +35,27 @@
   }
 }
 
+/* 2×2 from the smallest phone → below lg */
 .stat-item {
   min-width: 0;
   container-type: inline-size;
   container-name: stat;
-  padding: 0;
-  border-left: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  padding-top: 1.25rem;
-}
-.stat-item:first-child {
   border-top: none;
-  padding-top: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0 0 0 1rem;
 }
-/* 2×2 from xs → below lg */
-@media (min-width: 480px) and (max-width: 1023px) {
+.stat-item:nth-child(odd) {
+  border-left: none;
+  padding-left: 0;
+}
+.stat-item:nth-child(n + 3) {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 0.25rem;
+  padding-top: 1.5rem;
+}
+@media (min-width: 480px) {
   .stat-item {
-    border-top: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 0 0 0 1.25rem;
-  }
-  .stat-item:nth-child(odd) {
-    border-left: none;
-    padding-left: 0;
-  }
-  .stat-item:nth-child(n + 3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    margin-top: 0.25rem;
-    padding-top: 1.5rem;
+    padding-left: 1.25rem;
   }
 }
 /* 1×4 from lg up */
