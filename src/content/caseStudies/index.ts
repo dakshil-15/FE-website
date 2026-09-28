@@ -5,6 +5,7 @@ import { godrejBlue } from "./godrej-blue";
 import { mahindraManulife } from "./mahindra-manulife";
 import { orpatErp } from "./orpat-erp";
 import { akbarTravelsSeo } from "./akbar-travels-seo";
+import { jockeySeo } from "./jockey-seo";
 import { shoppersStopLocalSeo } from "./shoppers-stop-local-seo";
 import { celloKidzbee } from "./cello-kidzbee";
 import { youngBags } from "./young-bags";
@@ -27,6 +28,8 @@ export const caseStudies: CaseStudy[] = [
   mahindraManulife,
   orpatErp,
   akbarTravelsSeo,
+  jockeySeo,
+  shoppersStopLocalSeo,
   celloKidzbee,
   ambassadorHotel,
   godrejGreenfront,
@@ -43,6 +46,7 @@ export {
   mahindraManulife,
   orpatErp,
   akbarTravelsSeo,
+  jockeySeo,
   shoppersStopLocalSeo,
   celloKidzbee,
   youngBags,

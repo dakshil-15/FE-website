@@ -21,8 +21,8 @@ import { workPhotos } from "@/content/workPhotos";
 import { fetchInstagramThumbnail } from "@/lib/instagram";
 
 export const workDetailCta = {
-  titleBefore: "Let’s create impact",
-  titleAccent: "together",
+  titleBefore: "Got a challenge?",
+  titleAccent: "Bring it on.",
   body: "Have a challenge worth solving? Let’s engineer a growth system custom-built for your brand.",
   button: { label: "Let’s talk", href: "/contact" },
   burst: "/images/work/cta-burst.svg",

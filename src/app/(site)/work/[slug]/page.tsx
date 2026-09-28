@@ -49,6 +49,7 @@ export default async function CaseStudyPage({
       <CTASection
         titleBefore={workDetailCta.titleBefore}
         titleAccent={workDetailCta.titleAccent}
+        titleBreak
         body={workDetailCta.body}
         primaryLabel={workDetailCta.button.label}
         primaryHref={workDetailCta.button.href}

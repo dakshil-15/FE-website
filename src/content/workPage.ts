@@ -23,11 +23,9 @@ export const workFilters = [
   { key: "media-buying", label: "360° Media Buying" },
   { key: "tech", label: "Tech Solutions" },
   { key: "social", label: "Social Media" },
-  { key: "seo", label: "SEO" },
   { key: "video", label: "Video Production" },
   { key: "creative", label: "Creative Solutions" },
   { key: "influencer", label: "Influencer Marketing" },
-  { key: "ai", label: "AI Solutions" },
 ] as const;
 
 export type WorkFilterKey = (typeof workFilters)[number]["key"];
@@ -37,11 +35,9 @@ const filterTagLabels: Record<Exclude<WorkFilterKey, "all">, string> = {
   "media-buying": "360° Media Buying",
   tech: "Tech Solutions",
   social: "Social Media",
-  seo: "SEO",
   video: "Video Production",
   creative: "Creative Solutions",
   influencer: "Influencer Marketing",
-  ai: "AI Solutions",
 };
 
 export function matchesWorkFilter(caseStudy: CaseStudy, key: WorkFilterKey) {
@@ -78,10 +74,12 @@ const cardTagOverrides: Record<string, string> = {
   "mahindra-manulife": "Tech Solutions",
   "orpat-erp": "Tech Solutions",
   waaree: "Social Media",
-  "akbar-travels-seo": "SEO",
-  "shoppers-stop-local-seo": "SEO",
+  "akbar-travels-seo": "360° Media Buying",
+  "jockey-seo": "Integrated Campaign",
+  "shoppers-stop-local-seo": "360° Media Buying",
   "cello-kidzbee": "Video Production",
   "young-bags": "Video Production",
+  "ajanta-ai-creatives": "Video Production",
   "ambassador-hotel": "Creative Solutions",
   "godrej-greenfront": "Creative Solutions",
   "amazon-samsung-great-indian-festival": "Influencer Marketing",
@@ -187,8 +185,8 @@ export const workStats = {
 };
 
 export const workCta = {
-  titleBefore: "Have a challenge",
-  titleAccent: "worth solving?",
+  titleBefore: "Got a challenge?",
+  titleAccent: "Bring it on.",
   body: "Let’s engineer a growth system custom-built for your brand.",
   button: { label: "Let’s talk", href: "/contact" },
   burst: "/images/work/cta-burst.svg",

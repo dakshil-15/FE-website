@@ -8,6 +8,7 @@ export const workPhotos: Record<string, string> = {
   waaree: "/images/work/cases/waaree.png",
   "vip-industries": "/images/work/cases/vip-industries.png",
   "akbar-travels-seo": "/images/work/cases/akbar-travels-seo.png",
+  "jockey-seo": "/images/work/cases/jockey-seo.png",
   "shoppers-stop-local-seo": "/images/work/cases/shoppers-stop-local-seo.png",
   "cello-kidzbee": "/images/work/cases/cello-kidzbee.png",
   "young-bags": "/images/work/cases/young-bags.png",
