@@ -431,32 +431,51 @@ export default function WorkDetailStory({
 
                 const showGroupTitles = groups.length + (videoBlock ? 1 : 0) > 1;
 
+                // Royale Touché reads better as text-only proof points — drop the
+                // creative screenshots and let each group stand as a title + paragraph.
+                const textOnlyGallery = caseStudy.slug === "royale-touche-stay-curious";
+
                 const renderGalleryGroup = (
                   group: (typeof groups)[number],
                   { alignTitle }: { alignTitle?: boolean } = {},
-                ) => (
-                  <div key={group.title} className="flex h-full min-w-0 flex-col">
-                    {showGroupTitles ? (
-                      <p
-                        className={`text-eyebrow m-0 mb-4 ${
-                          alignTitle ? "min-h-[2.75rem]" : ""
-                        }`}
-                      >
+                ) =>
+                  textOnlyGallery ? (
+                    <div
+                      key={group.title}
+                      className="flex h-full min-w-0 flex-col border border-line bg-mist/40 p-6 sm:p-7"
+                    >
+                      <p className={`text-eyebrow m-0 ${alignTitle ? "min-h-[2.75rem]" : ""}`}>
                         {group.title}
                       </p>
-                    ) : null}
-                    <WorkDetailGallery
-                      items={group.items}
-                      title={`${title} — ${group.title}`}
-                      density={group.density === "solo" ? "solo" : "default"}
-                    />
-                    {group.description ? (
-                      <p className="text-body section-copy-on-light mt-4 mb-0 max-w-none">
-                        {group.description}
-                      </p>
-                    ) : null}
-                  </div>
-                );
+                      {group.description ? (
+                        <p className="text-body section-copy-on-light mt-3 mb-0 max-w-none">
+                          {group.description}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div key={group.title} className="flex h-full min-w-0 flex-col">
+                      {showGroupTitles ? (
+                        <p
+                          className={`text-eyebrow m-0 mb-4 ${
+                            alignTitle ? "min-h-[2.75rem]" : ""
+                          }`}
+                        >
+                          {group.title}
+                        </p>
+                      ) : null}
+                      <WorkDetailGallery
+                        items={group.items}
+                        title={`${title} — ${group.title}`}
+                        density={group.density === "solo" ? "solo" : "default"}
+                      />
+                      {group.description ? (
+                        <p className="text-body section-copy-on-light mt-4 mb-0 max-w-none">
+                          {group.description}
+                        </p>
+                      ) : null}
+                    </div>
+                  );
 
                 let i = 0;
                 while (i < groups.length) {
