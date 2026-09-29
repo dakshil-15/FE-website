@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef, useState, type RefObject } from "react";
 import { Play } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -98,46 +97,17 @@ export default function WorkDetailHero({
       body={caseStudy.hero}
       bodyClassName="text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[32rem] sm:mt-6"
       copyAfterBody={
-        <>
-          <ul
-            data-animate="hero-copy"
-            className="mt-6 mb-0 flex list-none flex-wrap gap-2 p-0"
-            aria-label="Campaign tags"
-          >
-            {tags.map((tag) => (
-              <li key={tag} className="insight-tag border border-line px-3 py-1 text-ink">
-                {tag}
-              </li>
-            ))}
-          </ul>
-
-          {caseStudy.clientLogo ? (
-            <div data-animate="hero-copy" className="mt-6 sm:mt-7">
-              <Image
-                src={caseStudy.clientLogo}
-                alt={caseStudy.client}
-                width={200}
-                height={200}
-                className={
-                  caseStudy.slug === "fedex-csk"
-                    ? "h-20 w-auto object-contain sm:h-24 lg:h-28"
-                    : caseStudy.slug === "royale-touche-stay-curious"
-                      ? "h-16 w-auto object-contain sm:h-20"
-                      : caseStudy.slug === "ajanta-ai-creatives"
-                        ? "h-14 w-auto object-contain sm:h-16"
-                        : "h-12 w-auto object-contain sm:h-14"
-                }
-              />
-            </div>
-          ) : caseStudy.slug === "ajanta-ai-creatives" ? null : (
-            <p
-              data-animate="hero-copy"
-              className="text-body-sm mt-6 mb-0 font-semibold tracking-wide text-muted sm:mt-7"
-            >
-              {caseStudy.client}
-            </p>
-          )}
-        </>
+        <ul
+          data-animate="hero-copy"
+          className="mt-6 mb-0 flex list-none flex-wrap gap-2 p-0"
+          aria-label="Campaign tags"
+        >
+          {tags.map((tag) => (
+            <li key={tag} className="insight-tag border border-line px-3 py-1 text-ink">
+              {tag}
+            </li>
+          ))}
+        </ul>
       }
       gridClassName={
         heroImage.fit === "contain" || heroClip
