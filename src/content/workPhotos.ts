@@ -11,7 +11,6 @@ export const workPhotos: Record<string, string> = {
   "jockey-seo": "/images/work/cases/jockey-seo.png",
   "shoppers-stop-local-seo": "/images/work/cases/shoppers-stop-local-seo.png",
   "cello-kidzbee": "/images/work/cases/cello-kidzbee.png",
-  "young-bags": "/images/work/cases/young-bags.png",
   "ambassador-hotel": "/images/work/cases/ambassador-hotel.png",
   "godrej-greenfront": "/images/work/cases/godrej-greenfront.png",
   "amazon-samsung-great-indian-festival":

@@ -24,12 +24,11 @@ export const industries: Industry[] = [
     name: "Consumer, Retail & E-commerce",
     overview:
       "Category-crowded, always-on and highly competitive — we combine media, creative and marketplace expertise to win attention and conversion.",
-    clients: ["VIP Industries", "Amazon", "Samsung", "Shoppers Stop", "Cello", "Young Bags", "Royale Touché", "Jockey"],
+    clients: ["VIP Industries", "Amazon", "Samsung", "Shoppers Stop", "Cello", "Royale Touché", "Jockey"],
     caseStudySlugs: [
       "vip-industries",
       "shoppers-stop-local-seo",
       "cello-kidzbee",
-      "young-bags",
       "amazon-samsung-great-indian-festival",
       "royale-touche-stay-curious",
       "jockey-seo",

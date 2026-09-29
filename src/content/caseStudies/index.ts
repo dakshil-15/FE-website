@@ -8,7 +8,6 @@ import { akbarTravelsSeo } from "./akbar-travels-seo";
 import { jockeySeo } from "./jockey-seo";
 import { shoppersStopLocalSeo } from "./shoppers-stop-local-seo";
 import { celloKidzbee } from "./cello-kidzbee";
-import { youngBags } from "./young-bags";
 import { ambassadorHotel } from "./ambassador-hotel";
 import { godrejGreenfront } from "./godrej-greenfront";
 import { amazonSamsungGreatIndianFestival } from "./amazon-samsung-great-indian-festival";
@@ -50,7 +49,6 @@ export {
   jockeySeo,
   shoppersStopLocalSeo,
   celloKidzbee,
-  youngBags,
   ambassadorHotel,
   godrejGreenfront,
   amazonSamsungGreatIndianFestival,

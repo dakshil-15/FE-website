@@ -53,7 +53,7 @@ export const services: Service[] = [
       "Storyboarding",
       "AI-assisted production",
     ],
-    caseStudySlugs: ["cello-kidzbee", "young-bags", "ajanta-ai-creatives"],
+    caseStudySlugs: ["cello-kidzbee", "ajanta-ai-creatives"],
     family: "visual-creative",
   },
   {

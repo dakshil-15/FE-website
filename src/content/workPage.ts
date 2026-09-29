@@ -78,7 +78,6 @@ const cardTagOverrides: Record<string, string> = {
   "jockey-seo": "Integrated Campaign",
   "shoppers-stop-local-seo": "360° Media Buying",
   "cello-kidzbee": "Video Production",
-  "young-bags": "Video Production",
   "ajanta-ai-creatives": "Video Production",
   "ambassador-hotel": "Creative Solutions",
   "godrej-greenfront": "Creative Solutions",
