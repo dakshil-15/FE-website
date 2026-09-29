@@ -8,7 +8,7 @@ import PageHero from "@/components/PageHero";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
 import AdvantageToolsGrid from "@/components/home/AdvantageToolsGrid";
 import { LogoMarkGrid } from "@/components/home/PartnerLogos";
-import AiServicesHub from "@/components/home/AiServicesHub";
+import AiServicesStack from "@/components/home/AiServicesStack";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
   advantageToolsSection,
@@ -77,7 +77,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="section-media">
-            <AiServicesHub />
+            <AiServicesStack />
           </div>
         </div>
       </section>
