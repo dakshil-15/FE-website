@@ -126,11 +126,7 @@ export function homeFeaturedWorkStudies(studies: CaseStudy[]) {
 }
 
 export function homeFeaturedEyebrow(caseStudy: CaseStudy) {
-  return (
-    homeFeaturedEyebrowOverrides[caseStudy.slug] ??
-    caseStudy.tags?.[0] ??
-    workCardTag(caseStudy)
-  );
+  return homeFeaturedEyebrowOverrides[caseStudy.slug] ?? workCardTag(caseStudy);
 }
 
 export function homeFeaturedSpotlightMetric(caseStudy: CaseStudy): Metric {
