@@ -66,7 +66,6 @@ export default function WorkPage() {
         headingId="work-cta-heading"
         titleBefore={workCta.titleBefore}
         titleAccent={workCta.titleAccent}
-        body={workCta.body}
         primaryLabel={workCta.button.label}
         primaryHref={workCta.button.href}
       />
