@@ -118,7 +118,6 @@ export default function AwardsPage() {
         titleBefore={awardsCta.titleBefore}
         titleAccent={awardsCta.titleAccent}
         titleBreak
-        body={awardsCta.body}
         primaryLabel={awardsCta.button.label}
         primaryHref={awardsCta.button.href}
         burstSrc={awardsCta.burst}

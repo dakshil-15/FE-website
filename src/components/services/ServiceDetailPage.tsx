@@ -143,7 +143,6 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
           titleBefore={cta.titleBefore}
           titleAccent={cta.titleAccent}
           titleBreak
-          body={cta.body}
           primaryLabel={cta.button.label}
           primaryHref={cta.button.href}
         />

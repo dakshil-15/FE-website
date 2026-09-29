@@ -50,7 +50,6 @@ export default async function CaseStudyPage({
         titleBefore={workDetailCta.titleBefore}
         titleAccent={workDetailCta.titleAccent}
         titleBreak
-        body={workDetailCta.body}
         primaryLabel={workDetailCta.button.label}
         primaryHref={workDetailCta.button.href}
         burstSrc={workDetailCta.burst}
