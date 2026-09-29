@@ -262,18 +262,11 @@ export const aboutTeam: TeamMember[] = [
   },
 ];
 
-export const aboutTeamUi = {
-  linkedin: "/images/about/leadership/linkedin.svg",
-};
-
 export const aboutUi = {
   arrow: "/images/about/ui/arrow-right.svg",
   arrowWhite: "/images/about/ui/arrow-right-white.svg",
   arrowCircle: "/images/about/ui/arrow-right-circle.svg",
 };
-
-export const aboutValuesIntro =
-  "Our values aren’t words on a wall. They’re everyday behaviors that shape how we work, collaborate, and grow.";
 
 export const aboutValues = [
   {

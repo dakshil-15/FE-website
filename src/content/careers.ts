@@ -301,14 +301,6 @@ export type CareerDetailTab = {
   label: string;
 };
 
-export const careerDetailTabs = [
-  { id: "overview", label: "Overview" },
-  { id: "responsibilities", label: "Responsibilities" },
-  { id: "requirements", label: "Requirements" },
-  { id: "benefits", label: "Benefits" },
-  { id: "about-us", label: "About Us" },
-] as const satisfies readonly CareerDetailTab[];
-
 export const careerRoleDetails: Record<string, CareerRoleDetail> = {
   "senior-performance-marketing-manager": {
     slug: "senior-performance-marketing-manager",

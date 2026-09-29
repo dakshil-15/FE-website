@@ -4,7 +4,7 @@
  */
 
 import type { MediaSlot } from "@/content/about";
-import { aboutFeaturedAchievement, aboutStats, aboutUi, campaignAwards } from "@/content/about";
+import { aboutFeaturedAchievement, aboutUi, campaignAwards } from "@/content/about";
 
 export { aboutUi };
 
@@ -23,8 +23,6 @@ export const awardsHero = {
   burst: "/images/about/hero/radial-burst.svg",
   arrow: "/images/about/ui/arrow-right-circle.svg",
 };
-
-export const awardsStatsBar = aboutStats;
 
 export type AwardGalleryItem = {
   organization: string;
