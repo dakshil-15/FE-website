@@ -751,6 +751,17 @@
   border-color: #fff;
 }
 
+/* Rest already matches the shared accent hover fill (white pill), so give
+   this variant its own hover/focus cue instead of relying on a state
+   change that no longer happens. */
+.growth-cta--on-dark.growth-cta--accent:hover .growth-cta__shell,
+.growth-cta--on-dark.growth-cta--accent:focus-visible .growth-cta__shell {
+  border-color: var(--gs-red);
+  box-shadow:
+    0 14px 30px rgba(0, 125, 166, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
 .growth-cta--accent .growth-cta__shell {
   clip-path: none;
   border-radius: 999px;
