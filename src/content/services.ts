@@ -216,7 +216,7 @@ export const services: Service[] = [
       "GEO",
       "AI Overview optimisation",
     ],
-    caseStudySlugs: ["akbar-travels-seo", "jockey-seo", "shoppers-stop-local-seo", "royale-touche-stay-curious"],
+    caseStudySlugs: ["akbar-travels-seo", "jockey-seo", "royale-touche-stay-curious"],
     family: "performance-data",
   },
   {

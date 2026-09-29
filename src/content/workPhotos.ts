@@ -9,7 +9,6 @@ export const workPhotos: Record<string, string> = {
   "vip-industries": "/images/work/cases/vip-industries.png",
   "akbar-travels-seo": "/images/work/cases/akbar-travels-seo.png",
   "jockey-seo": "/images/work/cases/jockey-seo.png",
-  "shoppers-stop-local-seo": "/images/work/cases/shoppers-stop-local-seo.png",
   "cello-kidzbee": "/images/work/cases/cello-kidzbee.png",
   "ambassador-hotel": "/images/work/cases/ambassador-hotel.png",
   "godrej-greenfront": "/images/work/cases/godrej-greenfront.png",
