@@ -1,8 +1,8 @@
 export default function Loading() {
   return (
-    <section className="section-shell section-pad bg-paper" aria-busy="true" aria-live="polite">
+    // Decorative skeleton only: no announced text, so "Loading page" never lands in the page HTML.
+    <section className="section-shell section-pad bg-paper" aria-hidden>
       <div className="section-inner">
-        <p className="sr-only">Loading page</p>
         <div className="h-3 w-24 animate-pulse bg-line/70" />
         <div className="mt-6 h-12 w-full max-w-xl animate-pulse bg-line/70 sm:h-14" />
         <div className="mt-4 h-4 w-full max-w-lg animate-pulse bg-line/50" />

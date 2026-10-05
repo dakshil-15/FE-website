@@ -10,3 +10,11 @@
 @import "../styles/work-insights.css";
 @import "../styles/footer-misc.css";
 @import "../styles/admin.css";
+
+/* First-visit preloader: hidden unless the pre-paint script in app/layout.tsx flags this load. */
+.fe-preloader {
+  display: none;
+}
+html[data-preload="1"] .fe-preloader {
+  display: flex;
+}

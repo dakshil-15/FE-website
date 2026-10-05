@@ -29,6 +29,26 @@ function isHomePath(pathname: string | null) {
   return pathname === "/";
 }
 
+/** Must match the inline script in app/layout.tsx that flags first-visit loads before first paint. */
+const PRELOAD_ATTR = "data-preload";
+const SEEN_KEY = "fe-preloaded";
+
+function hasSeenPreloader() {
+  try {
+    return window.sessionStorage.getItem(SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markPreloaderSeen() {
+  try {
+    window.sessionStorage.setItem(SEEN_KEY, "1");
+  } catch {
+    /* storage unavailable — the overlay simply shows again next time */
+  }
+}
+
 export default function Preloader() {
   const pathname = usePathname();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -37,32 +57,27 @@ export default function Preloader() {
   const percentRef = useRef<HTMLParagraphElement>(null);
   const prevPathRef = useRef<string | null>(null);
   const onHome = isHomePath(pathname);
+  // `visible` only decides whether the overlay markup exists (home route); the pre-paint
+  // `data-preload` flag on <html> decides whether it is actually shown.
   const [visible, setVisible] = useState(onHome);
-  const [active, setActive] = useState(onHome);
-  /** Bumps when returning to home so the GSAP timeline restarts. */
-  const [runId, setRunId] = useState(0);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (!isHomePath(pathname)) {
+    prevPathRef.current = pathname;
+
+    // Once per browser session, on the home page only — never re-gate content on return visits.
+    if (!isHomePath(pathname) || hasSeenPreloader()) {
       setVisible(false);
       setActive(false);
-      prevPathRef.current = pathname;
+      document.documentElement.removeAttribute(PRELOAD_ATTR);
       document.body.style.overflow = "";
       return;
     }
 
-    const returningToHome =
-      prevPathRef.current !== null && prevPathRef.current !== "/";
-
+    document.documentElement.setAttribute(PRELOAD_ATTR, "1");
     setVisible(true);
     setActive(true);
     document.body.style.overflow = "hidden";
-
-    if (returningToHome) {
-      setRunId((id) => id + 1);
-    }
-
-    prevPathRef.current = pathname;
 
     return () => {
       document.body.style.overflow = "";
@@ -85,6 +100,8 @@ export default function Preloader() {
           duration: 0.55,
           ease: "power2.inOut",
           onComplete: () => {
+            markPreloaderSeen();
+            document.documentElement.removeAttribute(PRELOAD_ATTR);
             setVisible(false);
             setActive(false);
             document.body.style.overflow = "";
@@ -141,12 +158,12 @@ export default function Preloader() {
         window.addEventListener("load", () => resolve(), { once: true });
       });
 
-      const minDelay = new Promise<void>((resolve) => setTimeout(resolve, 2200));
+      const minDelay = new Promise<void>((resolve) => setTimeout(resolve, 900));
 
       Promise.all([loadPromise, minDelay]).then(() => {
         gsap.to(progress, {
           value: 100,
-          duration: 1.1,
+          duration: 0.7,
           ease: "power2.inOut",
           onUpdate: () => {
             const pct = Math.round(progress.value);
@@ -163,7 +180,7 @@ export default function Preloader() {
         });
       });
     },
-    { scope: rootRef, dependencies: [active, runId] },
+    { scope: rootRef, dependencies: [active] },
   );
 
   if (!visible) return null;
@@ -174,9 +191,8 @@ export default function Preloader() {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-white"
-      aria-hidden={!active}
-      aria-busy={active}
+      className="fe-preloader fixed inset-0 z-[200] items-center justify-center bg-white"
+      aria-hidden
     >
       <div className="relative w-[min(92vw,480px)]">
         {/* Horizontal data streaks */}

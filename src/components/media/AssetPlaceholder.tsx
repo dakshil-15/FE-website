@@ -81,19 +81,13 @@ export function PortraitSlot({
   const grayscale = asset.grayscale ?? true;
 
   if (asset.src) {
-    const isLeadershipPhoto = asset.src.startsWith("/images/about/leadership/");
-    const src = isLeadershipPhoto
-      ? `${asset.src}${asset.src.includes("?") ? "&" : "?"}v=13`
-      : asset.src;
-
     return (
       <div className={`relative overflow-hidden bg-[#161616] ${className}`}>
         <Image
-          src={src}
+          src={asset.src}
           alt={asset.alt ?? name}
           fill
           sizes={sizes}
-          unoptimized={isLeadershipPhoto}
           className={`object-cover object-top ${grayscale ? "grayscale" : ""}`}
         />
       </div>
