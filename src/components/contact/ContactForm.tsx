@@ -1,18 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import GrowthCta from "@/components/GrowthCta";
 import { contactFormCopy, contactInterests } from "@/content/contact";
+import { trackEvent } from "@/lib/analytics";
 import { postJson } from "@/lib/forms/client";
-import { isValidEmail } from "@/lib/forms/validation";
+import { FIELD_LIMITS, isValidEmail } from "@/lib/forms/validation";
 
 const fieldClass =
   "field-control min-h-12 bg-white px-4 py-3.5 transition-[border-color] duration-200";
 
-type FieldName = "name" | "email" | "phone" | "company" | "interest" | "requirement";
+type FieldName = "name" | "email" | "phone" | "company" | "interest" | "requirement" | "consent";
 
 export default function ContactForm() {
   const formId = useId();
+  const consentId = `${formId}-consent`;
   const [status, setStatus] = useState<"idle" | "submitting" | "submitted" | "error">("idle");
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -30,6 +33,7 @@ export default function ContactForm() {
     const phone = String(data.get("phone") ?? "").trim();
     const company = String(data.get("company") ?? "").trim();
     const requirement = String(data.get("requirement") ?? "").trim();
+    const consent = data.get("consent") === "on";
 
     if (!name) nextErrors.name = "Enter your full name.";
     if (!email) nextErrors.email = "Enter your email address.";
@@ -37,10 +41,11 @@ export default function ContactForm() {
     if (!phone) nextErrors.phone = "Enter your phone number.";
     if (!company) nextErrors.company = "Enter your company name.";
     if (!requirement) nextErrors.requirement = "Tell us about your requirement.";
+    if (!consent) nextErrors.consent = "Please agree to the Privacy Policy.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
-      const order: FieldName[] = ["name", "email", "phone", "company", "interest", "requirement"];
+      const order: FieldName[] = ["name", "email", "phone", "company", "interest", "requirement", "consent"];
       const firstInvalid = order.find((key) => nextErrors[key]);
       const target = firstInvalid
         ? form.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)
@@ -68,6 +73,7 @@ export default function ContactForm() {
       return;
     }
 
+    trackEvent("generate_lead", { form: "contact" });
     setStatus("submitted");
   }
 
@@ -109,6 +115,7 @@ export default function ContactForm() {
         autoComplete="name"
         error={errors.name}
         disabled={status === "submitting"}
+        maxLength={FIELD_LIMITS.name}
       />
       <Field
         id={`${formId}-email`}
@@ -119,6 +126,7 @@ export default function ContactForm() {
         autoComplete="email"
         error={errors.email}
         disabled={status === "submitting"}
+        maxLength={FIELD_LIMITS.email}
       />
       <Field
         id={`${formId}-phone`}
@@ -129,6 +137,7 @@ export default function ContactForm() {
         autoComplete="tel"
         error={errors.phone}
         disabled={status === "submitting"}
+        maxLength={FIELD_LIMITS.phone}
       />
       <Field
         id={`${formId}-company`}
@@ -138,6 +147,7 @@ export default function ContactForm() {
         autoComplete="organization"
         error={errors.company}
         disabled={status === "submitting"}
+        maxLength={FIELD_LIMITS.company}
       />
 
       <div className="relative min-w-0">
@@ -171,6 +181,7 @@ export default function ContactForm() {
           name="requirement"
           required
           rows={5}
+          maxLength={FIELD_LIMITS.requirement}
           disabled={status === "submitting"}
           placeholder="Tell us about your requirement"
           aria-invalid={errors.requirement ? true : undefined}
@@ -180,6 +191,36 @@ export default function ContactForm() {
         {errors.requirement ? (
           <p id={`${formId}-requirement-error`} className="mt-1.5 text-sm text-red" role="alert">
             {errors.requirement}
+          </p>
+        ) : null}
+      </div>
+
+      <div className="sm:col-span-2">
+        <div className="flex items-start gap-3">
+          <input
+            id={consentId}
+            type="checkbox"
+            name="consent"
+            required
+            disabled={status === "submitting"}
+            aria-invalid={errors.consent ? true : undefined}
+            aria-describedby={errors.consent ? `${formId}-consent-error` : undefined}
+            className="contact-check mt-[0.15em]"
+          />
+          <label htmlFor={consentId} className="min-w-0 cursor-pointer text-sm leading-snug text-muted">
+            I agree to the{" "}
+            <Link
+              href="/privacy-policy"
+              className="text-red underline-offset-2 transition hover:underline focus-visible:rounded-sm focus-visible:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+            >
+              Privacy Policy
+            </Link>
+            .
+          </label>
+        </div>
+        {errors.consent ? (
+          <p id={`${formId}-consent-error`} className="mt-1.5 text-sm text-red" role="alert">
+            {errors.consent}
           </p>
         ) : null}
       </div>
@@ -213,6 +254,7 @@ function Field({
   autoComplete,
   error,
   disabled,
+  maxLength,
 }: {
   id: string;
   name: FieldName;
@@ -222,6 +264,7 @@ function Field({
   autoComplete?: string;
   error?: string;
   disabled?: boolean;
+  maxLength?: number;
 }) {
   return (
     <div className="relative min-w-0">
@@ -236,6 +279,7 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         disabled={disabled}
+        maxLength={maxLength}
         placeholder={label}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : undefined}

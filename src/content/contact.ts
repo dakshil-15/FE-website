@@ -35,10 +35,6 @@ export const contactHero = {
 
 export const contactFormCopy = {
   title: "Send us a message",
-  privacyPrefix: "I agree to the ",
-  privacyLink: "Privacy Policy",
-  termsLink: "Terms & Conditions",
-  privacyJoin: " and ",
   submit: "Send message",
   successTitle: "Message sent.",
   successBody: "Thank you. Our team will get back to you within 24 working hours.",

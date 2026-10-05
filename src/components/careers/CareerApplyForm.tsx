@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import { Upload } from "lucide-react";
 import GrowthCta from "@/components/GrowthCta";
+import { trackEvent } from "@/lib/analytics";
 import { postFormData } from "@/lib/forms/client";
-import { isValidEmail, validateResume } from "@/lib/forms/validation";
+import { FIELD_LIMITS, isValidEmail, validateResume } from "@/lib/forms/validation";
 
 const fieldClass = "field-control min-h-12 bg-white px-4 py-3.5 transition-[border-color] duration-200";
 
@@ -73,6 +74,7 @@ export default function CareerApplyForm({
       return;
     }
 
+    trackEvent("generate_lead", { form: "career_application", role: roleTitle });
     setStatus("submitted");
   }
 
@@ -176,6 +178,7 @@ export default function CareerApplyForm({
           id={`${formId}-cover-letter`}
           name="coverLetter"
           rows={4}
+          maxLength={FIELD_LIMITS.coverLetter}
           disabled={status === "submitting"}
           placeholder="Tell us why you’re a great fit for this role"
           className={`${fieldClass} min-h-[6.5rem] resize-y`}

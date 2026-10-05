@@ -1,6 +1,6 @@
 import { jsonError, jsonOk } from "@/lib/forms/api-response";
 import { escapeHtml, notificationRecipients, sendNotificationEmail } from "@/lib/email/send";
-import { isHoneypotFilled, isValidEmail, validateResume } from "@/lib/forms/validation";
+import { findOverLimit, isHoneypotFilled, isValidEmail, validateResume } from "@/lib/forms/validation";
 import { captureSubmission, clientIp } from "@/lib/admin/submissions";
 
 export async function POST(request: Request) {
@@ -31,6 +31,9 @@ export async function POST(request: Request) {
   if (!phone) return jsonError("Enter your phone number.");
   if (!roleTitle) return jsonError("Role information is missing. Please refresh and try again.");
   if (!consent) return jsonError("Please agree to the Privacy Policy.");
+
+  const overLimit = findOverLimit({ name, email, phone, roleTitle, roleSlug, coverLetter });
+  if (overLimit) return jsonError(overLimit);
 
   const resumeError =
     resume instanceof File ? validateResume(resume) : "Upload your resume.";

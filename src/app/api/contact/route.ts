@@ -1,6 +1,6 @@
 import { jsonError, jsonOk } from "@/lib/forms/api-response";
 import { escapeHtml, notificationRecipients, sendNotificationEmail } from "@/lib/email/send";
-import { isHoneypotFilled, isValidEmail } from "@/lib/forms/validation";
+import { findOverLimit, isHoneypotFilled, isValidEmail } from "@/lib/forms/validation";
 import { captureSubmission, clientIp } from "@/lib/admin/submissions";
 
 type ContactPayload = {
@@ -41,7 +41,10 @@ export async function POST(request: Request) {
   if (!phone) return jsonError("Enter your phone number.");
   if (!company) return jsonError("Enter your company name.");
   if (!requirement) return jsonError("Tell us about your requirement.");
-  if (!consent) return jsonError("Please agree to the Privacy Policy and Terms & Conditions.");
+  if (!consent) return jsonError("Please agree to the Privacy Policy.");
+
+  const overLimit = findOverLimit({ name, email, phone, company, interest, requirement });
+  if (overLimit) return jsonError(overLimit);
 
   const recipients = notificationRecipients("hello@firsteconomy.in", "CONTACT_NOTIFICATION_EMAIL");
 
@@ -58,7 +61,7 @@ export async function POST(request: Request) {
       <p><strong>Interest:</strong> ${escapeHtml(interest || "Not specified")}</p>
       <p><strong>Requirement:</strong></p>
       <p>${escapeHtml(requirement).replace(/\n/g, "<br />")}</p>
-      <p><em>Submitted via firsteconomy.in contact form. User consented to Privacy Policy and Terms.</em></p>
+      <p><em>Submitted via firsteconomy.in contact form. User consented to the Privacy Policy.</em></p>
     `,
   });
 
