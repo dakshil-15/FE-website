@@ -30,24 +30,29 @@ export default function ValuesSlider({ values }: { values: Value[] }) {
 
   if (total === 0) return null;
 
-  const current = values[active]!;
-
   return (
     <div className="mt-8 md:mt-10">
+      {/* Every slide stays in the DOM (crawlable, announced via the live region); only the active one is visible. */}
       <div
         role="region"
         aria-roledescription="carousel"
         aria-label="Our values"
-        className="relative min-h-[11rem] text-center sm:min-h-[9rem]"
+        className="relative grid min-h-[11rem] text-center sm:min-h-[9rem]"
       >
-        <div key={active} className="work-hero-carousel__slide-in">
-          <h3 className="font-display text-2xl tracking-[0.04em] text-red uppercase sm:text-3xl">
-            {current.title}
-          </h3>
-          <p className="text-body section-copy-on-light mx-auto mt-4 mb-0 max-w-3xl">
-            {current.body}
-          </p>
-        </div>
+        {values.map((value, i) => (
+          <div
+            key={value.title}
+            aria-hidden={i !== active}
+            className={`col-start-1 row-start-1 ${i === active ? "work-hero-carousel__slide-in" : "invisible"}`}
+          >
+            <h3 className="font-display text-2xl tracking-[0.04em] text-red uppercase sm:text-3xl">
+              {value.title}
+            </h3>
+            <p className="text-body section-copy-on-light mx-auto mt-4 mb-0 max-w-3xl">
+              {value.body}
+            </p>
+          </div>
+        ))}
       </div>
 
       {total > 1 ? (

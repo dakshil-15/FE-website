@@ -77,11 +77,16 @@ export default function WorkDetailPage({ model }: WorkDetailPageProps) {
     focusHeading: true,
   });
 
-  const displayTitle =
+  const campaignTitle =
     caseStudy.hashtag &&
     caseStudy.hashtag.toLowerCase() !== caseStudy.campaign.toLowerCase()
       ? `${caseStudy.campaign} – ${caseStudy.hashtag}`
       : caseStudy.campaign;
+  // H1 template: "{Client} — {Case title}". The client prefix is skipped when the
+  // campaign name already carries it (e.g. "FedEx × Chennai Super Kings").
+  const displayTitle = campaignTitle.toLowerCase().includes(caseStudy.client.toLowerCase())
+    ? campaignTitle
+    : `${caseStudy.client} — ${campaignTitle}`;
 
   // Shared-element Flip: register hero media as the landing target
   useLayoutEffect(() => {

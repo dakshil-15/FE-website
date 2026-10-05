@@ -17,6 +17,7 @@ const columns = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "Our Team", href: "/about#team" },
+      { label: "Awards", href: "/awards" },
       { label: "Careers", href: "/careers" },
       { label: "Locations", href: "/contact#offices" },
     ],
@@ -116,6 +117,12 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} First Economy. All rights reserved.
         </span>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <Link
+            href="/privacy-policy"
+            className="tap-target-sm inline-flex items-center transition hover:text-white focus-visible:text-white"
+          >
+            Privacy Policy
+          </Link>
           <button
             type="button"
             aria-label="Back to top"

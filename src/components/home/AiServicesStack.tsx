@@ -6,11 +6,25 @@ import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ACCENTS, spokes } from "@/components/home/AiServicesHub";
 import { serviceOfferingIconBySlug } from "@/components/serviceOfferingIcons";
-import type { ServiceOffering } from "@/content/serviceOfferings";
+import { serviceOfferings, type ServiceOffering } from "@/content/serviceOfferings";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+const ACCENTS = [
+  { bg: "bg-red/10", text: "text-red" },
+  { bg: "bg-violet-100", text: "text-violet-600" },
+  { bg: "bg-emerald-100", text: "text-emerald-600" },
+  { bg: "bg-rose-100", text: "text-rose-600" },
+  { bg: "bg-amber-100", text: "text-amber-600" },
+  { bg: "bg-sky-100", text: "text-sky-600" },
+  { bg: "bg-fuchsia-100", text: "text-fuchsia-600" },
+  { bg: "bg-purple-100", text: "text-purple-600" },
+] as const;
+
+// AI is the hub of the diagram, but AI Solutions is still a service — it gets its own card so the
+// stack lists exactly what the nav and footer list.
+const stackServices = serviceOfferings;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -43,7 +57,7 @@ function StackCard({
           </span>
           <span className="font-display text-sm font-bold tracking-[0.2em] text-ink">
             {pad(index + 1)}
-            <span className="text-muted"> / {pad(spokes.length)}</span>
+            <span className="text-muted"> / {pad(stackServices.length)}</span>
           </span>
         </div>
 
@@ -203,14 +217,14 @@ export default function AiServicesStack() {
             data-stack-counter
             className="m-0 font-display text-sm font-bold tracking-[0.2em] text-ink lg:text-center"
           >
-            {pad(1)} / {pad(spokes.length)}
+            {pad(1)} / {pad(stackServices.length)}
           </p>
           <div className="h-[3px] w-full overflow-hidden rounded-full bg-black/10" aria-hidden>
             <span data-stack-bar className="block h-full w-full bg-red" />
           </div>
           {/* Phones swipe the list; the dots (24px hit areas) appear from tablet up. */}
           <ul className="m-0 hidden list-none flex-wrap p-0 sm:flex lg:justify-center">
-            {spokes.map((service, i) => (
+            {stackServices.map((service, i) => (
               <li key={service.slug}>
                 <button
                   type="button"
@@ -228,7 +242,7 @@ export default function AiServicesStack() {
       </div>
 
       <ul className="ai-stack__cards">
-        {spokes.map((service, i) => (
+        {stackServices.map((service, i) => (
           <StackCard
             key={service.slug}
             service={service}
