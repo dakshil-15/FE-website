@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, isNoIndex } from "@/lib/seo";
 
 /**
  * Minimal root layout. The public site's chrome (Preloader, Header, Footer)
@@ -21,21 +22,57 @@ const barlow = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "First Economy — Growth Systems",
     template: "%s | First Economy",
   },
   description:
     "First Economy is an integrated growth partner combining media, creative, technology, SEO, social, influencer marketing and AI into one growth system.",
+  applicationName: SITE_NAME,
+  // "./" resolves against each route, so every page gets a self-referencing canonical.
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_IN",
+    url: "./",
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "First Economy — Growth Systems" }],
+  },
+  twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE] },
+  icons: {
+    icon: [
+      { url: "/icons/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  // Staging/preview deploys set SITE_NOINDEX=true; production leaves it unset.
+  ...(isNoIndex() ? { robots: { index: false, follow: false } } : {}),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080808",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       data-scroll-behavior="smooth"
       className={`${archivo.variable} ${barlow.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Flags a first-in-session home load before first paint so the preloader overlay shows with no flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(location.pathname==="/"&&!sessionStorage.getItem("fe-preloaded"))document.documentElement.setAttribute("data-preload","1")}catch(e){}',
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col overflow-x-hidden bg-paper text-ink">{children}</body>
     </html>
   );

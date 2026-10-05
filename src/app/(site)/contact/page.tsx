@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ContactPage from "@/components/contact/ContactPage";
+import JsonLd from "@/components/JsonLd";
+import { localBusinessJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -8,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ContactPage />;
+  return (
+    <>
+      <JsonLd data={localBusinessJsonLd()} />
+      <ContactPage />
+    </>
+  );
 }

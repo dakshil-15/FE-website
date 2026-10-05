@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // AVIF first, WebP fallback — roughly halves the PNG/JPG weight of case-study and team imagery.
+    formats: ["image/avif", "image/webp"],
+    // Capped at 1920: layouts never render wider than ~1360px content, so the default
+    // 2048/3840 candidates only inflate the fallback `src` and the srcset.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     qualities: [75, 100],
     remotePatterns: [
       {
@@ -16,8 +21,32 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Staging/preview deploys set SITE_NOINDEX=true so nothing on them can be indexed;
+  // production leaves it unset and never inherits the header.
+  async headers() {
+    if (process.env.SITE_NOINDEX !== "true") return [];
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
   async redirects() {
     return [
+      // Legacy firsteconomy.com (PHP site) URLs — one-hop permanent redirects to their closest new page.
+      { source: "/our-work.php", destination: "/work", permanent: true },
+      { source: "/career.php", destination: "/careers", permanent: true },
+      { source: "/contact-us.php", destination: "/contact", permanent: true },
+      { source: "/about-us.php", destination: "/about", permanent: true },
+      { source: "/paid-media.php", destination: "/services/media-buying", permanent: true },
+      { source: "/social-network.php", destination: "/services/social-media", permanent: true },
+      { source: "/branding.php", destination: "/services/branding", permanent: true },
+      { source: "/videography.php", destination: "/services/video-production", permanent: true },
+      { source: "/technology.php", destination: "/services/technology", permanent: true },
+      // Best-fit mappings — no 1:1 equivalent on the new site.
+      { source: "/online-store.php", destination: "/services/marketplace-management", permanent: true },
+      { source: "/business-solution.php", destination: "/services", permanent: true },
       {
         source: "/our-advantage",
         destination: "/services",

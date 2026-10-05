@@ -40,6 +40,10 @@ export type CareerRole = {
   experience?: string;
   /** Optional override; defaults to `/careers/[slug]` when omitted. */
   href?: string;
+  /** ISO date (YYYY-MM-DD) the role went live — Google requires it for JobPosting rich results. */
+  datePosted?: string;
+  /** ISO date after which the posting expires. */
+  validThrough?: string;
 };
 
 export type CareerListItem = {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CareerDetailPage from "@/components/careers/CareerDetailPage";
+import JsonLd from "@/components/JsonLd";
 import {
   getCareerDetailTabs,
   getCareerRoleBySlug,
@@ -9,6 +10,7 @@ import {
   getFirstDetailSectionId,
   getRelatedCareerRoles,
 } from "@/lib/careers";
+import { jobPostingJsonLd } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const dynamicParams = true;
@@ -51,12 +53,25 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const shareUrl = `${siteUrl}/careers/${slug}`;
 
   return (
-    <CareerDetailPage
-      role={role}
-      detail={detail}
-      sectionTabs={sectionTabs}
-      relatedRoles={relatedRoles}
-      shareUrl={shareUrl}
-    />
+    <>
+      <JsonLd
+        data={jobPostingJsonLd({
+          title: role.title,
+          description: detail.aboutRole || detail.summary,
+          path: `/careers/${slug}`,
+          location: role.location,
+          employmentType: role.type,
+          datePosted: role.datePosted,
+          validThrough: role.validThrough,
+        })}
+      />
+      <CareerDetailPage
+        role={role}
+        detail={detail}
+        sectionTabs={sectionTabs}
+        relatedRoles={relatedRoles}
+        shareUrl={shareUrl}
+      />
+    </>
   );
 }

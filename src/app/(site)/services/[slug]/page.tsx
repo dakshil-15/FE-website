@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/JsonLd";
 import ServiceDetailPage from "@/components/services/ServiceDetailPage";
 import { getServicePageContent, servicePageSlugs } from "@/content/servicePages";
+import { serviceJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return servicePageSlugs
@@ -31,5 +33,16 @@ export default async function ServiceDetailRoute({
   const content = getServicePageContent(slug);
   if (!content) notFound();
 
-  return <ServiceDetailPage content={content} />;
+  return (
+    <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: content.name,
+          description: content.summary,
+          path: `/services/${content.slug}`,
+        })}
+      />
+      <ServiceDetailPage content={content} />
+    </>
+  );
 }

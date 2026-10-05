@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export type PageBreadcrumbItem = {
   label: string;
@@ -146,6 +148,7 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section className={PAGE_HERO_SECTION_CLASS} aria-labelledby={headingId}>
+      <JsonLd data={breadcrumbJsonLd(breadcrumbs)} />
       <div className="section-inner">
         <PageBreadcrumb
           items={breadcrumbs}
