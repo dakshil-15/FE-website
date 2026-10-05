@@ -142,7 +142,7 @@ export const aiSolutionsPage: ServicePageContent = {
           titleAccent: "Delivers.",
           body: "Practical AI applied to creative, analytics and discoverability with measurable results.",
           exploreLabel: "View all case studies",
-          exploreHref: "/work?service=ai-solutions",
+          exploreHref: "/work",
           items: caseItems,
         },
       }

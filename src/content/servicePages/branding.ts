@@ -156,7 +156,7 @@ export const brandingPage: ServicePageContent = {
           titleAccent: "Last.",
           body: "Identity and launch work that held up on screen, on street and in culture.",
           exploreLabel: "View all case studies",
-          exploreHref: "/work?service=branding",
+          exploreHref: "/work",
           items: caseItems,
         },
       }

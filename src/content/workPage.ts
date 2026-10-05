@@ -16,7 +16,7 @@ export const workHero = {
   arrow: "/images/work/hero/arrow-circle.svg",
 };
 
-/** Tabs mirror the card tags below one-for-one — every case study filters into exactly the tab matching its own badge. */
+/** Tabs mirror the card badges; a case also appears under any tab whose service it was delivered under (see `filterServiceSlugs`). */
 export const workFilters = [
   { key: "all", label: "All Cases" },
   { key: "integrated", label: "Integrated Campaign" },
@@ -42,9 +42,31 @@ const filterTagLabels: Record<Exclude<WorkFilterKey, "all">, string> = {
   influencer: "Influencer Marketing",
 };
 
+/** Service slugs (from `caseStudy.services`) that also place a case under a filter tab. */
+const filterServiceSlugs: Partial<Record<Exclude<WorkFilterKey, "all">, string[]>> = {
+  "media-buying": ["media-buying"],
+  tech: ["technology"],
+  social: ["social-media"],
+  seo: ["seo"],
+  video: ["video-production"],
+  creative: ["creative"],
+  influencer: ["influencer-marketing"],
+};
+
+/** A case matches a tab by its badge OR by any of its service tags — one badge, many filters. */
 export function matchesWorkFilter(caseStudy: CaseStudy, key: WorkFilterKey) {
   if (key === "all") return true;
-  return workCardTag(caseStudy) === filterTagLabels[key];
+  if (workCardTag(caseStudy) === filterTagLabels[key]) return true;
+  return (filterServiceSlugs[key] ?? []).some((slug) => caseStudy.services.includes(slug));
+}
+
+/** Resolves a `/work?service=<service-slug>` deep link to its filter tab (null = no matching tab). */
+export function workFilterFromService(serviceSlug: string | null | undefined): WorkFilterKey | null {
+  if (!serviceSlug) return null;
+  for (const [key, slugs] of Object.entries(filterServiceSlugs)) {
+    if (slugs?.includes(serviceSlug)) return key as WorkFilterKey;
+  }
+  return null;
 }
 
 /** Mockup order first, then remaining studies. */

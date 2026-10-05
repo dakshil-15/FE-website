@@ -6,6 +6,7 @@ import WorkCaseCard from "@/components/work/WorkCaseCard";
 import {
   matchesWorkFilter,
   orderedWorkStudies,
+  workFilterFromService,
   workFilters,
   type WorkFilterKey,
 } from "@/content/workPage";
@@ -15,6 +16,14 @@ export default function WorkCaseBrowser({ caseStudies }: { caseStudies: CaseStud
   const [active, setActive] = useState<WorkFilterKey>("all");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const filterWrapRef = useRef<HTMLDivElement>(null);
+
+  // Deep links like /work?service=seo preselect their tab. Read after mount (not during render)
+  // so the server-rendered HTML always lists every case study.
+  useEffect(() => {
+    const fromUrl = workFilterFromService(new URLSearchParams(window.location.search).get("service"));
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing with the URL, an external system
+    if (fromUrl) setActive(fromUrl);
+  }, []);
 
   const ordered = useMemo(() => orderedWorkStudies(caseStudies), [caseStudies]);
 

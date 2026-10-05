@@ -142,7 +142,7 @@ export const marketplaceManagementPage: ServicePageContent = {
           titleAccent: "Convert.",
           body: "Marketplace programmes where presence, content and promotion drove growth.",
           exploreLabel: "View all case studies",
-          exploreHref: "/work?service=marketplace-management",
+          exploreHref: "/work",
           items: caseItems,
         },
       }
