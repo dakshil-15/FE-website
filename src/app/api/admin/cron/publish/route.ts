@@ -69,7 +69,7 @@ export async function GET(request: Request) {
       await writeAudit({
         actor: {
           id: entry.updatedBy?.id ?? null,
-          email: entry.updatedBy?.email ?? "cron@firsteconomy.in",
+          email: entry.updatedBy?.email ?? "cron@firsteconomy.com",
           name: entry.updatedBy?.name ?? "Scheduler",
         },
         action: "PUBLISH",

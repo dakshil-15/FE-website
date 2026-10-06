@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 
-const FALLBACK_SITE_URL = "https://firsteconomy.in";
+const FALLBACK_SITE_URL = "https://www.firsteconomy.com";
 
 export async function getSiteUrl(): Promise<string> {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");

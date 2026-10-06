@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import MediaBuyingPage from "@/components/media-buying/MediaBuyingPage";
-import { mediaBuyingPage } from "@/content/servicePages/media-buying";
-import { serviceJsonLd } from "@/lib/seo";
+import { getServicePageContent } from "@/content/servicePages";
+import { faqPageJsonLd, serviceJsonLd } from "@/lib/seo";
+
+const mediaBuyingPage = getServicePageContent("media-buying")!;
 
 export const metadata: Metadata = {
-  title: mediaBuyingPage.name,
-  description: mediaBuyingPage.summary,
+  title: mediaBuyingPage.seoTitle ?? mediaBuyingPage.name,
+  description: mediaBuyingPage.seoDescription ?? mediaBuyingPage.summary,
 };
 
 export default function Page() {
@@ -19,6 +21,7 @@ export default function Page() {
           path: "/services/media-buying",
         })}
       />
+      {mediaBuyingPage.faq?.length ? <JsonLd data={faqPageJsonLd(mediaBuyingPage.faq)} /> : null}
       <MediaBuyingPage />
     </>
   );

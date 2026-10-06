@@ -29,7 +29,10 @@ export async function proxy(request: NextRequest) {
     if (hasSession) {
       return NextResponse.redirect(new URL("/admin", request.url));
     }
-    return NextResponse.next();
+    // Login/reset screens are public, so they need the noindex header too (the layout meta alone is not enough for non-HTML fetchers).
+    const publicResponse = NextResponse.next();
+    publicResponse.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return publicResponse;
   }
 
   if (!hasSession) {

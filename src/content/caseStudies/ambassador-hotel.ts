@@ -7,6 +7,8 @@ export const ambassadorHotel: CaseStudy = {
     industry: "travel-hospitality",
     services: ["branding"],
     hero: "Giving a timeless icon a fresh brand experience, while keeping its original character intact.",
+    seoDescription:
+      "How First Economy gave The Ambassador Hotel a fresh brand experience, carrying its identity into physical spaces while keeping its original character intact.",
     challenge: "Translate brand identity into a cohesive physical brand experience while preserving authenticity.",
     objective: "To elevate the brand experience of The Ambassador Hotel by translating its identity into a cohesive, on-ground presence while preserving the authenticity and essence of its original character.",
     mandate: [

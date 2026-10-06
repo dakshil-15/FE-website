@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
-import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, isNoIndex } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, isNoIndex } from "@/lib/seo";
 
 /**
  * Minimal root layout. The public site's chrome (Preloader, Header, Footer)
@@ -24,11 +24,10 @@ const barlow = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "First Economy — Growth Systems",
+    default: "First Economy — Integrated Digital Marketing Agency in India",
     template: "%s | First Economy",
   },
-  description:
-    "First Economy is an integrated growth partner combining media, creative, technology, SEO, social, influencer marketing and AI into one growth system.",
+  description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   // "./" resolves against each route, so every page gets a self-referencing canonical.
   alternates: { canonical: "./" },

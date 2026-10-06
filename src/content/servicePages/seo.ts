@@ -21,6 +21,7 @@ const impactStats = [
 export const seoPage: ServicePageContent = {
   slug: "seo",
   name: "SEO/AEO/GEO",
+  seoTitle: "SEO, AEO & GEO Services in India",
   summary:
     "Technical, on-page and local SEO built for how search actually works now — including AI Overviews, AEO and GEO.",
   hero: {

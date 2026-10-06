@@ -18,6 +18,7 @@ const caseItems = caseStudiesForService("media-buying");
 export const mediaBuyingPage: ServicePageContent = {
   slug: "media-buying",
   name: "360° Media Buying",
+  seoTitle: "360° Media Buying Agency in India",
   summary:
     "Integrated media strategy across search, social, programmatic, OTT and hyperlocal OOH — planned as one system, not separate buys.",
   hero: {

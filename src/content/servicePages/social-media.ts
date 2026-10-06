@@ -15,8 +15,11 @@ const impactStats = impactStatsForService("social-media");
 export const socialMediaPage: ServicePageContent = {
   slug: "social-media",
   name: "Social Media",
+  seoTitle: "Social Media Marketing Agency in India",
   summary:
     "Always-on social strategy, content and community management for both B2B and B2C audiences.",
+  seoDescription:
+    "Always-on social media strategy, content and community management for B2B and B2C brands, built to compound brand presence over time.",
   hero: {
     eyebrow: "Service",
     headlineBefore: "Social Media",

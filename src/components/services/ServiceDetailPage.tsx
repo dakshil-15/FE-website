@@ -6,6 +6,8 @@ import { ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 import CapabilitiesWorkCarousel from "@/components/capabilities/CapabilitiesWorkCarousel";
+import FaqSection from "@/components/FaqSection";
+import ServiceGuide from "@/components/services/ServiceGuide";
 import ServiceValueGrid from "@/components/services/ServiceValueGrid";
 import { IconSlot } from "@/components/media/AssetPlaceholder";
 import { usePageReveal } from "@/hooks/usePageReveal";
@@ -101,6 +103,8 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
         </section>
       )}
 
+      {content.guide && <ServiceGuide idPrefix={idPrefix} guide={content.guide} />}
+
       {caseStudies && caseStudies.items.length > 0 && (
         <section
           id={`${idPrefix}-case-studies`}
@@ -134,6 +138,10 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
             </div>
           </div>
         </section>
+      )}
+
+      {content.faq && content.faq.length > 0 && (
+        <FaqSection idPrefix={idPrefix} titleBefore={content.name} items={content.faq} />
       )}
 
       {cta && (

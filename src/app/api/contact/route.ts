@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   const overLimit = findOverLimit({ name, email, phone, company, interest, requirement });
   if (overLimit) return jsonError(overLimit);
 
-  const recipients = notificationRecipients("hello@firsteconomy.in", "CONTACT_NOTIFICATION_EMAIL");
+  const recipients = notificationRecipients("hello@firsteconomy.com", "CONTACT_NOTIFICATION_EMAIL");
 
   const result = await sendNotificationEmail({
     to: recipients,
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
       <p><strong>Interest:</strong> ${escapeHtml(interest || "Not specified")}</p>
       <p><strong>Requirement:</strong></p>
       <p>${escapeHtml(requirement).replace(/\n/g, "<br />")}</p>
-      <p><em>Submitted via firsteconomy.in contact form. User consented to the Privacy Policy.</em></p>
+      <p><em>Submitted via firsteconomy.com contact form. User consented to the Privacy Policy.</em></p>
     `,
   });
 

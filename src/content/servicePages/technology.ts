@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("technology");
 export const technologyPage: ServicePageContent = {
   slug: "technology",
   name: "Tech Solutions",
+  seoTitle: "Custom ERP & Platform Development in India",
   summary:
     "Ground-up digital platforms, ERP builds and system integrations for businesses that have outgrown off-the-shelf software.",
   hero: {

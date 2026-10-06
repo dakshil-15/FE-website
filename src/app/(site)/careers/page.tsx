@@ -3,9 +3,9 @@ import CareersPage from "@/components/careers/CareersPage";
 import { getCareerRoles } from "@/lib/careers";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Careers in Digital Marketing & Technology",
   description:
-    "Build your career at First Economy — engineer impact across media, creative, technology and data. Explore open roles across Mumbai, Bengaluru, Pune and Chhatrapati Sambhaji Nagar.",
+    "Build your career at First Economy across media, creative, technology and data. Open roles in Mumbai, Bengaluru, Pune and Chhatrapati Sambhaji Nagar.",
 };
 
 export const revalidate = 3600;

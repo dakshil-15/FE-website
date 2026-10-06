@@ -7,6 +7,8 @@ export const orpatErp: CaseStudy = {
     industry: "technology-manufacturing-energy",
     services: ["technology"],
     hero: "Engineering the operational core of a manufacturing leader.",
+    seoDescription:
+      "First Economy built a manufacturing ERP for Orpat, joining raw material, production, quality, dispatch, sales, accounts and HR into one connected system.",
     challenge: "Streamline complex cross-functional manufacturing workflows spanning raw material, SKU-level production, BOM, quality control, finished goods, dispatch, sales, accounts and HR.",
     objective: "To streamline cross-functional communication across complex manufacturing workflows, from raw material planning to final dispatch.",
     mandate: [

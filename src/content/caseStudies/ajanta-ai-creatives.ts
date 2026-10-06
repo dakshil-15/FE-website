@@ -7,6 +7,8 @@ export const ajantaAiCreatives: CaseStudy = {
     industry: "consumer-retail",
     services: ["ai-solutions", "video-production"],
     hero: "A fairy-led magic metaphor, produced end-to-end with AI-assisted craft.",
+    seoDescription:
+      "How First Economy produced Ajanta Magic Moments, a premium fairy-led brand film made end to end with AI-assisted craft on an accelerated timeline.",
     challenge: "Produce a premium, Swarovski-inspired creative film on an accelerated timeline.",
     objective: "For Ajanta Magic Moments, our focus wasn’t on showcasing a product, but on translating an idea into an experience.",
     mandate: [],

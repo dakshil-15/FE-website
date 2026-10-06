@@ -110,7 +110,7 @@ export async function fetchInstagramThumbnail(href: string): Promise<string | nu
       signal: controller.signal,
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; FirstEconomyBot/1.0; +https://firsteconomy.in)",
+          "Mozilla/5.0 (compatible; FirstEconomyBot/1.0; +https://www.firsteconomy.com)",
         Accept: "text/html,application/xhtml+xml",
       },
       next: { revalidate: 86400 },

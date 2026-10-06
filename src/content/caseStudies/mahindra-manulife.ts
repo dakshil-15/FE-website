@@ -7,6 +7,9 @@ export const mahindraManulife: CaseStudy = {
     industry: "bfsi",
     services: ["technology"],
     hero: "A ground-up rebuild of web and mobile platforms for a regulated financial business.",
+    seoTitle: "Mahindra Manulife — Digital Reinvention",
+    seoDescription:
+      "How First Economy rebuilt web and mobile platforms from the ground up for Mahindra Manulife, a regulated asset-management business, under strict compliance.",
     challenge: "Legacy transaction flows, fragmented integrations and no unified architecture — against strict compliance and audit requirements.",
     objective: "A leading asset management company required a ground-up rebuild of its web and mobile platforms to meet evolving investor and distributor expectations, regulatory requirements, and increasing ecosystem complexity.",
     mandate: [

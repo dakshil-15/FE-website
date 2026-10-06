@@ -7,6 +7,8 @@ export const waaree: CaseStudy = {
     industry: "technology-manufacturing-energy",
     services: ["social-media"],
     hero: "Bringing Waaree’s clean energy story to the forefront across B2B and B2C audiences.",
+    seoDescription:
+      "How First Economy strengthened Waaree’s brand presence across B2B and B2C audiences with integrated social communication around the clean energy story.",
     challenge: "Strengthen integrated brand presence across B2B and B2C audiences.",
     objective: "To strengthen Waaree’s integrated brand presence across B2B and B2C audiences through strategic communication that builds trust, sharpens market leadership, and amplifies its role in the clean energy transition.",
     mandate: [

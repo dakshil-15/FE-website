@@ -47,10 +47,31 @@ export type ServicePageStat = {
   label: string;
 };
 
+export type ServiceGuideSection = {
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+};
+
+export type ServiceGuide = {
+  title: string;
+  intro: string;
+  sections: ServiceGuideSection[];
+};
+
+export type ServiceFaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type ServicePageContent = {
   slug: string;
   name: string;
   summary: string;
+  /** <title> without the brand suffix (aim for 44 chars or fewer). Names the service + market for search; falls back to `name`. */
+  seoTitle?: string;
+  /** Optional meta description override (120–160 chars). Defaults to `summary`. */
+  seoDescription?: string;
   hero: {
     eyebrow: string;
     headlineBefore: string;
@@ -96,6 +117,10 @@ export type ServicePageContent = {
     titleAccent: string;
     stats: ServicePageStat[];
   };
+  /** Attached from `faqs.ts` in `index.ts`; drives the visible FAQ section and FAQPage JSON-LD. */
+  faq?: ServiceFaqItem[];
+  /** Long-form explainer attached from `guides.ts` in `index.ts`. */
+  guide?: ServiceGuide;
   cta?: {
     titleBefore: string;
     titleAccent: string;

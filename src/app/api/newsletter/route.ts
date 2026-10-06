@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   if (!email) return jsonError("Enter your email address.");
   if (!isValidEmail(email)) return jsonError("Enter a valid email address.");
 
-  const recipients = notificationRecipients("hello@firsteconomy.in", "NEWSLETTER_NOTIFICATION_EMAIL");
+  const recipients = notificationRecipients("hello@firsteconomy.com", "NEWSLETTER_NOTIFICATION_EMAIL");
 
   const result = await sendNotificationEmail({
     to: recipients,

@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("branding");
 export const brandingPage: ServicePageContent = {
   slug: "branding",
   name: "Project Innovation & Branding",
+  seoTitle: "Brand Strategy & Identity Agency in India",
   summary:
     "Brand strategy and identity carried all the way through to physical, on-ground experience — not just a logo and a deck.",
   hero: {

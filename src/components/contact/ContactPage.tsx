@@ -32,6 +32,7 @@ export default function ContactPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
         breadcrumbCurrentClassName="text-ink"
         titleClassName="text-display-xl mt-4 mb-0 text-balance"
+        titleAriaLabel="Let’s discuss your next move"
         title={
           <>
             {contactHero.headlineBefore}

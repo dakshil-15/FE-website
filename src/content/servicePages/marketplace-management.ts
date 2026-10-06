@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("marketplace-management");
 export const marketplaceManagementPage: ServicePageContent = {
   slug: "marketplace-management",
   name: "Marketplace Management",
+  seoTitle: "E-commerce Marketplace Management in India",
   summary:
     "End-to-end management of brand presence on e-commerce marketplaces — listings, catalogue, store optimisation and promotion.",
   hero: {

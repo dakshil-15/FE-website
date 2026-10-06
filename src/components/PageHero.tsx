@@ -103,6 +103,8 @@ type PageHeroProps = {
   mediaColumnClassName?: string;
   bodyClassName?: string;
   titleClassName?: string;
+  /** Stable accessible name for the H1 when its visible text animates (e.g. a rotating word). */
+  titleAriaLabel?: string;
 };
 
 export const PAGE_HERO_SECTION_CLASS =
@@ -145,6 +147,7 @@ export default function PageHero({
   mediaColumnClassName = DEFAULT_MEDIA_CLASS,
   bodyClassName = "text-body section-copy section-copy-on-light mt-5 mb-0 max-w-[28rem] sm:mt-6",
   titleClassName = "text-display-xl mt-4 mb-0 text-balance",
+  titleAriaLabel,
 }: PageHeroProps) {
   return (
     <section className={PAGE_HERO_SECTION_CLASS} aria-labelledby={headingId}>
@@ -165,7 +168,7 @@ export default function PageHero({
                   {eyebrow}
                 </p>
               ) : null}
-              <h1 id={headingId} data-animate="hero-copy" className={titleClassName}>
+              <h1 id={headingId} data-animate="hero-copy" className={titleClassName} aria-label={titleAriaLabel}>
                 {title}
               </h1>
               {body ? (

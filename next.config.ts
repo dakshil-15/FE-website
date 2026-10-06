@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
       // Best-fit mappings — no 1:1 equivalent on the new site.
       { source: "/online-store.php", destination: "/services/marketplace-management", permanent: true },
       { source: "/business-solution.php", destination: "/services", permanent: true },
+      // The live nav links to the plural; the old sitemap lists the singular (which 404s there). Keep both.
+      { source: "/business-solutions.php", destination: "/services", permanent: true },
+      // The old site itself 301s these, so inbound links still reach them.
+      { source: "/index.php", destination: "/", permanent: true },
+      { source: "/works.php", destination: "/work", permanent: true },
       {
         source: "/our-advantage",
         destination: "/services",

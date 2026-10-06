@@ -32,9 +32,16 @@ export async function generateMetadata({
 
   const experience = role.experience ? ` ${role.experience}.` : "";
 
+  // Keep the rendered <title> (incl. " | First Economy") within ~60 chars: drop the " — Careers" tail for long role names.
+  const fullTitle = `${role.title} — Careers`;
+  const base = `Apply for the ${role.title} role at First Economy in ${role.location}. ${role.type} · ${role.department}.${experience}`;
+  // Short role descriptions get a closing line; longer ones are left as they are (meta descriptions truncate near 160).
+  const closing = " Join First Economy’s integrated growth team.";
+  const description = base.length < 115 && base.length + closing.length <= 160 ? `${base}${closing}` : base;
+
   return {
-    title: `${role.title} — Careers`,
-    description: `Apply for the ${role.title} role at First Economy in ${role.location}. ${role.type} · ${role.department}.${experience}`,
+    title: fullTitle.length > 44 ? role.title : fullTitle,
+    description,
   };
 }
 

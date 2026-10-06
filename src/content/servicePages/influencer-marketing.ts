@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("influencer-marketing");
 export const influencerMarketingPage: ServicePageContent = {
   slug: "influencer-marketing",
   name: "Influencer Marketing",
+  seoTitle: "Influencer Marketing Agency in India",
   summary:
     "From celebrity collaborations to micro-creator networks, built for scale, authenticity and measurable amplification.",
   hero: {

@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("video-production");
 export const videoProductionPage: ServicePageContent = {
   slug: "video-production",
   name: "Video Production",
+  seoTitle: "Brand Film & Video Production in India",
   summary:
     "Brand films, social video and campaign production — increasingly accelerated by AI-assisted workflows without losing craft.",
   hero: {

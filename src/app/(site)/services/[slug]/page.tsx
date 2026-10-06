@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import ServiceDetailPage from "@/components/services/ServiceDetailPage";
 import { getServicePageContent, servicePageSlugs } from "@/content/servicePages";
-import { serviceJsonLd } from "@/lib/seo";
+import { faqPageJsonLd, serviceJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return servicePageSlugs
@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const content = getServicePageContent(slug);
   if (!content) return {};
-  return { title: content.name, description: content.summary };
+  return { title: content.seoTitle ?? content.name, description: content.seoDescription ?? content.summary };
 }
 
 export default async function ServiceDetailRoute({
@@ -42,6 +42,7 @@ export default async function ServiceDetailRoute({
           path: `/services/${content.slug}`,
         })}
       />
+      {content.faq?.length ? <JsonLd data={faqPageJsonLd(content.faq)} /> : null}
       <ServiceDetailPage content={content} />
     </>
   );

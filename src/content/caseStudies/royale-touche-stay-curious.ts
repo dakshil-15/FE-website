@@ -7,6 +7,8 @@ export const royaleToucheStayCurious: CaseStudy = {
     industry: "consumer-retail",
     services: ["seo", "ai-solutions", "influencer-marketing", "social-media"],
     hero: "Making it easier to see, feel and experience Royalé Touché laminates.",
+    seoDescription:
+      "How First Economy’s #StayCurious campaign drove footfall to Royalé Touché’s 200+ Experience Centres, with Reddit content earning citations in ChatGPT and LLMs.",
     challenge: "Build awareness and communicate the full-size laminate experience across 200+ Experience Centres.",
     objective: "Create awareness and communicate that you can experience the full-size laminate sheet across Royale Touché’s 200+ Experience Centres.",
     mandate: [

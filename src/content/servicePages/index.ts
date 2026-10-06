@@ -1,3 +1,6 @@
+import { FAQS_ENABLED } from "@/content/features";
+import { serviceFaqs } from "@/content/servicePages/faqs";
+import { serviceGuides } from "@/content/servicePages/guides";
 import { aiSolutionsPage } from "@/content/servicePages/ai-solutions";
 import { brandingPage } from "@/content/servicePages/branding";
 import { creativePage } from "@/content/servicePages/creative";
@@ -12,7 +15,7 @@ import { videoProductionPage } from "@/content/servicePages/video-production";
 
 export type { ServicePageContent } from "@/content/servicePages/types";
 
-const pages: ServicePageContent[] = [
+const basePages: ServicePageContent[] = [
   mediaBuyingPage,
   videoProductionPage,
   brandingPage,
@@ -24,6 +27,8 @@ const pages: ServicePageContent[] = [
   seoPage,
   aiSolutionsPage,
 ];
+
+const pages: ServicePageContent[] = basePages.map((page) => ({ ...page, faq: FAQS_ENABLED ? serviceFaqs[page.slug] : undefined, guide: serviceGuides[page.slug] }));
 
 export const servicePagesBySlug: Record<string, ServicePageContent> = Object.fromEntries(
   pages.map((page) => [page.slug, page]),

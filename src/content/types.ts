@@ -99,6 +99,10 @@ export type CaseStudy = {
   industry: string;
   services: string[];
   hero: string;
+  /** Optional <title> override (without the brand suffix, aim for 44 chars or fewer). Defaults to "{client} — {campaign}". */
+  seoTitle?: string;
+  /** Optional meta description override (120–160 chars). Defaults to `hero`, which is written for on-page display and is often too short. */
+  seoDescription?: string;
   challenge: string;
   execution: string[];
   /** Outcome metrics. Empty / omitted hides The Result section. */

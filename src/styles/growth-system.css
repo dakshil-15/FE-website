@@ -9,6 +9,9 @@
   --gs-line: rgba(8, 8, 8, 0.045);
   --gs-muted: #606060;
   --hero-chrome: 5.75rem; /* sticky header approx */
+  /* Real hero height: viewport minus header, capped like the rule below. Children size against THIS, not 100svh,
+     otherwise on tall screens (1440p, 4K) they grow past the capped hero and get clipped at the top and bottom. */
+  --hero-h: min(calc(100svh - var(--hero-chrome)), 48rem);
   position: relative;
   isolation: isolate;
   display: flex;
@@ -236,8 +239,9 @@
   align-items: start;
   gap: clamp(1.25rem, 3vw, 2.25rem);
   width: 100%;
-  max-width: none;
-  margin-inline: 0;
+  /* Same container as the header and every .section-inner, so the hero lines up with the rest of the site on wide screens. */
+  max-width: var(--content);
+  margin-inline: auto;
   padding-block: 0;
   min-height: 0;
   flex: 1 1 auto;
@@ -381,15 +385,11 @@
   }
 }
 
+/* From here the hero sits inside the site container (--content), so the title scales with the container, not the
+   viewport: viewport-based sizes outgrow the half-width copy column on 1440p/4K screens and wrap to 5 lines. */
 @media (min-width: 1536px) {
   .growth-hero__title {
-    font-size: clamp(4.5rem, 5vw + 0.4rem, 7.5rem);
-  }
-}
-
-@media (min-width: 1920px) {
-  .growth-hero__title {
-    font-size: clamp(5rem, 5.35vw, 8rem);
+    font-size: clamp(4.5rem, calc(var(--content) * 0.0625), 8rem);
   }
 }
 
@@ -992,9 +992,9 @@
 
 @media (min-width: 960px) {
   .gs-engine {
-    /* Fit remaining viewport under header + scroll cue */
-    width: min(100%, calc(100svh - var(--hero-chrome) - 5.5rem));
-    max-height: calc(100svh - var(--hero-chrome) - 5.5rem);
+    /* Fit the (capped) hero height under the scroll cue */
+    width: min(100%, calc(var(--hero-h) - 6rem));
+    max-height: calc(var(--hero-h) - 6rem);
     max-width: 100%;
     margin-inline: 0 0 auto;
   }

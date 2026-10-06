@@ -217,6 +217,8 @@ export const careersOpenings = {
   resumeCta: { label: "Send us your resume", href: "mailto:p&c@firsteconomy.com" },
 };
 
+// `datePosted` is the date each role was added to the site (from git history), a stand-in until the real posting dates are
+// entered. Add `validThrough` (ISO date) to a role that has a closing date; remove the role once it is filled.
 export const careersRoles: CareerRole[] = [
   {
     slug: "senior-performance-marketing-manager",
@@ -226,6 +228,7 @@ export const careersRoles: CareerRole[] = [
     type: "Full-time",
     experience: "5-8 Yrs",
     href: "/careers/senior-performance-marketing-manager",
+    datePosted: "2026-08-27",
   },
   {
     slug: "creative-art-director",
@@ -235,6 +238,7 @@ export const careersRoles: CareerRole[] = [
     type: "Full-time",
     experience: "6-10 Yrs",
     href: "/careers/creative-art-director",
+    datePosted: "2026-08-27",
   },
   {
     slug: "video-editor",
@@ -244,6 +248,7 @@ export const careersRoles: CareerRole[] = [
     type: "Full-time",
     experience: "2-4 Yrs",
     href: "/careers/video-editor",
+    datePosted: "2026-08-27",
   },
   {
     slug: "ai-data-analyst",
@@ -253,6 +258,7 @@ export const careersRoles: CareerRole[] = [
     type: "Full-time",
     experience: "3-5 Yrs",
     href: "/careers/ai-data-analyst",
+    datePosted: "2026-08-27",
   },
   {
     slug: "seo-specialist",
@@ -262,6 +268,7 @@ export const careersRoles: CareerRole[] = [
     type: "Full-time",
     experience: "2-5 Yrs",
     href: "/careers/seo-specialist",
+    datePosted: "2026-08-27",
   },
 ];
 

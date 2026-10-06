@@ -5,7 +5,7 @@ import Preloader from "@/components/Preloader";
 import WorkCaseTransition from "@/components/work/WorkCaseTransition";
 import PreviewBanner from "@/components/admin/PreviewBanner";
 import JsonLd from "@/components/JsonLd";
-import { organizationJsonLd } from "@/lib/seo";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 /**
  * Public site chrome. Split out of the root layout so `/admin` renders without
@@ -15,6 +15,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
       <PreviewBanner />
       <Preloader />
       <a href="#main-content" className="skip-link">

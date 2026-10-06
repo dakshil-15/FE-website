@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("ai-solutions");
 export const aiSolutionsPage: ServicePageContent = {
   slug: "ai-solutions",
   name: "AI Solutions",
+  seoTitle: "AI Solutions for Marketing in India",
   summary:
     "AI applied across creative production, analytics and search discoverability — a practical accelerator, not a buzzword.",
   hero: {

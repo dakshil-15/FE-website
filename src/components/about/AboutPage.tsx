@@ -10,6 +10,9 @@ import { ImageSlot } from "@/components/media/AssetPlaceholder";
 import TeamCarousel from "@/components/about/TeamCarousel";
 import FeaturedAwardHighlight from "@/components/about/FeaturedAwardHighlight";
 import ValuesSlider from "@/components/about/ValuesSlider";
+import FaqSection from "@/components/FaqSection";
+import { FAQS_ENABLED } from "@/content/features";
+import { aboutFaqs } from "@/content/siteFaqs";
 import PartnerLogos from "@/components/home/PartnerLogos";
 import { usePageReveal } from "@/hooks/usePageReveal";
 import {
@@ -274,6 +277,8 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
+
+      {FAQS_ENABLED ? <FaqSection idPrefix="about" titleBefore="About First Economy" items={aboutFaqs} /> : null}
 
       <CTASection
         animate

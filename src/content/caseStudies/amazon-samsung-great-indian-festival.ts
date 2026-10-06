@@ -8,6 +8,9 @@ export const amazonSamsungGreatIndianFestival: CaseStudy = {
     industry: "consumer-retail",
     services: ["influencer-marketing"],
     hero: "To position Galaxy M36 5G as the best-value 5G smartphone under ₹15K during the festive season.",
+    seoTitle: "Amazon × Samsung: Great Indian Festival 2025",
+    seoDescription:
+      "How First Economy positioned the Samsung Galaxy M36 5G as the best-value 5G phone under ₹15K with an influencer campaign for Amazon’s Great Indian Festival.",
     challenge: "Maximise Samsung Galaxy M36 5G visibility, position it as strong value under ₹15K, and build pre-buzz ahead of the Amazon Great Indian Festival.",
     objective: "Maximize visibility for Samsung Galaxy M36 5G during the festive sale; establish it as the best-value 5G smartphone under ₹15K; highlight standout features; borrow aspiration from Galaxy A55 and S24 Ultra; strengthen Samsung’s premium innovation across the lineup.",
     mandate: [

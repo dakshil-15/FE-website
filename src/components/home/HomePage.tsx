@@ -14,6 +14,7 @@ import LocationsSection from "@/components/home/LocationsSection";
 import CareersTeaser from "@/components/home/CareersTeaser";
 import GrowthNetworkVisual from "@/components/home/GrowthNetworkVisual";
 import CTASection from "@/components/CTASection";
+import FaqSection from "@/components/FaqSection";
 import GrowthCta from "@/components/GrowthCta";
 import {
   ActiveClientsIcon,
@@ -21,6 +22,8 @@ import {
   MindsIcon,
   YearsIcon,
 } from "@/components/brandIcons";
+import { FAQS_ENABLED } from "@/content/features";
+import { homeFaqs } from "@/content/siteFaqs";
 import { homeOfficeStats } from "@/content/stats";
 import { homeCta } from "@/content/home";
 
@@ -426,6 +429,10 @@ export default function HomePage() {
       <PartnerLogos />
       <LocationsSection />
       <CareersTeaser />
+
+      {FAQS_ENABLED ? (
+        <FaqSection idPrefix="home" titleBefore="First Economy" items={homeFaqs} animate={false} className="bg-paper" />
+      ) : null}
 
       <CTASection
         animate

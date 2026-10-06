@@ -37,7 +37,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             One place to run the growth system.
           </h2>
           <p className="text-body mt-6 m-0 text-muted-on-dark">
-            Case studies, insights, roles and every page on firsteconomy.in — drafted, reviewed and
+            Case studies, insights, roles and every page on firsteconomy.com — drafted, reviewed and
             published from here.
           </p>
         </div>

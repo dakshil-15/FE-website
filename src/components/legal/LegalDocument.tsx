@@ -1,4 +1,6 @@
+import JsonLd from "@/components/JsonLd";
 import type { LegalDocumentContent } from "@/content/legal";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 type LegalDocumentProps = {
   document: LegalDocumentContent;
@@ -7,6 +9,7 @@ type LegalDocumentProps = {
 export default function LegalDocument({ document }: LegalDocumentProps) {
   return (
     <section className="section-shell section-pad bg-paper">
+      <JsonLd data={breadcrumbJsonLd([{ label: "Home", href: "/" }, { label: document.title }])} />
       <div className="container-content max-w-3xl">
         <p className="text-eyebrow m-0 text-red">{document.eyebrow}</p>
         <h1 className="text-display-md mt-4 m-0">{document.title}</h1>

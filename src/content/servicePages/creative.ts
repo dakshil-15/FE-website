@@ -15,6 +15,7 @@ const impactStats = impactStatsForService("creative");
 export const creativePage: ServicePageContent = {
   slug: "creative",
   name: "Creative Solutions",
+  seoTitle: "Performance Creative Agency in India",
   summary:
     "Campaign and performance creative across formats — from static and motion to retail and social-first storytelling.",
   hero: {
