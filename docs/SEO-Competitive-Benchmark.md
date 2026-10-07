@@ -7,6 +7,23 @@
 | **Method** | Read-only fetches of each site's public HTML: home page, `robots.txt`, `sitemap.xml`, `llms.txt`, and one SEO-service page. Plus web searches to see who ranks for the core terms. Script: `bench.mjs` (not committed; ask if you want it in `scripts/`). |
 | **Companion** | [SEO-AEO-GEO-Documentation.md](SEO-AEO-GEO-Documentation.md) |
 
+## Status of the gaps (updated after the build-out, commit `ea72e2d`)
+
+The comparison below was taken **before** these changes; the table shows where each gap stands now.
+
+| # | Gap found in the benchmark | Status now |
+|---|---|---|
+| 1 | Home title had no category or location words | **Closed** — `First Economy — Integrated Digital Marketing Agency in India` (60 chars) plus a matching description |
+| 2 | Service pages thin | **Partly closed** — each service page has a long-form guide; the SEO page is ≈1,040 words (was ≈550) against peers' 1,200–4,700, and the other nine are 436–721. More reviewed content is still needed |
+| 3 | No content hub | **Open** — `/insights` still redirects to the home page |
+| 4 | Third-party profiles show the wrong offices | **Open** — outside the site (Qoruz, CB Insights, jobs boards, LinkedIn) |
+| 5 | Minimal entity schema | **Closed** — Organization enriched, `WebSite` added; `Person` and `foundingDate` still open |
+| 6 | No city/location pages | **Open** — deliberately not built without real local content |
+| 7 | Not in agency directories | **Open** — Clutch, DesignRush, GoodFirms, Sortlist, Google Business Profiles |
+| 8 | No AI-bot policy or `llms.txt` | **Closed** — explicit allow-all policy in `robots.ts`; `/llms.txt` served |
+| — | Hub titles had no keywords | **Closed** — About, Services, Work, Careers, Awards, Contact, Privacy |
+| — | FAQs | **Built but hidden** (`FAQS_ENABLED = false`) |
+
 ## 0. Read this first — what this benchmark can and cannot say
 
 **It can say:** how each site is *built* (titles, headings, schema, FAQ, bot policy, sitemap size, content depth) and what the SERP landscape looks like.

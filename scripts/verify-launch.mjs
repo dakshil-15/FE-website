@@ -115,6 +115,7 @@ if (!staging) {
   for (const bot of ["OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "Claude-SearchBot", "GPTBot", "ClaudeBot", "Google-Extended"]) {
     ok(new RegExp(`User-Agent: ${bot}\\b`, "i").test(rb), `robots.txt: no explicit rule for ${bot}`);
   }
+  ok(rb.includes("Disallow: /proposal/"), "robots.txt: /proposal/ is not disallowed");
   ok(/User-Agent: GPTBot[\s\S]*?Disallow: \/admin/i.test(rb), "robots.txt: AI-bot group does not repeat the private paths");
 }
 const [llmsRes, llms] = await text("/llms.txt");
@@ -125,6 +126,19 @@ else {
   ok(linked.length >= 24 && linked.every((u) => u.startsWith(origin)), `llms.txt links: ${linked.length}, all on ${origin}?`);
   const sitemapPaths = new Set(locs);
   ok(linked.filter((u) => u !== origin + "/").every((u) => sitemapPaths.has(u)), "llms.txt links a URL that is not in the sitemap");
+}
+// Tracking carried over from the live site: Tag Manager + Search Console ownership tag. Never on staging or /admin.
+const [, homeHtml] = await text("/");
+const [, loginHtml] = await text("/admin/login");
+// Check the real <noscript> tag, not the string: Next embeds prefetch data for linked pages (the admin login links to "/").
+const GTM_NOSCRIPT = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-';
+ok(!loginHtml.includes(GTM_NOSCRIPT), "/admin/login must not load the tag manager");
+if (staging) {
+  ok(!homeHtml.includes("googletagmanager.com/ns.html"), "staging: the tag manager must not load");
+} else {
+  ok(homeHtml.includes(GTM_NOSCRIPT), "home: tag manager (noscript) missing");
+  ok(homeHtml.includes("gtm-init") || homeHtml.includes("googletagmanager.com/gtm.js"), "home: tag manager script missing");
+  ok(homeHtml.includes('name="google-site-verification"'), "home: Search Console verification tag missing");
 }
 const nf = await get("/definitely-not-a-page");
 ok(nf.status === 404, "unknown URL status " + nf.status);
