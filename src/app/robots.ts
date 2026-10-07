@@ -21,7 +21,8 @@ const AI_BOTS_ALLOWED = [...AI_BOTS_RETRIEVAL, ...AI_BOTS_TRAINING];
 const AI_BOTS_BLOCKED: string[] = [];
 
 // /cdn-cgi/ hosts Cloudflare's email-protection links, which appear on every page.
-const PRIVATE_PATHS = ["/admin", "/api/", "/cdn-cgi/"];
+// /proposal/ = legacy client proposal pages (static HTML in public/proposal/); the old site disallowed it too.
+const PRIVATE_PATHS = ["/admin", "/api/", "/cdn-cgi/", "/proposal/"];
 
 export default function robots(): MetadataRoute.Robots {
   // Staging/preview deploys (SITE_NOINDEX=true) block everything; production leaves the var unset.

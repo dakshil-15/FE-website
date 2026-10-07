@@ -24,12 +24,13 @@ const nextConfig: NextConfig = {
   // Staging/preview deploys set SITE_NOINDEX=true so nothing on them can be indexed;
   // production leaves it unset and never inherits the header.
   async headers() {
-    if (process.env.SITE_NOINDEX !== "true") return [];
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
     return [
-      {
-        source: "/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
+      // /proposal/ holds the legacy site's client proposal pages (plain HTML in public/proposal/, served as they are).
+      // They are private: the old robots.txt disallowed them, so keep them out of search.
+      { source: "/proposal/:path*", headers: noindex },
+      // Staging: nothing on a non-production deploy may be indexed. Production leaves SITE_NOINDEX unset.
+      ...(process.env.SITE_NOINDEX === "true" ? [{ source: "/:path*", headers: noindex }] : []),
     ];
   },
   async redirects() {
