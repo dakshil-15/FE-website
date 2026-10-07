@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, isNoIndex } from "@/lib/seo";
+import { GOOGLE_SITE_VERIFICATION } from "@/lib/tracking";
 
 /**
  * Minimal root layout. The public site's chrome (Preloader, Header, Footer)
@@ -39,6 +40,8 @@ export const metadata: Metadata = {
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "First Economy — Growth Systems" }],
   },
   twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE] },
+  // Search Console ownership, carried over from the live site so the verified property keeps working after cutover.
+  verification: { google: GOOGLE_SITE_VERIFICATION },
   icons: {
     icon: [
       { url: "/icons/icon-32.png", sizes: "32x32", type: "image/png" },

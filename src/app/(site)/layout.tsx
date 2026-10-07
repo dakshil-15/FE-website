@@ -5,6 +5,7 @@ import Preloader from "@/components/Preloader";
 import WorkCaseTransition from "@/components/work/WorkCaseTransition";
 import PreviewBanner from "@/components/admin/PreviewBanner";
 import JsonLd from "@/components/JsonLd";
+import GoogleTagManager from "@/components/GoogleTagManager";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 /**
@@ -16,6 +17,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <>
       <JsonLd data={organizationJsonLd()} />
       <JsonLd data={websiteJsonLd()} />
+      <GoogleTagManager />
       <PreviewBanner />
       <Preloader />
       <a href="#main-content" className="skip-link">
