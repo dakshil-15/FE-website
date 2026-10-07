@@ -52,7 +52,7 @@ export default async function ImportPage() {
         <ul className="text-body-sm m-0 list-disc space-y-2.5 px-5 py-5 pl-9 text-muted">
           <li>
             Creates one <code className="font-mono text-xs text-ink">ContentEntry</code> per case
-            study, insight, role, page and list item, keyed by module and slug.
+            study, role, page and list item, keyed by module and slug.
           </li>
           <li>
             Records an initial version for each entry, so version history starts from the import.

@@ -43,7 +43,7 @@ export function organizationJsonLd() {
       telephone: contactInfo.phone,
       email: contactInfo.email,
       areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
+      availableLanguage: ["English"],
     },
     numberOfEmployees: { "@type": "QuantitativeValue", value: companyOfficeScale.people.value },
     areaServed: { "@type": "Country", name: "India" },

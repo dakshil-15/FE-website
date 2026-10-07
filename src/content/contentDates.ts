@@ -2,11 +2,11 @@
 // Dates come from git history (last commit touching a page's source files). They feed the sitemap
 // <lastmod>, Article dateModified and VideoObject uploadDate.
 
-export const contentDatesGeneratedOn = "2026-10-06";
+export const contentDatesGeneratedOn = "2026-10-07";
 
 /** Public path -> date (YYYY-MM-DD) the page's source content last changed. */
 export const pageLastModified: Record<string, string> = {
-  "/": "2026-10-06",
+  "/": "2026-10-07",
   "/about": "2026-10-06",
   "/services": "2026-10-06",
   "/work": "2026-10-06",
